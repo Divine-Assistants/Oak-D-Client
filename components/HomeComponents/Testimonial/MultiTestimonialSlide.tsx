@@ -3,6 +3,7 @@ import { testimonials } from "@/utils/testimonials";
 import { Avatar } from "@chakra-ui/react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import Image from 'next/image';
 
 export type Testimonial = {
   id: number;
@@ -62,11 +63,13 @@ export const MultiTestimonialSlide: React.FC<TestimonialSliderProps> = ({
         >
           <div className="w-[80%] m-auto flex flex-col gap-[29px] ">
             <div className="w-[79px] h-[58px] ">
-              <img
-                src="/img/exclamation.svg"
-                alt="Testimonial"
-                className="w-[100%] h-[100%] "
-              />
+            <Image 
+              src="/img/exclamation.svg" 
+              alt='Testimonial' 
+              width={300} 
+              height={300} 
+              layout='responsive' 
+            />
             </div>
             <p className="text-[16px] font-[500] ">{testimonial.text}</p>
             <div className="flex items-center justify-between ">

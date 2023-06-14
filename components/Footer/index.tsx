@@ -7,7 +7,7 @@ import { FaFacebook, FaGlobe, FaInstagram, FaLinkedin, FaTwitter } from 'react-i
 
 export function Footer() {
   return (
-    <footer className='py-[50px] px-[20px] lg:px-[50px] '>
+    <footer className='py-[50px] px-[20px] lg:px-[50px] bg-[#F8F8F8] '>
         <div className='mb-[60px] lg:flex lg:gap-x-[50px] '>
             <div className='flex flex-col gap-y-[15px] mb-[30px] lg:mb-0 lg:w-[250px] '>
                 <div>
