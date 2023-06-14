@@ -8,7 +8,7 @@ export function ContactInformation(){
             <div className="my-[50px] lg:flex lg:gap-x-[50px]">
                 <div className="mb-[20px]">
                     <p className="text-[#1E1E1E] text-[20px] font-[600] ">Contact Email</p>
-                    <p className="text-[#0A089A] text-[18px] font-[500] ">hello@oak&dcanada.com</p>
+                    <p className="text-[#0A089A] text-[18px] font-[500] ">support@oak&dcanada.com</p>
                 </div>
 
                 <div className="mb-[20px]">

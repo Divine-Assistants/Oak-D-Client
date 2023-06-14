@@ -58,7 +58,6 @@ export function Address() {
                                 width={30} 
                                 height={30} 
                             />
-                            {/* <img src="/img/location-pin.svg" alt="Ikeja Lagos State location" /> */}
                         </div>
                         <p className='text-[16px] font-[500] md:text-[18px] '>Flat 2B, Block 12,<br /> Victoria Garden City,<br /> Lekki, Lagos State,<br /> Nigeria</p>
                 </div>
