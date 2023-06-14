@@ -47,23 +47,7 @@ const faqs = [
   ];
 
 export function FaqSection(){
-    const [showAnswer, setShowAnswer] = useState(false);
-    const [click, setClick] = useState<string | null>(null);
-    const [faaq, SetFaaq] = useState(0);
-
-    function handleRemoveAnswer(id: string){
-        setShowAnswer(false);
-        setClick(id);
-    }
-
-    function handleShowAnswer(id: string){
-        setShowAnswer(true);
-        setClick(id);
-
-    }
-
-
-
+    const [click, setClick] = useState(0);
     return (
         <section className="mb-[50px]">
             <h1 className="text-[25px] lg:text-[32px] font-[600] text-[#1E1E1E] mb-[30px] uppercase ">Frequently Asked Questions</h1>
@@ -73,14 +57,14 @@ export function FaqSection(){
                     <div className="flex gap-x-[30px] items-center mb-[10px] justify-between ">
                         <p className="text-[18px] font-[600] ">{faq.question}</p>
 
-                        <div onClick={() => {SetFaaq(prev => (prev === faq.id ? 0 : faq.id));}}>
-                            <Image src="../img/plus-icon.svg" alt="Plus Icon" width={20} height={20} className={faaq === faq.id ? `hidden` : `block cursor-pointer`} />
+                        <div onClick={() => {setClick(prev => (prev === faq.id ? 0 : faq.id));}}>
+                            <Image src="../img/plus-icon.svg" alt="Plus Icon" width={20} height={20} className={click === faq.id ? `hidden` : `block cursor-pointer`} />
 
-                            <Image src="../img/minus-icon.svg" alt="" width={20} height={20} className={faaq !== faq.id ? `hidden` : `block cursor-pointer`} />
+                            <Image src="../img/minus-icon.svg" alt="" width={20} height={20} className={click !== faq.id ? `hidden` : `block cursor-pointer`} />
                         </div>
                     </div>
                     <div className="text-justify">
-                        <p className={faaq === faq.id ? `text-[16px] font-[500]` : `hidden`}>{faq.answer}</p>
+                        <p className={click === faq.id ? `text-[16px] font-[500]` : `hidden`}>{faq.answer}</p>
                     </div>
                 </div> 
 

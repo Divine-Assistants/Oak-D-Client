@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Navbar, Footer } from "@/components";
 import Ready from "@/components/ReadyToStart";
 import emailjs from 'emailjs-com';
-import { FaInstagram, FaTwitter, FaLinkedin, FaFacebookF, FaLocationArrow } from "react-icons/fa";
+import { FaInstagram, FaTwitter, FaLinkedin, FaFacebookF } from "react-icons/fa";
 import { ContactMap } from "@/components/GoogleMap";
+import { Spinner } from "@chakra-ui/react";
 
 type inputChangeEvent = React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
 
@@ -38,6 +39,7 @@ const Contact = ()=> {
     const longitude = -79.548546;
     
     const [values, setValues] = useState<data>(initialValues);
+    const [isLoading, setIsLoading] = useState(false);
 
     // INPUT ONCHANGE FUNCTION
     const handleChange =(event: inputChangeEvent)=> {
@@ -53,6 +55,7 @@ const Contact = ()=> {
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>)=> {
         event.preventDefault();
         if (values.name !== '' && values.email !== '' && values.message !== '') {
+            setIsLoading(true);
             try {
                 // CONFIGURE EMAILJS
                 const emailParams = {
@@ -64,7 +67,10 @@ const Contact = ()=> {
                     message: values.message
                 };
                 await emailjs.send('service_i0gog9a', 'template_6h5lfvj', emailParams, 'uzQe2u-m8xPgpc0xW');
-                console.log('Email sent successfully')
+
+                setIsLoading(false);
+
+                alert('Email sent successfully')
             } catch (error) {
                 console.log(error);
             }
@@ -148,7 +154,14 @@ const Contact = ()=> {
                         className="w-[100%] bg-[#F5F5F5] rounded-[8px] p-[20px] mb-[20px] h-[199px] outline-0 md:h-[250px] text-[16px] md:text-[18px] "
                         required
                     />
-                    <button type="submit" className="bg-red p-[20px] text-[#F5F5F5] w-[162px] text-[16px] rounded-[8px] cursor-pointer md:w-[200px] md:text-[20px]">Send Message</button>
+
+                    { isLoading ?
+                        <button type="submit" className="bg-red p-[20px] text-[#F5F5F5] w-[162px] rounded-[8px] cursor-pointer md:w-[200px] md:text-[20px] flex items-center justify-center">
+                            <Spinner className="h-[30px] w-[30px]" />
+                        </button>
+                        :
+                        <button type="submit" className="bg-red p-[20px] text-[#F5F5F5] w-[162px] text-[16px] rounded-[8px] cursor-pointer md:w-[200px] md:text-[20px]">Send Message</button>
+                    }
                 </form>
             </section>
             <Ready />

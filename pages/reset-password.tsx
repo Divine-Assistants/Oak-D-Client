@@ -2,32 +2,34 @@ import { useState } from "react";
 import ResetPasswordModal from "../components/Modal/ResetPasswordModal/index";
 import { useRouter } from "next/router";
 import { newPassword } from "@/api/api";
+import { Spinner } from "@chakra-ui/react";
 
+const styles = {
+  bgImage: {
+    background: "url(../img/get-started-background.svg)",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+  },
+  square: {
+    background: "rgba(254, 254, 254, 0.68)",
+  },
+  onModalDisplay: {
+    background: "rgba(0, 0, 0, 0.7)",
+  },
+};
+
+type data = {
+  email: string;
+  newPassword: string;
+  confirmPassword: string;
+};
 const ResetPassword = () => {
-  const styles = {
-    bgImage: {
-      background: "url(../img/get-started-background.svg)",
-      backgroundSize: "cover",
-      backgroundRepeat: "no-repeat",
-      backgroundPosition: "center",
-    },
-    square: {
-      background: "rgba(254, 254, 254, 0.68)",
-    },
-    onModalDisplay: {
-      background: "rgba(0, 0, 0, 0.7)",
-    },
-  };
-
-  type data = {
-    email: string;
-    newPassword: string;
-    confirmPassword: string;
-  };
-
   const [displayModal, setDisplayModal] = useState(false);
   const [alertValue, setAlertValue] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+
 
   const [resetPassword, setResetPassword] = useState<data>({
     email: router.query.email as string,
@@ -51,6 +53,7 @@ const ResetPassword = () => {
   ) => {
     event.preventDefault();
     if (resetPassword.newPassword === resetPassword.confirmPassword) {
+      setIsLoading(true);
       const { data, status, message } = await newPassword(resetPassword);
       if (status === "Success") {
         setResetPassword({
@@ -58,6 +61,7 @@ const ResetPassword = () => {
           newPassword: "",
           confirmPassword: "",
         });
+        setIsLoading(false);
         setDisplayModal(true);
       }
     }
@@ -116,6 +120,7 @@ const ResetPassword = () => {
                 value={resetPassword.newPassword}
                 onChange={handleResetPasswordChange}
                 placeholder="Enter New Password"
+                required
                 className="rounded-[8px] border-[#D9D9D9] border-[2px] px-[20px] py-[10px] focus:outline-[#0A089A] md:h-[60px]"
               />
             </div>
@@ -133,6 +138,7 @@ const ResetPassword = () => {
                 value={resetPassword.confirmPassword}
                 onChange={handleResetPasswordChange}
                 placeholder="Confirm New Password"
+                required
                 className="rounded-[8px] text-[16px] border-[#D9D9D9] border-[2px] px-[20px] py-[10px] mb-[3px] focus:outline-[#0A089A] md:h-[60px]"
               />
               <p className="text-[12px] text-[#AC0108] font-[700]">
@@ -140,9 +146,14 @@ const ResetPassword = () => {
               </p>
             </div>
 
-            <button className="p-[20px] w-[100%] text-[#FAFAFA] mt-[15px] text-center bg-[#0A089A] rounded-[8px]">
+            {isLoading ?
+              <button className="p-[20px] w-[100%] text-[#FAFAFA] mt-[15px] text-center bg-[#0A089A] rounded-[8px] flex items-center justify-center">
+                <Spinner className="h-[30px] w-[30px]" />
+              </button> :
+              <button className="p-[20px] w-[100%] text-[#FAFAFA] mt-[15px] text-center bg-[#0A089A] rounded-[8px]">
               Submit
             </button>
+            }
           </form>
         </div>
       </div>
