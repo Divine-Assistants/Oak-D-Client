@@ -9,7 +9,6 @@ import React, {
 import { VidModal01, scrollToTop } from "@/components";
 import { FaArrowRight } from "react-icons/fa";
 import { clientParcelInfo } from "@/components";
-import { provinces } from "@/utils/Provinces";
 
 interface GlobalParcelType {
   setData: Dispatch<SetStateAction<any>>;
@@ -212,11 +211,11 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                 className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
               >
                 <option value="">Departure Province</option>
-                {provinces.map((province) => (
+                {/* {provinces.map((province) => (
                   <option key={province.code} value={province.code}>
                     {province.name}
                   </option>
-                ))}
+                ))} */}
               </select>
             </div>
 
@@ -231,11 +230,11 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                 className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
               >
                 <option value="">Arrival Province</option>
-                {provinces.map((province) => (
+                {/* {provinces.map((province) => (
                   <option key={province.code} value={province.code}>
                     {province.name}
                   </option>
-                ))}
+                ))} */}
               </select>
             </div>
 
