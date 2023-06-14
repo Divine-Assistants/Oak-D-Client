@@ -57,7 +57,7 @@ export function ReceiverInformation({ setData }: ReceiverInformationType) {
   }, [receiverData]);
 
   function handleFormSubmit() {
-    setData((prevData) => {
+    setData((prevData: any) => {
       return { ...prevData, receiver: receiverData };
     });
     setShowReceiverInfo(false);
