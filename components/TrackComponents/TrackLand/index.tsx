@@ -1,8 +1,6 @@
 import { TrackContext, TrackContextType } from "@/context/TrackWrapper";
 import React, { useContext } from "react";
 import axios from "axios";
-import { blogData } from "@/utils/blog";
-import { shipData } from "@/utils/shipmentDB";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
