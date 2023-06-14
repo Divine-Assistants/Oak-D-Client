@@ -1,18 +1,24 @@
-import { PickDrop, QuoteLayout, WareCrumb, WarehouseParcel, WarehouseQuoteLand, WarehouseSummary } from '@/components'
-import { DomesticContextProvider } from '@/context/DomesticWrapper'
-import { GlobalContextProvider } from '@/context/GlobalWrapper'
-import React from 'react';
-import axios from 'axios';
-import { setCookie } from 'cookies-next';
-import { ClientDataType } from '../domestic';
-import { useRouter } from 'next/router';
-import { userToken } from '@/api/api';
-import { useState } from 'react';
+import {
+  PickDrop,
+  QuoteLayout,
+  WareCrumb,
+  WarehouseParcel,
+  WarehouseQuoteLand,
+  WarehouseSummary,
+} from "@/components";
+import { DomesticContextProvider } from "@/context/DomesticWrapper";
+import { GlobalContextProvider } from "@/context/GlobalWrapper";
+import React from "react";
+import axios from "axios";
+import { setCookie } from "cookies-next";
+import { ClientDataType } from "../domestic";
+import { useRouter } from "next/router";
+import { userToken } from "@/api/api";
+import { useState } from "react";
 
 export default function Warehousing() {
   const router = useRouter();
-  const [data, setData] = useState();
-
+  const [data, setData] = useState<any>();
 
   const registerPackage = async (myParcel: ClientDataType | undefined) => {
     if (
@@ -34,7 +40,7 @@ export default function Warehousing() {
     }
 
     function objectToFormData(
-      obj: ClientDataType | undefined,
+      obj: any,
       formData = new FormData(),
       parentKey = ""
     ) {
@@ -57,7 +63,7 @@ export default function Warehousing() {
     }
     const formData = objectToFormData(myParcel);
     console.log(formData);
-    
+
     const response = await axios.post(
       "https://oakandd-api.onrender.com/package/register",
       formData,
@@ -77,17 +83,17 @@ export default function Warehousing() {
   console.log(data);
   return (
     <QuoteLayout>
-        <main>
+      <main>
         <GlobalContextProvider>
           <DomesticContextProvider>
-              <WareCrumb />
-              <WarehouseQuoteLand setData={setData} />
-              <WarehouseParcel setData={setData} />
-              <WarehouseSummary data={data} registerPackage={registerPackage} />
-              <PickDrop />
+            {/* <WareCrumb /> */}
+            <WarehouseQuoteLand setData={setData} />
+            <WarehouseParcel setData={setData} />
+            <WarehouseSummary data={data} registerPackage={registerPackage} />
+            <PickDrop />
           </DomesticContextProvider>
         </GlobalContextProvider>
-        </main>
+      </main>
     </QuoteLayout>
-  )
+  );
 }
