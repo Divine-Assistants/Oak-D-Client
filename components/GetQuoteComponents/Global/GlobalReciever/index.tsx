@@ -27,7 +27,7 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
   }
 
   function handleFormSubmit() {
-    setData((prevData) => {
+    setData((prevData: any) => {
       return { ...prevData, receiver: receiverData };
     });
     setReceiverData(initialClientInfo);

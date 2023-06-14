@@ -42,7 +42,7 @@ export function DomesticSender({ setData }: DomesticSenderType) {
   }
 
   function handleFormSubmit() {
-    setData((prevData) => {
+    setData((prevData: any) => {
       return { ...prevData, sender: senderData };
     });
     setSenderData(initialClientInfo);

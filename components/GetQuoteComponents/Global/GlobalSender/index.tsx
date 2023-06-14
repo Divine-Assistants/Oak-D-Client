@@ -23,7 +23,7 @@ export function GlobalSender({ setData }: GlobalSenderType) {
   }
 
   function handleFormSubmit() {
-    setData((prevData) => {
+    setData((prevData: any) => {
       return { ...prevData, sender: senderData };
     });
     setSenderData(initialClientInfo);

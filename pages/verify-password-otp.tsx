@@ -26,7 +26,7 @@ const VerifyCode = () => {
     event.preventDefault();
     try {
       if (verificationCode.length === 6) {
-        const email: string = router.query.email;
+        const email: string = router.query.email as string;
         const { data, status, message } = await verifyPasswordOTP({
           email,
           verificationCode,

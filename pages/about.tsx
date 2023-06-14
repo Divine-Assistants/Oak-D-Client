@@ -199,11 +199,11 @@ const About = () => {
       {/* FOUNDER SECTION */}
       <section className="bg-white flex flex-col py-20 px-4 md:flex-row md:justify-between md:px-10">
         <div className="mb-10 font-bold flex items-center  md:mr-10">
-          <Avatar
+          {/* <Avatar
             name="Damilola, KUKU"
             src="../img/Damilola-Kuku.svg"
             style={{ width: "100px", height: "100px" }}
-          />
+          /> */}
           <div className="flex flex-col justify-center ml-[20px]">
             <h1>Damilola, KUKU</h1>
             <h2 className="text-gray">Co-CEO OF OAK & D CANADA</h2>
