@@ -1,57 +1,67 @@
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import { Flex, Spacer } from '@chakra-ui/react'
 import Link from 'next/link'
+import Image from 'next/image'
 import React from 'react'
 import { FaFacebook, FaGlobe, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa'
 
 export function Footer() {
   return (
-    <footer className='bg-[#0A089A] pl-[26px] pt-[50px] font-[500] '>
-         <div className='lg:flex lg:pt-[117px] lg:pb-[170px] lg:pl-[100px]    '>
-            <div className='text-[#FEFEFE] w-[80%] mb-[60px] lg:w-[20%] lg:mr-[194px] ' >
-            <div className='mb-[20px]'><img src="/img/footer-logo.svg" alt="Logo" /></div>
-            <p className='text-[16px] mb-[20px] '>OAK & D is a reputable cargo and freight company that specializes in shipping goods from Nigeria to Canada.</p>
-            <div className='flex items-center gap-[25px] text-[30px] '>
-            <FaInstagram/>
-            <FaTwitter/>
-            <FaFacebook/>
-            <FaLinkedin/>
+    <footer className='py-[50px] px-[20px] lg:px-[50px] '>
+        <div className='mb-[60px] lg:flex lg:gap-x-[50px] '>
+            <div className='flex flex-col gap-y-[15px] mb-[30px] lg:mb-0 lg:w-[250px] '>
+                <div>
+                    <Image src="/img/footer-logo.svg" alt="Logo" width={50} height={50} />
+                </div>
+                <p className='text-[#1E1E1E] text-[16px] lg:text-[18px] '>OAK & D is a reputable cargo and freight company that specializes in shipping goods from Nigeria to Canada.</p>
+                <div className='flex gap-x-[15px] text-[25px] lg:text-[30px] '>
+                    <FaInstagram/>
+                    <FaTwitter/>
+                    <FaFacebook/>
+                    <FaLinkedin/>
+                </div>
             </div>
-          </div>
-        <div className='flex flex-wrap text-[#FEFEFE] text-[24px]  lg:text-[18px] font-[500] gap-[66px] mb-[60px] md:w-[70%] md:m-auto lg:flex-nowrap  '>
-                <div className='w-[45%] flex flex-col gap-[10px]  '>
-                    <h2 className='font-semibold text-[30px] lg:text-[20px] '>Our Company</h2>
-                    <Link href={''}>About</Link>
-                    <Link href={''}>Pricing</Link>
+
+            <div className='text-[#1E1E1E] text-[16px] lg:text-[18px] lg:flex lg:gap-x-[50px] '>
+                <div className='flex justify-between gap-x-[50px] mb-[30px] lg:mb-0 lg:mr-[30px]'>
+                    <div className='flex flex-col gap-y-[8px] w-[250px] lg:w-auto'>
+                        <h2 className='text-[20px] lg:text-[25px] font-[700] '>Our Company</h2>
+                        <Link href={'/about'}>About Us</Link>
+                        <Link href={''}>Pricing</Link>
+                    </div>
+                    <div className='flex flex-col gap-y-[8px] w-[250px] lg:w-auto'>
+                        <h2 className='text-[20px] lg:text-[25px] font-[700] '>Help</h2>
+                        <Link href={'/contact'}>Contact Us</Link>
+                        <Link href={''}>FAQ</Link>
+                        <Link href={''}>Term of Service</Link>
+                    </div>
                 </div>
 
-                <div className='w-[40%]  flex flex-col gap-[10px] '>
-                    <h2 className='font-semibold text-[30px]  lg:text-[20px] '>Help</h2>
-                    <Link href={''}>Contact Us</Link>
-                    <Link href={''}>FAQ</Link>
-                    <Link href={''}>Term of Service</Link>
+                <div className='flex justify-between gap-x-[50px] '>
+                    <div className='flex flex-col gap-y-[8px] w-[250px] lg:w-auto'>
+                        <h2 className='text-[20px] lg:text-[25px] font-[700] '>Services</h2>
+                        <Link href={''}>Air Shipping</Link>
+                        <Link href={''}>Ocean Shipping</Link>
+                        <Link href={''}>Parcel Delivery</Link>
+                        <Link href={''}>Warehousing & Administration</Link>
+                    </div>
+
+                    <div className='flex flex-col gap-y-[8px] w-[250px] lg:w-auto'>
+                        <h2 className='text-[20px] lg:text-[25px] font-[700] '>Legal</h2>
+                        <Link href={'/contact'}>Privacy Policy</Link>
+                        <Link href={''}>Refund Policy</Link>
+                        <Link href={''}>Terms and Conditions</Link>
+                    </div>
                 </div>
-                <div className='w-[40%]  flex flex-col gap-[10px] '>
-                    <h2 className='font-semibold text-[30px]  lg:text-[20px] '>Services</h2>
-                    <Link href={''}>Air Freight</Link>
-                    <Link href={''}>Ocean Freight</Link>
-                    <Link href={''}>Parcel Delivery</Link>
-                    <Link href={''}>Warehousing & Administration</Link>
-                </div>
-                <div className='w-[40%] flex flex-col gap-[10px] '>
-                    <h2 className='font-semibold text-[30px]  lg:text-[20px] '>Legal</h2>
-                    <Link href={''}>Privacy Policy</Link>
-                    <Link href={''}>Refund Policy</Link>
-                    <Link href={''}>Terms and Conditions</Link>
-                </div>
-        </div>
             </div>
-        <div className='w-[95%] border-2 border-[#FEFEFE] m-auto mb-[20px]  '></div>
-        <Flex className='text-[13px] lg:text-[18px] text-[#FEFEFE] px-[30px] py-[20px] '>
-                <div >    2023 OAK & D LTD . All Rights Reserved</div>
-            <Spacer/>
-            <div className='flex items-center gap-[7px] '><FaGlobe /> <p>English</p> <ChevronDownIcon className='w-[6px] h-[11px] '/> </div>
-        </Flex>
+        </div>
+        
+        <div className='border-t-[2px] border-[#E7E7E7] pt-[15px] '>
+            <p className='text-[#1E1E1E] text-[11px] lg:text-[16px] font-[500] '>
+                <span className='uppercase mr-[8px]'>2023 OAK & D LTD.</span>
+                <span>All Rights Reserved</span>
+            </p>
+        </div>
     </footer>
   )
 }
