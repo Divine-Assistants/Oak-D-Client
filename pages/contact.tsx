@@ -1,0 +1,160 @@
+import React, { useState } from "react";
+import { Navbar, Footer } from "@/components";
+import Ready from "@/components/ReadyToStart";
+import emailjs from 'emailjs-com';
+import { FaInstagram, FaTwitter, FaLinkedin, FaFacebookF, FaLocationArrow } from "react-icons/fa";
+import { ContactMap } from "@/components/GoogleMap";
+
+type inputChangeEvent = React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
+
+type data = {
+    name: string;
+    email: string;
+    number: string;
+    message: string;
+}
+const initialValues: data = {
+    name: '',
+    email: '',
+    number: '',
+    message: '',
+}
+
+const styles = {
+    firstSection: {
+        background: 'url(../img/contact-woman-with-headset.svg)',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+    },
+    whiteBox: {
+        background: 'rgba(254, 254, 254, 0.68)'
+    },
+}
+
+const Contact = ()=> {
+    // Lat and Lng for the Google Map
+    const latitude = 43.753124;
+    const longitude = -79.548546;
+    
+    const [values, setValues] = useState<data>(initialValues);
+
+    // INPUT ONCHANGE FUNCTION
+    const handleChange =(event: inputChangeEvent)=> {
+        const {name, value} = event.target;
+        setValues((prevUserData) => {
+            return {
+                ...prevUserData,
+                [name]: value
+            }
+        })
+    }
+    // FORM SUBMISSION FUNCTION
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>)=> {
+        event.preventDefault();
+        if (values.name !== '' && values.email !== '' && values.message !== '') {
+            try {
+                // CONFIGURE EMAILJS
+                const emailParams = {
+                    to_name: 'Chosen',
+                    subject: values.name,
+                    from_name: values.name,
+                    from_email: values.email,
+                    from_number: values.number,
+                    message: values.message
+                };
+                await emailjs.send('service_i0gog9a', 'template_6h5lfvj', emailParams, 'uzQe2u-m8xPgpc0xW');
+                console.log('Email sent successfully')
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        setValues(initialValues);     
+    }
+
+
+    
+    return (
+        <div>
+            <Navbar />
+            <section className='py-20' style={styles.firstSection}>
+            <div className="w-[300px]  py-[52px] px-[29px] mx-auto font-poppins md:ml-[104px] md:w-[600px] md:p-[60px]" style={styles.whiteBox}>
+                    <h1 className='text-red text-[20px] font-bold mb-4 uppercase md:text-[24px]'>Contact</h1>
+                    
+                    <p className='text-black font-bold text-[25px] md:text-[30px] md:leading-[54px]'>Get in touch with OAK & D our team is ready to assist you with all your needs</p>
+                </div>
+            </section>
+
+            {/* FORM AND MAP SECTION */}
+            <section className="flex flex-col font-poppins py-20 px-4 lg:flex-row md:px-10">
+                <div className="mb-[80px] md:w-[100%] lg:mb-0">
+                    <p className="uppercase font-bold text-[20px] md:text-[24px]">OAK & D CANADA</p>
+                    <p className="text-[16px] mb-[10px] md:text-[20px]"> 3625 Weston Road Unit 16, Toronto, ON M9L 1V9. Canada</p>
+
+                    <div>
+                        <ContactMap latitude={latitude} longitude={longitude} />
+                    </div>
+
+                    <div className="mt-[12px] flex">
+                        <div className="border-r-[1px] border-[#1E1E1E] pr-[10px] mr-[10px] md:mr-[30px] md:pr-[30px]">
+                            <p className="font-bold text-[20px] mb-[5px] md:text-[24px]">Contact Email</p>
+                            <p className="text-[16px] md:text-[20px]">support@oak&dcanada.com</p>
+                        </div>
+                        <div>
+                            <p className="font-bold text-[20px] mb-[5px] md:text-[24px]">Follow Us</p>
+                            <div className="flex gap-[10px] md:gap-[25px] text-[16px] md:text-[24px]">
+                                <FaInstagram />
+                                <FaTwitter />
+                                <FaLinkedin />
+                                <FaFacebookF />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <form onSubmit={handleSubmit} className="flex flex-col justify-between w-[100%] lg:ml-[50px]">
+                    <input 
+                        type="text"
+                        value={values.name}
+                        name="name"
+                        onChange={handleChange}
+                        placeholder="Full Name"
+                        className="w-[100%] bg-[#F5F5F5] p-[20px] mb-[20px] outline-0 rounded-[8px] text-[16px] md:text-[18px]"
+                        required 
+                    />
+                    <input 
+                        type="email"
+                        value={values.email}
+                        name="email"
+                        onChange={handleChange}
+                        placeholder="Email Address"
+                        className="w-[100%] bg-[#F5F5F5] p-[20px] mb-[20px] outline-0 rounded-[8px] text-[16px] md:text-[18px]"
+                        required 
+                    />
+                    <input 
+                        type="number"
+                        value={values.number}
+                        name="number"
+                        onChange={handleChange}
+                        placeholder="Phone Number"
+                        className="w-[100%] bg-[#F5F5F5] p-[20px] mb-[20px] outline-0 rounded-[8px] text-[16px] md:text-[18px]"
+                        required 
+                    />
+                    <textarea 
+                        placeholder="Message"
+                        value={values.message}
+                        name="message"
+                        onChange={handleChange}
+                        className="w-[100%] bg-[#F5F5F5] rounded-[8px] p-[20px] mb-[20px] h-[199px] outline-0 md:h-[250px] text-[16px] md:text-[18px] "
+                        required
+                    />
+                    <button type="submit" className="bg-red p-[20px] text-[#F5F5F5] w-[162px] text-[16px] rounded-[8px] cursor-pointer md:w-[200px] md:text-[20px]">Send Message</button>
+                </form>
+            </section>
+            <Ready />
+            <Footer />
+        </div>
+    )
+}
+
+export default Contact
