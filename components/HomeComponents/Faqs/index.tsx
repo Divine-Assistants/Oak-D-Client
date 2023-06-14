@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-type Faq = {
+export type Faq = {
   question: string;
   id: number;
   answer: string;
