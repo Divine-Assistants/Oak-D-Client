@@ -264,18 +264,20 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                 onChange={handleParcelDataChange}
                 className={`rounded-full border ${isFieldEmpty("packageName") ? "border-[#AC0108]" : "border-[#A1A1A1]"} h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]`}
               >
-                <option value="">Departure Province</option>
-                <option value="">Arrival Province</option>
-                <option value="ontario">Ontario</option>
-                <option value="montreal">Montreal</option>
-                <option value="winnipeg">Winnipeg</option>
-                <option value="brampton">Brampton</option>
-                <option value="north-york">North York</option>
+                <option value="">--Select a departure location--</option>
+                <option value="Port-Harcourt, Nigeria">
+                  North-York, Canada
+                </option>
+                <option value="Oshawa, Canada">Oshawa, Canada</option>
+                <option value="Brampton, Canada">Brampton, Canada</option>
+                <option value="Ajax, Canada">Ajax, Canada</option>
+                <option value="Ikeja, Nigeria">Ikeja, Nigeria</option>
+                <option value="Lekki, Nigeria">Lekki, Nigeria</option>
               </select>
             </div>
 
             <div className="flex flex-col gap-[10px] mb-[25px]">
-              <label htmlFor="" className="font-[600] ">
+              <label htmlFor="" className="font-[600]">
                 Arrival
               </label>
               <select
@@ -284,12 +286,15 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                 onChange={handleParcelDataChange}
                 className={`rounded-full border ${isFieldEmpty("packageName") ? "border-[#AC0108]" : "border-[#A1A1A1]"} h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]`}
               >
-                <option value="">Arrival Province</option>
-                <option value="ontario">Ontario</option>
-                <option value="montreal">Montreal</option>
-                <option value="winnipeg">Winnipeg</option>
-                <option value="brampton">Brampton</option>
-                <option value="north-york">North York</option>
+                <option value="">--Select an Arrival location--</option>
+                <option value="Port-Harcourt, Nigeria">
+                  North-York, Canada
+                </option>
+                <option value="Oshawa, Canada">Oshawa, Canada</option>
+                <option value="Brampton, Canada">Brampton, Canada</option>
+                <option value="Ajax, Canada">Ajax, Canada</option>
+                <option value="Ikeja, Nigeria">Ikeja, Nigeria</option>
+                <option value="Lekki, Nigeria">Lekki, Nigeria</option>
               </select>
             </div>
 
