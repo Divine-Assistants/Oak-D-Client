@@ -1,6 +1,7 @@
 import { BlogContext } from "@/context/BlogWrapper";
 import { BlogValue } from "@/pages/blogs";
-import React, { useContext } from "react";
+import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
 
 type BlogDataProps = {
   blogData: BlogValue[];
@@ -8,7 +9,22 @@ type BlogDataProps = {
 
 export const Latest = () => {
   const { selectBp, setSelectBp } = useContext(BlogContext);
-  const blogData: BlogValue[] = [];
+  const [blogData, setBlogData] = useState<BlogValue[]>([]);
+
+  useEffect(() => {
+    const getBlog = async () => {
+      try {
+        const response = await axios.get(
+          "https://oakandd-api.onrender.com/blog"
+        );
+        const { data } = response.data;
+        setBlogData(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getBlog();
+  }, []);
 
   return (
     <section className="mb-[95px] lg:mb-[142px] ">
@@ -16,20 +32,20 @@ export const Latest = () => {
         <div
           id="mostRecent"
           className="flex flex-col gap-[20px] mb-[95px] lg:w-[50%] cursor-pointer "
-          key={blogData[0]?._id}
+          key={blogData[blogData?.length - 1]?._id}
         >
           <div className="h-[369px] w-[100%] lg:h-[602px] bg-black ">
             <img
-              src={blogData[0]?.coverImage}
+              src={blogData[blogData?.length - 1]?.coverImage}
               alt="Latest Blog Post"
               className="w-[100%] h-[100%] object-cover "
             />
           </div>
           <h2 className="font-[700] text-[28px] md:text-[32px] lg:text-[40px] ">
-            {blogData[0]?.heading}
+            {blogData[blogData?.length - 1]?.heading}
           </h2>
           <p className="text-[16px] font-[500] text-ellipsis overflow-hidden h-[192px] md:text-[20px]  ">
-            {blogData[0]?.content}
+            {blogData[blogData?.length - 1]?.content}
           </p>
         </div>
         <div
@@ -39,7 +55,7 @@ export const Latest = () => {
           <p className="w-fit text-center text-[26px] md:text-[32px] font-[700] ">
             Latest
           </p>
-          {blogData.map((item: BlogValue) => {
+          {blogData.slice(-5).map((item: BlogValue) => {
             return (
               <div
                 className="flex items-center gap-[20px] cursor-pointer "
