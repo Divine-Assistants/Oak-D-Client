@@ -149,10 +149,10 @@ export function TopNavbar() {
               : `block lg:flex lg:items-center lg:gap-x-[10px] `
           }
         >
-          <Avatar
+          {/* <Avatar
             name={`${user?.firstName} ${user?.lastName}`}
             className="text-[18px] text-[#0A089A] md:text-[24px] w-[50px] md:w-[70px] h-[50px] md:h-[70px] font-[600] bg-[#F3F3F3]"
-          />
+          /> */}
           <div className="hidden lg:block text-[#1E1E1E] ">
             <p className="text-[16px] font-[600] ">{`${user?.firstName} ${user?.lastName}`}</p>
             <p className="text-[13px] text-[#9C9C9C] font-[500] ">
