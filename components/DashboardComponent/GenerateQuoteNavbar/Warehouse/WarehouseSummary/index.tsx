@@ -6,13 +6,13 @@ import { DataType } from "../..";
 import { WarehouseBreadcrumb } from "../WarehouseBreadcrumb";
 
 interface ShippingSummaryType {
-  registerPackage: (arg: DataType) => void;
+  warehouseGlobalPackage: (arg: DataType) => void;
   data: DataType;
 }
 
 export function WarehouseSummary({
   data,
-  registerPackage,
+  warehouseGlobalPackage,
 }: ShippingSummaryType) {
   const { setShowQuoteModal } = useContext(QuoteModalContext);
   const { showWarehoueSummary, setShowWarehoueSummary } = useContext(
@@ -20,7 +20,7 @@ export function WarehouseSummary({
   );
 
   function handleSubmit() {
-    registerPackage(data);
+    warehouseGlobalPackage(data);
     setShowWarehoueSummary(false);
     setShowQuoteModal(true);
     window.scrollTo(0, 0);

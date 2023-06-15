@@ -10,13 +10,13 @@ import { DataType } from "../..";
 import { GlobalBreadcrumb } from "../GlobalBreadcrumb";
 
 interface ShippingSummaryType {
-  registerPackage: (arg: DataType) => void;
+  warehouseGlobalPackage: (arg: DataType) => void;
   data: DataType;
 }
 
 export function GlobalUserSummary({
   data,
-  registerPackage,
+  warehouseGlobalPackage,
 }: ShippingSummaryType) {
   const { setShowQuoteModal } = useContext(QuoteModalContext);
   const { globalSummary, setGlobalSummary } = useContext(GlobalSummaryContext);
@@ -28,7 +28,7 @@ export function GlobalUserSummary({
   // const {setGlobalCrumb} = useContext(GlobalCrumbContext);
 
   function handleSubmit() {
-    registerPackage(data);
+    warehouseGlobalPackage(data);
     setGlobalSummary(false);
     setShowQuoteModal(true);
     window.scrollTo(0, 0);
