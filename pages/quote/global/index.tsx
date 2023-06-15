@@ -91,7 +91,7 @@ export default function Global() {
         <main>
           <GlobalContextProvider>
             <DomesticContextProvider>
-              {/* <GlobalCrumb/> */}
+              <GlobalCrumb/>
               <GlobalQuoteLand />
               <GlobalSender setData={setData} />
               <GlobalReciever setData={setData} />
