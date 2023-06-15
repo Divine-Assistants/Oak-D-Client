@@ -1,11 +1,11 @@
 import React from "react";
-import {
-  FaFacebook,
-  FaInstagram,
-  FaLink,
-  FaLinkedin,
-  FaTwitter,
-} from "react-icons/fa";
+// import {
+//   FaFacebook,
+//   FaInstagram,
+//   FaLink,
+//   FaLinkedin,
+//   FaTwitter,
+// } from "react-icons/fa";
 
 type blogItem = {
   topic: string;
@@ -40,10 +40,10 @@ export const Post: React.FC<PostDataProps> = () => {
             <FaLink />
           </button>
           <div className="flex items-center gap-[18px] text-[24px] lg:text-[36px]   ">
-            <FaInstagram />
+            {/* <FaInstagram />
             <FaTwitter />
             <FaFacebook />
-            <FaLinkedin />
+            <FaLinkedin /> */}
           </div>
         </div>
       </div>
