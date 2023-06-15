@@ -12,14 +12,6 @@ export type BlogValue = {
 };
 
 export default function Blogs() {
-  const [blogData, setBlogData] = useState<BlogValue[]>([]);
-  useEffect(() => {
-    const getBlogs = async () => {
-      const response = await axios.get("https://oakandd-api.onrender.com/blog");
-      setBlogData(response.data);
-    };
-  });
-
   const [blog, setBlog] = useState<BlogValue[]>([]);
   return (
     <PageLayout>
@@ -27,8 +19,8 @@ export default function Blogs() {
         <BlogContextProvider>
           <div className="">
             <BlogLand />
-            <Latest blogData={blogData} />
-            <AllBlogs blogData={blogData} />
+            <Latest />
+            <AllBlogs />
           </div>
           <div className="hidden">
             <Post selectBp={""} />

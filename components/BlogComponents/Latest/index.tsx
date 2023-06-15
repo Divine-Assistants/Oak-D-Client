@@ -6,8 +6,9 @@ type BlogDataProps = {
   blogData: BlogValue[];
 };
 
-export const Latest: React.FC<BlogDataProps> = ({ blogData }) => {
+export const Latest = () => {
   const { selectBp, setSelectBp } = useContext(BlogContext);
+  const blogData: BlogValue[] = [];
 
   return (
     <section className="mb-[95px] lg:mb-[142px] ">
@@ -15,20 +16,20 @@ export const Latest: React.FC<BlogDataProps> = ({ blogData }) => {
         <div
           id="mostRecent"
           className="flex flex-col gap-[20px] mb-[95px] lg:w-[50%] cursor-pointer "
-          key={blogData[0]._id}
+          key={blogData[0]?._id}
         >
           <div className="h-[369px] w-[100%] lg:h-[602px] bg-black ">
             <img
-              src={blogData[0].coverImage}
+              src={blogData[0]?.coverImage}
               alt="Latest Blog Post"
               className="w-[100%] h-[100%] object-cover "
             />
           </div>
           <h2 className="font-[700] text-[28px] md:text-[32px] lg:text-[40px] ">
-            {blogData[0].heading}
+            {blogData[0]?.heading}
           </h2>
           <p className="text-[16px] font-[500] text-ellipsis overflow-hidden h-[192px] md:text-[20px]  ">
-            {blogData[0].content}
+            {blogData[0]?.content}
           </p>
         </div>
         <div
@@ -42,21 +43,21 @@ export const Latest: React.FC<BlogDataProps> = ({ blogData }) => {
             return (
               <div
                 className="flex items-center gap-[20px] cursor-pointer "
-                key={item._id}
+                key={item?._id}
               >
                 <div className="w-[45%] h-[119px] md:h-[149px] lg:w-[177px]  ">
                   <img
-                    src={item.coverImage}
+                    src={item?.coverImage}
                     alt="Blog Post"
                     className="w-[100%] h-[100%] object-cover "
                   />
                 </div>
                 <div className="h-[120px] md:h-[150px] w-[50%] text-ellipsis overflow-hidden ">
                   <h2 className="font-[700] text-[16px] md:text-[20px] lg:text-[24px]">
-                    {item.heading}
+                    {item?.heading}
                   </h2>
                   <p className="text-[16px] font-semibold md:text-[20px]">
-                    {item.content}{" "}
+                    {item?.content}{" "}
                   </p>
                 </div>
               </div>

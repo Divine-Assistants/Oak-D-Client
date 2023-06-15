@@ -15,7 +15,7 @@ type BlogDataProps = {
   blogData: BlogValue[];
 };
 
-export const AllBlogs: React.FC<BlogDataProps> = ({ blogData }) => {
+export const AllBlogs = () => {
   const [blog, setBlog] = useState<BlogValues[]>([]);
   const [loading, setloading] = useState(true);
 
