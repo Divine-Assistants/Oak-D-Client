@@ -1,18 +1,19 @@
-import React, {useContext} from 'react';
-import { ChevronRightIcon } from '@chakra-ui/icons';
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react';
-import { DomesticContext } from '@/context/DomesticWrapper';
-import { GlobalContext } from '@/context/GlobalWrapper';
+import React, { useContext } from "react";
+import { ChevronRightIcon } from "@chakra-ui/icons";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from "@chakra-ui/react";
+import { DomesticContext } from "@/context/DomesticWrapper";
+import { GlobalContext } from "@/context/GlobalWrapper";
 
 export function DomesticCrumb() {
-  const { trail, setTrail } = useContext(DomesticContext)
-  const { glotrail, setGlotrail } = useContext(GlobalContext)
-  if ( trail || glotrail > 0 ){
-        return(
-          <div className='text-[15px] font-[600] hidden md:block md:mb-[53px] ml-[5%] ' style={{
-           
-            }}>
-          <Breadcrumb spacing='8px' separator={<ChevronRightIcon color='gray.500'  />}>
+  const { trail, setTrail } = useContext(DomesticContext);
+  const { glotrail, setGlotrail } = useContext(GlobalContext);
+  if (trail || glotrail > 0) {
+    return (
+      <div
+        className="text-[15px] font-[600] hidden md:block md:mb-[53px] ml-[5%] "
+        style={{}}
+      >
+        {/* <Breadcrumb spacing='8px' separator={<ChevronRightIcon color='gray.500'  />}>
                <BreadcrumbItem style={{display: trail >= 1 || glotrail >= 1 ? 'block' : 'none',}}>
                   <BreadcrumbLink onClick={()=>{setTrail(0); setGlotrail(0)}} style={{}}  className='cursor-pointer'>Generate Quote</BreadcrumbLink>
                </BreadcrumbItem>
@@ -45,12 +46,10 @@ export function DomesticCrumb() {
                 }}>
                   <BreadcrumbLink  onClick={()=>{setTrail(4); setGlotrail(4)}} className='cursor-pointer' >Checkout</BreadcrumbLink>
               </BreadcrumbItem>
-          </Breadcrumb>
-          </div>
-        )
-  }  else{
-      return(
-            console.log('crumb no dey work')
-      )
+          </Breadcrumb> */}
+      </div>
+    );
+  } else {
+    return console.log("crumb no dey work");
   }
 }
