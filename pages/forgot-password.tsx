@@ -1,23 +1,24 @@
-import { useState } from "react"
-import Link from "next/link"
-import { useRouter } from "next/router"
-import { forgotPassword } from "@/api/api"
+import { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { forgotPassword } from "@/api/api";
+import { Spinner } from "@chakra-ui/react";
 
-const ForgotPassword = ()=> {
-
-    const styles = {
-        bgImage: {
-            background: 'url(../img/get-started-background.svg)',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-        },
-        square: {
-            background: 'rgba(254, 254, 254, 0.68)'
-        }
+const styles = {
+    bgImage: {
+        background: 'url(../img/get-started-background.svg)',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+    },
+    square: {
+        background: 'rgba(254, 254, 254, 0.68)'
     }
-    const [email, setEmail] = useState('')
-    const router = useRouter()
+}
+const ForgotPassword = ()=> {
+    const [email, setEmail] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+    const router = useRouter();
 
     const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>)=> {
         setEmail(event.target.value)
@@ -27,11 +28,11 @@ const ForgotPassword = ()=> {
         event.preventDefault();
         try {
             if (email !== '') {
-                const {data, status, message} = await forgotPassword({email});
+                setIsLoading(true);
+                const {data, status} = await forgotPassword({email});
                 console.log(data);
-                console.log(status);
-                console.log(message);
                 if (status === 'Success'){
+                    setIsLoading(false);
                     router.push(`/verify-password-otp?email=${encodeURIComponent(data.email)}`);
                 }
             }
@@ -69,8 +70,14 @@ const ForgotPassword = ()=> {
                                 className="rounded-[8px] border-[#D9D9D9] border-[2px] px-[20px] py-[10px] focus:outline-[#0A089A] md:h-[60px]" 
                             />
                         </div>
-                        
-                        <button type="submit"  className="p-[20px] w-[100%] text-[#FAFAFA] font-[500] mt-[10px] lg:mt-[50px] mb-[10px] text-center text-[18px] bg-[#0A089A] rounded-[8px]">Proceed</button>
+                        { isLoading ?
+                            <button type="submit"  className="p-[20px] w-[100%] text-[#FAFAFA] font-[500] mt-[10px] lg:mt-[50px] mb-[10px] text-center bg-[#0A089A] rounded-[8px] flex items-center justify-center">
+                                <Spinner className="h-[30px] w-[30px]" />
+                            </button> 
+                            :
+                            <button type="submit"  className="p-[20px] w-[100%] text-[#FAFAFA] font-[500] mt-[10px] lg:mt-[50px] mb-[10px] text-center text-[18px] bg-[#0A089A] rounded-[8px]">Proceed</button>
+
+                        }
                         
 
                         <div className="flex justify-center text-18px">

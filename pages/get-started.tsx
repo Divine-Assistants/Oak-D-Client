@@ -1,46 +1,43 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useState } from "react";
-import axios from "axios";
 import { createUser } from "@/api/api";
+import { Spinner } from "@chakra-ui/react";
 
 export type userData = {
-  // _id?: string;
   firstName: string;
   lastName: string;
   email: string;
   password: string;
   confirmPassword: string;
 };
+const styles = {
+  bgImage: {
+    background: "url(../img/get-started-background.svg)",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+  },
+  square: {
+    background: "rgba(254, 254, 254, 0.68)",
+  },
+};
 
 const GetStarted = () => {
-  const styles = {
-    bgImage: {
-      background: "url(../img/get-started-background.svg)",
-      backgroundSize: "cover",
-      backgroundRepeat: "no-repeat",
-      backgroundPosition: "center",
-    },
-    square: {
-      background: "rgba(254, 254, 254, 0.68)",
-    },
-  };
-
   const [inputValues, setInputValues] = useState<userData>({
-    // _id: '',
     firstName: "",
     lastName: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
 
   // INPUT CHANGE FUNCTION
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-
     setInputValues((prevInputValues) => {
       return {
         ...prevInputValues,
@@ -54,12 +51,11 @@ const GetStarted = () => {
     console.log(inputValues);
     try {
       if (inputValues.password === inputValues.confirmPassword) {
+        setIsLoading(true);
         const { data, status } = await createUser(inputValues);
         console.log(data);
-        // console.log(data)
         if (status === "Success") {
           setInputValues({
-            // _id: '',
             firstName: "",
             lastName: "",
             email: "",
@@ -67,6 +63,7 @@ const GetStarted = () => {
             confirmPassword: "",
           });
 
+          setIsLoading(false);
           router.push(`/verify-code?email=${encodeURIComponent(data.email)}`);
         }
       }
@@ -74,6 +71,26 @@ const GetStarted = () => {
       console.log(error);
     }
   };
+
+  // if(isLoading){
+  //   return (
+  //     <div
+  //     style={{
+  //       position: 'fixed',
+  //       top: 0,
+  //       left: 0,
+  //       width: '100%',
+  //       height: '100%',
+  //       display: 'flex',
+  //       justifyContent: 'center',
+  //       alignItems: 'center',
+  //       background: 'rgba(0, 0, 0, 0.5)',
+  //       zIndex: 9999,
+  //     }}>
+  //       <Spinner size='xl' />
+  //     </div>
+  //   )
+  // }
 
   return (
     <div className="font-poppins px-[10px] md:px-[0px]">
@@ -214,12 +231,20 @@ const GetStarted = () => {
             </a>
           </p>
 
-          <button
+          {isLoading ?
+            <button
+            type="submit"
+            className="p-[20px] w-[100%] text-[#FAFAFA] my-[15px] text-center bg-[#0A089A] rounded-[8px] flex items-center justify-center "
+            >
+              <Spinner className="h-[30px] w-[30px]" />
+            </button> : 
+            <button
             type="submit"
             className="p-[20px] w-[100%] text-[16px] md:text-[18px] text-[#FAFAFA] my-[15px] text-center bg-[#0A089A] rounded-[8px] "
-          >
+            >
             Next
-          </button>
+            </button>
+          }
 
           <p className="text-center text-[14px] md:text-[16px] font-[500]">
             Already have an account?{" "}
