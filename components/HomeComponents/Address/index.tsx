@@ -66,7 +66,7 @@ export function Address() {
             </div>
         </div>
 
-            <div className='w-[100vw] h-[200px] md:h-[400px] lg:h-[600px] mb-[50px] '>
+            <div className='w-[80%] h-[200px] m-auto md:h-[400px] lg:h-[600px] mb-[50px] '>
                 <Image 
                 src="/img/world-map.svg" 
                 alt='Locations Worldwide' 
@@ -76,8 +76,8 @@ export function Address() {
                 />
             </div> 
 
-            <div className='bg-[url("/img/address-background.svg")] bg-center lg:h-[917px] ' >
-                <div className='w-[90%] h-[300px] md:h-[400px] m-auto lg:h-[600px] '>
+            <div className='bg-[url("/img/address-background.svg")] bg-center lg:h-[600px] md:mb-[300px] ' >
+                <div className='w-[70%] h-[300px] md:h-[300px] m-auto lg:h-[600px] '>
                     <Image 
                         src="/img/oak-container.svg" 
                         alt='OAk & D Logistics' 

@@ -1,4 +1,4 @@
-import { Map, PageLayout, TrackLand } from "@/components";
+import { Map, PageLayout, ParcelTrack, TrackLand } from "@/components";
 import { TrackContext, TrackContextProvider } from "@/context/TrackWrapper";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
@@ -32,7 +32,9 @@ export default function Index() {
     <>
       <TrackContextProvider>
         <TrackLand />
-        <Map />
+        {/* <Map /> */}
+        <ParcelTrack />
+
       </TrackContextProvider>
     </>
   );
