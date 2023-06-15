@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import Image from 'next/image';
 
 export function Why() {
   return (
@@ -9,21 +10,42 @@ export function Why() {
             <h2 className='text-[#AC0108] text-[32px] font-[600] w-fit m-auto mb-[40px] block lg:hidden  '>Why Choose Us </h2>
             <div className='w-[80%] lg:w-[25%] m-auto bg-[#F5F5F5] rounded-[10px] text-[#1E1E1E] py-[51px] lg:py-[59px]  mb-[20px]  '>
               <div className='w-[80%] m-auto flex flex-col gap-[20px]'>
-               <div ><img src="/img/safe-packaging.svg" alt="Safe Packaging" /></div>
+              <div>
+                <Image 
+                  src="/img/safe-packaging.svg" 
+                  alt='Safe Packaging' 
+                  width={100} 
+                  height={100} 
+                />
+              </div>
                 <h3 className='font-semibold text-[20px] md:text-[24px] '>Safe Packaging</h3>
                 <p className='text-[16px] font-[500] md:text-[18px]  '>We are committed to ensuring the safe delivery of all packages entrusted to our care. We understand that the timely and secure delivery of your cargo is critical to your business operations, which is why we make it our top priority.</p>
                </div>
             </div>
             <div className='w-[80%] lg:w-[25%] m-auto bg-[#F5F5F5] rounded-[10px] text-[#1E1E1E] py-[51px] lg:py-[69px] mb-[20px]  '>
               <div className='w-[80%] m-auto flex flex-col gap-[20px]'>
-               <div ><img src="/img/live-tracking.svg" alt="Live Tracking" /></div>
+              <div>
+                <Image 
+                  src="/img/live-tracking.svg" 
+                  alt='Live Tracking' 
+                  width={100} 
+                  height={100} 
+                />
+              </div>
                 <h3 className='font-semibold text-[20px] md:text-[24px] '>Live Tracking</h3>
                 <p className='text-[16px] font-[500] md:text-[18px] '>At OAK & D, we understand the importance of live tracking for our customers. Our advanced tracking systems allow you to monitor the progress of your shipment in real-time, from pickup to delivery</p>
                </div>
             </div>
             <div className='w-[80%] lg:w-[25%] m-auto bg-[#F5F5F5] rounded-[10px] text-[#1E1E1E] py-[51px] lg:py-[79px]  '>
               <div className='w-[80%] m-auto flex flex-col gap-[20px]'>
-               <div ><img src="/img/customer-service.svg" alt="24/7 Customer Service" /></div>
+              <div >
+                <Image 
+                  src="/img/customer-service.svg" 
+                  alt='24/7 Customer Service' 
+                  width={100} 
+                  height={100} 
+                />
+              </div>
                 <h3 className='font-semibold text-[20px] md:text-[24px] '>24/7 Customer Service</h3>
                 <p className='text-[16px] font-[500] md:text-[18px] '>Communication is key. So, our team of customer service representatives is available 24/7 to assist you with any questions or concerns you may have about your shipment. </p>
                </div>

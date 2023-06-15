@@ -72,47 +72,53 @@ const router = useRouter();
               <div className='lg:hidden '>
                   <Drawer size={"xs"} placement={"left"} onClose={onClose} isOpen={isOpen}  >
                      <DrawerOverlay />
-                     <DrawerContent bg={'#FEFEFE'} className='overflow-hidden overflow-y-auto w-[70%] pb-[222px] '  >
-                      <DrawerHeader className='py-[68px] px-[54px] ' >
+                     <DrawerContent bg={'#FEFEFE'} className='overflow-hidden overflow-y-auto w-[70%] pb-[20px] '  >
+                      <DrawerHeader className='pt-[30px] px-[30px] ' >
                         <Flex >
-                            <Box className='w-[82px] h-[79px] cursor-pointer '>
+                            <Box className='w-[82px] h-[70px] cursor-pointer '>
                                <img src='/img/nav-logo.svg' alt='LOGO' className='w-[100%] h-[100%] ' />
                             </Box>
                             <Spacer/>
                             <CloseButton size='lg' onClick={onClose} />
                         </Flex>
                          
-                      </DrawerHeader>
-                        <DrawerBody>
-                               <p className='py-[21px] pl-[62px] border-b-2 border-[#D8D8D8] text-[30px] font-[500] hover:text-[#AC0108]' style={router.pathname === "/" ? { color: "#AC0108" } : {}}><Link href={'/'}>Home</Link></p>
-                               <p className='py-[21px] pl-[62px] border-b-2 border-[#D8D8D8] text-[30px] font-[500] hover:text-[#AC0108]' style={router.pathname === "/about" ? { color: "#AC0108" } : {}}> <Link href={'/about'}>About</Link></p>
-                                <p className='py-[21px] pl-[62px] border-b-2 border-[#D8D8D8] text-[30px] font-[500] hover:text-[#AC0108]' style={router.pathname === "/blog" ? { color: "#AC0108" } : {}}> <Link href={'/blog'}></Link>Blog</p>
-                                <p className='py-[21px] pl-[62px] border-b-2 border-[#D8D8D8] text-[30px] font-[500] ' style={router.pathname === "/track" ? { color: "#AC0108" } : {}}> <Link href={'/track'}>Track Item</Link></p>
+</DrawerHeader>
+  <DrawerBody>
+    <Link href={'/'}><p className='py-[21px] pl-[30px] border-b-2 border-[#D8D8D8] text-[28px] font-[500] hover:text-[#AC0108]' style={router.pathname === "/" ? { color: "#AC0108" } : {}}>Home</p></Link>
 
-                                <p className='py-[21px] pl-[62px] border-b-2 border-[#D8D8D8] text-[30px] font-[500]  hover:text-[#AC0108]' style={router.pathname === "/contact" ? { color: "#AC0108" } : {}}><Link href={'/contact'}>Contact</Link> </p>
-                                <div className='font-[500] W-[100%] '>
-                                      <Flex className='gap-[16px] items-center py-[21px] pl-[62px] text-[30px] cursor-pointer  ' onClick={()=>setNav(prev => prev === 2 ? 0 : 2)}>
-                                        <p className=' hover:text-[#AC0108]' style={router.pathname === "/quote/"  ? { color: "#AC0108" } : {}}>Get Quote </p>
-                                        <ChevronDownIcon className='w-[7px] h-[14px]' />
-                                        </Flex>
-                                      
-                                      <div className=' text-left py-[21px] text-[28px] w-fit m-auto ' style={{
-                                          display:nav===2? 'block':'none'
-                                      }} >
-                                        <p className='mb-[24px] border-b border-[#D8D8D8] hover:text-[#AC0108] ' style={router.pathname === "/quote/warehousing" ? { color: "#AC0108" } : {}} ><Link href={'/quote/domestic'}>Domestic Shipping</Link></p>
-                                        <p className='mb-[24px] border-b border-[#D8D8D8] hover:text-[#AC0108]' style={router.pathname === "/quote/warehousing" ? { color: "#AC0108" } : {}} ><Link href={'/quote/global'}>Global Shipping</Link></p>
-                                        <p className='mb-[8px] hover:text-[#AC0108] ' style={router.pathname === "/quote/warehousing" ? { color: "#AC0108" } : {}} ><Link href={'/quote/warehousing'}>Warehousing Services</Link></p>
-                                      </div>
+    <Link href={'/about'}><p className='py-[21px] pl-[30px] border-b-2 border-[#D8D8D8] text-[28px] font-[500] hover:text-[#AC0108]' style={router.pathname === "/about" ? { color: "#AC0108" } : {}}>About</p></Link>
 
-                                </div>
-                                <button className='ml-[21px] py-[21px] pl-[50px] pr-[148px] bg-[#AC0108] text-[#FEFEFE]  rounded-[10px] text-[30px] font-[500] hover:bg-[#0A089A] ' >Get Started</button>
-                        </DrawerBody>
-                       </DrawerContent>
-                      </Drawer>
-                  </div>
-         
-          </div>
+    <Link href={'/blog'}><p className='py-[21px] pl-[30px] border-b-2 border-[#D8D8D8] text-[28px] font-[500] hover:text-[#AC0108]' style={router.pathname === "/blog" ? { color: "#AC0108" } : {}}>Blog</p></Link>
 
-        </header>
+    <Link href={'/track'}><p className='py-[21px] pl-[30px] border-b-2 border-[#D8D8D8] text-[28px] font-[500] ' style={router.pathname === "/track" ? { color: "#AC0108" } : {}}>Track Item</p></Link>
+
+    <Link href={'/contact'}><p className='py-[21px] pl-[30px] border-b-2 border-[#D8D8D8] text-[28px] font-[500]  hover:text-[#AC0108]' style={router.pathname === "/contact" ? { color: "#AC0108" } : {}}>Contact </p></Link>
+
+  <div className='font-[500] W-[100%] '>
+    <Flex className='gap-y-[16px] items-center py-[21px] pl-[30px] text-[28px] cursor-pointer  ' onClick={()=>setNav(prev => prev === 2 ? 0 : 2)}>
+      <p className=' hover:text-[#AC0108]' style={router.pathname === "/quote/"  ? { color: "#AC0108" } : {}}>Get Quote </p>
+      <ChevronDownIcon className='w-[7px] h-[14px]' />
+    </Flex>
+                                        
+      <div className=' text-left py-[21px] text-[20px] w-fit pl-[30px] ' style={{display:nav===2? 'block':'none'}} >
+
+        <Link href={'/quote/domestic'}><p className='mb-[24px] pb-[15px] border-b border-[#D8D8D8] hover:text-[#AC0108] ' style={router.pathname === "/quote/warehousing" ? { color: "#AC0108" } : {}} >Domestic Shipping</p></Link>
+
+        <Link href={'/quote/global'}><p className='mb-[24px] pb-[15px] border-b border-[#D8D8D8] hover:text-[#AC0108]' style={router.pathname === "/quote/warehousing" ? { color: "#AC0108" } : {}} >Global Shipping</p></Link>
+
+        <Link href={'/quote/warehousing'}><p className='mb-[8px] pb-[15px] hover:text-[#AC0108] ' style={router.pathname === "/quote/warehousing" ? { color: "#AC0108" } : {}} >Warehousing Services</p></Link>
+    </div>
+  </div>
+  
+  <Link href={'/get-started'}>
+  <button className='ml-[21px] py-[20px] px-[30px] bg-[#AC0108] text-[#FEFEFE]  rounded-[10px] text-[24px] font-[500] hover:bg-[#0A089A] ' > Get Started</button></Link>
+
+
+</DrawerBody>
+</DrawerContent>
+</Drawer>
+</div>
+</div>
+</header>
   )
 }

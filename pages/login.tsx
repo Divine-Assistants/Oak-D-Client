@@ -4,29 +4,31 @@ import { useRouter } from "next/router";
 import { loginUser } from "@/api/api";
 import { UserContext } from "@/context/UserInformation";
 import { setCookie } from "cookies-next";
+import { Spinner } from "@chakra-ui/react";
 // import GoogleLogin from "react-google-login";
 
 export type LoginDataType = {
   email: string;
   password: string;
 };
+const styles = {
+  bgImage: {
+    background: "url(../img/get-started-background.svg)",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+  },
+  square: {
+    background: "rgba(254, 254, 254, 0.68)",
+  },
+};
 
 const Login = () => {
-  const styles = {
-    bgImage: {
-      background: "url(../img/get-started-background.svg)",
-      backgroundSize: "cover",
-      backgroundRepeat: "no-repeat",
-      backgroundPosition: "center",
-    },
-    square: {
-      background: "rgba(254, 254, 254, 0.68)",
-    },
-  };
   const [loginData, setLoginData] = useState<LoginDataType>({
     email: "",
     password: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handleLoginChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,30 +41,13 @@ const Login = () => {
     });
   };
 
-  // const handleGoogleLogin = async ()=> {
-  //     try {
-  //         const {status, data} = await loginUser(loginData);
-  //         console.log(data)
-  //         const userToken = data.token;
-  //         if(status === 'Success'){
-  //             setLoginData({
-  //                 email: '',
-  //                 password: ''
-  //             })
-  //             setCookie('userData', userToken);
-  //             router.push(`/dashboard`);
-  //         }
-  //     } catch (error) {
-  //         console.log(error)
-  //     }
-  // }
 
   // SUBMIT FUNCTION
-
   const handleLoginSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
       if (loginData.email !== "" && loginData.password !== "") {
+        setIsLoading(true);
         const { status, data } = await loginUser(loginData);
         console.log(data);
         const userToken = data.token;
@@ -72,6 +57,7 @@ const Login = () => {
             password: "",
           });
           setCookie("userData", userToken);
+          setIsLoading(false);
           router.push(`/dashboard`);
         }
       }
@@ -129,6 +115,7 @@ const Login = () => {
                 value={loginData.email}
                 onChange={handleLoginChange}
                 placeholder="Enter Email"
+                required
                 className="rounded-[8px] border-[#D9D9D9] border-[2px] px-[20px] py-[10px] focus:outline-[#0A089A] md:h-[60px]"
               />
             </div>
@@ -146,9 +133,11 @@ const Login = () => {
                 value={loginData.password}
                 onChange={handleLoginChange}
                 placeholder="Enter Password"
+                required
                 className="rounded-[8px] text-[16px] border-[#D9D9D9] border-[2px] px-[20px] py-[10px] focus:outline-[#0A089A] md:h-[60px]"
               />
             </div>
+
 
             <div className="flex flex-col text-[16px] lg:text-[18px] font-[500] lg:flex-col-reverse">
               <Link
@@ -165,12 +154,20 @@ const Login = () => {
               </div>
             </div>
 
-            <button
+            {isLoading ? 
+              <button
+                type="submit"
+                className="p-[20px] w-[100%] text-[#FAFAFA] mt-[10px] lg:mt-[50px] mb-[15px] text-center bg-[#0A089A] rounded-[8px] flex items-center justify-center"
+              >
+                <Spinner className="h-[30px] w-[30px]" />
+              </button> : 
+              <button
               type="submit"
               className="p-[20px] w-[100%] text-[#FAFAFA] mt-[10px] lg:mt-[50px] mb-[15px] text-center bg-[#0A089A] rounded-[8px] font-[500]"
             >
               Log In
             </button>
+            }
 
             {/* <div className="flex justify-center">
                             <p>Or</p>
