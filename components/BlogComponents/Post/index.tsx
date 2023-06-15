@@ -63,6 +63,7 @@ export const Post: React.FC<PostDataProps> = () => {
                         </div>
                         )
                     })} */}
+          <p>Blog</p>
         </div>
       </div>
     </section>
