@@ -144,7 +144,7 @@ export function TransactionTable({ packageInfo }: TransactionTableDataType) {
                   <td className="px-[10px] py-[15px]">{formattedDate}</td>
                   <td className="px-[10px] py-[15px]">{item.packageType}</td>
                   <td className="px-[10px] py-[15px]">{item.arrival}</td>
-                  <td className="px-[10px] py-[15px]">{item.price}</td>
+                  <td className="px-[10px] py-[15px]">${item.price}</td>
                   <td className="px-[10px] py-[15px]">
                     <div
                       className="flex justify-center items-center  cursor-pointer border-[1px] border-[#1E1E1E] rounded-[8px] px-[15px] py-[8px] "
