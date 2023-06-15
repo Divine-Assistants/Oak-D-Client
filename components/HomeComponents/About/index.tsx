@@ -1,18 +1,21 @@
 import React from "react";
+import Image from 'next/image';
 
 export function About() {
   return (
     <div className="text-[#1E1E1E] w-[80%] lg:w-[100%] m-auto ">
-      <section className="mb-[200px] lg:mb-[150px] lg:w-[90%] lg:m-auto ">
-        <h2 className="text-[#AC0108] text-[32px] font-[600] w-fit m-auto mb-[40px] lg:text-[55px]  ">
+      <section className="mb-[50px] lg:w-[90%] lg:m-auto ">
+        <h2 className="text-[#AC0108] text-[32px] font-[600] w-fit m-auto mb-[20px] lg:text-[55px]  ">
           About Us
         </h2>
         <div className="lg:flex lg:items-center lg:flex-row-reverse lg:gap-[71px] ">
-          <div className=" h-[357px] m-auto mb-[40px] lg:w-[40%] lg:h-[643px] ">
-            <img
-              src="/img/about-us.svg"
-              alt="About Us"
-              className="w-[100%] h-[100%] "
+          <div className=" h-[357px] m-auto mb-[30px] lg:w-[40%] lg:h-[643px] ">
+            <Image 
+              src="/img/about-us.svg" 
+              alt='About Us' 
+              width={300} 
+              height={300} 
+              layout='responsive' 
             />
           </div>
           <div className="md:w-[90%] m-auto lg:w-[50%] ">
@@ -36,17 +39,24 @@ export function About() {
           </div>
         </div>
       </section>
-      <section className="mb-[200px] ">
+      <section className="mb-[50px] ">
         <h2 className="text-[#AC0108] text-[32px] font-[600] w-fit m-auto mb-[40px] lg:mb-[76px] lg:text-[55px]  ">
           Our Services
         </h2>
         <div className="flex flex-col gap-[20px] mb-[40px] lg:relative lg:h-[963px] lg:w-[100%] lg:mb-[0px] ">
           <div className=" h-[357px] lg:h-[100%] ">
-            <img
+            <Image 
+              src="/img/ocean-freight.svg" 
+              alt='Our Services' 
+              width={300} 
+              height={300} 
+              layout='responsive' 
+            />
+            {/* <img
               src="/img/ocean-freight.svg"
               alt="Our Services"
               className="w-[100%] h-[100%] "
-            />
+            /> */}
           </div>
           <div className="lg:absolute lg:top-[0] lg:w-[50%] lg:bg-[#FEFEFE]/[.68] lg:py-[190px] lg:px-[61px]  ">
             <h2 className=" text-[28px] font-semibold lg:text-[32px] lg:mb-[30px]  ">
@@ -74,10 +84,12 @@ export function About() {
         </div>
         <div className="flex flex-col gap-[20px] mb-[40px] lg:relative lg:h-[963px] lg:w-[100%] lg:mb-[0px] ">
           <div className=" h-[357px] lg:h-[100%] ">
-            <img
-              src="/img/air-freight.svg"
-              alt="Our Services"
-              className="w-[100%] h-[100%] "
+            <Image 
+              src="/img/air-freight.svg" 
+              alt='Our Services' 
+              width={300} 
+              height={300} 
+              layout='responsive' 
             />
           </div>
           <div className="lg:absolute lg:top-[0] lg:right-[0] lg:w-[50%] lg:bg-[#FEFEFE]/[.68] lg:py-[190px] lg:px-[61px]">
@@ -106,10 +118,12 @@ export function About() {
         </div>
         <div className="flex flex-col gap-[20px] mb-[40px] lg:relative lg:h-[963px] lg:w-[100%] lg:mb-[0px] ">
           <div className=" h-[357px] lg:h-[100%]  ">
-            <img
-              src="/img/parcel-delivery.svg"
-              alt="Our Services"
-              className="w-[100%] h-[100%] "
+            <Image 
+              src="/img/parcel-delivery.svg" 
+              alt='Our Services' 
+              width={300} 
+              height={300} 
+              layout='responsive' 
             />
           </div>
           <div className="lg:absolute lg:top-[0] lg:left-[0] lg:w-[50%] lg:bg-[#FEFEFE]/[.68] lg:py-[190px] lg:px-[61px]">
@@ -140,10 +154,12 @@ export function About() {
         </div>
         <div className="flex flex-col gap-[20px] mb-[40px] lg:relative lg:h-[963px] lg:w-[100%] lg:mb-[0px] ">
           <div className=" h-[357px] lg:h-[100%] ">
-            <img
-              src="/img/warehousing.svg"
-              alt="Our Services"
-              className="w-[100%] h-[100%] "
+            <Image 
+              src="/img/warehousing.svg" 
+              alt='Our Services' 
+              width={300} 
+              height={300} 
+              layout='responsive' 
             />
           </div>
           <div className="lg:absolute lg:top-[0] lg:right-[0] lg:w-[50%] lg:bg-[#FEFEFE]/[.68] lg:py-[190px] lg:px-[61px]">

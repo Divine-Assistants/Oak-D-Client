@@ -3,8 +3,9 @@ import { ChevronRightIcon } from '@chakra-ui/icons';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react';
 import { DomesticContext } from '@/context/DomesticWrapper';
 import { GlobalContext } from '@/context/GlobalWrapper';
+import { FaChevronRight } from 'react-icons/fa';
 
-export function WareCrumb() {
+export function WareCrumb(): JSX.Element | null {
   const { trail, setTrail } = useContext(DomesticContext)
   const { glotrail, setGlotrail } = useContext(GlobalContext)
   if ( trail || glotrail > 0 ){
@@ -15,46 +16,49 @@ export function WareCrumb() {
             zIndex: glotrail ===4? '10': 'initial',
             
             }}>
-          <Breadcrumb spacing='8px' separator={<ChevronRightIcon color='gray.500'  />}>
-               <BreadcrumbItem style={{display: trail >= 1 || glotrail >= 1 ? 'block' : 'none',}}>
-                  <BreadcrumbLink onClick={()=>{setTrail(0); setGlotrail(0)}} style={{}}  className='cursor-pointer'>Generate Quote</BreadcrumbLink>
-               </BreadcrumbItem>
+          <section className='flex items-center gap-[8px]' >
+               <div className='flex items-center gap-[4px]' style={{display: trail >= 1 || glotrail >= 1 ? 'flex' : 'none',}}>
+                  <div onClick={()=>{setTrail(0); setGlotrail(0)}} style={{}}  className='cursor-pointer'>Generate Quote</div>
+                  <FaChevronRight/>
+               </div>
       
-              <BreadcrumbItem  style={{
-                display:  glotrail >= 1 ? 'block' : 'none',
+              <div className='flex items-center gap-[4px]' style={{
+                display:  glotrail >= 1 ? 'flex' : 'none',
                 color:  glotrail === 1 ? '#AC0108' : 'initial'
                 }} >
-                  <BreadcrumbLink onClick={()=>{setTrail(1); setGlotrail(1)}} className='cursor-pointer'>Cargo Information</BreadcrumbLink>
-              </BreadcrumbItem>
+                  <div onClick={()=>{setTrail(1); setGlotrail(1)}} className='cursor-pointer'>Cargo Information</div>
+                  <FaChevronRight/>
+              </div>
       
-              <BreadcrumbItem  style={{
-                display: trail >1 || glotrail >1 ? 'block' : 'none',
+              <div className='flex items-center gap-[4px]' style={{
+                display: trail >1 || glotrail >1 ? 'flex' : 'none',
                 color: trail === 2 || glotrail === 2 ? '#AC0108' : 'initial'
             
             }} >
-                  <BreadcrumbLink  onClick={()=>{setTrail(2); setGlotrail(2)}} className='cursor-pointer' >Storage Summary</BreadcrumbLink>
-              </BreadcrumbItem>
+                  <div  onClick={()=>{setTrail(2); setGlotrail(2)}} className='cursor-pointer' >Storage Summary</div>
+                  <FaChevronRight/>
+              </div>
 
-              <BreadcrumbItem  style={{
-                display: glotrail >2 ? 'block' : 'none',
+              <div className='flex items-center gap-[4px]' style={{
+                display: glotrail >2 ? 'flex' : 'none',
                 color: glotrail === 3 ? '#AC0108' : 'initial'
                 }}>
-                  <BreadcrumbLink  onClick={()=>{setTrail(3); setGlotrail(3)}} className='cursor-pointer' >Shipping Summary</BreadcrumbLink>
-              </BreadcrumbItem>
+                  <div  onClick={()=>{setTrail(3); setGlotrail(3)}} className='cursor-pointer' >Shipping Summary</div>
+                  <FaChevronRight/>
+              </div>
       
-              <BreadcrumbItem  style={{
-                display: glotrail >3  ? 'block' : 'none',
+              <div className='flex items-center gap-[4px]' style={{
+                display: glotrail >3  ? 'flex' : 'none',
                 color:  glotrail === 4 ? '#AC0108' : 'initial'
                 }}>
-                  <BreadcrumbLink  onClick={()=>{setTrail(3); setGlotrail(3)}} className='cursor-pointer' >Pick up / Drop Off</BreadcrumbLink>
-              </BreadcrumbItem>
+                  <div  onClick={()=>{setTrail(3); setGlotrail(3)}} className='cursor-pointer' >Pick up / Drop Off</div>
+                  <FaChevronRight/>
+              </div>
 
-          </Breadcrumb>
+          </section>
           </div>
         )
-  }  else{
-      return(
-            console.log('crumb no dey work')
-      )
+  }  else {
+    return null;
   }
 }

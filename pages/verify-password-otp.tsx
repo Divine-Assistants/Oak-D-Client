@@ -1,40 +1,45 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { verifyPasswordOTP } from "@/api/api";
+import { Spinner } from "@chakra-ui/react";
+
+const styles = {
+  bgImage: {
+    background: "url(../img/get-started-background.svg)",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+  },
+  square: {
+    background: "rgba(254, 254, 254, 0.68)",
+  },
+};
 
 const VerifyCode = () => {
-  const styles = {
-    bgImage: {
-      background: "url(../img/get-started-background.svg)",
-      backgroundSize: "cover",
-      backgroundRepeat: "no-repeat",
-      backgroundPosition: "center",
-    },
-    square: {
-      background: "rgba(254, 254, 254, 0.68)",
-    },
-  };
   const [verificationCode, setVerificationCode] = useState<string>("");
   const [alertValue, setAlertValue] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handleOPTChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setVerificationCode(value);
   };
+
   const handleOTPSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
       if (verificationCode.length === 6) {
+        setIsLoading(true);
         const email: string = router.query.email as string;
-        const { data, status, message } = await verifyPasswordOTP({
+        const { data, status } = await verifyPasswordOTP({
           email,
           verificationCode,
         });
         console.log(data);
         console.log(status);
-        console.log(message);
         if (status === "Success") {
+          setIsLoading(false);
           router.push(`/reset-password?email=${encodeURIComponent(email)}`);
         }
       }
@@ -109,12 +114,20 @@ const VerifyCode = () => {
               </a>
             </p>
 
-            <button
+            { isLoading ?
+              <button
+                type="submit"
+                className="p-[20px] w-[100%] text-[#FAFAFA] mt-[15px] text-center bg-[#0A089A] rounded-[8px] flex items-center justify-center"
+              >
+                <Spinner className="h-[30px] w-[30px]" />
+              </button> :
+              <button
               type="submit"
               className="p-[20px] w-[100%] text-[#FAFAFA] mt-[15px] text-center bg-[#0A089A] rounded-[8px]"
-            >
-              Submit
-            </button>
+              >
+                Submit
+              </button>
+            }
           </form>
         </div>
       </div>

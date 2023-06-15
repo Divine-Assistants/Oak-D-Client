@@ -1,16 +1,20 @@
 import React from "react";
 import styles from "@/styles/home.module.css";
+import Image from "next/image";
 
 export function Land() {
   return (
     <div className="100vh 100vw relative lg:mb-[160px]">
       <div>
         <div className="block md:hidden">
-          <img
+          <Image
             src="/img/land-image.svg"
             alt="OAK Image"
-            className="w-[100%] h-[100%] md:h-[100%] "
+            width={300}
+            height={300}
+            layout="responsive"
           />
+          {/* <img src="/img/land-image.svg" alt="OAK Image" className='w-[100%] h-[100%] md:h-[100%] ' /> */}
         </div>
         <div className="hidden md:block">
           <img
