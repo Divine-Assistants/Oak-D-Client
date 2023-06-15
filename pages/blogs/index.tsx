@@ -1,9 +1,6 @@
 import { AllBlogs, BlogLand, Latest, PageLayout, Post } from "@/components";
 import { BlogContext, BlogContextProvider } from "@/context/BlogWrapper";
-import axios from "axios";
-import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { getCookie } from "cookies-next";
 export type BlogValue = {
   _id?: string;
   heading: string;

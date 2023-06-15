@@ -3,6 +3,7 @@ import axios from "axios";
 import { type } from "os";
 import React from "react";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 type BlogValues = {
   _id?: string;
@@ -16,6 +17,7 @@ type BlogDataProps = {
 };
 
 export const AllBlogs = () => {
+  const router = useRouter();
   const [blog, setBlog] = useState<BlogValues[]>([]);
   const [loading, setloading] = useState(true);
 
@@ -52,6 +54,10 @@ export const AllBlogs = () => {
               <div
                 className="w-[45%] lg:w-[30%] mb-[32px] flex flex-col gap-[20px] cursor-pointer "
                 key={item._id}
+                onClick={() => {
+                  const id = item._id as string;
+                  router.push(`/blogs/${id}`);
+                }}
               >
                 <div className="w-[100%] h-[164px] md:h-[193px] lg:h-[251px] ">
                   <img
