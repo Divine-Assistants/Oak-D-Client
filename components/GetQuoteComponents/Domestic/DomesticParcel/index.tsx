@@ -124,47 +124,26 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
     });
   }, [parcelData.packageWeight]);
 
-  const handleFormSubmit = () => {
-<<<<<<< HEAD
-    const requiredFields = [
-      "packageName",
-      "packageWeight",
-      "departure",
-      "arrival",
-      "packageDescription",
-    ];
-    const emptyFields = requiredFields.filter((field) => !parcelData[field]);
-=======
-    const requiredFields = ["packageName", "packageWeight", "departure", "arrival", "packageDescription"];
-            // @ts-ignore
-    const emptyFields = requiredFields.filter((field) => !parcelData[field]); 
->>>>>>> 2d9637b82299e0b28f945e227bc4c1cafaef85ed
+  // const handleFormSubmit = () => {
+  //   const requiredFields = ["packageName", "packageWeight", "departure", "arrival", "packageDescription"];
+  //           // @ts-ignore
+  //   const emptyFields = requiredFields.filter((field) => !parcelData[field]);
 
-    if (emptyFields.length > 0) {
-      setShowEmptyFields(true);
-    } else {
-      setData((prevData: any) => ({
-        ...prevData,
-        newPackage: parcelData,
-      }));
-      setParcelData(initialDomesticParcelInfo);
-      setShowEmptyFields(false);
-      setTrail(3);
-      window.scrollTo(0, 0);
-    }
-  };
-<<<<<<< HEAD
-
-  const isFieldEmpty = (fieldName: string) =>
-    showEmptyFields && !parcelData[fieldName];
-=======
-                          // @ts-ignore
-  const isFieldEmpty = (fieldName: string) => showEmptyFields && !parcelData[fieldName];
-
-
-
-  
->>>>>>> 2d9637b82299e0b28f945e227bc4c1cafaef85ed
+  //   if (emptyFields.length > 0) {
+  //     setShowEmptyFields(true);
+  //   } else {
+  //     setData((prevData: any) => ({
+  //       ...prevData,
+  //       newPackage: parcelData,
+  //     }));
+  //     setParcelData(initialDomesticParcelInfo);
+  //     setShowEmptyFields(false);
+  //     setTrail(3);
+  //     window.scrollTo(0, 0);
+  //   }
+  // };
+  //                         // @ts-ignore
+  // const isFieldEmpty = (fieldName: string) => showEmptyFields && !parcelData[fieldName];
 
   return (
     <section style={{ display: trail === 2 ? "block" : "none" }}>
