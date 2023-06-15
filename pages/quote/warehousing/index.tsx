@@ -86,7 +86,7 @@ export default function Warehousing() {
       <main>
         <GlobalContextProvider>
           <DomesticContextProvider>
-            {/* <WareCrumb /> */}
+            <WareCrumb />
             <WarehouseQuoteLand setData={setData} />
             <WarehouseParcel setData={setData} />
             <WarehouseSummary data={data} registerPackage={registerPackage} />

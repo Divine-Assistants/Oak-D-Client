@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Navbar, Footer } from "@/components";
-import Ready from "@/components/ReadyToStart";
+import { Ready } from "@/components/ReadyToStart";
 import emailjs from 'emailjs-com';
 import { FaInstagram, FaTwitter, FaLinkedin, FaFacebookF } from "react-icons/fa";
 import { ContactMap } from "@/components/GoogleMap";

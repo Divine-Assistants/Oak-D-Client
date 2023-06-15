@@ -8,14 +8,13 @@ import Tracking from './Tracking';
 
 
 export function Map() {   
-    const { track,  setTrack, trackPage, setTrackPage } = useContext(TrackContext)
     const [toggle, setToggle] = useState<boolean>(false)
-
+    const { track,  setTrack, trackPage, setTrackPage } = useContext(TrackContext)
 
   return (
     <main className='' style={{display: trackPage===1? 'block':'none' }}  >
         <div className='bg-[#FEFEFE] w-[100vw] py-[29px] flex items-center justify-between px-[23px] lg:px-[68px] '>
-            <div className='cursor-pointer text-[24px] hover:text-[#AC0108] ' onClick={()=>{setTrackPage(0)}}> <FaArrowLeft  /></div>
+        <div className='cursor-pointer text-[24px] hover:text-[#AC0108] ' onClick={()=>{setTrackPage(0)}}> <FaArrowLeft  /></div>
             <div className='flex items-center gap-[7px] cursor-pointer '><FaGlobe /> <p>English</p> <ChevronDownIcon className='w-[6px] h-[11px] '/> </div>
         </div>
             <div className='relative h-[600px] lg:h-[949px] '>

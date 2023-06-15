@@ -24,6 +24,7 @@ export type ParcelInformationDataType = {
   departure: string;
   arrival: string;
   packageDescription: string;
+  postalCode?: string;
 };
 const initialParcelInfo = {
   packageName: "",
@@ -218,9 +219,15 @@ export function ParcelInformation({ setData }: ParcelInformationType) {
                 id="departure"
                 className="p-[15px] border-[2px] border-[#CBCBCB] rounded-[8px] bg-[#F5F5F5] focus:outline-[#0A089A] w-[100%] "
               >
-                <option value="departure">Departure</option>
-                <option value="gap">Gap</option>
-                <option value="lit">Lit</option>
+                <option value="">--Select a departure location--</option>
+                <option value="Port-Harcourt, Nigeria">
+                  North-York, Canada
+                </option>
+                <option value="Oshawa, Canada">Oshawa, Canada</option>
+                <option value="Brampton, Canada">Brampton, Canada</option>
+                <option value="Ajax, Canada">Ajax, Canada</option>
+                <option value="Ikeja, Nigeria">Ikeja, Nigeria</option>
+                <option value="Lekki, Nigeria">Lekki, Nigeria</option>
               </select>
             </div>
 
@@ -235,9 +242,15 @@ export function ParcelInformation({ setData }: ParcelInformationType) {
                 id="arrival"
                 className="p-[15px] border-[2px] border-[#CBCBCB] rounded-[8px] bg-[#F5F5F5] focus:outline-[#0A089A] w-[100%] "
               >
-                <option value="arrival">Arrival</option>
-                <option value="gap">Gap</option>
-                <option value="lit">Lit</option>
+                <option value="">--Select an arrival location--</option>
+                <option value="Port-Harcourt, Nigeria">
+                  North-York, Canada
+                </option>
+                <option value="Oshawa, Canada">Oshawa, Canada</option>
+                <option value="Brampton, Canada">Brampton, Canada</option>
+                <option value="Ajax, Canada">Ajax, Canada</option>
+                <option value="Ikeja, Nigeria">Ikeja, Nigeria</option>
+                <option value="Lekki, Nigeria">Lekki, Nigeria</option>
               </select>
             </div>
           </div>
@@ -278,18 +291,20 @@ export function ParcelInformation({ setData }: ParcelInformationType) {
             </label>
           </div>
 
-          {/* <div className='flex flex-col mb-[15px] text-[#1E1E1E] text-[16px] '>
-                    <label htmlFor="postalCode" className='mb-[8px] font-[600] '>Postal Code</label>
-                    <input 
-                        id='postalCode' 
-                        type="number" 
-                        placeholder='Postal Code'
-                        name='postalCode'
-                        value={parcelData.postalCode}
-                        onChange={handleParcelDataChange}
-                        className='p-[15px] border-[2px] border-[#CBCBCB] rounded-[8px] bg-[#F5F5F5] focus:outline-[#0A089A] ' 
-                    />
-                </div> */}
+          <div className="flex flex-col mb-[15px] text-[#1E1E1E] text-[16px] ">
+            <label htmlFor="postalCode" className="mb-[8px] font-[600] ">
+              Postal Code
+            </label>
+            <input
+              id="postalCode"
+              type="number"
+              placeholder="Postal Code"
+              name="postalCode"
+              value={parcelData.postalCode}
+              onChange={handleParcelDataChange}
+              className="p-[15px] border-[2px] border-[#CBCBCB] rounded-[8px] bg-[#F5F5F5] focus:outline-[#0A089A] "
+            />
+          </div>
 
           <div className="flex flex-col mb-[15px] text-[#1E1E1E] text-[16px] ">
             <label htmlFor="address" className="mb-[8px] font-[600] ">

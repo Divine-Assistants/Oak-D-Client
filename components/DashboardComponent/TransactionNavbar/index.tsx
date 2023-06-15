@@ -16,12 +16,13 @@ export interface TransactionType {
     receiver: userData;
     price: string;
     packageType: string;
+    isVerified: boolean;
 }
 
 export function TransactionNavbar(){
     const {activeNav, setActiveNav} = useContext(NavContext);
     const [packages, setPackages] = useState<string[]>([]);
-    const [packageInfo, setPackageInfo] = useState<TransactionType[]>([])
+    const [packageInfo, setPackageInfo] = useState<TransactionType[]>([]);
     
     // GETTING USER INFORMATION
     useEffect(()=>{
@@ -41,7 +42,13 @@ export function TransactionNavbar(){
         const handleUserPackage = async ()=> {
             try {
                 const { data } = await getUserPackage(packages);
-                setPackageInfo(data);
+                
+                const sortData = data.sort((a:any, b:any)=>{
+                    const dateA = new Date(a.createdAt).getTime();
+                    const dateB = new Date(b.createdAt).getTime();
+                    return dateB - dateA;
+                })
+                setPackageInfo(sortData);
             } catch (error) {
                 console.log(error)
             }
