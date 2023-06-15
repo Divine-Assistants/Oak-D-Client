@@ -13,6 +13,8 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
   const { glotrail, setGlotrail } = useContext(GlobalContext);
   const [receiverData, setReceiverData] =
     useState<clientInfo>(initialClientInfo);
+    const [isFormValid, setIsFormValid] = useState(false);
+    const [emptyFields, setEmptyFields] = useState<string[]>([]);
 
   function handleReceiverDataChange(
     event: React.ChangeEvent<HTMLInputElement>
@@ -27,13 +29,28 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
   }
 
   function handleFormSubmit() {
-    setData((prevData: any) => {
-      return { ...prevData, receiver: receiverData };
-    });
-    setReceiverData(initialClientInfo);
-    setGlotrail(2);
-    window.scrollTo(0, 0);
+    if (isFormValid) {
+      setData((prevData: any) => ({ ...prevData, receiver: receiverData }));
+      setReceiverData(initialClientInfo);
+      setGlotrail(2);
+      window.scrollTo(0, 0);
+    } else {
+      const emptyFields = Object.entries(receiverData)
+        .filter(([key, value]) => value.trim() === "")
+        .map(([key]) => key);
+      setEmptyFields(emptyFields);
+    }
   }
+
+  function validateForm() {
+    const formValues = Object.values(receiverData);
+    const isValid = formValues.every((value) => value.trim() !== "");
+    setIsFormValid(isValid);
+  }
+
+  React.useEffect(() => {
+    validateForm();
+  }, [receiverData]);
 
   return (
     <div style={{ display: glotrail !== 1 ? "none" : "initial" }}>
@@ -61,6 +78,9 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
                 className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]  "
                 placeholder="Enter First Name"
               />
+              {emptyFields.includes("firstName") && (
+                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your first name</p>
+              )}
             </div>
 
             <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -74,6 +94,9 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
                 className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]  "
                 placeholder="Enter Last Name"
               />
+              {emptyFields.includes("lastName") && (
+                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your last name</p>
+              )}
             </div>
           </div>
 
@@ -88,6 +111,9 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
               placeholder="xyz@mail.com"
             />
+            {emptyFields.includes("email") && (
+                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your email</p>
+              )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -101,6 +127,9 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
               placeholder="Phone"
             />
+            {emptyFields.includes("phoneNumber") && (
+                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your phone number</p>
+              )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -114,6 +143,9 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
               placeholder="Region"
             />
+            {emptyFields.includes("region") && (
+                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your region</p>
+              )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -127,6 +159,9 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
               placeholder="Country"
             />
+            {emptyFields.includes("country") && (
+                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your country</p>
+              )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -140,6 +175,9 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
               placeholder="Address"
             />
+            {emptyFields.includes("address") && (
+                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your address</p>
+              )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -153,6 +191,9 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
               placeholder="Postal Code"
             />
+            {emptyFields.includes("postalCode") && (
+                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your postal</p>
+              )}
           </div>
         </form>
       </div>
