@@ -25,6 +25,7 @@ export type clientParcelInfo = {
   arrival?: string;
   packageDescription: string;
 };
+
 const initialDomesticParcelInfo = {
   packageName: "",
   packageWeight: "",
@@ -128,7 +129,8 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
 
   const handleFormSubmit = () => {
     const requiredFields = ["packageName", "packageWeight", "departure", "arrival", "packageDescription"];
-    const emptyFields = requiredFields.filter((field) => !parcelData[field]);
+            // @ts-ignore
+    const emptyFields = requiredFields.filter((field) => !parcelData[field]); 
 
     if (emptyFields.length > 0) {
       setShowEmptyFields(true);
@@ -143,7 +145,7 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
       window.scrollTo(0, 0);
     }
   };
-
+                          // @ts-ignore
   const isFieldEmpty = (fieldName: string) => showEmptyFields && !parcelData[fieldName];
 
 
