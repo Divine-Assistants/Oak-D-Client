@@ -79,7 +79,6 @@ export function GlobalBreadcrumb() {
         {globalCrumb >= 4 && (
           <div className="cursor-pointer flex gap-x-[5px] items-center text-[18px] font-[600] " onClick={showSummaryInfo}>
               <p className={globalSummary ? ` text-[#AC0108]` : ` text-[#9C9C9C]`}>Shipping Summary</p>
-              {/* <ChevronRightIcon color='gray.500' /> */}
           </div>
         )}
 
