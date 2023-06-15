@@ -19,6 +19,26 @@ export function TransactionTable({ packageInfo }: TransactionTableDataType) {
 
   const invoiceTab = useRef<HTMLAnchorElement>(null);
 
+  function downloadPDF(PDFURL: string) {
+    const pdfUrl = PDFURL;
+
+    fetch(pdfUrl)
+      .then((response) => response.blob())
+      .then((blob) => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "filename.pdf";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      })
+      .catch((error) => {
+        console.log("Error downloading PDF:", error);
+      });
+  }
+
   return (
     <div className="">
       <section className="w-[100%] lg:hidden flex flex-col rounded-[8px] px-[20px] ">
@@ -149,7 +169,7 @@ export function TransactionTable({ packageInfo }: TransactionTableDataType) {
                     <div
                       className="flex justify-center items-center  cursor-pointer border-[1px] border-[#1E1E1E] rounded-[8px] px-[15px] py-[8px] "
                       onClick={() => {
-                        invoiceTab?.current?.click();
+                        downloadPDF(item?.invoiceURL);
                       }}
                     >
                       <Image
@@ -160,12 +180,6 @@ export function TransactionTable({ packageInfo }: TransactionTableDataType) {
                         className="mr-[2px] "
                       />
                       <p className="text-[14px] font-[500] ">Download</p>
-                      <a
-                        href={item?.invoiceURL}
-                        download={"myfile.pdf"}
-                        ref={invoiceTab}
-                        className="hidden"
-                      ></a>
                     </div>
                   </td>
                 </tr>

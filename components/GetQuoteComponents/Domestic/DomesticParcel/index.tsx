@@ -72,8 +72,6 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
   const [emptyFields, setEmptyFields] = useState<string[]>([]);
   const [showEmptyFields, setShowEmptyFields] = useState(false);
 
-
-
   const handleParcelDataChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -94,7 +92,6 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
       }));
     }
   };
-
 
   useEffect(() => {
     setParcelData((prevData) => {
@@ -127,7 +124,13 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
   }, [parcelData.packageWeight]);
 
   const handleFormSubmit = () => {
-    const requiredFields = ["packageName", "packageWeight", "departure", "arrival", "packageDescription"];
+    const requiredFields = [
+      "packageName",
+      "packageWeight",
+      "departure",
+      "arrival",
+      "packageDescription",
+    ];
     const emptyFields = requiredFields.filter((field) => !parcelData[field]);
 
     if (emptyFields.length > 0) {
@@ -144,11 +147,8 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
     }
   };
 
-  const isFieldEmpty = (fieldName: string) => showEmptyFields && !parcelData[fieldName];
-
-
-
-  
+  const isFieldEmpty = (fieldName: string) =>
+    showEmptyFields && !parcelData[fieldName];
 
   return (
     <section style={{ display: trail === 2 ? "block" : "none" }}>
@@ -174,10 +174,13 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                 value={parcelData.packageName}
                 onChange={handleParcelDataChange}
                 id="packageName"
-                className={`rounded-full border ${isFieldEmpty("packageName") ? "border-[#AC0108]" : "border-[#A1A1A1]"} h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]`}
+                className={`rounded-full border ${
+                  isFieldEmpty("packageName")
+                    ? "border-[#AC0108]"
+                    : "border-[#A1A1A1]"
+                } h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]`}
                 placeholder="Name"
               />
-              
             </div>
             <div className="flex flex-col gap-[10px] mb-[25px]">
               <label htmlFor="packageWeight" className="font-[600] ">
@@ -190,7 +193,11 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                   value={parcelData.packageWeight}
                   onChange={handleParcelDataChange}
                   id="packageWeight"
-                  className={`rounded-full border ${isFieldEmpty("packageName") ? "border-[#AC0108]" : "border-[#A1A1A1]"} h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%]`}
+                  className={`rounded-full border ${
+                    isFieldEmpty("packageName")
+                      ? "border-[#AC0108]"
+                      : "border-[#A1A1A1]"
+                  } h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%]`}
                   placeholder="0"
                 />
                 <p className="absolute font-[600] text-[18px] right-[5%] ">
@@ -210,7 +217,11 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                     value={parcelData.dimension.length}
                     onChange={handleParcelDataChange}
                     id="length"
-                    className={`rounded-full border ${isFieldEmpty("packageName") ? "border-[#AC0108]" : "border-[#A1A1A1]"} h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]`}
+                    className={`rounded-full border ${
+                      isFieldEmpty("packageName")
+                        ? "border-[#AC0108]"
+                        : "border-[#A1A1A1]"
+                    } h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]`}
                     placeholder="Length"
                   />
                   <p className="absolute font-[600] text-[18px] right-[5%] ">
@@ -224,7 +235,11 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                     value={parcelData.dimension.breadth}
                     onChange={handleParcelDataChange}
                     id="breadth"
-                    className={`rounded-full border ${isFieldEmpty("packageName") ? "border-[#AC0108]" : "border-[#A1A1A1]"} h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]`}
+                    className={`rounded-full border ${
+                      isFieldEmpty("packageName")
+                        ? "border-[#AC0108]"
+                        : "border-[#A1A1A1]"
+                    } h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]`}
                     placeholder="Breadth"
                   />
                   <p className="absolute font-[600] text-[18px] right-[5%] ">
@@ -238,7 +253,11 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                     value={parcelData.dimension.height}
                     onChange={handleParcelDataChange}
                     id="height"
-                    className={`rounded-full border ${isFieldEmpty("packageName") ? "border-[#AC0108]" : "border-[#A1A1A1]"} h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]`}
+                    className={`rounded-full border ${
+                      isFieldEmpty("packageName")
+                        ? "border-[#AC0108]"
+                        : "border-[#A1A1A1]"
+                    } h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]`}
                     placeholder="Height"
                   />
                   <p className="absolute font-[600] text-[18px] right-[5%] ">
@@ -262,7 +281,11 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                 name="departure"
                 value={parcelData.departure}
                 onChange={handleParcelDataChange}
-                className={`rounded-full border ${isFieldEmpty("packageName") ? "border-[#AC0108]" : "border-[#A1A1A1]"} h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]`}
+                className={`rounded-full border ${
+                  isFieldEmpty("packageName")
+                    ? "border-[#AC0108]"
+                    : "border-[#A1A1A1]"
+                } h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]`}
               >
                 <option value="">--Select a departure location--</option>
                 <option value="Port-Harcourt, Nigeria">
@@ -284,7 +307,11 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                 name="arrival"
                 value={parcelData.arrival}
                 onChange={handleParcelDataChange}
-                className={`rounded-full border ${isFieldEmpty("packageName") ? "border-[#AC0108]" : "border-[#A1A1A1]"} h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]`}
+                className={`rounded-full border ${
+                  isFieldEmpty("packageName")
+                    ? "border-[#AC0108]"
+                    : "border-[#A1A1A1]"
+                } h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]`}
               >
                 <option value="">--Select an Arrival location--</option>
                 <option value="Port-Harcourt, Nigeria">
@@ -327,7 +354,11 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                 value={parcelData.packageDescription}
                 onChange={handleParcelDataChange}
                 id="packageDescription"
-                className={`rounded-full border ${isFieldEmpty("packageName") ? "border-[#AC0108]" : "border-[#A1A1A1]"} h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]`}
+                className={`rounded-full border ${
+                  isFieldEmpty("packageName")
+                    ? "border-[#AC0108]"
+                    : "border-[#A1A1A1]"
+                } h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]`}
                 placeholder=""
               />
             </div>

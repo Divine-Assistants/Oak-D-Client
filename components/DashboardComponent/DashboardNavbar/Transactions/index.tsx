@@ -20,6 +20,26 @@ export function Transactions({ packageInfo }: DashboardTransactionType) {
   }
   // console.log(packageInfo);
 
+  function downloadPDF(PDFURL: string) {
+    const pdfUrl = PDFURL;
+
+    fetch(pdfUrl)
+      .then((response) => response.blob())
+      .then((blob) => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "filename.pdf";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      })
+      .catch((error) => {
+        console.log("Error downloading PDF:", error);
+      });
+  }
+
   return (
     <div>
       <div className="flex justify-between mt-[20px] lg:mt-[50px] lg:mb-[25px] ">
@@ -139,7 +159,7 @@ export function Transactions({ packageInfo }: DashboardTransactionType) {
           </thead>
 
           <tbody className="my-[20px] py-[20px] ">
-            {packageInfo.map((item) => {
+            {packageInfo.map((item: any) => {
               const date = new Date(item.createdAt);
               const options: Intl.DateTimeFormatOptions = {
                 year: "numeric",
@@ -163,7 +183,12 @@ export function Transactions({ packageInfo }: DashboardTransactionType) {
                   <td className="px-[10px] py-[15px]">{item.arrival}</td>
                   <td className="px-[10px] py-[15px]">${item.price}</td>
                   <td className="px-[10px] py-[15px]">
-                    <div className="flex justify-center items-center  cursor-pointer border-[1px] border-[#1E1E1E] rounded-[8px] px-[15px] py-[8px] ">
+                    <div
+                      className="flex justify-center items-center  cursor-pointer border-[1px] border-[#1E1E1E] rounded-[8px] px-[15px] py-[8px]"
+                      onClick={() => {
+                        downloadPDF(item?.invoiceURL);
+                      }}
+                    >
                       <Image
                         src="../img/download-icon.svg"
                         alt=""
