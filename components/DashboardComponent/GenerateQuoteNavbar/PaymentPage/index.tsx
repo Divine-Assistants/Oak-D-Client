@@ -1,31 +1,41 @@
-import { useState, useContext } from 'react';
+import { useState, useContext } from "react";
 import { ShowPaymentPageContext } from "@/context/UserDashboardGenerateQuote";
-import Image from 'next/image';
-import { DataType } from '..';
-import { DomesticBreadcrumb } from '../DomesticBreadcrumb';
+import Image from "next/image";
+import { DataType } from "..";
+import { DomesticBreadcrumb } from "../DomesticBreadcrumb";
 
 interface PaymentPageType {
-    registerPackage: (arg: DataType)=> void;
-    data: DataType 
+  registerPackage: (arg: DataType) => void;
+  data: DataType;
 }
-export function PaymentPage({registerPackage, data}: PaymentPageType){
-    const {showPaymentPage} = useContext(ShowPaymentPageContext);
+export function PaymentPage({ registerPackage, data }: PaymentPageType) {
+  const { showPaymentPage } = useContext(ShowPaymentPageContext);
 
-    return(
-        <section style={{display: showPaymentPage ? 'block': 'none'}} className='px-[20px] py-[50px]'>
-            <DomesticBreadcrumb />
-            <div className='lg:bg-[#FEFEFE] lg:p-[20px] lg:w-[80%] lg:mx-auto lg:rounded-[8px] '>
-                <div className='flex flex-col items-center mb-[30px] '>
-                    <p className='text-[#1E1E1E] text-[18px] lg:text-[20px] font-[600] '>Express checkout</p>
+  return (
+    <section
+      style={{ display: showPaymentPage ? "block" : "none" }}
+      className="px-[20px] py-[50px]"
+    >
+      <DomesticBreadcrumb />
+      <div className="lg:bg-[#FEFEFE] lg:p-[20px] lg:w-[80%] lg:mx-auto lg:rounded-[8px] ">
+        <div className="flex flex-col items-center mb-[30px] ">
+          <p className="text-[#1E1E1E] text-[18px] lg:text-[20px] font-[600] ">
+            Express checkout
+          </p>
 
-                    <button className='p-[15px] bg-[#6772E5] rounded-[8px] text-[#FEFEFE] w-[100%] text-[20px] lg:text-[24px] font-[700] my-[10px] ' onClick={()=>{
-                        registerPackage(data);
-                    }}>Stripe</button>
+          <button
+            className="p-[15px] bg-[#6772E5] rounded-[8px] text-[#FEFEFE] w-[100%] text-[20px] lg:text-[24px] font-[700] my-[10px] "
+            onClick={() => {
+              registerPackage(data);
+            }}
+          >
+            Stripe
+          </button>
 
-                    <p className='text-[#1E1E1E] text-[18px] lg:text-[20px] font-[500] '>or</p>
-                </div>
+          {/* <p className='text-[#1E1E1E] text-[18px] lg:text-[20px] font-[500] '>or</p> */}
+        </div>
 
-                <form className='text-[#1E1E1E]'>
+        {/* <form className='text-[#1E1E1E]'>
                     <p className='text-[18px] font-[600] text-center mb-[20px] '>Pay with Card</p>
                     <div className='mb-[20px] text-[#1E1E1E] text-[16px] text-[18px] font-[500] '>
                         <label htmlFor="cardName">Card Holder’s Name</label>
@@ -87,8 +97,8 @@ export function PaymentPage({registerPackage, data}: PaymentPageType){
                                 height={20} 
                             />
                         </button>
-                </form>
-            </div>
-        </section>
-    )
+                </form> */}
+      </div>
+    </section>
+  );
 }

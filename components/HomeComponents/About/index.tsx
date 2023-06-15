@@ -26,7 +26,7 @@ export function About() {
               OAK & D is your trusted partner for efficient, reliable, and
               cost-effecient shipping solutions.
             </h2>
-            <p className="text-[16px] font-[500] md:text-[18px]">
+            <p className="text-[16px] font-[500] md:text-[18px] text-justify mt-[25px]">
               OAK & D is a reputable cargo and freight company that specializes
               in shipping goods from Nigeria to Canada. We pride ourselves on
               providing top-notch services that are reliable, efficient, and
@@ -62,7 +62,7 @@ export function About() {
             <h2 className=" text-[28px] font-semibold lg:text-[32px] lg:mb-[30px]  ">
               Ocean Freight Services:
             </h2>
-            <p className="text-[16px] font-[500] md:text-[18px] lg:text-[20px] ">
+            <p className="text-[16px] font-[500] md:text-[18px] lg:text-[20px] text-justify">
               OAK & D provides efficient and reliable ocean freight services for
               shipping packages from Lagos to Canada. The company is committed
               to ensuring that customers receive their cargo in a safe, timely,
@@ -166,7 +166,7 @@ export function About() {
             <h2 className=" text-[28px] font-semibold lg:text-[32px] lg:mb-[30px] ">
               Warehousing and Administration
             </h2>
-            <p className="text-[16px] font-[500] md:text-[18px] lg:text-[20px]">
+            <p className="text-[16px] font-[500] md:text-[18px] lg:text-[20px] text-justify">
               OAK & D&apos;s Warehousing and Administration service provides a
               secure and efficient solution for the storage and management of
               goods. The administration aspect of the service involves keeping

@@ -217,9 +217,15 @@ export function GlobalUserParcelInfo({ setData }: ParcelInformationType) {
                 id="departure"
                 className="p-[15px] border-[2px] border-[#CBCBCB] rounded-[8px] bg-[#F5F5F5] focus:outline-[#0A089A] w-[100%] "
               >
-                <option value="departure">Departure</option>
-                <option value="gap">Gap</option>
-                <option value="lit">Lit</option>
+                <option value="">--Select a departure location--</option>
+                <option value="Port-Harcourt, Nigeria">
+                  North-York, Canada
+                </option>
+                <option value="Oshawa, Canada">Oshawa, Canada</option>
+                <option value="Brampton, Canada">Brampton, Canada</option>
+                <option value="Ajax, Canada">Ajax, Canada</option>
+                <option value="Ikeja, Nigeria">Ikeja, Nigeria</option>
+                <option value="Lekki, Nigeria">Lekki, Nigeria</option>
               </select>
             </div>
 
@@ -234,9 +240,15 @@ export function GlobalUserParcelInfo({ setData }: ParcelInformationType) {
                 id="arrival"
                 className="p-[15px] border-[2px] border-[#CBCBCB] rounded-[8px] bg-[#F5F5F5] focus:outline-[#0A089A] w-[100%] "
               >
-                <option value="arrival">Arrival</option>
-                <option value="gap">Gap</option>
-                <option value="lit">Lit</option>
+                <option value="">--Select an arrival location--</option>
+                <option value="Port-Harcourt, Nigeria">
+                  North-York, Canada
+                </option>
+                <option value="Oshawa, Canada">Oshawa, Canada</option>
+                <option value="Brampton, Canada">Brampton, Canada</option>
+                <option value="Ajax, Canada">Ajax, Canada</option>
+                <option value="Ikeja, Nigeria">Ikeja, Nigeria</option>
+                <option value="Lekki, Nigeria">Lekki, Nigeria</option>
               </select>
             </div>
           </div>
