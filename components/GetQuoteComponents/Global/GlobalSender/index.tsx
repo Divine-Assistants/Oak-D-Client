@@ -11,6 +11,8 @@ interface GlobalSenderType {
 export function GlobalSender({ setData }: GlobalSenderType) {
   const { glotrail, setGlotrail } = useContext(GlobalContext);
   const [senderData, setSenderData] = useState<clientInfo>(initialClientInfo);
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [emptyFields, setEmptyFields] = useState<string[]>([]);
 
   function handleSenderDataChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
@@ -22,14 +24,32 @@ export function GlobalSender({ setData }: GlobalSenderType) {
     });
   }
 
+
   function handleFormSubmit() {
-    setData((prevData: any) => {
-      return { ...prevData, sender: senderData };
-    });
-    setSenderData(initialClientInfo);
-    setGlotrail(1);
-    window.scrollTo(0, 0);
+    if (isFormValid) {
+      setData((prevData: any) => ({ ...prevData, sender: senderData }));
+      setSenderData(initialClientInfo);
+      setGlotrail(1);
+      window.scrollTo(0, 0);
+    } else {
+      // Find empty fields and set them as emptyFields state
+      const emptyFields = Object.entries(senderData)
+        .filter(([key, value]) => value.trim() === "")
+        .map(([key]) => key);
+      setEmptyFields(emptyFields);
+    }
   }
+
+  function validateForm() {
+    const formValues = Object.values(senderData);
+    const isValid = formValues.every((value) => value.trim() !== "");
+    setIsFormValid(isValid);
+  }
+
+  // Validate the form on every senderData change
+  React.useEffect(() => {
+    validateForm();
+  }, [senderData]);
 
   return (
     <div style={{ display: glotrail !== 0 ? "none" : "initial" }}>
@@ -60,6 +80,9 @@ export function GlobalSender({ setData }: GlobalSenderType) {
                 className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]  "
                 placeholder="Enter First Name"
               />
+              {emptyFields.includes("firstName") && (
+                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your first name</p>
+              )}
             </div>
 
             <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -73,6 +96,9 @@ export function GlobalSender({ setData }: GlobalSenderType) {
                 className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]  "
                 placeholder="Enter Last Name"
               />
+               {emptyFields.includes("lastName") && (
+                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your last name</p>
+              )}
             </div>
           </div>
 
@@ -87,6 +113,9 @@ export function GlobalSender({ setData }: GlobalSenderType) {
               className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
               placeholder="xyz@mail.com"
             />
+             {emptyFields.includes("email") && (
+                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your email</p>
+              )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -100,6 +129,9 @@ export function GlobalSender({ setData }: GlobalSenderType) {
               className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
               placeholder="Phone"
             />
+             {emptyFields.includes("phoneNumber") && (
+                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your phone Number</p>
+              )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -113,6 +145,9 @@ export function GlobalSender({ setData }: GlobalSenderType) {
               className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
               placeholder="Region"
             />
+             {emptyFields.includes("region") && (
+                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your Region</p>
+              )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -126,6 +161,9 @@ export function GlobalSender({ setData }: GlobalSenderType) {
               className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
               placeholder="Country"
             />
+             {emptyFields.includes("country") && (
+                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your country</p>
+              )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -139,6 +177,9 @@ export function GlobalSender({ setData }: GlobalSenderType) {
               className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
               placeholder="Address"
             />
+             {emptyFields.includes("address") && (
+                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your address</p>
+              )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -152,6 +193,9 @@ export function GlobalSender({ setData }: GlobalSenderType) {
               className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
               placeholder="Postal Code"
             />
+             {emptyFields.includes("postalCode") && (
+                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your post code</p>
+              )}
           </div>
         </form>
       </div>

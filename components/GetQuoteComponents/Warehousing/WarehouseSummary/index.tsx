@@ -115,7 +115,7 @@ export function WarehouseSummary({
                 Continue
               </button>
               <button
-                onClick={handleSubmit}
+                onClick={()=>{setGlotrail(4)}}
                 className="bg-[#0A089A] py-[16px] md:py-[20px] px-[13px] md:px-[22px] rounded-[10px] "
               >
                 Contact Us

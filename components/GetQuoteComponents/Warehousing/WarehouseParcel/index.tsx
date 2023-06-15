@@ -150,7 +150,7 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
                   className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
                 />
                 <p className="absolute font-[600] text-[18px] right-[5%] ">
-                  lbs
+                  kg
                 </p>
               </div>
             </div>
