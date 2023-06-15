@@ -3,13 +3,13 @@ import Image from 'next/image';
 
 export function About() {
   return (
-    <div className="text-[#1E1E1E] w-[80%] lg:w-[100%] m-auto ">
+    <div className="text-[#1E1E1E] w-[80%] lg:w-[100%] m-auto lg:mb-[50px] ">
       <section className="mb-[50px] lg:w-[90%] lg:m-auto ">
         <h2 className="text-[#AC0108] text-[32px] font-[600] w-fit m-auto mb-[20px] lg:text-[55px]  ">
           About Us
         </h2>
-        <div className="lg:flex lg:items-center lg:flex-row-reverse lg:gap-[71px] ">
-          <div className=" h-[357px] m-auto mb-[30px] lg:w-[40%] lg:h-[643px] ">
+        <div className="lg:flex lg:items-center lg:flex-row-reverse lg:gap-x-[20px] ">
+          <div className="mb-[15px] lg:w-[100%]  ">
             <Image 
               src="/img/about-us.svg" 
               alt='About Us' 
@@ -18,15 +18,14 @@ export function About() {
               layout='responsive' 
             />
           </div>
-          <div className="md:w-[90%] m-auto lg:w-[50%] ">
-            <h2 className="text-[#AC0108] text-[20px] font-semibold md:text-[24px] ">
-              ABOUT
-            </h2>
-            <h2 className="font-[700] text-[28px] lg:text-[36px]  ">
+          
+          <div className="lg:w-[100%] ">
+            <h2 className="text-[#AC0108] font-[700] text-[20px] mb-[8px] ">ABOUT</h2>
+            <h2 className=" font-[700] text-[25px] mb-[8px] ">
               OAK & D is your trusted partner for efficient, reliable, and
               cost-effecient shipping solutions.
             </h2>
-            <p className="text-[16px] font-[500] md:text-[18px] text-justify mt-[25px]">
+            <p className=" text-[16px] font-[400] ">
               OAK & D is a reputable cargo and freight company that specializes
               in shipping goods from Nigeria to Canada. We pride ourselves on
               providing top-notch services that are reliable, efficient, and
@@ -39,10 +38,12 @@ export function About() {
           </div>
         </div>
       </section>
-      <section className="mb-[50px] ">
+
+      {/* <section className="mb-[50px] ">
         <h2 className="text-[#AC0108] text-[32px] font-[600] w-fit m-auto mb-[40px] lg:mb-[76px] lg:text-[55px]  ">
           Our Services
         </h2>
+
         <div className="flex flex-col gap-[20px] mb-[40px] lg:relative lg:h-[963px] lg:w-[100%] lg:mb-[0px] ">
           <div className=" h-[357px] lg:h-[100%] ">
             <Image 
@@ -52,12 +53,8 @@ export function About() {
               height={300} 
               layout='responsive' 
             />
-            {/* <img
-              src="/img/ocean-freight.svg"
-              alt="Our Services"
-              className="w-[100%] h-[100%] "
-            /> */}
           </div>
+
           <div className="lg:absolute lg:top-[0] lg:w-[50%] lg:bg-[#FEFEFE]/[.68] lg:py-[190px] lg:px-[61px]  ">
             <h2 className=" text-[28px] font-semibold lg:text-[32px] lg:mb-[30px]  ">
               Ocean Freight Services:
@@ -187,7 +184,7 @@ export function About() {
             </p>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

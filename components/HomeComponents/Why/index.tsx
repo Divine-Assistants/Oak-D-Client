@@ -2,17 +2,17 @@ import React from "react";
 
 export function Why() {
   return (
-    <div className="lg:w-[90%]  lg:m-auto lg:pb-[175px] ">
-      <h2 className="text-[#AC0108] text-[32px] lg:text-[55px] font-[600] w-fit m-auto mb-[40px] hidden lg:block  ">
+    <div className="lg:w-[90%]  lg:m-auto lg:mb-[80px] ">
+      <h2 className="text-[#AC0108] text-[32px] lg:text-[55px] font-[600] w-fit m-auto mb-[20px] hidden lg:block  ">
         Why Choose Us{" "}
       </h2>
 
-      <div className="pt-[152px] pb-[200px] lg:pb-[0px] lg:pt-[100px] lg:flex lg:items-center lg:gap-[102px] ">
-        <h2 className="text-[#AC0108] text-[32px] font-[600] w-fit m-auto mb-[40px] block lg:hidden  ">
+      <div className="pt-[152px] lg:pb-[0px] lg:pt-[100px] lg:flex lg:items-center lg:gap-[50px] ">
+        <h2 className="text-[#AC0108] text-[32px] font-[600] w-fit m-auto mb-[20px] block lg:hidden  ">
           Why Choose Us{" "}
         </h2>
-        <div className="w-[80%] lg:w-[25%] m-auto bg-[#F5F5F5] rounded-[10px] text-[#1E1E1E] py-[51px] lg:py-[59px]  mb-[20px]  ">
-          <div className="w-[80%] m-auto flex flex-col gap-[20px]">
+        <div className="w-[80%] lg:w-[30%] m-auto bg-[#F5F5F5] rounded-[10px] text-[#1E1E1E] py-[20px] lg:py-[30px] mb-[20px] lg:mb-0 lg:h-[450px]">
+          <div className="w-[80%] m-auto flex flex-col gap-[10px]">
             <div>
               <img src="/img/safe-packaging.svg" alt="Safe Packaging" />
             </div>
@@ -27,8 +27,9 @@ export function Why() {
             </p>
           </div>
         </div>
-        <div className="w-[80%] lg:w-[25%] m-auto bg-[#F5F5F5] rounded-[10px] text-[#1E1E1E] py-[51px] lg:py-[69px] mb-[20px]  ">
-          <div className="w-[80%] m-auto flex flex-col gap-[20px]">
+
+        <div className="w-[80%] lg:w-[30%] m-auto bg-[#F5F5F5] rounded-[10px] text-[#1E1E1E] py-[20px] lg:py-[30px] mb-[20px] lg:mb-0 lg:h-[450px]  ">
+          <div className="w-[80%] m-auto flex flex-col gap-[10px]">
             <div>
               <img src="/img/live-tracking.svg" alt="Live Tracking" />
             </div>
@@ -42,8 +43,9 @@ export function Why() {
             </p>
           </div>
         </div>
-        <div className="w-[80%] lg:w-[25%] m-auto bg-[#F5F5F5] rounded-[10px] text-[#1E1E1E] py-[51px] lg:py-[79px]  ">
-          <div className="w-[80%] m-auto flex flex-col gap-[20px]">
+
+        <div className="w-[80%] lg:w-[30%] m-auto bg-[#F5F5F5] rounded-[10px] text-[#1E1E1E] py-[20px] lg:py-[30px] lg:h-[450px]  ">
+          <div className="w-[80%] m-auto flex flex-col gap-[10px]">
             <div>
               <img
                 src="/img/customer-service.svg"

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export function Land() {
   return (
-    <div className="100vh 100vw relative lg:mb-[70px]">
+    <div className="100vh 100vw relative lg:mb-[100px]">
       <div>
         <div className="block md:hidden">
           <Image
@@ -24,11 +24,11 @@ export function Land() {
         </div>
       </div>
       <div className="absolute top-[0px] text-[#FEFEFE] ">
-        <div className="w-[95%] text-center m-auto mt-[92px] md:mt-[19px] font-[500] mb-[47px] md:mb-[0px] lg:mb-[50px] lg:w-[80%] lg:mt-[79px] lg:m-auto ">
-          <h2 className="font-[700] text-[30px] mb-[20px] md:mb-[5px] md:w-[50%] lg:w-[60%] lg:text-[50px] md:text-left  ">
+        <div className="w-[95%] text-center m-auto mt-[92px] md:mt-[19px] font-[500] mb-[47px] md:mb-[0px] lg:mb-[50px] lg:w-[80%] lg:mt-[50px] lg:m-auto ">
+          <h2 className="font-[700] text-[30px] mb-[20px] md:w-[50%] lg:w-[70%] lg:text-[50px] leading-[50px] md:text-left  ">
             Fast and Reliable Cargo & Freight Shipping
           </h2>
-          <p className="mb-[47px] md:mb-[5px] lg:mb-[50px] text-[16px] md:w-[50%] lg:text-[18px] lg:w-[50%] md:text-left ">
+          <p className="mb-[20px] md:mb-[5px] lg:mb-[20px] text-[16px] md:w-[50%] lg:text-[18px] lg:w-[50%] md:text-left ">
             Choose OAK & D for streamlined freight services and enjoy
             hassle-free shipping that meets your unique business requirements.
           </p>
@@ -37,15 +37,15 @@ export function Land() {
               type="text"
               name=""
               id=""
-              className="py-[15px] px-[37px] w-[100%] text-[24px] text-center outline-none bg-[#FEFEFE] border-2 border-[#E3E3E3] text-[#1E1E1E] placeholder:text-[#989898] placeholder:text-[24px] rounded-[10px] mb-[25px] md:py-[15px] md:text-[24px] md:pl-[34px] md:pr-[10px] md:text-left md:placeholder:text-[18px] lg:py-[30px]   "
+              className="py-[15px] px-[37px] w-[100%] text-[24px] text-center outline-none bg-[#FEFEFE] border-2 border-[#E3E3E3] text-[#1E1E1E] placeholder:text-[#989898] placeholder:text-[24px] rounded-[10px] mb-[25px] md:py-[15px] md:text-[24px] md:pl-[34px] md:pr-[10px] md:text-left md:placeholder:text-[18px]  "
               placeholder="Input Tracking number"
             />
-            <button className="bg-[#AC0108] text-[24px] rounded-[10px] py-[10px] px-[23px] hover:bg-[#0A089A]  md:absolute md:top-[5px] md:right-[13px] md:translate-x-[2px] md:text-[18px] lg:top-[10%] lg:py-[20px] lg:px-[32px]  ">
+            <button className="bg-[#AC0108] text-[24px] rounded-[10px] py-[10px] px-[23px] hover:bg-[#0A089A]  md:absolute md:top-[5px] md:right-[13px] md:translate-x-[2px] md:text-[18px] lg:top-[10%] lg:py-[15px] lg:px-[32px]  ">
               Track Now
             </button>
           </div>
         </div>
-        <div className="mb-[59px] md:mb-[0px] ">
+        <div className="mb-[30px] md:mb-[0px] ">
           <div className="flex items-center m-auto w-[80%] md:w-[50%] md:ml-[10%]  ">
             <p className="text-[48px] font-[600] mr-[20px] lg:text-[64px]    ">
               10+
