@@ -5,7 +5,7 @@ import Image from "next/image";
 import { PageLayout } from "@/components/Layouts/PageLayout";
 
 interface SingleBlogProps {
-  myBlog: BlogValue;
+  myBlog: BlogValue | undefined;
 }
 
 export function SingleBlog({ myBlog }: SingleBlogProps) {
