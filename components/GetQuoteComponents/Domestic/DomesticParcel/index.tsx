@@ -125,8 +125,14 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
   }, [parcelData.packageWeight]);
 
   const handleFormSubmit = () => {
-    const requiredFields = ["packageName", "packageWeight", "departure", "arrival", "packageDescription"];
-            // @ts-ignore
+    const requiredFields = [
+      "packageName",
+      "packageWeight",
+      "departure",
+      "arrival",
+      "packageDescription",
+    ];
+    // @ts-ignore
     const emptyFields = requiredFields.filter((field) => !parcelData[field]);
 
     if (emptyFields.length > 0) {
@@ -142,8 +148,9 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
       window.scrollTo(0, 0);
     }
   };
-                          // @ts-ignore
-  const isFieldEmpty = (fieldName: string) => showEmptyFields && !parcelData[fieldName];
+  // @ts-ignore
+  const isFieldEmpty = (fieldName: string) =>
+    showEmptyFields && !parcelData[fieldName];
 
   return (
     <section style={{ display: trail === 2 ? "block" : "none" }}>
@@ -283,14 +290,24 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                 } h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]`}
               >
                 <option value="">--Select a departure location--</option>
-                <option value="Port-Harcourt, Nigeria">
-                  North-York, Canada
+                <option value="Alberta, Canada">Alberta, Canada</option>
+                <option value="British Colombia">British Colombia</option>
+                <option value="Manitoba, Canada">Manitoba, Canada</option>
+                <option value="New Brunswick">New Brunswick</option>
+                <option value="New foundland Island">
+                  New foundland Island
                 </option>
-                <option value="Oshawa, Canada">Oshawa, Canada</option>
-                <option value="Brampton, Canada">Brampton, Canada</option>
-                <option value="Ajax, Canada">Ajax, Canada</option>
-                <option value="Ikeja, Nigeria">Ikeja, Nigeria</option>
-                <option value="Lekki, Nigeria">Lekki, Nigeria</option>
+                <option value="Nova-Scotia , Canada">Nova Scotia</option>
+                <option value="Nunavut">Nunavut</option>
+                <option value="Ontario">Ontario</option>
+                <option value="Prince Edward Island ">
+                  Prince Edward Island
+                </option>
+                <option value="Quebec">Quebec</option>
+                <option value="Saskatchewan, Canada">
+                  Saskatchewan, Canada
+                </option>
+                <option value="Yukon">Yukon</option>
               </select>
             </div>
 
@@ -309,14 +326,24 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                 } h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]`}
               >
                 <option value="">--Select an Arrival location--</option>
-                <option value="Port-Harcourt, Nigeria">
-                  North-York, Canada
+                <option value="Alberta, Canada">Alberta, Canada</option>
+                <option value="British Colombia">British Colombia</option>
+                <option value="Manitoba, Canada">Manitoba, Canada</option>
+                <option value="New Brunswick">New Brunswick</option>
+                <option value="New foundland Island">
+                  New foundland Island
                 </option>
-                <option value="Oshawa, Canada">Oshawa, Canada</option>
-                <option value="Brampton, Canada">Brampton, Canada</option>
-                <option value="Ajax, Canada">Ajax, Canada</option>
-                <option value="Ikeja, Nigeria">Ikeja, Nigeria</option>
-                <option value="Lekki, Nigeria">Lekki, Nigeria</option>
+                <option value="Nova-Scotia , Canada">Nova Scotia</option>
+                <option value="Nunavut">Nunavut</option>
+                <option value="Ontario">Ontario</option>
+                <option value="Prince Edward Island ">
+                  Prince Edward Island
+                </option>
+                <option value="Quebec">Quebec</option>
+                <option value="Saskatchewan, Canada">
+                  Saskatchewan, Canada
+                </option>
+                <option value="Yukon">Yukon</option>
               </select>
             </div>
 
