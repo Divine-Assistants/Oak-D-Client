@@ -56,8 +56,8 @@ export function DomesticReciever({ setData }: DomesticReceiverType) {
   }, [receiverData]);
 
   return (
-    <div style={{ display: trail !== 1 ? "none" : "initial" }}>
-      <div className="w-[90%] m-auto lg:flex ">
+    <div style={{ display: trail !== 1 ? "none" : "initial" }} >
+      <div className="w-[90%] m-auto lg:flex mt-[150px] ">
         <div className="mb-[40px] lg:w-[40%]">
           <p className=" text-[40px] font-[600] ">
             Please enter the{" "}

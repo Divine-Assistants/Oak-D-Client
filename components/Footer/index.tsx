@@ -16,7 +16,7 @@ export function Footer() {
                 <p className='text-[#1E1E1E] text-[16px] lg:text-[18px] '>OAK & D is a reputable cargo and freight company that specializes in shipping goods from Nigeria to Canada.</p>
                 <div className='flex gap-x-[15px] text-[25px] lg:text-[30px] '>
                     <Link href={'https://www.instagram.com/oakanddcanada/'}><FaInstagram/></Link>
-                    <FaTwitter/>
+                    <Link href={'https://www.facebook.com/profile.php?id=100082825947481&mibextid=ZbWKwL'}><FaTwitter/></Link>
                     <FaFacebook/>
                     <FaLinkedin/>
                 </div>

@@ -78,7 +78,9 @@ export function Checkout({ data, registerPackage }: CheckoutType) {
             or
           </p>
         </div>
-        <div className="text-[18px] lg:text-[24px]">
+
+
+        {/* <div className="text-[18px] lg:text-[24px]">
           <div className="font-[600] text-center mb-[28px] ">Pay with card</div>
           <div className="font-[500] ">
             <div className="mb-[20px] flex flex-col gap-[10px] ">
@@ -149,7 +151,9 @@ export function Checkout({ data, registerPackage }: CheckoutType) {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
+
+
       </div>
       <div
         className="bg-[#1E1E1E]/[.4] h-[120%] md:h-[150%] w-[100vw] z-10 absolute top-0 bottom-0 pb-[100px] "
