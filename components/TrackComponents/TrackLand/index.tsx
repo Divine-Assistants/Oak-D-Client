@@ -20,6 +20,7 @@ export function TrackLand() {
   const { track, setTrack, trackPage, setTrackPage } = useContext(TrackContext);
 
   function handleClick() {
+    e.prevent.default
     setTrackPage(1);
   }
 
@@ -50,7 +51,7 @@ export function TrackLand() {
             To track your item, input the tracking number in the field provided
           </p>
         </div>
-        <div className="md:relative md:w-[627px] w-fit grid place-items-center lg:mr-[100px]  ">
+        <form className="md:relative md:w-[627px] w-fit grid place-items-center lg:mr-[100px]  ">
           <input
             type="text"
             name=""
@@ -68,7 +69,7 @@ export function TrackLand() {
           >
             Track Now
           </button>
-        </div>
+        </form>
       </div>
       <Footer />
     </main>
