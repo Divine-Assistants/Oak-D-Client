@@ -211,14 +211,14 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                 className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
               >
                 <option value="">--Select a departure location--</option>
+                <option value="Ajax, Canada">Ajax, Canada</option>
+                <option value="Brampton, Canada">Brampton, Canada</option>
+                <option value="Lagos, Nigeria">Lagos, Nigeria</option>
                 <option value="Port-Harcourt, Nigeria">
                   North-York, Canada
                 </option>
+                <option value="Ontario, Canada">Ontario, Canada</option>
                 <option value="Oshawa, Canada">Oshawa, Canada</option>
-                <option value="Brampton, Canada">Brampton, Canada</option>
-                <option value="Ajax, Canada">Ajax, Canada</option>
-                <option value="Ikeja, Nigeria">Ikeja, Nigeria</option>
-                <option value="Lekki, Nigeria">Lekki, Nigeria</option>
               </select>
             </div>
 
@@ -233,14 +233,14 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                 className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
               >
                 <option value="">--Select an Arrival location--</option>
+                <option value="Ajax, Canada">Ajax, Canada</option>
+                <option value="Brampton, Canada">Brampton, Canada</option>
+                <option value="Lagos, Nigeria">Lagos, Nigeria</option>
                 <option value="Port-Harcourt, Nigeria">
                   North-York, Canada
                 </option>
+                <option value="Ontario, Canada">Ontario, Canada</option>
                 <option value="Oshawa, Canada">Oshawa, Canada</option>
-                <option value="Brampton, Canada">Brampton, Canada</option>
-                <option value="Ajax, Canada">Ajax, Canada</option>
-                <option value="Ikeja, Nigeria">Ikeja, Nigeria</option>
-                <option value="Lekki, Nigeria">Lekki, Nigeria</option>
               </select>
             </div>
 

@@ -5,12 +5,14 @@ import { NavContext } from "@/context/UserDashboardLayout";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { userData } from "@/pages/get-started";
+import { getCookie, setCookie } from "cookies-next";
 
 export function SideNavbar() {
   const { showNav, setShowNav } = useContext(LayoutContext);
   const { activeNav, setActiveNav } = useContext(NavContext);
   const router = useRouter();
-
+  const token = getCookie("token");
+  console.log(token);
   useEffect(() => {
     // set the active navbar state based on the current page URL
     const currentPath = window.location.pathname;
@@ -28,6 +30,11 @@ export function SideNavbar() {
       setActiveNav(5);
     }
   }, []);
+
+  const logoutUser = () => {
+    setCookie("token", "");
+    router.push("/login");
+  };
 
   return (
     <div
@@ -258,7 +265,14 @@ export function SideNavbar() {
           height={25}
         />
 
-        <p className="text-[18px] text-[#AC0108] font-[600] ">Log Out</p>
+        <p
+          className="text-[18px] text-[#AC0108] font-[600]"
+          onClick={() => {
+            logoutUser();
+          }}
+        >
+          Log Out
+        </p>
       </div>
     </div>
   );
