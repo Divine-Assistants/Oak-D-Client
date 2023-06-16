@@ -113,7 +113,7 @@ export function TrackLand() {
             )    
             }
           
-                            <div className="w-[40%] bg-[#FEFEFE] rounded-[5px] py-[15px] text-center mt-[20px] ml-[30%] font-semibold text-[14px] " style={{display: exist === 'Unsuccessful'? 'block' : 'none' }}>Parcel dosen't exist</div>
+                            <div className="w-[40%] bg-[#FEFEFE] rounded-[5px] py-[15px] text-center mt-[20px] ml-[30%] font-semibold text-[14px] " style={{display: exist === 'Unsuccessful'? 'block' : 'none' }}>Parcel dosen&apos;post exist</div>
           
         </form>
       </div>
