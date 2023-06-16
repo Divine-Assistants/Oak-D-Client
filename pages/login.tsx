@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { loginUser } from "@/api/api";
 import { setCookie } from "cookies-next";
 import { Spinner } from "@chakra-ui/react";
-import {FaEye, FaEyeSlash} from 'react-icons/fa'
+import {FaEye, FaEyeSlash} from 'react-icons/fa';
 // import GoogleLogin from "react-google-login";
 
 export type LoginDataType = {
@@ -36,7 +36,6 @@ const Login = () => {
   // Displaying Password
   const [showPassword, setShowPassword] = useState(false);
   const [togglePassword, setTogglePassword] = useState(true);
-  const [clickedDiv, setClickedDiv] = useState(false);
 
   const handleLoginChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -136,7 +135,7 @@ const Login = () => {
                 className="rounded-[8px] border-[#D9D9D9] border-[2px] px-[20px] py-[10px] focus:outline-[#0A089A] md:h-[60px]"
               />
             </div>
-            
+
             <div className="flex flex-col mb-[10px]">
               <label
                 htmlFor="password"
@@ -146,8 +145,13 @@ const Login = () => {
               </label>
               <div className=" flex items-center w-full md:h-[60px] relative">
                 <input 
+                  id="password"
                   type={showPassword ? `text` : `password`}
+                  name="password"
+                  value={loginData.password}
+                  onChange={handleLoginChange}
                   placeholder="Enter Password"
+                  required
                   className="abosolute pl-[20px] py-[10px] top-0 left-0 w-[100%] h-[100%] border-[#D9D9D9] border-[2px] focus:outline-[#0A089A] rounded-[8px] " 
                 />
 
@@ -169,6 +173,18 @@ const Login = () => {
 
               <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">{passwordLength}</p>
               </div>
+
+
+              {/* <input
+                id="password"
+                type="password"
+                name="password"
+                value={loginData.password}
+                onChange={handleLoginChange}
+                placeholder="Enter Password"
+                required
+                className="rounded-[8px] text-[16px] border-[#D9D9D9] border-[2px] px-[20px] py-[10px] focus:outline-[#0A089A] md:h-[60px]"
+              /> */}
             </div>
 
 
