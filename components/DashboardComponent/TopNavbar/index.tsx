@@ -79,12 +79,12 @@ export function TopNavbar() {
         <div className="hidden lg:block mr-auto ">
           <h1 className="text-[28px] font-[600]">{navTitle}</h1>
         </div>
-
+       
         <div
           className={
             showSearchBar
               ? `relative w-[100%] cursor:pointer`
-              : `hidden lg:block lg:w-[40%] lg:flex lg:items-center lg:relative`
+              : `hidden lg:block lg:w-[40%] lg:flex lg:items-center lg:relative lg:mr-[20px]`
           }
         >
           <img
@@ -112,7 +112,7 @@ export function TopNavbar() {
           className={
             showSearchBar
               ? `hidden`
-              : `bg-[#F3F3F3] p-[10px] rounded-[10px] cursor-pointer lg:hidden`
+              : `bg-[#F3F3F3] p-[10px] mr-[10px] rounded-[10px] cursor-pointer lg:hidden`
           }
         >
           <img
@@ -122,7 +122,7 @@ export function TopNavbar() {
           />
         </div>
 
-        <div
+        {/* <div
           onClick={handleNotification}
           style={{ backgroundColor: showNotification ? "#0A089A" : "#F3F3F3" }}
           className={
@@ -140,7 +140,7 @@ export function TopNavbar() {
             alt="Notification Icon"
             className="h-[20px] md:h-[30px] "
           />
-        </div>
+        </div> */}
 
         <div
           className={
@@ -149,10 +149,10 @@ export function TopNavbar() {
               : `block lg:flex lg:items-center lg:gap-x-[10px] `
           }
         >
-          {/* <Avatar
-            name={`${user?.firstName} ${user?.lastName}`}
-            className="text-[18px] text-[#0A089A] md:text-[24px] w-[50px] md:w-[70px] h-[50px] md:h-[70px] font-[600] bg-[#F3F3F3]"
-          /> */}
+          <div className="flex items-center justify-center h-[50px] w-[50px] md:h-[70px] md:w-[70px] rounded-[50%] p-[10px] font-[700] text-[18px] md:text-[24px] bg-[#F3F3F3] text-[#0A089A] ">
+            <p>{`${user?.firstName.charAt(0).toUpperCase()}${user?.lastName.charAt(0).toUpperCase()}`}</p>
+          </div>
+
           <div className="hidden lg:block text-[#1E1E1E] ">
             <p className="text-[16px] font-[600] ">{`${user?.firstName} ${user?.lastName}`}</p>
             <p className="text-[13px] text-[#9C9C9C] font-[500] ">

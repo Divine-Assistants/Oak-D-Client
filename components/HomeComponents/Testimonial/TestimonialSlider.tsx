@@ -73,7 +73,7 @@ export const TestimonialSlider: React.FC<TestimonialSliderProps> = ({
               <p className="text-[16px] font-[500] ">{testimonial.text}</p>
               <div className="flex items-center justify-between ">
                 <p className="text-[20px] font-semibold ">{testimonial.name}</p>
-                <Avatar name={testimonial.name} src={testimonial.image} />
+                {/* <Avatar name={testimonial.name} src={testimonial.image} /> */}
               </div>
             </div>
           </div>

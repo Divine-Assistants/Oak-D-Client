@@ -148,5 +148,22 @@ export async function getUserPackage(packages: string[]) {
     }
   );
 
+<<<<<<< HEAD
   return response.data;
 }
+=======
+    return response.data;
+}
+
+
+
+export type TrackerDataType = {
+    trackingID: string
+}
+export async function trackParcel(body: TrackerDataType){
+    const response = await axios.post('https://oakandd-api.onrender.com/package/track-parcel', body);
+    console.log(response.data)
+    return response.data;
+}
+
+>>>>>>> b6eae9babace3e55b40323ec91d46f468229427c

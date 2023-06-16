@@ -2,7 +2,6 @@ import Link from "next/link";
 import { useState, useContext } from "react";
 import { useRouter } from "next/router";
 import { loginUser } from "@/api/api";
-import { UserContext } from "@/context/UserInformation";
 import { setCookie } from "cookies-next";
 import { Spinner } from "@chakra-ui/react";
 // import GoogleLogin from "react-google-login";
@@ -30,6 +29,8 @@ const Login = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const [error, setError] = useState('');
+  const [passwordLength, setPasswordLength] = useState('')
 
   const handleLoginChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -41,17 +42,27 @@ const Login = () => {
     });
   };
 
-
   // SUBMIT FUNCTION
   const handleLoginSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
       if (loginData.email !== "" && loginData.password !== "") {
         setIsLoading(true);
-        const { status, data } = await loginUser(loginData);
-        console.log(data);
-        const userToken = data.token;
-        if (status === "Success") {
+        if(loginData.password.length < 8){
+          setPasswordLength('Password must not be less than 8 characters');
+          setIsLoading(false);
+        }else {
+          setPasswordLength('');
+        }
+        const response = await loginUser(loginData);
+        console.log(response);
+
+        if(response.status === "Unsuccessful") {
+          setError(response.message)
+          setIsLoading(false);
+        }
+        if (response.status === "Success") {
+          const userToken = response.data.token;
           setLoginData({
             email: "",
             password: "",
@@ -96,8 +107,8 @@ const Login = () => {
             onSubmit={handleLoginSubmit}
             className="mx-auto w-[100%] md:w-[70%] lg:px-[50px] lg:mx-0 lg:py-[100px] lg:w-[100%] xl:px-[150px]"
           >
-            <div className="flex flex-col justify-center text-[#1E1E1E] mb-[30px] ">
-              <h1 className="text-[32px] font-[600] text-center mb-[5px]">
+            <div className="flex flex-col justify-center text-[#1E1E1E] mb-[20px] ">
+              <h1 className="text-[32px] font-[600] text-center mb-[8px]">
                 Welcome Back
               </h1>
             </div>
@@ -136,6 +147,7 @@ const Login = () => {
                 required
                 className="rounded-[8px] text-[16px] border-[#D9D9D9] border-[2px] px-[20px] py-[10px] focus:outline-[#0A089A] md:h-[60px]"
               />
+              <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">{passwordLength}</p>
             </div>
 
 
@@ -154,16 +166,18 @@ const Login = () => {
               </div>
             </div>
 
+            <h2 className="text-center text-[#AC0108] text-[16px] md:text-[18px] font-[700] mt-[20px] ">{error}</h2>
+
             {isLoading ? 
               <button
                 type="submit"
-                className="p-[20px] w-[100%] text-[#FAFAFA] mt-[10px] lg:mt-[50px] mb-[15px] text-center bg-[#0A089A] rounded-[8px] flex items-center justify-center"
+                className="p-[20px] w-[100%] text-[#FAFAFA] mt-[10px] lg:mt-[20px] mb-[15px] text-center bg-[#0A089A] rounded-[8px] flex items-center justify-center"
               >
                 <Spinner className="h-[30px] w-[30px]" />
               </button> : 
               <button
               type="submit"
-              className="p-[20px] w-[100%] text-[#FAFAFA] mt-[10px] lg:mt-[50px] mb-[15px] text-center bg-[#0A089A] rounded-[8px] font-[500]"
+              className="p-[20px] w-[100%] text-[#FAFAFA] mt-[10px] lg:mt-[30px] mb-[15px] text-center bg-[#0A089A] rounded-[8px] font-[500]"
             >
               Log In
             </button>

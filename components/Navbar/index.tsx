@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { Box, Button, CloseButton, Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, Flex, IconButton, Menu, MenuButton, MenuItem, MenuList, Spacer, useDisclosure} from '@chakra-ui/react'
 import { HamburgerIcon, ChevronDownIcon } from '@chakra-ui/icons'
 import Link from 'next/link'
@@ -11,12 +11,31 @@ const [nav, setNav] = useState(0)
     const handleMouseLeave = () => {setNav(0)}
 const { isOpen, onOpen, onClose } = useDisclosure();
 const router = useRouter();
+
+      const [isFixed, setIsFixed] = useState(false);
+
+      useEffect(() => {
+        let prevScrollPos = window.pageYOffset;
+    
+        const handleScroll = () => {
+          const currentScrollPos = window.pageYOffset;
+          setIsFixed(currentScrollPos <= prevScrollPos); // Set isFixed to true when scrolling up
+    
+          prevScrollPos = currentScrollPos;
+        };
+    
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, []);
+
   return (
     <header >
             <div className=''>
-              <Flex className='pt-[27px] pb-[12px] lg:pt-[12px] lg:pb-[10px] '>
+              <Flex className={`${isFixed ? 'fixed top-0 left-0 w-full bg-white shadow-lg' : '' }pt-[27px] pb-[12px] lg:pt-[12px] lg:pb-[0px] z-[100]`}>
               <Box className='w-[82px] h-[79px] cursor-pointer lg:ml-[50px] '>
-                <img src='/img/nav-logo.svg' alt='LOGO' className='w-[100%] h-[100%] ' />
+                <img src='/img/nav-logo.svg' alt='LOGO' className='w-[80%] h-[80%] ' />
               </Box>
               <Spacer/>
               <Box className='w-[64px] h-[64px] flex items-center justify-center lg:hidden  '>
@@ -59,7 +78,7 @@ const router = useRouter();
                                       </div>
 
                       </div>
-                      <button className='ml-[21px] py-[14px] px-[32px] bg-[#AC0108] text-[#FEFEFE]  rounded-[5px]  hover:bg-[#0A089A] '><Link href={'/get-started'}>Get Started</Link> </button>
+                      <button className='ml-[21px] py-[10px] px-[25px] bg-[#AC0108] text-[#FEFEFE]  rounded-[5px]  hover:bg-[#0A089A] '><Link href={'/get-started'}>Get Started</Link> </button>
                       
                     
                 </div>

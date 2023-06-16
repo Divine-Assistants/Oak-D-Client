@@ -30,26 +30,28 @@ export function WarehouseBreadcrumb() {
 
   return (
     <div className='mb-[15px] hidden md:block '>
-      <Breadcrumb separator={<ChevronRightIcon color='gray.500' />}>
-
-        { warehouseBreadcrumb >= 1 && (
-          <BreadcrumbItem>
-            <BreadcrumbLink onClick={senderInfo} className={showWarehouseSenderInfo ? `cursor-pointer text-[18px] text-[#AC0108] font-[600]` : `cursor-pointer text-[18px] text-[#9C9C9C] font-[600]`}>Generate Quote</BreadcrumbLink>
-          </BreadcrumbItem>
+      <div className="flex gap-x-[10px]">
+        {warehouseBreadcrumb >= 1 && (
+          <div className="cursor-pointer flex gap-x-[5px] items-center text-[18px] font-[600] " onClick={senderInfo}>
+              <p className={showWarehouseSenderInfo ? ` text-[#AC0108]` : ` text-[#9C9C9C]`}>Generate Quote</p>
+              <ChevronRightIcon color='gray.500'  />
+          </div>
         )}
 
-        { warehouseBreadcrumb >= 2 && (
-          <BreadcrumbItem>
-            <BreadcrumbLink onClick={parcelInfo} className={showWarehoueParcelInfo ? `cursor-pointer text-[18px] text-[#AC0108] font-[600]` : `cursor-pointer text-[18px] text-[#9C9C9C] font-[600]`}>Parcel Information</BreadcrumbLink>
-          </BreadcrumbItem>
+        {warehouseBreadcrumb >= 2 && (
+          <div className="cursor-pointer flex gap-x-[5px] items-center text-[18px] font-[600] " onClick={parcelInfo}>
+              <p className={showWarehoueParcelInfo ? ` text-[#AC0108]` : ` text-[#9C9C9C]`}>Parcel Information</p>
+              <ChevronRightIcon color='gray.500' />
+          </div>
         )}
 
-        { warehouseBreadcrumb >= 3 && (
-          <BreadcrumbItem>
-            <BreadcrumbLink onClick={summaryInfo} className={showWarehoueSummary ? `cursor-pointer text-[18px] text-[#AC0108] font-[600]` : `cursor-pointer text-[18px] text-[#9C9C9C] font-[600]`}>Shipping Summary</BreadcrumbLink>
-          </BreadcrumbItem>
+        {warehouseBreadcrumb >= 3 && (
+          <div className="cursor-pointer flex gap-x-[5px] items-center text-[18px] font-[600] " onClick={summaryInfo}>
+              <p className={showWarehoueSummary ? ` text-[#AC0108]` : ` text-[#9C9C9C]`}>Shipping Summary</p>
+          </div>
         )}
-      </Breadcrumb>
+
+      </div>
     </div>
   );
 }
