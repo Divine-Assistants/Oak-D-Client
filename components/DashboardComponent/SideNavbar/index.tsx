@@ -258,7 +258,7 @@ export function SideNavbar() {
           height={25}
         />
 
-        <p className="text-[18px] text-[#AC0108] font-[600] ">Log Out</p>
+        <p className="text-[18px] text-[#AC0108] font-[600]">Log Out</p>
       </div>
     </div>
   );
