@@ -48,7 +48,7 @@ export function Land() {
 }
 
   return (
-    <div className="100vh 100vw relative lg:mb-[100px]">
+    <div className="100vh mt-[40px] 100vw relative lg:mb-[100px]">
       <div>
         <div className="block md:hidden">
           <Image
@@ -67,7 +67,7 @@ export function Land() {
           />
         </div>
       </div>
-      <div className="absolute top-[0px] text-[#FEFEFE] ">
+      <div className="absolute top-[40px] text-[#FEFEFE] ">
         <div className="w-[95%] text-center m-auto mt-[92px] md:mt-[19px] font-[500] mb-[47px] md:mb-[0px] lg:mb-[50px] lg:w-[80%] lg:mt-[50px] lg:m-auto ">
           <h2 className="font-[700] text-[30px] mb-[20px] md:w-[50%] lg:w-[70%] lg:text-[50px] leading-[50px] md:text-left  ">
             Fast and Reliable Cargo & Freight Shipping
@@ -125,7 +125,7 @@ export function Land() {
             </p>
           </div>
         </div>
-        <div className="md:translate-y-[-90px] md:w-fit md:ml-[60%] lg:translate-y-[-250%]  ">
+        <div className="md:translate-y-[-90px] md:w-fit md:ml-[65%] lg:translate-y-[-100%]  ">
           <p className="text-[16px] font-[500] text-center mb-[10px] ">
             Scroll down for more
           </p>

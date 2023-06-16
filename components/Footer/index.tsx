@@ -15,7 +15,7 @@ export function Footer() {
                 </div>
                 <p className='text-[#1E1E1E] text-[16px] lg:text-[18px] '>OAK & D is a reputable cargo and freight company that specializes in shipping goods from Nigeria to Canada.</p>
                 <div className='flex gap-x-[15px] text-[25px] lg:text-[30px] '>
-                    <FaInstagram/>
+                    <Link href={'https://www.instagram.com/oakanddcanada/'}><FaInstagram/></Link>
                     <FaTwitter/>
                     <FaFacebook/>
                     <FaLinkedin/>
@@ -27,12 +27,12 @@ export function Footer() {
                     <div className='flex flex-col gap-y-[8px] w-[250px] lg:w-auto'>
                         <h2 className='text-[20px] lg:text-[25px] font-[700] '>Our Company</h2>
                         <Link href={'/about'}>About Us</Link>
-                        <Link href={''}>Pricing</Link>
+                        {/* <Link href={'/'}>Pricing</Link> */}
                     </div>
                     <div className='flex flex-col gap-y-[8px] w-[250px] lg:w-auto'>
                         <h2 className='text-[20px] lg:text-[25px] font-[700] '>Help</h2>
                         <Link href={'/contact'}>Contact Us</Link>
-                        <Link href={''}>FAQ</Link>
+                        <Link href={'/quote/global'}>FAQ</Link>
                         <Link href={''}>Term of Service</Link>
                     </div>
                 </div>
@@ -40,10 +40,10 @@ export function Footer() {
                 <div className='flex justify-between gap-x-[50px] '>
                     <div className='flex flex-col gap-y-[8px] w-[250px] lg:w-auto'>
                         <h2 className='text-[20px] lg:text-[25px] font-[700] '>Services</h2>
-                        <Link href={''}>Air Shipping</Link>
+                        <Link href={'/quote/global'}>Air Shipping</Link>
                         <Link href={''}>Ocean Shipping</Link>
-                        <Link href={''}>Parcel Delivery</Link>
-                        <Link href={''}>Warehousing & Administration</Link>
+                        <Link href={'/quote/domestic'}>Parcel Delivery</Link>
+                        <Link href={'/quote/warehousing'}>Warehousing & Administration</Link>
                     </div>
 
                     <div className='flex flex-col gap-y-[8px] w-[250px] lg:w-auto'>
