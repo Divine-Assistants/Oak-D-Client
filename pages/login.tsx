@@ -2,7 +2,6 @@ import Link from "next/link";
 import { useState, useContext } from "react";
 import { useRouter } from "next/router";
 import { loginUser } from "@/api/api";
-import { UserContext } from "@/context/UserInformation";
 import { setCookie } from "cookies-next";
 import { Spinner } from "@chakra-ui/react";
 // import GoogleLogin from "react-google-login";

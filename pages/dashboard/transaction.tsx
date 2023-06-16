@@ -14,7 +14,7 @@ function Transaction(){
              <TopNavbar />
              <TransactionNavbar />
         </div>
-        </LayoutContext.Provider>
+        </LayoutContext.Provider> 
         </NavContext.Provider>
     )
 }
