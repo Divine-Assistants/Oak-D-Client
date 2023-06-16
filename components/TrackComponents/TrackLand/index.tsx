@@ -41,7 +41,7 @@ export function TrackLand() {
           className="w-[100%] h-[100%] object-cover hidden lg:block"
         />
       </div>
-      <div className="absolute top-[0px] lg:top-[105px] lg:flex lg:items-center lg:justify-around lg:left-[5%] ">
+      <div className="absolute top-[100px] lg:top-[105px] lg:flex lg:items-center lg:justify-around lg:left-[5%] ">
         <div className="w-[90%] mt-[46px] m-auto bg-[#FEFEFE]/[.68] py-[28px] px-[19px] md:py-[48px] md:px-[39px] mb-[28px] md:mb-[48px] lg:w-[40%] lg:mt-[0px] ">
           <h1 className="font-[600] text-[20px] text-[#AC0108] mb-[10px] ">
             TRACK PARCEL

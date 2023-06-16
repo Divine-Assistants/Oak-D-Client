@@ -19,6 +19,26 @@ export function TransactionTable({ packageInfo }: TransactionTableDataType) {
   // console.log(isPackageClick);
   const invoiceTab = useRef<HTMLAnchorElement>(null);
 
+  function downloadPDF(PDFURL: string) {
+    const pdfUrl = PDFURL;
+
+    fetch(pdfUrl)
+      .then((response) => response.blob())
+      .then((blob) => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "filename.pdf";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      })
+      .catch((error) => {
+        console.log("Error downloading PDF:", error);
+      });
+  }
+
   return (
     <div className="">
       <section className="w-[100%] lg:hidden flex flex-col rounded-[8px] px-[20px] ">
@@ -174,6 +194,7 @@ export function TransactionTable({ packageInfo }: TransactionTableDataType) {
                   </tr>
                 );
               }
+
             })}
           </tbody>
         </table>
