@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 const VerifyCodeModal = ()=> {
-    return (
+    return ( 
         <div className="fixed z-50 inset-0 bg-[rgba(0,0,0,0.7)]">
             <div className="bg-[#FEFEFE] absolute rounded-[10px] w-[90%] sm:w-[50%] lg:w-[30%] top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]  pt-[20px] px-[20px] pb-[30px] font-poppins ">
                 <img src="../img/sign-in-modal-img.svg" alt="Modal Image" className="h-[98px] mx-auto" />
