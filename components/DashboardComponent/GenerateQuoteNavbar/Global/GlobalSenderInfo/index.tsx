@@ -87,14 +87,8 @@ export function GlobalUserSenderInfo({ setData }: SenderInformationProps) {
 
   return (
     <section
-      style={{
-        display:
-          !showWarehouseSenderInfo && !showSenderInfo && globalSenderInfo
-            ? "block"
-            : "none",
-      }}
-      className=" p-[20px]"
-    >
+      style={{display:!showWarehouseSenderInfo && !showSenderInfo && globalSenderInfo ? "block" : "none"}} className=" p-[20px]">
+        
       <GlobalBreadcrumb />
 
       <div className="flex flex-col lg:flex-row lg:gap-x-[20px] ">

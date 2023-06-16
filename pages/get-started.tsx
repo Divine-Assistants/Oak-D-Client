@@ -32,7 +32,9 @@ const GetStarted = () => {
     confirmPassword: "",
   });
   const [isLoading, setIsLoading] = useState(false);
-
+  const [passwordLength, setPasswordLength] = useState('');
+  const [correctPassword, setCorrectPassword] = useState('');
+  const [userExist, setUserExist] = useState('')
   const router = useRouter();
 
   // INPUT CHANGE FUNCTION
@@ -50,11 +52,24 @@ const GetStarted = () => {
     event.preventDefault();
     console.log(inputValues);
     try {
-      if (inputValues.password === inputValues.confirmPassword) {
+      if (inputValues.confirmPassword === inputValues.password) {
+        setCorrectPassword('');
         setIsLoading(true);
-        const { data, status } = await createUser(inputValues);
-        console.log(data);
-        if (status === "Success") {
+
+        if(inputValues.password.length < 8){
+          setPasswordLength('Password must not be less than 8 characters');
+          setIsLoading(false);
+        }else {
+          setPasswordLength('');
+        }
+        const response = await createUser(inputValues);
+        console.log(response.data);
+
+        if(response.status == "Unsuccessful"){
+          setUserExist(response.message);
+          setIsLoading(false);
+        }
+        if(response.status === "Success") {
           setInputValues({
             firstName: "",
             lastName: "",
@@ -64,33 +79,16 @@ const GetStarted = () => {
           });
 
           setIsLoading(false);
-          router.push(`/verify-code?email=${encodeURIComponent(data.email)}`);
+          router.push(`/verify-code?email=${encodeURIComponent(response.data.email)}`);
         }
+      }else {
+        setPasswordLength('');
+        setCorrectPassword('Password and Confirm Password must match');
       }
     } catch (error) {
       console.log(error);
     }
   };
-
-  // if(isLoading){
-  //   return (
-  //     <div
-  //     style={{
-  //       position: 'fixed',
-  //       top: 0,
-  //       left: 0,
-  //       width: '100%',
-  //       height: '100%',
-  //       display: 'flex',
-  //       justifyContent: 'center',
-  //       alignItems: 'center',
-  //       background: 'rgba(0, 0, 0, 0.5)',
-  //       zIndex: 9999,
-  //     }}>
-  //       <Spinner size='xl' />
-  //     </div>
-  //   )
-  // }
 
   return (
     <div className="font-poppins px-[10px] md:px-[0px]">
@@ -199,9 +197,10 @@ const GetStarted = () => {
               className="rounded-[8px] border-[#D9D9D9] border-[2px] text-[16px] md:text-[20px] py-[10px] px-[20px] md:py-[20] focus:outline-[#0A089A] md:h-[60px]"
               required
             />
+            <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">{passwordLength}</p>
           </div>
 
-          <div className="flex flex-col mb-[30px]">
+          <div className="flex flex-col mb-[20px]">
             <label
               htmlFor="confirm-password"
               className="mb-[10px] text-[18px] font-[500]"
@@ -218,7 +217,11 @@ const GetStarted = () => {
               className="rounded-[8px] border-[#D9D9D9] border-[2px] text-[16px] md:text-[20px] py-[10px] px-[20px] md:py-[20] focus:outline-[#0A089A] md:h-[60px]"
               required
             />
+            <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">{correctPassword}</p>
+
           </div>
+
+          <p className="text-[#AC0108] text-center text-[16px] md:text-[20px] font-[600] my-[10px] ">{userExist}</p>
 
           <p className="text-center text-[14px] md:text-[16px] font-[500]">
             By signing up, you agree to our{" "}
