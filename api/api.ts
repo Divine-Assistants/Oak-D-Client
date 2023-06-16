@@ -123,3 +123,15 @@ export async function getUserPackage(packages: string[]){
 
     return response.data;
 }
+
+
+
+export type TrackerDataType = {
+    trackingID: string
+}
+export async function trackParcel(body: TrackerDataType){
+    const response = await axios.post('https://oakandd-api.onrender.com/package/track-parcel', body);
+    console.log(response.data)
+    return response.data;
+}
+
