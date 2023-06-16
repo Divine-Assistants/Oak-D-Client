@@ -124,26 +124,26 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
     });
   }, [parcelData.packageWeight]);
 
-  // const handleFormSubmit = () => {
-  //   const requiredFields = ["packageName", "packageWeight", "departure", "arrival", "packageDescription"];
-  //           // @ts-ignore
-  //   const emptyFields = requiredFields.filter((field) => !parcelData[field]);
+  const handleFormSubmit = () => {
+    const requiredFields = ["packageName", "packageWeight", "departure", "arrival", "packageDescription"];
+            // @ts-ignore
+    const emptyFields = requiredFields.filter((field) => !parcelData[field]);
 
-  //   if (emptyFields.length > 0) {
-  //     setShowEmptyFields(true);
-  //   } else {
-  //     setData((prevData: any) => ({
-  //       ...prevData,
-  //       newPackage: parcelData,
-  //     }));
-  //     setParcelData(initialDomesticParcelInfo);
-  //     setShowEmptyFields(false);
-  //     setTrail(3);
-  //     window.scrollTo(0, 0);
-  //   }
-  // };
-  //                         // @ts-ignore
-  // const isFieldEmpty = (fieldName: string) => showEmptyFields && !parcelData[fieldName];
+    if (emptyFields.length > 0) {
+      setShowEmptyFields(true);
+    } else {
+      setData((prevData: any) => ({
+        ...prevData,
+        newPackage: parcelData,
+      }));
+      setParcelData(initialDomesticParcelInfo);
+      setShowEmptyFields(false);
+      setTrail(3);
+      window.scrollTo(0, 0);
+    }
+  };
+                          // @ts-ignore
+  const isFieldEmpty = (fieldName: string) => showEmptyFields && !parcelData[fieldName];
 
   return (
     <section style={{ display: trail === 2 ? "block" : "none" }}>
