@@ -8,8 +8,7 @@ interface TransactionTableDataType {
 
 export function TransactionTable({ packageInfo }: TransactionTableDataType) {
   const [showDetails, setShowDetails] = useState(false);
-  const [isPackageClick, setIsPackageClick] = useState<string | null>("");;
-    
+  const [isPackageClick, setIsPackageClick] = useState<string | null>("");
 
   const handleShowDetails = (infoID: string) => {
     setShowDetails(!showDetails);
@@ -28,7 +27,7 @@ export function TransactionTable({ packageInfo }: TransactionTableDataType) {
         const url = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.download = "filename.pdf";
+        a.download = `invoice${Math.random()}.pdf`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);

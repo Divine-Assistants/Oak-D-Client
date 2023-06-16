@@ -1,4 +1,3 @@
-import { Avatar } from "@chakra-ui/react";
 import { useState, useContext, useEffect } from "react";
 import {
   LayoutContext,

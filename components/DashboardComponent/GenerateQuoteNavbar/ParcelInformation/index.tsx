@@ -220,14 +220,24 @@ export function ParcelInformation({ setData }: ParcelInformationType) {
                 className="p-[15px] border-[2px] border-[#CBCBCB] rounded-[8px] bg-[#F5F5F5] focus:outline-[#0A089A] w-[100%] "
               >
                 <option value="">--Select a departure location--</option>
-                <option value="Port-Harcourt, Nigeria">
-                  North-York, Canada
+                <option value="Alberta, Canada">Alberta, Canada</option>
+                <option value="British Colombia">British Colombia</option>
+                <option value="Manitoba, Canada">Manitoba, Canada</option>
+                <option value="New Brunswick">New Brunswick</option>
+                <option value="New foundland Island">
+                  New foundland Island
                 </option>
-                <option value="Oshawa, Canada">Oshawa, Canada</option>
-                <option value="Brampton, Canada">Brampton, Canada</option>
-                <option value="Ajax, Canada">Ajax, Canada</option>
-                <option value="Ikeja, Nigeria">Ikeja, Nigeria</option>
-                <option value="Lekki, Nigeria">Lekki, Nigeria</option>
+                <option value="Nova-Scotia , Canada">Nova Scotia</option>
+                <option value="Nunavut">Nunavut</option>
+                <option value="Ontario">Ontario</option>
+                <option value="Prince Edward Island ">
+                  Prince Edward Island
+                </option>
+                <option value="Quebec">Quebec</option>
+                <option value="Saskatchewan, Canada">
+                  Saskatchewan, Canada
+                </option>
+                <option value="Yukon">Yukon</option>
               </select>
             </div>
 
@@ -243,14 +253,24 @@ export function ParcelInformation({ setData }: ParcelInformationType) {
                 className="p-[15px] border-[2px] border-[#CBCBCB] rounded-[8px] bg-[#F5F5F5] focus:outline-[#0A089A] w-[100%] "
               >
                 <option value="">--Select an arrival location--</option>
-                <option value="Port-Harcourt, Nigeria">
-                  North-York, Canada
+                <option value="Alberta, Canada">Alberta, Canada</option>
+                <option value="British Colombia">British Colombia</option>
+                <option value="Manitoba, Canada">Manitoba, Canada</option>
+                <option value="New Brunswick">New Brunswick</option>
+                <option value="New foundland Island">
+                  New foundland Island
                 </option>
-                <option value="Oshawa, Canada">Oshawa, Canada</option>
-                <option value="Brampton, Canada">Brampton, Canada</option>
-                <option value="Ajax, Canada">Ajax, Canada</option>
-                <option value="Ikeja, Nigeria">Ikeja, Nigeria</option>
-                <option value="Lekki, Nigeria">Lekki, Nigeria</option>
+                <option value="Nova-Scotia , Canada">Nova Scotia</option>
+                <option value="Nunavut">Nunavut</option>
+                <option value="Ontario">Ontario</option>
+                <option value="Prince Edward Island ">
+                  Prince Edward Island
+                </option>
+                <option value="Quebec">Quebec</option>
+                <option value="Saskatchewan, Canada">
+                  Saskatchewan, Canada
+                </option>
+                <option value="Yukon">Yukon</option>
               </select>
             </div>
           </div>

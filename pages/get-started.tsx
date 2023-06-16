@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { createUser } from "@/api/api";
 import { Spinner } from "@chakra-ui/react";
+import {FaEye, FaEyeSlash} from 'react-icons/fa';
 
 export type userData = {
   firstName: string;
@@ -36,6 +37,11 @@ const GetStarted = () => {
   const [correctPassword, setCorrectPassword] = useState('');
   const [userExist, setUserExist] = useState('')
   const router = useRouter();
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [togglePassword, setTogglePassword] = useState(true);
+  const [toggleConfirmPassword, setToggleConfirmPassword] = useState(true);
 
   // INPUT CHANGE FUNCTION
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -184,6 +190,45 @@ const GetStarted = () => {
           </div>
 
           <div className="flex flex-col mb-[20px]">
+              <label
+                htmlFor="password"
+                className="mb-[10px] text-[18px] font-[500]"
+              >
+                Password
+              </label>
+              <div className=" flex items-center w-full md:h-[60px] relative">
+                <input 
+                  id="password"
+                  type={showPassword ? `text` : `password`}
+                  name="password"
+                  value={inputValues.password}
+                  onChange={handleChange}
+                  placeholder="Enter Password"
+                  required
+                  className="abosolute pl-[20px] py-[10px] top-0 left-0 w-[100%] h-[100%] border-[#D9D9D9] border-[2px] focus:outline-[#0A089A] rounded-[8px] " 
+                />
+
+                {togglePassword ? 
+                <div className="w-fit cursor-pointer absolute right-[10px] " onClick={()=> {
+                  setTogglePassword(false),
+                  setShowPassword(true);
+                }}>
+                  <FaEye size={25} />
+                </div>
+                :
+                <div className="w-fit cursor-pointer absolute right-[10px]" onClick={()=> {
+                  setTogglePassword(true);
+                  setShowPassword(false);
+                }}>
+                  <FaEyeSlash size={25} />
+                </div>
+                }
+
+              <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">{passwordLength}</p>
+              </div>
+          </div>
+
+          {/* <div className="flex flex-col mb-[20px]">
             <label htmlFor="password" className="mb-[10px] [18px] font-[500]">
               Password
             </label>
@@ -198,9 +243,48 @@ const GetStarted = () => {
               required
             />
             <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">{passwordLength}</p>
-          </div>
+          </div> */}
 
           <div className="flex flex-col mb-[20px]">
+              <label
+                htmlFor="password"
+                className="mb-[10px] text-[18px] font-[500]"
+              >
+                Confirm Password
+              </label>
+              <div className=" flex items-center w-full md:h-[60px] relative">
+                <input 
+                  id="confirm-password"
+                  type={showConfirmPassword ? `text` : `password`}
+                  placeholder="Confirm Password"
+                  name="confirmPassword"
+                  value={inputValues.confirmPassword}
+                  onChange={handleChange}
+                  required
+                  className="abosolute pl-[20px] py-[10px] top-0 left-0 w-[100%] h-[100%] border-[#D9D9D9] border-[2px] focus:outline-[#0A089A] rounded-[8px] " 
+                />
+
+                {toggleConfirmPassword ? 
+                <div className="w-fit cursor-pointer absolute right-[10px] " onClick={()=> {
+                  setToggleConfirmPassword(false),
+                  setShowConfirmPassword(true);
+                }}>
+                  <FaEye size={25} />
+                </div>
+                :
+                <div className="w-fit cursor-pointer absolute right-[10px]" onClick={()=> {
+                  setToggleConfirmPassword(true);
+                  setShowConfirmPassword(false);
+                }}>
+                  <FaEyeSlash size={25} />
+                </div>
+                }
+
+                <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">{correctPassword}</p>
+              </div>
+          </div>
+
+          {/* <div className="flex flex-col mb-[20px]">
             <label
               htmlFor="confirm-password"
               className="mb-[10px] text-[18px] font-[500]"
@@ -219,7 +303,7 @@ const GetStarted = () => {
             />
             <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">{correctPassword}</p>
 
-          </div>
+          </div> */}
 
           <p className="text-[#AC0108] text-center text-[16px] md:text-[20px] font-[600] my-[10px] ">{userExist}</p>
 
