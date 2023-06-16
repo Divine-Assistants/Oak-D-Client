@@ -4,7 +4,6 @@ import { LayoutContext } from "@/context/UserDashboardLayout";
 import { NavContext } from "@/context/UserDashboardLayout";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { userData } from "@/pages/get-started";
 
 export function SideNavbar() {
   const { showNav, setShowNav } = useContext(LayoutContext);
