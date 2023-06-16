@@ -33,10 +33,6 @@ export async function createUser(body: userData){
           'Content-Type': 'application/json',
         },
       });
-
-      console.log(body);
-      console.log(response);
-
     return response.data;
 }
 
