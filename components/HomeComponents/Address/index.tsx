@@ -6,7 +6,7 @@ export function Address() {
     <section className='pb-[50px] lg:pb-[50px]'>
         <div className='lg:flex lg-items-center lg:gap-[91px] lg:w-[90%] lg:m-auto lg:mb-[100px]  ' >
             <div className='w-[90%] m-auto flex flex-col gap-[20px] mb-[40px]  '>
-                <h2 className='text-[20px] font-semibold md:text-[24px] '>LAGOS, NIGERIA</h2>
+                <h2 className='text-[20px] font-semibold md:text-[24px] '>CANADA</h2>
                 <div className='lg:flex lg:items-center lg:gap-[50px] '>
                  <div className='flex gap-[20px] w-[60%] '>
                         <div>
@@ -17,7 +17,7 @@ export function Address() {
                             height={30} 
                         />
                         </div>
-                        <p className='text-[16px] font-[500] md:text-[18px] '>No. 56, Oladipo Street,<br />Off Awolowo Way,<br />Ikeja, Lagos State,Nigeria.</p>
+                        <p className='text-[16px] font-[500] md:text-[18px] '>New York<br />Unit 16 3625 Weston Road, North York ON M9L1V8 Canada</p>
                 </div>
                 <div className='flex gap-[20px] w-[60%] '>
                         <div>
@@ -28,7 +28,7 @@ export function Address() {
                                 height={30} 
                             />
                         </div>
-                        <p className='text-[16px] font-[500] md:text-[18px] '>Flat 2B, Block 12,<br /> Victoria Garden City,<br /> Lekki, Lagos State,<br /> Nigeria</p>
+                        <p className='text-[16px] font-[500] md:text-[18px] '>Brampton<br /> 5 Stafford Drive Brampton ON L6W1L3 Canada</p>
                 </div>
                 </div>
                 
@@ -37,7 +37,7 @@ export function Address() {
             <div className='hidden lg:block border-2 border-[#1E1E1E]  '></div>
 
             <div className='w-[90%] m-auto flex flex-col gap-[20px] mb-[40px]  '>
-                <h2 className='text-[20px] font-semibold md:text-[24px] '>LAGOS, NIGERIA</h2>
+                <h2 className='text-[20px] font-semibold md:text-[24px] '>NIGERIA</h2>
                 <div className='lg:flex lg:items-center lg:gap-[50px] '>
                  <div className='flex gap-[20px] w-[60%] '>
                         <div>
@@ -45,10 +45,10 @@ export function Address() {
                                 src="/img/location-pin.svg" 
                                 alt='Ikeja Lagos State location' 
                                 width={30} 
-                                height={30} 
+                                height={30}
                             />
                         </div>
-                        <p className='text-[16px] font-[500] md:text-[18px] '>No. 56, Oladipo Street,<br />Off Awolowo Way,<br />Ikeja, Lagos State,Nigeria.</p>
+                        <p className='text-[16px] font-[500] md:text-[18px] '>No. 56, Oladipo Street, Off Awolowo Way, Ikeja, Lagos State, Nigeria</p>
                 </div>
                 <div className='flex gap-[20px] w-[60%] '>
                         <div>
@@ -59,7 +59,7 @@ export function Address() {
                                 height={30} 
                             />
                         </div>
-                        <p className='text-[16px] font-[500] md:text-[18px] '>Flat 2B, Block 12,<br /> Victoria Garden City,<br /> Lekki, Lagos State,<br /> Nigeria</p>
+                        <p className='text-[16px] font-[500] md:text-[18px] '>Flat 2B, Block 12,Victoria Garden City, Lekki, Lagos State, Nigeria</p>
                 </div>
                 </div>
                 
