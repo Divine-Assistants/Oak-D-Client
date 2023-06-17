@@ -5,6 +5,7 @@ import emailjs from 'emailjs-com';
 import { FaInstagram, FaTwitter, FaLinkedin, FaFacebookF } from "react-icons/fa";
 import { ContactMap } from "@/components/GoogleMap";
 import { Spinner } from "@chakra-ui/react";
+import { ContactModal } from "@/components/Modal/ContactModal";
 
 type inputChangeEvent = React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
 
@@ -40,6 +41,7 @@ const Contact = ()=> {
     
     const [values, setValues] = useState<data>(initialValues);
     const [isLoading, setIsLoading] = useState(false);
+    const [displayModal, setDisplayModal] = useState(false);
 
     // INPUT ONCHANGE FUNCTION
     const handleChange =(event: inputChangeEvent)=> {
@@ -69,8 +71,8 @@ const Contact = ()=> {
                 await emailjs.send('service_i0gog9a', 'template_6h5lfvj', emailParams, 'uzQe2u-m8xPgpc0xW');
 
                 setIsLoading(false);
+                setDisplayModal(true);
 
-                alert('Email sent successfully')
             } catch (error) {
                 console.log(error);
             }
@@ -83,6 +85,7 @@ const Contact = ()=> {
     return (
         <div>
             <Navbar />
+            {displayModal && <ContactModal setDisplayModal={setDisplayModal} />}
             <section className='py-20' style={styles.firstSection}>
             <div className="w-[300px]  py-[52px] px-[29px] mx-auto font-poppins md:ml-[104px] md:w-[600px] md:p-[60px]" style={styles.whiteBox}>
                     <h1 className='text-red text-[20px] font-bold mb-4 uppercase md:text-[24px]'>Contact</h1>
@@ -156,11 +159,11 @@ const Contact = ()=> {
                     />
 
                     { isLoading ?
-                        <button type="submit" className="bg-red p-[20px] text-[#F5F5F5] w-[162px] rounded-[8px] cursor-pointer md:w-[200px] md:text-[20px] flex items-center justify-center">
+                        <button type="submit" className="bg-[#AC0108] p-[20px] text-[#F5F5F5] w-[162px] rounded-[8px] cursor-pointer md:w-[200px] md:text-[20px] flex items-center justify-center">
                             <Spinner className="h-[30px] w-[30px]" />
                         </button>
                         :
-                        <button type="submit" className="bg-red p-[20px] text-[#F5F5F5] w-[162px] text-[16px] rounded-[8px] cursor-pointer md:w-[200px] md:text-[20px]">Send Message</button>
+                        <button type="submit" className="bg-[#AC0108] p-[20px] text-[#F5F5F5] w-[162px] text-[16px] rounded-[8px] cursor-pointer md:w-[200px] md:text-[20px]">Send Message</button>
                     }
                 </form>
             </section>

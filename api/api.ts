@@ -29,21 +29,13 @@ export async function getSingleUser() {
 }
 
 // REGISTER USER
-export async function createUser(body: userData) {
-  const response = await axios.post(
-    "https://oakandd-api.onrender.com/auth/user/register",
-    JSON.stringify(body),
-    {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
-
-  console.log(body);
-  console.log(response);
-
-  return response.data;
+export async function createUser(body: userData){
+    const response = await axios.post('https://oakandd-api.onrender.com/auth/user/register', JSON.stringify(body), {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    return response.data;
 }
 
 // UPDATE USER PROFILE
