@@ -10,7 +10,7 @@ export function DomesticQuoteLand() {
             <div className='hidden md:block h-[100%] w-[100%]'><img src="/img/get-started-background1.svg" alt="global shipping" className='w-[100%] h-[100%] object-cover ' /></div>
             <div className='block md:hidden h-[100%] w-[100%]'><img src="/img/get-started-background.svg" alt="global shipping" className='w-[100%] h-[100%] object-cover ' /></div>
        </div>
-   <div className='absolute top-24'>
+   <div className='absolute top-0'>
        <div className='bg-[#FEFEFE]/[.68] w-[90%] lg:w-[55%] lg:ml-[5%] m-auto mt-[240px] md:mt-[153px] lg:mt-[15px] py-[81px] md:py-[34px] lg:py-[64px]  '>
          <div className='w-[80%] m-auto '>
           <h1 className='font-semibold text-[#AC0108] text-[20px] md:text-[24px] '>Get Quote</h1>

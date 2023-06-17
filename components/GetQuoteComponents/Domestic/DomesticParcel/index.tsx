@@ -154,7 +154,7 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
 
   return (
     <section style={{ display: trail === 2 ? "block" : "none" }}>
-      <div className=" w-[90%] m-auto md:flex md:justify-between mt-[150px] ">
+      <div className=" w-[90%] m-auto md:flex md:justify-between ">
         <div className="mb-[60px] md:w-[40%] mt-[49px] ">
           <h1 className="text-[16px] font-[600] text-[#AC0108] mb-[15px] block md:hidden ">
             Parcel Information

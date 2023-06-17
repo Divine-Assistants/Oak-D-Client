@@ -99,7 +99,7 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
 
   return (
     <section style={{ display: glotrail === 2 ? "block" : "none" }}>
-      <div className=" w-[90%] m-auto md:flex md:justify-between mt-[40px] ">
+      <div className=" w-[90%] m-auto md:flex md:justify-between ">
         <div className="mb-[60px] md:w-[40%] mt-[49px] ">
           <h1 className="text-[16px] font-[600] text-[#AC0108] mb-[15px] block md:hidden ">
             Parcel Information
@@ -114,7 +114,7 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
           style={{ display: glotrail === 2 ? "block" : "none" }}
         >
           <form>
-            <div className="flex flex-col gap-[10px] mb-[25px] mt-[60px]">
+            <div className="flex flex-col gap-[10px] mb-[25px]">
               <label htmlFor="packageName" className="font-[600] ">
                 Name Of Cargo
               </label>
