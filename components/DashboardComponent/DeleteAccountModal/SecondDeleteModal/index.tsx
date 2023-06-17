@@ -6,9 +6,7 @@ interface SecondDeleteModalDataType {
   handleDeleteUser: () => void;
 }
 
-export function SecondDeleteModal({
-  handleDeleteUser,
-}: SecondDeleteModalDataType) {
+export function SecondDeleteModal({handleDeleteUser}: SecondDeleteModalDataType) {
   const { showSecondModal, setShowSecondModal } =
     useContext(SecondModalContext);
   const [deleteText, setDeleteText] = useState("");
