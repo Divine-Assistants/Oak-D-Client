@@ -49,14 +49,14 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
         },
       }));
     }
-    setParcelData((prevParcelData) => ({
+    setParcelData((prevParcelData: any) => ({
       ...prevParcelData,
       [name]: value,
     }));
   };
 
   useEffect(() => {
-    setParcelData((prevData) => {
+    setParcelData((prevData: any) => {
       return {
         ...prevData,
         price:
@@ -114,7 +114,7 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
           style={{ display: glotrail === 2 ? "block" : "none" }}
         >
           <form>
-            <div className="flex flex-col gap-[10px] mb-[25px]">
+            <div className="flex flex-col gap-[10px] mb-[25px] mt-[60px]">
               <label htmlFor="packageName" className="font-[600] ">
                 Name Of Cargo
               </label>

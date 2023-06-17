@@ -3,6 +3,7 @@ import { userData } from "@/pages/get-started";
 import { LoginDataType } from "@/pages/login";
 import { profileDataType } from "@/components/DashboardComponent/SettingsNavbar/SettingContent/ProfileContent";
 import { getCookie } from "cookies-next";
+import { ReactNode } from "react";
 
 export const userToken = getCookie("userData");
 
@@ -150,4 +151,13 @@ export async function getUserPackage(packages: string[]) {
   );
 
   return response.data;
+}
+
+export type TrackerDataType = {
+    trackingID: string
+}
+export async function trackParcel(body: TrackerDataType){
+    const response = await axios.post('https://oakandd-api.onrender.com/package/track-parcel', body);
+    console.log(response.data)
+    return response.data;
 }
