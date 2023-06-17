@@ -290,24 +290,18 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                 } h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]`}
               >
                 <option value="">--Select a departure location--</option>
-                <option value="Alberta, Canada">Alberta, Canada</option>
-                <option value="British Colombia">British Colombia</option>
-                <option value="Manitoba, Canada">Manitoba, Canada</option>
-                <option value="New Brunswick">New Brunswick</option>
-                <option value="New foundland Island">
-                  New foundland Island
-                </option>
-                <option value="Nova-Scotia , Canada">Nova Scotia</option>
-                <option value="Nunavut">Nunavut</option>
                 <option value="Ontario">Ontario</option>
-                <option value="Prince Edward Island ">
-                  Prince Edward Island
-                </option>
+                <option value="Alberta">Alberta</option>
+                <option value="Saskatchewan">Saskatchewan</option>
+                <option value="Manitoba">Manitoba</option>
+                <option value="Nova Scotia">Nova Scotia</option>
+                <option value="British Colombia">British Colombia</option>
+                <option value="New Foundland Island">New Foundland Island</option>
+                <option value="New Brunswick">New Brunswick</option>
+                <option value="Prince Edward Island">Prince Edward Island</option>
                 <option value="Quebec">Quebec</option>
-                <option value="Saskatchewan, Canada">
-                  Saskatchewan, Canada
-                </option>
-                <option value="Yukon">Yukon</option>
+                <option value="Nunavut">Nunavut</option>
+                <option value="Yukon ">Yukon</option>
               </select>
             </div>
 
@@ -326,24 +320,18 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                 } h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]`}
               >
                 <option value="">--Select an Arrival location--</option>
-                <option value="Alberta, Canada">Alberta, Canada</option>
-                <option value="British Colombia">British Colombia</option>
-                <option value="Manitoba, Canada">Manitoba, Canada</option>
-                <option value="New Brunswick">New Brunswick</option>
-                <option value="New foundland Island">
-                  New foundland Island
-                </option>
-                <option value="Nova-Scotia , Canada">Nova Scotia</option>
-                <option value="Nunavut">Nunavut</option>
                 <option value="Ontario">Ontario</option>
-                <option value="Prince Edward Island ">
-                  Prince Edward Island
-                </option>
+                <option value="Alberta">Alberta</option>
+                <option value="Saskatchewan">Saskatchewan</option>
+                <option value="Manitoba">Manitoba</option>
+                <option value="Nova Scotia">Nova Scotia</option>
+                <option value="British Colombia">British Colombia</option>
+                <option value="New Foundland Island">New Foundland Island</option>
+                <option value="New Brunswick">New Brunswick</option>
+                <option value="Prince Edward Island">Prince Edward Island</option>
                 <option value="Quebec">Quebec</option>
-                <option value="Saskatchewan, Canada">
-                  Saskatchewan, Canada
-                </option>
-                <option value="Yukon">Yukon</option>
+                <option value="Nunavut">Nunavut</option>
+                <option value="Yukon ">Yukon</option>
               </select>
             </div>
 
