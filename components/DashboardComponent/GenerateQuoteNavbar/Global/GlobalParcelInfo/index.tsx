@@ -221,6 +221,7 @@ export function GlobalUserParcelInfo({ setData }: ParcelInformationType) {
                 <option value="North-York, Canada">
                   North-York, Canada
                 </option>
+                <option value="Ontario, Canada">Ontario, Canada</option>
                 <option value="Oshawa, Canada">Oshawa, Canada</option>
                 <option value="Brampton, Canada">Brampton, Canada</option>
                 <option value="Ajax, Canada">Ajax, Canada</option>
@@ -243,6 +244,7 @@ export function GlobalUserParcelInfo({ setData }: ParcelInformationType) {
                 <option value="North-York, Canada">
                   North-York, Canada
                 </option>
+                <option value="Ontario, Canada">Ontario, Canada</option>
                 <option value="Oshawa, Canada">Oshawa, Canada</option>
                 <option value="Brampton, Canada">Brampton, Canada</option>
                 <option value="Ajax, Canada">Ajax, Canada</option>

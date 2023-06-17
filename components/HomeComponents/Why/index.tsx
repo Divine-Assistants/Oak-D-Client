@@ -19,7 +19,7 @@ export function Why() {
             <h3 className="font-semibold text-[20px] md:text-[24px] ">
               Safe Packaging
             </h3>
-            <p className="text-[16px] font-[500] md:text-[18px] text-justify">
+            <p className="text-[16px] font-[500] md:text-[18px] ">
               We are committed to ensuring the safe delivery of all packages
               entrusted to our care. We understand that the timely and secure
               delivery of your cargo is critical to your business operations,
@@ -36,7 +36,7 @@ export function Why() {
             <h3 className="font-semibold text-[20px] md:text-[24px] ">
               Live Tracking
             </h3>
-            <p className="text-[16px] font-[500] md:text-[18px] text-justify">
+            <p className="text-[16px] font-[500] md:text-[18px]">
               At OAK & D, we understand the importance of live tracking for our
               customers. Our advanced tracking systems allow you to monitor the
               progress of your shipment in real-time, from pickup to delivery
@@ -55,7 +55,7 @@ export function Why() {
             <h3 className="font-semibold text-[20px] md:text-[24px] ">
               24/7 Customer Service
             </h3>
-            <p className="text-[16px] font-[500] md:text-[18px] text-justify">
+            <p className="text-[16px] font-[500] md:text-[18px]">
               Communication is key. So, our team of customer service
               representatives is available 24/7 to assist you with any questions
               or concerns you may have about your shipment.{" "}

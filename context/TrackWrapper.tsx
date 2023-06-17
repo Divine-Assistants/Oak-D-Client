@@ -1,3 +1,5 @@
+import { TrackerDataType } from "@/api/api";
+import { trackDataType } from "@/components";
 import React, { createContext, SetStateAction, useState } from "react";
 
 export type TrackContextType = {
@@ -9,7 +11,15 @@ export type TrackContextType = {
   setVerificationCode: React.Dispatch<React.SetStateAction<string>>;
   loginData: loginData;
   setLoginData: React.Dispatch<React.SetStateAction<loginData>>;
-  trackPage: number; setTrackPage : React.Dispatch<React.SetStateAction<number>>
+  trackPage: number; setTrackPage : React.Dispatch<React.SetStateAction<number>>;
+  setUserDetail: React.Dispatch<React.SetStateAction<trackDataType>>;
+  userDetail: trackDataType,
+  setTrackId: React.Dispatch<React.SetStateAction<TrackerDataType>>;
+  tracId: TrackerDataType;
+  setProcessing: React.Dispatch<React.SetStateAction<boolean>>;
+  processing: boolean;
+  setExist: React.Dispatch<React.SetStateAction<string>>;
+  exist: string;
 };
 
 type TrackContextProviderProps = {
@@ -42,7 +52,19 @@ export const TrackContext = createContext<TrackContextType>({
     setVerificationCode: ()=>{},
     loginData: {email: '', password: ''},
     setLoginData: ()=>{},
-    trackPage: 0, setTrackPage: () => {}
+    trackPage: 0, setTrackPage: () => {},
+    userDetail: {
+      ETA: '',
+      arrival: '',
+      departure: '',
+      packageType: '',
+      sender: '',
+      shipmentStatus:'',
+  
+  }, setUserDetail: () => {},
+  tracId : {trackingID: ''}, setTrackId : () => {},
+  processing: false , setProcessing : () => {},
+  exist: '', setExist: () => {}
 
 });
 
@@ -53,10 +75,24 @@ export const TrackContextProvider = ({
   const [inputValues, setInputValues] = useState<data>({firstName: '',lastName: '',email: '',password: '',confirmPassword: ''});
   const [verificationCode, setVerificationCode] = useState('');
   const [loginData, setLoginData] = useState<loginData>({email: '', password: ''})
-  const [trackPage, setTrackPage] = useState(0)
+  const [trackPage, setTrackPage] = useState(0);
+  const [userDetail, setUserDetail] = useState <trackDataType>({
+    ETA: '',
+    arrival: '',
+    departure: '',
+    packageType: '',
+    sender: '',
+    shipmentStatus:'',
+
+});
+const [tracId, setTrackId] = useState<TrackerDataType>({
+  trackingID: ''
+})
+const [processing, setProcessing] = useState(false)
+const [exist, setExist] = useState('')
 
   return (
-    <TrackContext.Provider value={{ track, setTrack,inputValues, setInputValues, verificationCode, setVerificationCode, loginData, setLoginData, trackPage, setTrackPage }}>
+    <TrackContext.Provider value={{ track, setTrack,inputValues, setInputValues, verificationCode, setVerificationCode, loginData, setLoginData, trackPage, setTrackPage, userDetail, setUserDetail, tracId, setTrackId, processing, setProcessing, exist, setExist }}>
       {children}
     </TrackContext.Provider>
   );

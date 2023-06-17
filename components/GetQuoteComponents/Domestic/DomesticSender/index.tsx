@@ -12,6 +12,7 @@ export type clientInfo = {
   address: string;
   postalCode: string;
 };
+
 export const initialClientInfo = {
   firstName: "",
   lastName: "",
@@ -28,67 +29,42 @@ interface DomesticSenderType {
 }
 
 export function DomesticSender({ setData }: DomesticSenderType) {
-  // const { trail, setTrail } = useContext(DomesticContext);
-  // const [senderData, setSenderData] = useState<clientInfo>(initialClientInfo);
-
-  // function handleSenderDataChange(event: React.ChangeEvent<HTMLInputElement>) {
-  //   const { name, value } = event.target;
-  //   setSenderData((prevData) => {
-  //     return {
-  //       ...prevData,
-  //       [name]: value,
-  //     };
-  //   });
-  // }
-
-  // function handleFormSubmit() {
-  //   setData((prevData: any) => {
-  //     return { ...prevData, sender: senderData };
-  //   });
-  //   setSenderData(initialClientInfo);
-  //   setTrail(1);
-  //   window.scrollTo(0, 0);
-  // }
-
   const { trail, setTrail } = useContext(DomesticContext);
   const [senderData, setSenderData] = useState<clientInfo>(initialClientInfo);
-  const [isFormValid, setIsFormValid] = useState(false);
   const [emptyFields, setEmptyFields] = useState<string[]>([]);
+  const [isFormValid, setIsFormValid] = useState(false);
 
 
-  function handleSenderDataChange(event: React.ChangeEvent<HTMLInputElement>) {
+  const handleSenderDataChange = (event: { target: { name: any; value: any; }; }) => {
     const { name, value } = event.target;
-    setSenderData((prevData) => ({
-      ...prevData,
+  
+    // Update the senderData state
+    setSenderData((prevState) => ({
+      ...prevState,
       [name]: value,
     }));
-  }
+  
+    // Perform validation for each field
+    // Example validation: Check if all fields are filled
+    const isEmpty = Object.values(senderData).some((field) => field === "");
+    setIsFormValid(!isEmpty);
+  };
+  
 
   function handleFormSubmit() {
-    if (isFormValid) {
+    const emptyFields = Object.entries(senderData)
+      .filter(([key, value]) => value.trim() === "")
+      .map(([key]) => key);
+
+    if (emptyFields.length === 0) {
       setData((prevData: any) => ({ ...prevData, sender: senderData }));
       setSenderData(initialClientInfo);
       setTrail(1);
       window.scrollTo(0, 0);
     } else {
-      // Find empty fields and set them as emptyFields state
-      const emptyFields = Object.entries(senderData)
-        .filter(([key, value]) => value.trim() === "")
-        .map(([key]) => key);
       setEmptyFields(emptyFields);
     }
   }
-
-  function validateForm() {
-    const formValues = Object.values(senderData);
-    const isValid = formValues.every((value) => value.trim() !== "");
-    setIsFormValid(isValid);
-  }
-
-  // Validate the form on every senderData change
-  React.useEffect(() => {
-    validateForm();
-  }, [senderData]);
 
   return (
     <div style={{ display: trail !== 0 ? "none" : "initial" }}>
@@ -121,7 +97,9 @@ export function DomesticSender({ setData }: DomesticSenderType) {
                 required
               />
               {emptyFields.includes("firstName") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your first name</p>
+                <p className="text-[16px] font-[600] text-[#AC0108]">
+                  Please enter your first name
+                </p>
               )}
             </div>
 
@@ -138,7 +116,9 @@ export function DomesticSender({ setData }: DomesticSenderType) {
                 required
               />
               {emptyFields.includes("lastName") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your last name</p>
+                <p className="text-[16px] font-[600] text-[#AC0108]">
+                  Please enter your last name
+                </p>
               )}
             </div>
           </div>
@@ -155,9 +135,11 @@ export function DomesticSender({ setData }: DomesticSenderType) {
               placeholder="xyz@mail.com"
               required
             />
-              {emptyFields.includes("email") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your email</p>
-              )}
+            {emptyFields.includes("email") && (
+              <p className="text-[16px] font-[600] text-[#AC0108]">
+                Please enter your email
+              </p>
+            )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -172,9 +154,11 @@ export function DomesticSender({ setData }: DomesticSenderType) {
               placeholder="Phone"
               required
             />
-              {emptyFields.includes("phoneNumber") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your Phone Number</p>
-              )}
+            {emptyFields.includes("phoneNumber") && (
+              <p className="text-[16px] font-[600] text-[#AC0108]">
+                Please enter your Phone Number
+              </p>
+            )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -188,11 +172,12 @@ export function DomesticSender({ setData }: DomesticSenderType) {
               className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
               placeholder="Region"
               required
-              
             />
-             {emptyFields.includes("region") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your Region</p>
-              )}
+            {emptyFields.includes("region") && (
+              <p className="text-[16px] font-[600] text-[#AC0108]">
+                Please enter your Region
+              </p>
+            )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -207,9 +192,11 @@ export function DomesticSender({ setData }: DomesticSenderType) {
               placeholder="Country"
               required
             />
-             {emptyFields.includes("country") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your Country</p>
-              )}
+            {emptyFields.includes("country") && (
+              <p className="text-[16px] font-[600] text-[#AC0108]">
+                Please enter your Country
+              </p>
+            )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -224,9 +211,11 @@ export function DomesticSender({ setData }: DomesticSenderType) {
               placeholder="Address"
               required
             />
-              {emptyFields.includes("address") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your Address</p>
-              )}
+            {emptyFields.includes("address") && (
+              <p className="text-[16px] font-[600] text-[#AC0108]">
+                Please enter your Address
+              </p>
+            )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -241,18 +230,20 @@ export function DomesticSender({ setData }: DomesticSenderType) {
               placeholder="Postal Code"
               required
             />
-             {emptyFields.includes("postalCode") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your postal code</p>
-              )}
+            {emptyFields.includes("postalCode") && (
+              <p className="text-[16px] font-[600] text-[#AC0108]">
+                Please enter your postal code
+              </p>
+            )}
           </div>
 
           <button
             type="button"
             className="flex items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[50px] py-[10px] bg-[#0A089A] rounded-[15px] m-auto mb-[120px] lg:px-[160px] lg:py-[27px] lg:mr-[10%] hover:bg-[#1E1E1E] "
             onClick={handleFormSubmit}
-            // disabled={!isFormValid} 
+            disabled={!isFormValid}
           >
-            <p>Proceed to Reciever Information</p>
+            <p>Proceed to Receiver Information</p>
             <FaArrowRight />
           </button>
         </form>
