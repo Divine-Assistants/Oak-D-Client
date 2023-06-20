@@ -224,30 +224,13 @@ const GetStarted = () => {
                 </div>
                 }
 
-              <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">{passwordLength}</p>
               </div>
+              <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">{passwordLength}</p>
           </div>
-
-          {/* <div className="flex flex-col mb-[20px]">
-            <label htmlFor="password" className="mb-[10px] [18px] font-[500]">
-              Password
-            </label>
-            <input
-              id="password"
-              type="password"
-              placeholder="Enter Password"
-              name="password"
-              value={inputValues.password}
-              onChange={handleChange}
-              className="rounded-[8px] border-[#D9D9D9] border-[2px] text-[16px] md:text-[20px] py-[10px] px-[20px] md:py-[20] focus:outline-[#0A089A] md:h-[60px]"
-              required
-            />
-            <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">{passwordLength}</p>
-          </div> */}
 
           <div className="flex flex-col mb-[20px]">
               <label
-                htmlFor="password"
+                htmlFor="confirm-password"
                 className="mb-[10px] text-[18px] font-[500]"
               >
                 Confirm Password
@@ -280,30 +263,9 @@ const GetStarted = () => {
                 </div>
                 }
 
-                <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">{correctPassword}</p>
               </div>
+                <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">{correctPassword}</p>
           </div>
-
-          {/* <div className="flex flex-col mb-[20px]">
-            <label
-              htmlFor="confirm-password"
-              className="mb-[10px] text-[18px] font-[500]"
-            >
-              Confirm Password
-            </label>
-            <input
-              id="confirm-password"
-              type="password"
-              placeholder="Confirm Password"
-              name="confirmPassword"
-              value={inputValues.confirmPassword}
-              onChange={handleChange}
-              className="rounded-[8px] border-[#D9D9D9] border-[2px] text-[16px] md:text-[20px] py-[10px] px-[20px] md:py-[20] focus:outline-[#0A089A] md:h-[60px]"
-              required
-            />
-            <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">{correctPassword}</p>
-
-          </div> */}
 
           <p className="text-[#AC0108] text-center text-[16px] md:text-[20px] font-[600] my-[10px] ">{userExist}</p>
 
