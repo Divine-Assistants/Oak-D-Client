@@ -170,21 +170,8 @@ const Login = () => {
                   <FaEyeSlash size={25} />
                 </div>
                 }
-
-              <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">{passwordLength}</p>
               </div>
-
-
-              {/* <input
-                id="password"
-                type="password"
-                name="password"
-                value={loginData.password}
-                onChange={handleLoginChange}
-                placeholder="Enter Password"
-                required
-                className="rounded-[8px] text-[16px] border-[#D9D9D9] border-[2px] px-[20px] py-[10px] focus:outline-[#0A089A] md:h-[60px]"
-              /> */}
+              <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">{passwordLength}</p>
             </div>
 
 
