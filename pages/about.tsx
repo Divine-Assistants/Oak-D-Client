@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Avatar } from "@chakra-ui/react";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { Footer, Navbar } from "@/components";
 

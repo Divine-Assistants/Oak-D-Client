@@ -3,6 +3,7 @@ import ResetPasswordModal from "../components/Modal/ResetPasswordModal/index";
 import { useRouter } from "next/router";
 import { newPassword } from "@/api/api";
 import { Spinner } from "@chakra-ui/react";
+import {FaEye, FaEyeSlash} from 'react-icons/fa';
 
 const styles = {
   bgImage: {
@@ -28,7 +29,16 @@ const ResetPassword = () => {
   const [displayModal, setDisplayModal] = useState(false);
   const [alertValue, setAlertValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   const router = useRouter();
+
+  const [passwordLength, setPasswordLength] = useState('');
+  const [correctPassword, setCorrectPassword] = useState('');
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [togglePassword, setTogglePassword] = useState(true);
+  const [toggleConfirmPassword, setToggleConfirmPassword] = useState(true);
 
 
   const [resetPassword, setResetPassword] = useState<data>({
@@ -48,22 +58,40 @@ const ResetPassword = () => {
       };
     });
   };
-  const handlePasswordSubmit = async (
-    event: React.FormEvent<HTMLFormElement>
-  ) => {
+
+  const handlePasswordSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (resetPassword.newPassword === resetPassword.confirmPassword) {
-      setIsLoading(true);
-      const { data, status, message } = await newPassword(resetPassword);
-      if (status === "Success") {
-        setResetPassword({
-          email: router.query.email as string,
-          newPassword: "",
-          confirmPassword: "",
-        });
-        setIsLoading(false);
-        setDisplayModal(true);
+    try {
+      if (resetPassword.newPassword === resetPassword.confirmPassword) {
+        setCorrectPassword('');
+        setIsLoading(true);
+        if(resetPassword.newPassword.length < 8){
+          setPasswordLength('Password must not be less than 8 characters');
+          setIsLoading(false);
+        }else {
+          setPasswordLength('');
+        }
+        const response = await newPassword(resetPassword);
+        console.log(response)
+        if(response.status === 'Unsuccessful'){
+          setIsLoading(false);
+          setError(response.message);
+        }
+        if (response.status === "Success") {
+          setResetPassword({
+            email: router.query.email as string,
+            newPassword: "",
+            confirmPassword: "",
+          });
+          setIsLoading(false);
+          setDisplayModal(true);
+        }
+      }else {
+        setPasswordLength('');
+        setCorrectPassword('Password and Confirm Password must match');
       }
+    } catch (error) {
+      console.log(error)
     }
   };
 
@@ -106,7 +134,8 @@ const ResetPassword = () => {
                 Please reset your password
               </p>
             </div>
-            <div className="flex flex-col mb-[30px]">
+            
+            {/* <div className="flex flex-col mb-[30px]">
               <label
                 htmlFor="newPassword"
                 className="mb-[10px] text-[18px] font-[500]"
@@ -144,7 +173,86 @@ const ResetPassword = () => {
               <p className="text-[12px] text-[#AC0108] font-[700]">
                 {alertValue}
               </p>
+            </div> */}
+
+            <div className="flex flex-col mb-[20px]">
+              <label
+                htmlFor="newPassword"
+                className="mb-[10px] text-[18px] font-[500]"
+              >
+                New Password
+              </label>
+              <div className=" flex items-center w-full md:h-[60px] relative">
+                <input 
+                  id="newPassword"
+                  type={showPassword ? `text` : `password`}
+                  name="newPassword"
+                  value={resetPassword.newPassword}
+                  onChange={handleResetPasswordChange}
+                  placeholder="Enter New Password"
+                  required
+                  className="abosolute pl-[20px] py-[10px] top-0 left-0 w-[100%] h-[100%] border-[#D9D9D9] border-[2px] focus:outline-[#0A089A] rounded-[8px] " 
+                />
+
+                {togglePassword ? 
+                <div className="w-fit cursor-pointer absolute right-[10px] " onClick={()=> {
+                  setTogglePassword(false),
+                  setShowPassword(true);
+                }}>
+                  <FaEye size={25} />
+                </div>
+                :
+                <div className="w-fit cursor-pointer absolute right-[10px]" onClick={()=> {
+                  setTogglePassword(true);
+                  setShowPassword(false);
+                }}>
+                  <FaEyeSlash size={25} />
+                </div>
+                }
+              </div>
+              <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">{passwordLength}</p>
+
             </div>
+
+          <div className="flex flex-col mb-[20px]">
+              <label
+                htmlFor="confirm-password"
+                className="mb-[10px] text-[18px] font-[500]"
+              >
+                Confirm Password
+              </label>
+              <div className=" flex items-center w-full md:h-[60px] relative">
+                <input 
+                  id="confirm-password"
+                  type={showConfirmPassword ? `text` : `password`}
+                  placeholder="Confirm Password"
+                  name="confirmPassword"
+                  value={resetPassword.confirmPassword}
+                  onChange={handleResetPasswordChange}
+                  required
+                  className="abosolute pl-[20px] py-[10px] top-0 left-0 w-[100%] h-[100%] border-[#D9D9D9] border-[2px] focus:outline-[#0A089A] rounded-[8px] " 
+                />
+
+                {toggleConfirmPassword ? 
+                <div className="w-fit cursor-pointer absolute right-[10px] " onClick={()=> {
+                  setToggleConfirmPassword(false),
+                  setShowConfirmPassword(true);
+                }}>
+                  <FaEye size={25} />
+                </div>
+                :
+                <div className="w-fit cursor-pointer absolute right-[10px]" onClick={()=> {
+                  setToggleConfirmPassword(true);
+                  setShowConfirmPassword(false);
+                }}>
+                  <FaEyeSlash size={25} />
+                </div>
+                }
+              </div>
+              <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">{correctPassword}</p>
+          </div>
+
+          <h2 className="text-center text-[#AC0108] text-[16px] md:text-[18px] font-[700] mt-[20px] ">{error}</h2>
 
             {isLoading ?
               <button className="p-[20px] w-[100%] text-[#FAFAFA] mt-[15px] text-center bg-[#0A089A] rounded-[8px] flex items-center justify-center">
