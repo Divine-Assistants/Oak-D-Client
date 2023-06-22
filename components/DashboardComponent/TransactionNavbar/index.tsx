@@ -17,6 +17,8 @@ export interface TransactionType {
     price: string;
     packageType: string;
     isVerified: boolean;
+    invoiceNumber: string;
+    invoiceURL: string;
 }
 
 export function TransactionNavbar(){
