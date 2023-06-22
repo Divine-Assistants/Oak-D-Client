@@ -6,13 +6,10 @@ import { ClientDataType } from "@/pages/quote/domestic";
 
 interface WarehouseSummaryType {
   data: ClientDataType;
-  warehouseGlobalPackage: (arg: ClientDataType) => void;
+  handleWarehousePackage: (arg: ClientDataType) => void;
 }
 
-export function WarehouseSummary({
-  data,
-  warehouseGlobalPackage,
-}: WarehouseSummaryType) {
+export function WarehouseSummary({data, handleWarehousePackage}: WarehouseSummaryType) {
   const { trail, setTrail } = useContext(DomesticContext);
   const { glotrail, setGlotrail } = useContext(GlobalContext);
   const isBrowser = () => typeof window !== "undefined"; //The approach recommended by Next.js
@@ -22,7 +19,7 @@ export function WarehouseSummary({
   }
 
   function handleSubmit() {
-    warehouseGlobalPackage(data);
+    handleWarehousePackage(data);
     setTrail(2.5);
     scrollToTop();
   }

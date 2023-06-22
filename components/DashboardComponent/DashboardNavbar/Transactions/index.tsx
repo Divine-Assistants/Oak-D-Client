@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { TransactionType } from "../../TransactionNavbar";
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 
 interface DashboardTransactionType {
   packageInfo: TransactionType[];
@@ -215,6 +216,22 @@ export function Transactions({ packageInfo }: DashboardTransactionType) {
           </tbody>
         </table>
       </section>
+
+      <div className="flex justify-center mt-[48px] relative">
+          <button className="px-[23px] py-[18px] bg-[#F3F3F3] rounded-[15px] text-[18px] font-medium flex items-center gap-x-[20px] absolute left-0 top-[-50%]" >
+            <FaArrowLeft />
+            Previous
+          </button>
+
+          <div className="flex gap-x-[28px] w-[30%] justify-center">
+            <p className="cursor-pointer"></p>
+          </div>
+
+          <button className="px-[23px] py-[18px] bg-[#F3F3F3] rounded-[15px] text-[18px] font-medium flex items-center gap-x-[20px] absolute right-0 top-[-50%]">
+            Next
+            <FaArrowRight />
+          </button>
+      </div>
     </div>
   );
 }

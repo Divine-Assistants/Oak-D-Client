@@ -7,10 +7,10 @@ import { useRouter } from "next/router";
 
 interface GlobalSummaryType {
   data: ClientDataType;
-  warehouseGlobalPackage: (arg: ClientDataType) => void;
+  handleGlobalPackage: (arg: ClientDataType) => void;
 }
 
-export function GlobalSummary({ data, warehouseGlobalPackage }: GlobalSummaryType) {
+export function GlobalSummary({ data, handleGlobalPackage }: GlobalSummaryType) {
   const { trail, setTrail } = useContext(DomesticContext);
   const { glotrail, setGlotrail } = useContext(GlobalContext);
   const router = useRouter();
@@ -22,7 +22,7 @@ export function GlobalSummary({ data, warehouseGlobalPackage }: GlobalSummaryTyp
   // }
 
   function handleSubmit() {
-    warehouseGlobalPackage(data);
+    handleGlobalPackage(data);
     setTrail(3.5);
     window.scrollTo(0, 0);
   }

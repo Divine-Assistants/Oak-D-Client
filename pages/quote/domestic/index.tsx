@@ -46,7 +46,6 @@ export default function Domestic() {
         return;
       }
     }
-
     function objectToFormData(
       obj: any,
       formData = new FormData(),
@@ -87,6 +86,8 @@ export default function Domestic() {
     }
     router.push(response.data.url);
   };
+
+  console.log(data);
 
   return (
     <QuoteLayout>

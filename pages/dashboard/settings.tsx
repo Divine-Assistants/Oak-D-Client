@@ -36,9 +36,7 @@ function Settings(){
             setInitialUserData(data)
         }
         getUserData();
-    }, [])
-
-
+    }, []);
     const handleDeleteUser = async ()=> {
         try {
             await deleteUser(initialUserData._id);
@@ -71,9 +69,7 @@ function Settings(){
 export default Settings;
 
 export const getServerSideProps = async (context: any) => {
-    console.log('hey')
     const { req } = context;
-    console.log(req);
     const cookies = req.headers.cookie;
     const myCookies = parse(cookies || "");
     if (!myCookies.token) {

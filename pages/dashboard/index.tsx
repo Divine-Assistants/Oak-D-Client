@@ -51,11 +51,13 @@ function DashboardNav(){
 
 export default DashboardNav
 
+
+// GUARD ROUTE
 export const getServerSideProps = async (context: any) => {
     const { req } = context;
     const cookies = req.headers.cookie;
     const myCookies = parse(cookies || "");
-    if (!myCookies.userData) {
+    if (!myCookies.token) {
       return {
         redirect: {
           destination: "/login",
@@ -65,7 +67,7 @@ export const getServerSideProps = async (context: any) => {
     }
     const response = await axios.post(
       "https://oakandd-api.onrender.com/auth/user/verify-token",
-      { token: myCookies.userData }
+      { token: myCookies.token }
     );
     const isAuthenticated = response.data.data.email && response.data.data.role;
   

@@ -22,7 +22,7 @@ export default function Global() {
   const [data, setData] = useState<any>();
   const router = useRouter();
 
-  const warehouseGlobalPackage = async (myParcel: ClientDataType | undefined) => {
+  const handleGlobalPackage = async (myParcel: ClientDataType | undefined) => {
     if (
       myParcel?.newPackage.packageWeight &&
       myParcel.newPackage.dimension.length &&
@@ -93,7 +93,7 @@ export default function Global() {
               <GlobalSender setData={setData} />
               <GlobalReciever setData={setData} />
               <GlobalParcel setData={setData} />
-              <GlobalSummary data={data} warehouseGlobalPackage={warehouseGlobalPackage} />
+              <GlobalSummary data={data} handleGlobalPackage={handleGlobalPackage} />
               <PickDrop />
             </DomesticContextProvider>
           </GlobalContextProvider>
