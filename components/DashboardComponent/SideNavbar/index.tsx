@@ -31,7 +31,7 @@ export function SideNavbar() {
   }, []);
 
   const logoutUser = () => {
-    setCookie("token", "");
+    setCookie("userData", "");
     router.push("/login");
   };
 

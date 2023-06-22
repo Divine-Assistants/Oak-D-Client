@@ -15,7 +15,7 @@ export function Transactions({ packageInfo }: DashboardTransactionType) {
     setIsPackageClick(infoID);
   };
 
-  if (packageInfo.length === 0) {
+  if (packageInfo?.length === 0) {
     return <div></div>;
   }
   // console.log(packageInfo);

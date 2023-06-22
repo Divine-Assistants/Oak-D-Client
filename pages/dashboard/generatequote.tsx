@@ -95,37 +95,37 @@ function GenerateQuote(){
 
 export default GenerateQuote
 
-export const getServerSideProps = async (context: any) => {
-    console.log('hey')
-    const { req } = context;
-    console.log(req);
-    const cookies = req.headers.cookie;
-    const myCookies = parse(cookies || "");
-    if (!myCookies.token) {
-      return {
-        redirect: {
-          destination: "/login",
-          permanent: false,
-        },
-      };
-    }
-    const response = await axios.post(
-      "https://oakandd-api.onrender.com/auth/user/verify-token",
-      { token: myCookies.token }
-    );
-    const isAuthenticated = response.data.data.email && response.data.data.role;
+// export const getServerSideProps = async (context: any) => {
+//     console.log('hey')
+//     const { req } = context;
+//     console.log(req);
+//     const cookies = req.headers.cookie;
+//     const myCookies = parse(cookies || "");
+//     if (!myCookies.token) {
+//       return {
+//         redirect: {
+//           destination: "/login",
+//           permanent: false,
+//         },
+//       };
+//     }
+//     const response = await axios.post(
+//       "https://oakandd-api.onrender.com/auth/user/verify-token",
+//       { token: myCookies.token }
+//     );
+//     const isAuthenticated = response.data.data.email && response.data.data.role;
   
-    if (!isAuthenticated) {
-      return {
-        redirect: {
-          destination: "/login",
-          permanent: false,
-        },
-      };
-    }
+//     if (!isAuthenticated) {
+//       return {
+//         redirect: {
+//           destination: "/login",
+//           permanent: false,
+//         },
+//       };
+//     }
   
-    // Proceed to render the protected page
-    return {
-      props: {},
-    };
-};
+//     // Proceed to render the protected page
+//     return {
+//       props: {},
+//     };
+// };

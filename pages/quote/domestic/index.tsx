@@ -101,9 +101,9 @@ export default function Domestic() {
           <Checkout
             data={data}
             registerPackage={registerPackage}
-            onchange={function (value: string): void {
-              throw new Error("Function not implemented.");
-            }}
+            // onchange={function (value: string): void {
+            //   throw new Error("Function not implemented.");
+            // }}
           />
         </DomesticContextProvider>
       </main>

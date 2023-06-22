@@ -17,7 +17,7 @@ interface GlobalParcelType {
 export const initialGlobalParcelInfo = {
   packageName: "",
   packageWeight: "",
-  packageType: "Global",
+  packageType: "Global", 
   price: 0,
   dimension: {
     length: "",
