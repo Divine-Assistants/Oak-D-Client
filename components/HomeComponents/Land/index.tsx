@@ -87,13 +87,13 @@ export function Land() {
             Choose OAK & D for streamlined freight services and enjoy
             hassle-free shipping that meets your unique business requirements.
           </p>
-          <form onSubmit={handleClick} className="md:relative md:w-[627px]  ">
+          <form onSubmit={handleClick} className="md:relative md:w-[627px]">
             <input
               type="text"
               name="trackingID"
               id="trackingID"
               onChange={handleLoginChange}
-              className="py-[15px] px-[37px] w-[100%] text-[24px] text-center outline-none bg-[#FEFEFE] border-2 border-[#E3E3E3] text-[#1E1E1E] placeholder:text-[#989898] placeholder:text-[24px] rounded-[10px] mb-[25px] md:py-[15px] md:text-[24px] md:pl-[34px] md:pr-[10px] md:text-left md:placeholder:text-[18px]  "
+              className="py-[15px] px-[37px] w-[100%] text-[24px] text-center outline-none bg-[#FEFEFE] border-2 border-[#E3E3E3] text-[#1E1E1E] placeholder:text-[#989898] placeholder:text-[24px] rounded-[10px] md:py-[15px] md:text-[24px] md:pl-[34px] md:pr-[10px] md:text-left md:placeholder:text-[18px]"
               placeholder={
                 exist === "Unsuccessful"
                   ? "Parcel dosen't exist"
@@ -104,6 +104,7 @@ export function Land() {
               <button
                 className="bg-[#0A089A] text-[24px] rounded-[10px] py-[10px] px-[23px]  md:absolute md:top-[5px] md:right-[13px] md:translate-x-[2px] md:text-[18px] lg:py-[15px] lg:px-[32px]  "
                 type="submit"
+                style={{ top: "50%", transform: "translateY(-50%)" }}
               >
                 Tracking...
               </button>
@@ -113,6 +114,7 @@ export function Land() {
               <button
                 className="bg-[#AC0108] text-[24px] rounded-[10px] py-[10px] px-[23px] hover:bg-[#0A089A]  md:absolute md:top-[5px] md:right-[13px] md:translate-x-[2px] md:text-[18px] lg:py-[15px] lg:px-[32px]  "
                 type="submit"
+                style={{ top: "50%", transform: "translateY(-50%)" }}
               >
                 Track Parcel
               </button>
