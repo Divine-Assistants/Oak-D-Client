@@ -102,7 +102,7 @@ export function Land() {
             />
             {processing && (
               <button
-                className="bg-[#0A089A] text-[24px] rounded-[10px] py-[10px] px-[23px]  md:absolute md:top-[5px] md:right-[13px] md:translate-x-[2px] md:text-[18px] lg:top-[10%] lg:py-[15px] lg:px-[32px]  "
+                className="bg-[#0A089A] text-[24px] rounded-[10px] py-[10px] px-[23px]  md:absolute md:top-[5px] md:right-[13px] md:translate-x-[2px] md:text-[18px] lg:py-[15px] lg:px-[32px]  "
                 type="submit"
               >
                 Tracking...
@@ -111,7 +111,7 @@ export function Land() {
 
             {!processing && (
               <button
-                className="bg-[#AC0108] text-[24px] rounded-[10px] py-[10px] px-[23px] hover:bg-[#0A089A]  md:absolute md:top-[5px] md:right-[13px] md:translate-x-[2px] md:text-[18px] lg:top-[10%] lg:py-[15px] lg:px-[32px]  "
+                className="bg-[#AC0108] text-[24px] rounded-[10px] py-[10px] px-[23px] hover:bg-[#0A089A]  md:absolute md:top-[5px] md:right-[13px] md:translate-x-[2px] md:text-[18px] lg:py-[15px] lg:px-[32px]  "
                 type="submit"
               >
                 Track Parcel
