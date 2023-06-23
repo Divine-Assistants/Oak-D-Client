@@ -3,6 +3,8 @@ import { NavContext, LayoutContext } from "@/context/UserDashboardLayout";
 import { useState, useEffect } from "react";
 import { getSingleUser } from "@/api/api";
 import { initialUserDataType } from "./settings";
+import axios from "axios";
+import { parse } from 'cookie';
 
 const initialUserInfo: initialUserDataType = {
     _id: '',
@@ -30,7 +32,6 @@ function Support(){
         getUser();
     }, [])
 
-
     return(
         <NavContext.Provider value={{activeNav, setActiveNav}}>
         <LayoutContext.Provider value={{showNav, setShowNav}}>
@@ -44,4 +45,39 @@ function Support(){
     )
 }
 
-export default Support
+export default Support;
+
+export const getServerSideProps = async (context: any) => {
+    console.log('hey')
+    const { req } = context;
+    console.log(req);
+    const cookies = req.headers.cookie;
+    const myCookies = parse(cookies || "");
+    if (!myCookies.token) {
+      return {
+        redirect: {
+          destination: "/login",
+          permanent: false,
+        },
+      };
+    }
+    const response = await axios.post(
+      "https://oakandd-api.onrender.com/auth/user/verify-token",
+      { token: myCookies.token }
+    );
+    const isAuthenticated = response.data.data.email && response.data.data.role;
+  
+    if (!isAuthenticated) {
+      return {
+        redirect: {
+          destination: "/login",
+          permanent: false,
+        },
+      };
+    }
+  
+    // Proceed to render the protected page
+    return {
+      props: {},
+    };
+};

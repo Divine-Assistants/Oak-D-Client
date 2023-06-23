@@ -46,7 +46,6 @@ export default function Domestic() {
         return;
       }
     }
-
     function objectToFormData(
       obj: any,
       formData = new FormData(),
@@ -88,6 +87,8 @@ export default function Domestic() {
     router.push(response.data.url);
   };
 
+  console.log(data);
+
   return (
     <QuoteLayout>
       <main>
@@ -101,9 +102,9 @@ export default function Domestic() {
           <Checkout
             data={data}
             registerPackage={registerPackage}
-            onchange={function (value: string): void {
-              throw new Error("Function not implemented.");
-            }}
+            // onchange={function (value: string): void {
+            //   throw new Error("Function not implemented.");
+            // }}
           />
         </DomesticContextProvider>
       </main>

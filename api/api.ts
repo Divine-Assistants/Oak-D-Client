@@ -3,9 +3,8 @@ import { userData } from "@/pages/get-started";
 import { LoginDataType } from "@/pages/login";
 import { profileDataType } from "@/components/DashboardComponent/SettingsNavbar/SettingContent/ProfileContent";
 import { getCookie } from "cookies-next";
-import { ReactNode } from "react";
 
-export const userToken = getCookie("userData");
+export const userToken = getCookie("token");
 
 // GE ALL USERS
 export async function getAllUsers() {
