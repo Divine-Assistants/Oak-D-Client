@@ -6,34 +6,38 @@ import { getSingleUser } from "@/api/api";
 import { getUserPackage } from "@/api/api";
 import { TransactionType } from "../TransactionNavbar";
 
-export function DashboardNavbar(){
+interface DashboardNavType {
+    packageInfo: TransactionType[];
+}
+
+export function DashboardNavbar({packageInfo}: DashboardNavType){
     const {activeNav, setActiveNav} = useContext(NavContext);
-    const [packages, setPackages] = useState<string[]>([]);
-    const [packageInfo, setPackageInfo] = useState<TransactionType[]>([]);
+    // const [packages, setPackages] = useState<string[]>([]);
+    // const [packageInfo, setPackageInfo] = useState<TransactionType[]>([]);
 
 
     // GETTING USER INFORMATION
-    useEffect(()=>{
-        const getUser = async ()=>{
-            try {
-                const { data } = await getSingleUser();
-                setPackages(data.transactions);
-            } catch (error) {
-               console.log(error); 
-            }
-        }
-        getUser();
-    }, []);
+    // useEffect(()=>{
+    //     const getUser = async ()=>{
+    //         try {
+    //             const { data } = await getSingleUser();
+    //             setPackages(data.transactions);
+    //         } catch (error) {
+    //            console.log(error); 
+    //         }
+    //     }
+    //     getUser();
+    // }, []);
 
     
     // SEND USER PACKAGE
-    useEffect(()=>{
-        const handleUserPackage = async ()=> {
-            const { data } = await getUserPackage(packages);
-            setPackageInfo(data);
-        }
-        handleUserPackage();
-    }, [packages]);
+    // useEffect(()=>{
+    //     const handleUserPackage = async ()=> {
+    //         const { data } = await getUserPackage(packages);
+    //         setPackageInfo(data);
+    //     }
+    //     handleUserPackage();
+    // }, [packages]);
 
 
     return (

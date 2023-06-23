@@ -3,15 +3,17 @@ import { GlobalContext } from "@/context/GlobalWrapper";
 import React, { useContext } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { ClientDataType } from "@/pages/quote/domestic";
+import { useRouter } from "next/router";
 
 interface GlobalSummaryType {
   data: ClientDataType;
-  registerPackage: (arg: ClientDataType) => void;
+  handleGlobalPackage: (arg: ClientDataType) => void;
 }
 
-export function GlobalSummary({ data, registerPackage }: GlobalSummaryType) {
+export function GlobalSummary({ data, handleGlobalPackage }: GlobalSummaryType) {
   const { trail, setTrail } = useContext(DomesticContext);
   const { glotrail, setGlotrail } = useContext(GlobalContext);
+  const router = useRouter();
   const isBrowser = () => typeof window !== "undefined"; //The approach recommended by Next.js
 
   // function scrollToTop() {
@@ -20,7 +22,7 @@ export function GlobalSummary({ data, registerPackage }: GlobalSummaryType) {
   // }
 
   function handleSubmit() {
-    registerPackage(data);
+    handleGlobalPackage(data);
     setTrail(3.5);
     window.scrollTo(0, 0);
   }
@@ -92,38 +94,26 @@ export function GlobalSummary({ data, registerPackage }: GlobalSummaryType) {
       </div>
 
       {/* Modal page */}
-      <div
-        className="bg-[#1E1E1E]/[.4] absolute top-0 w-[100vw] h-[190%] md:h-[160%] "
-        style={{ display: trail === 3.5 ? "block" : "none" }}
-      >
-        <div className="fixed bg-[#FEFEFE] w-[80%] md:w-[60%] m-auto rounded-[15px] top-[10%] left-[10%] md:left-[20%] py-[40px] md:py-[61px] ">
-          <div className="w-[80%] m-auto text-center ">
-            <p className="font-[500] text-[18px] md:text-[28px] text-[#1E1E1E] mb-[31px] md:mb-[60px] ">
-              Your request has been submitted, our team will contact you
-              shortly. For immediate help, kindly proceed to contact us
-              Immediately
-            </p>
-            <div className="flex items-center gap-[10px] md:gap-[24px] md:text-[26px] text-[16px] font-[500] text-[#FEFEFE] justify-center ">
-              <button
-                onClick={() => {
-                  setGlotrail(0);
-                  setTrail(0);
-                }}
-                className="bg-[#9C9C9C] py-[16px] md:py-[20px] px-[20px] md:px-[29px] rounded-[10px] "
-              >
-                Continue
-              </button>
-              <button
-                onClick={() => {
-                  setGlotrail(4);
-                }}
-                className="bg-[#0A089A] py-[16px] md:py-[20px] px-[13px] md:px-[22px] rounded-[10px] "
-              >
-                Contact Us
-              </button>
+      <div style={{display: trail === 3.5 ? 'block' : 'none'}} className="fixed z-50 inset-0 bg-[rgba(0,0,0,0.7)]">
+            <div className="bg-[#FEFEFE] absolute rounded-[10px] w-[90%] md:w-[400px] lg:w-[500px] top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%] p-[30px] font-poppins ">
+
+                <p className="text-center text-[18px] lg:text-[24px] mb-[20px]">Your request has been submitted, our team will contact you shortly. For immediate help, proceed to contact us</p>
+
+                <div className="flex gap-x-[20px] ">
+                    <button 
+                    onClick={() => {
+                      setGlotrail(0);
+                      setTrail(0);
+                    }}  
+                    className="bg-[#9C9C9C] p-[15px] text-[16px] lg:text-[18px] text-[#FEFEFE] rounded-[10px] w-[100%] ">Continue</button>
+
+                    <button 
+                      onClick={() => {
+                        setGlotrail(4);
+                      }}
+                      className="bg-[#0A089A] p-[15px] text-[16px] lg:text-[18px] text-[#FEFEFE] rounded-[10px] w-[100%]">Contact Us</button>
+                </div>
             </div>
-          </div>
-        </div>
       </div>
     </section>
   );

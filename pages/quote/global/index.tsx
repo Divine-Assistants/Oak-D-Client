@@ -20,10 +20,9 @@ import { ClientDataType } from "../domestic";
 
 export default function Global() {
   const [data, setData] = useState<any>();
-
   const router = useRouter();
 
-  const registerPackage = async (myParcel: ClientDataType | undefined) => {
+  const handleGlobalPackage = async (myParcel: ClientDataType | undefined) => {
     if (
       myParcel?.newPackage.packageWeight &&
       myParcel.newPackage.dimension.length &&
@@ -41,9 +40,8 @@ export default function Global() {
         return;
       }
     }
-
     function objectToFormData(
-      obj: any,
+      obj: any | undefined,
       formData = new FormData(),
       parentKey = ""
     ) {
@@ -68,7 +66,7 @@ export default function Global() {
     console.log(formData);
 
     const response = await axios.post(
-      "https://oakandd-api.onrender.com/package/register",
+      "https://oakandd-api.onrender.com/package/register-package",
       formData,
       {
         headers: { Authorization: `Bearer ${userToken}` },
@@ -80,7 +78,6 @@ export default function Global() {
     if (response.data.warehouseID) {
       setCookie("warehouseID", response.data.warehouseID);
     }
-    router.push(response.data.url);
   };
 
   console.log(data);
@@ -96,7 +93,7 @@ export default function Global() {
               <GlobalSender setData={setData} />
               <GlobalReciever setData={setData} />
               <GlobalParcel setData={setData} />
-              <GlobalSummary data={data} registerPackage={registerPackage} />
+              <GlobalSummary data={data} handleGlobalPackage={handleGlobalPackage} />
               <PickDrop />
             </DomesticContextProvider>
           </GlobalContextProvider>

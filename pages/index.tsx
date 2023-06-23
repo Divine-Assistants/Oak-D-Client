@@ -2,7 +2,8 @@ import Head from 'next/head'
 import styles from '@/styles/home.module.css'
 import { useState } from 'react'
 import { About, Address, FAQ, GetStarted, Land, PageLayout, Testimonial, Why } from '@/components'
-import { faqs } from '@/utils/faq'
+import { faqs } from '@/utils/faq';
+import { OurLocation } from '@/components/DashboardComponent/SupportNavbar/OurLocation';
 
 
 
@@ -21,6 +22,9 @@ export default function Home() {
                 <Why />
                 <About />
                 <Testimonial />
+                {/* <div className='px-[50px]'>
+                  <OurLocation />
+                </div> */}
                 <Address />
                 <FAQ faqs={faqs} />
                 <GetStarted />

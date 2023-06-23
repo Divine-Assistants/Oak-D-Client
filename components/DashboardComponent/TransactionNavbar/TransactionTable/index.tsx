@@ -41,7 +41,7 @@ export function TransactionTable({ packageInfo }: TransactionTableDataType) {
   return (
     <div className="">
       <section className="w-[100%] lg:hidden flex flex-col rounded-[8px] px-[20px] ">
-        {packageInfo.map((item: any) => {
+        {packageInfo.map((item: TransactionType) => {
           if(item.isVerified === true) {
             return (
               <div
@@ -52,7 +52,7 @@ export function TransactionTable({ packageInfo }: TransactionTableDataType) {
                   <input type="checkbox" />
                   <div className="mr-auto ml-[10px] ">
                     <p className="text-[16px] font-[600] text-[#1E1E1E]">
-                      Invoice #0456
+                      {item.invoiceNumber}
                     </p>
                     <p className="text-[14px] font-[600] text-[#B1B1B1]">{`${item.sender.firstName} ${item.sender.lastName}`}</p>
                   </div>
@@ -107,7 +107,11 @@ export function TransactionTable({ packageInfo }: TransactionTableDataType) {
                       </p>
                     </div>
   
-                    <div className="flex justify-center border-[2px] border-[#1E1E1E] rounded-[15px] p-[15px] cursor-pointer ">
+                    <div className="flex justify-center border-[2px] border-[#1E1E1E] rounded-[15px] p-[15px] cursor-pointer "
+                      onClick={() => {
+                        downloadPDF(item?.invoiceURL);
+                      }}
+                    >
                       <Image
                         src="../img/download-icon.svg"
                         alt=""
@@ -142,7 +146,7 @@ export function TransactionTable({ packageInfo }: TransactionTableDataType) {
           </thead>
 
           <tbody className="my-[20px] py-[20px] ">
-            {packageInfo.map((item: any) => {
+            {packageInfo.map((item: TransactionType) => {
               const date = new Date(item.createdAt);
               const options: Intl.DateTimeFormatOptions = {
                 year: "numeric",
@@ -160,7 +164,7 @@ export function TransactionTable({ packageInfo }: TransactionTableDataType) {
                     <td className="px-[10px] py-[15px]">
                       <input type="checkbox" className="cursor-pointer" />
                     </td>
-                    <td className="pr-[10px] py-[15px]">Invoice #0456</td>
+                    <td className="pr-[10px] py-[15px]">{item.invoiceNumber}</td>
                     <td className="px-[10px] py-[15px]">{`${item.sender.firstName} ${item.sender.lastName}`}</td>
                     <td className="px-[10px] py-[15px]">{`${item.receiver?.firstName} ${item.receiver?.lastName}`}</td>
                     <td className="px-[10px] py-[15px]">{formattedDate}</td>
@@ -171,7 +175,7 @@ export function TransactionTable({ packageInfo }: TransactionTableDataType) {
                       <div
                         className="flex justify-center items-center  cursor-pointer border-[1px] border-[#1E1E1E] rounded-[8px] px-[15px] py-[8px] "
                         onClick={() => {
-                          invoiceTab?.current?.click();
+                          downloadPDF(item?.invoiceURL);
                         }}
                       >
                         <Image
@@ -182,12 +186,6 @@ export function TransactionTable({ packageInfo }: TransactionTableDataType) {
                           className="mr-[2px] "
                         />
                         <p className="text-[14px] font-[500] ">Download</p>
-                        <a
-                          href={item?.invoiceURL}
-                          download={"myfile.pdf"}
-                          ref={invoiceTab}
-                          className="hidden"
-                        ></a>
                       </div>
                     </td>
                   </tr>

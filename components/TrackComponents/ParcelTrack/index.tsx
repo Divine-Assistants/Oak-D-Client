@@ -6,7 +6,7 @@ import { FaArrowCircleLeft } from 'react-icons/fa'
 export function ParcelTrack() {
     const { track, setTrack, trackPage, setTrackPage, userDetail, setUserDetail, tracId, setTrackId } = useContext(TrackContext);
     const returnBtn = () => {
-        setTrackPage(0)
+        setTrackPage(0);
         setUserDetail({
             ETA: '',
             arrival: '',

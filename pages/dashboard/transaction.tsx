@@ -1,6 +1,8 @@
 import { SideNavbar, TopNavbar, TransactionNavbar } from "@/components";
 import { NavContext, LayoutContext } from "@/context/UserDashboardLayout";
 import { useState } from "react";
+import axios from "axios";
+import { parse } from 'cookie';
 
 function Transaction(){
     const [showNav, setShowNav] = useState(false);
@@ -19,4 +21,39 @@ function Transaction(){
     )
 }
 
-export default Transaction
+export default Transaction;
+
+export const getServerSideProps = async (context: any) => {
+    console.log('hey')
+    const { req } = context;
+    console.log(req);
+    const cookies = req.headers.cookie;
+    const myCookies = parse(cookies || "");
+    if (!myCookies.token) {
+      return {
+        redirect: {
+          destination: "/login",
+          permanent: false,
+        },
+      };
+    }
+    const response = await axios.post(
+      "https://oakandd-api.onrender.com/auth/user/verify-token",
+      { token: myCookies.token }
+    );
+    const isAuthenticated = response.data.data.email && response.data.data.role;
+  
+    if (!isAuthenticated) {
+      return {
+        redirect: {
+          destination: "/login",
+          permanent: false,
+        },
+      };
+    }
+  
+    // Proceed to render the protected page
+    return {
+      props: {},
+    };
+};

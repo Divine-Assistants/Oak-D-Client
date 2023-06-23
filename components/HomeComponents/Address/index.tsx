@@ -62,8 +62,10 @@ export function Address() {
 
             <div className='hidden lg:block border-2 border-[#1E1E1E]  '></div>
 
+
             <div className='w-[90%] m-auto flex flex-col gap-[20px] mt-0  '>
                 <h2 className='text-[20px] font-semibold md:text-[24px] '>Nigeria</h2>
+
                 <div className='lg:flex lg:items-center lg:gap-[50px] '>
                  <div className='flex gap-[20px] w-[60%] mb-[40px] lg:mb-[0px] '>
                         <div>
@@ -71,10 +73,10 @@ export function Address() {
                                 src="/img/location-pin.svg" 
                                 alt='Ikeja Lagos State location' 
                                 width={30} 
-                                height={30} 
+                                height={30}
                             />
                         </div>
-                        <p className='text-[16px] font-[500] md:text-[18px] '>No. 56, Oladipo Street,<br />Off Awolowo Way,<br />Ikeja, Lagos State,Nigeria.</p>
+                        <p className='text-[16px] font-[500] md:text-[18px] '>No. 56, Oladipo Street, Off Awolowo Way, Ikeja, Lagos State, Nigeria</p>
                 </div>
                 <div className='flex gap-[20px] w-[60%] '>
                         <div>
@@ -85,7 +87,7 @@ export function Address() {
                                 height={30} 
                             />
                         </div>
-                        <p className='text-[16px] font-[500] md:text-[18px] '>Flat 2B, Block 12,<br /> Victoria Garden City,<br /> Lekki, Lagos State,<br /> Nigeria</p>
+                        <p className='text-[16px] font-[500] md:text-[18px] '>Flat 2B, Block 12,Victoria Garden City, Lekki, Lagos State, Nigeria</p>
                 </div>
                 </div>
                 

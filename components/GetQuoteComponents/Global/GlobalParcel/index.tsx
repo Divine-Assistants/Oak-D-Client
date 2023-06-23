@@ -17,7 +17,7 @@ interface GlobalParcelType {
 export const initialGlobalParcelInfo = {
   packageName: "",
   packageWeight: "",
-  packageType: "Global",
+  packageType: "Global", 
   price: 0,
   dimension: {
     length: "",
@@ -49,14 +49,14 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
         },
       }));
     }
-    setParcelData((prevParcelData) => ({
+    setParcelData((prevParcelData: any) => ({
       ...prevParcelData,
       [name]: value,
     }));
   };
 
   useEffect(() => {
-    setParcelData((prevData) => {
+    setParcelData((prevData: any) => {
       return {
         ...prevData,
         price:
@@ -114,7 +114,7 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
           style={{ display: glotrail === 2 ? "block" : "none" }}
         >
           <form>
-            <div className="flex flex-col gap-[10px] mb-[25px]">
+            <div className="flex flex-col gap-[10px] mb-[25px] mt-[60px]">
               <label htmlFor="packageName" className="font-[600] ">
                 Name Of Cargo
               </label>
@@ -211,14 +211,14 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                 className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
               >
                 <option value="">--Select a departure location--</option>
-                <option value="Ajax, Canada">Ajax, Canada</option>
-                <option value="Brampton, Canada">Brampton, Canada</option>
-                <option value="Lagos, Nigeria">Lagos, Nigeria</option>
-                <option value="Port-Harcourt, Nigeria">
+                <option value="North-York, Canada">
                   North-York, Canada
                 </option>
                 <option value="Ontario, Canada">Ontario, Canada</option>
                 <option value="Oshawa, Canada">Oshawa, Canada</option>
+                <option value="Brampton, Canada">Brampton, Canada</option>
+                <option value="Ajax, Canada">Ajax, Canada</option>
+                <option value="Ikeja, Nigeria">Lagos, Nigeria</option>
               </select>
             </div>
 
@@ -233,14 +233,14 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                 className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
               >
                 <option value="">--Select an Arrival location--</option>
-                <option value="Ajax, Canada">Ajax, Canada</option>
-                <option value="Brampton, Canada">Brampton, Canada</option>
-                <option value="Lagos, Nigeria">Lagos, Nigeria</option>
-                <option value="Port-Harcourt, Nigeria">
+                <option value="North-York, Canada">
                   North-York, Canada
                 </option>
                 <option value="Ontario, Canada">Ontario, Canada</option>
                 <option value="Oshawa, Canada">Oshawa, Canada</option>
+                <option value="Brampton, Canada">Brampton, Canada</option>
+                <option value="Ajax, Canada">Ajax, Canada</option>
+                <option value="Ikeja, Nigeria">Lagos, Nigeria</option>
               </select>
             </div>
 
@@ -264,12 +264,15 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
             </div>
 
             <div className="flex flex-col gap-[10px] mb-[25px]">
-              <label htmlFor="" className="font-[600] ">
+              <label htmlFor="packageDescription" className="font-[600] ">
                 Parcel Description
               </label>
               <input
                 type="text"
-                id=""
+                id="packageDescription"
+                name="packageDescription"
+                value={parcelData.packageDescription}
+                onChange={handleParcelDataChange}
                 className="rounded-[15px] border border-[#A1A1A1] h-[165px] outline-[#0A089A] placeholder-[]  pl-[24px] pt-[0px] "
                 placeholder=""
               />

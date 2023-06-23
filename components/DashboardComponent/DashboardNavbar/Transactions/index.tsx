@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { TransactionType } from "../../TransactionNavbar";
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 
 interface DashboardTransactionType {
   packageInfo: TransactionType[];
@@ -15,7 +16,7 @@ export function Transactions({ packageInfo }: DashboardTransactionType) {
     setIsPackageClick(infoID);
   };
 
-  if (packageInfo.length === 0) {
+  if (packageInfo?.length === 0) {
     return <div></div>;
   }
   // console.log(packageInfo);
@@ -52,7 +53,7 @@ export function Transactions({ packageInfo }: DashboardTransactionType) {
       </div>
 
       <section className="w-[100%] lg:hidden flex flex-col rounded-[8px] px-[20px] ">
-        {packageInfo.map((item) => {
+        {packageInfo.map((item: TransactionType) => {
           const date = new Date(item.createdAt);
           const options: Intl.DateTimeFormatOptions = {
             year: "numeric",
@@ -71,7 +72,7 @@ export function Transactions({ packageInfo }: DashboardTransactionType) {
                   <input type="checkbox" />
                   <div className="mr-auto ml-[10px] ">
                     <p className="text-[16px] font-[600] text-[#1E1E1E]">
-                      Invoice #0456
+                      {item.invoiceNumber}
                     </p>
                     <p className="text-[14px] font-[600] text-[#B1B1B1]">{`${item.sender.firstName} ${item.sender.lastName}`}</p>
                   </div>
@@ -126,7 +127,11 @@ export function Transactions({ packageInfo }: DashboardTransactionType) {
                       </p>
                     </div>
   
-                    <div className="flex justify-center border-[2px] border-[#1E1E1E] rounded-[15px] p-[15px] cursor-pointer ">
+                    <div className="flex justify-center border-[2px] border-[#1E1E1E] rounded-[15px] p-[15px] cursor-pointer "
+                      onClick={() => {
+                        downloadPDF(item?.invoiceURL);
+                      }}
+                    >
                       <Image
                         src="../img/download-icon.svg"
                         alt=""
@@ -162,7 +167,7 @@ export function Transactions({ packageInfo }: DashboardTransactionType) {
           </thead>
 
           <tbody className="my-[20px] py-[20px] ">
-            {packageInfo.map((item: any) => {
+            {packageInfo.map((item: TransactionType) => {
               const date = new Date(item.createdAt);
               const options: Intl.DateTimeFormatOptions = {
                 year: "numeric",
@@ -180,7 +185,7 @@ export function Transactions({ packageInfo }: DashboardTransactionType) {
                     <td className="px-[10px] py-[15px]">
                       <input type="checkbox" className="cursor-pointer" />
                     </td>
-                    <td className="pr-[10px] py-[15px]">Invoice #0456</td>
+                    <td className="pr-[10px] py-[15px]">{item.invoiceNumber}</td>
                     <td className="px-[10px] py-[15px]">{`${item.sender.firstName} ${item.sender.lastName}`}</td>
                     <td className="px-[10px] py-[15px]">{`${item.receiver?.firstName} ${item.receiver?.lastName}`}</td>
                     <td className="px-[10px] py-[15px]">{formattedDate}</td>
@@ -211,6 +216,22 @@ export function Transactions({ packageInfo }: DashboardTransactionType) {
           </tbody>
         </table>
       </section>
+
+      <div className="flex justify-center mt-[48px] relative">
+          <button className="px-[23px] py-[18px] bg-[#F3F3F3] rounded-[15px] text-[18px] font-medium flex items-center gap-x-[20px] absolute left-0 top-[-50%]" >
+            <FaArrowLeft />
+            Previous
+          </button>
+
+          <div className="flex gap-x-[28px] w-[30%] justify-center">
+            <p className="cursor-pointer"></p>
+          </div>
+
+          <button className="px-[23px] py-[18px] bg-[#F3F3F3] rounded-[15px] text-[18px] font-medium flex items-center gap-x-[20px] absolute right-0 top-[-50%]">
+            Next
+            <FaArrowRight />
+          </button>
+      </div>
     </div>
   );
 }

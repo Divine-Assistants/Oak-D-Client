@@ -4,7 +4,7 @@ import { LoginDataType } from "@/pages/login";
 import { profileDataType } from "@/components/DashboardComponent/SettingsNavbar/SettingContent/ProfileContent";
 import { getCookie } from "cookies-next";
 
-export const userToken = getCookie("userData");
+export const userToken = getCookie("token");
 
 // GE ALL USERS
 export async function getAllUsers() {
@@ -28,21 +28,13 @@ export async function getSingleUser() {
 }
 
 // REGISTER USER
-export async function createUser(body: userData) {
-  const response = await axios.post(
-    "https://oakandd-api.onrender.com/auth/user/register",
-    JSON.stringify(body),
-    {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
-
-  console.log(body);
-  console.log(response);
-
-  return response.data;
+export async function createUser(body: userData){
+    const response = await axios.post('https://oakandd-api.onrender.com/auth/user/register', JSON.stringify(body), {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    return response.data;
 }
 
 // UPDATE USER PROFILE
@@ -150,4 +142,13 @@ export async function getUserPackage(packages: string[]) {
   );
 
   return response.data;
+}
+
+export type TrackerDataType = {
+    trackingID: string
+}
+export async function trackParcel(body: TrackerDataType){
+    const response = await axios.post('https://oakandd-api.onrender.com/package/track-parcel', body);
+    console.log(response.data)
+    return response.data;
 }

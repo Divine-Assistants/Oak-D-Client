@@ -18,7 +18,9 @@ const styles = {
 const VerifyCode = () => {
   const [verificationCode, setVerificationCode] = useState<string>("");
   const [alertValue, setAlertValue] = useState("");
+  const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [codeLength, setCodeLength] = useState('');
   const router = useRouter();
 
   const handleOPTChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,16 +34,24 @@ const VerifyCode = () => {
       if (verificationCode.length === 6) {
         setIsLoading(true);
         const email: string = router.query.email as string;
-        const { data, status } = await verifyPasswordOTP({
+        const response = await verifyPasswordOTP({
           email,
           verificationCode,
         });
-        console.log(data);
-        console.log(status);
-        if (status === "Success") {
+        console.log(response);
+        if(response.status === "Unsuccessful"){
+          setIsLoading(false);
+          setError(`${response.message}, check the code and try again`);
+          setCodeLength('');
+        }
+        if (response.status === "Success") {
           setIsLoading(false);
           router.push(`/reset-password?email=${encodeURIComponent(email)}`);
         }
+      } else {
+        console.log('incomplete code');
+        setError('');
+        setCodeLength('Code must be 6 digits');
       }
     } catch (error) {
       console.log(error);
@@ -87,7 +97,7 @@ const VerifyCode = () => {
                 code below
               </p>
             </div>
-            <div className="flex flex-col mb-[50px]">
+            <div className="flex flex-col mb-[20px]">
               <label
                 htmlFor="code"
                 className="mb-[10px] text-[18px] font-[500]"
@@ -106,6 +116,9 @@ const VerifyCode = () => {
                 {alertValue}
               </p>
             </div>
+            
+            <h2 className="text-center text-[#AC0108] text-[16px] md:text-[18px] font-[700] lg:mb-[10px]">{error}</h2>
+            <h2 className="text-center text-[#AC0108] text-[16px] md:text-[18px] font-[700] lg:mb-[10px]">{codeLength}</h2>
 
             <p className="text-center text-[#959595] text-[16px] font-[500]">
               Didn&apos;t get the code yet?{" "}
@@ -113,6 +126,7 @@ const VerifyCode = () => {
                 Re-send
               </a>
             </p>
+
 
             { isLoading ?
               <button
