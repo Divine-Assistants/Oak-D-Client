@@ -6,7 +6,7 @@ import { ClientDataType } from "@/pages/quote/domestic";
 interface CheckoutType {
   data: ClientDataType;
   registerPackage: (arg: ClientDataType) => void;
-  onchange: any;
+  // onchange: any;
 }
 
 interface DebitCardInputProps {

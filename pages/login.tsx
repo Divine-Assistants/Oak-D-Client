@@ -72,7 +72,7 @@ const Login = () => {
             email: "",
             password: "",
           });
-          setCookie("userData", userToken);
+          setCookie("token", userToken);
           setIsLoading(false);
           router.push(`/dashboard`);
         }

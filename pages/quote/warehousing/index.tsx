@@ -80,7 +80,7 @@ export default function Warehousing() {
   //   router.push(response.data.url);
   // };
 
-  const warehouseGlobalPackage = async (myParcel: ClientDataType | undefined) => {
+  const handleWarehousePackage = async (myParcel: ClientDataType | undefined) => {
     if (
       myParcel?.newPackage.packageWeight &&
       myParcel.newPackage.dimension.length &&
@@ -147,7 +147,7 @@ export default function Warehousing() {
             <WareCrumb />
             <WarehouseQuoteLand setData={setData} />
             <WarehouseParcel setData={setData} />
-            <WarehouseSummary data={data} warehouseGlobalPackage={warehouseGlobalPackage} />
+            <WarehouseSummary data={data} handleWarehousePackage={handleWarehousePackage} />
             <PickDrop />
           </DomesticContextProvider>
         </GlobalContextProvider>

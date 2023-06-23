@@ -37,8 +37,8 @@ export function TopNavbar() {
 
   useEffect(() => {
     const getUser = async () => {
-      const { data } = await getSingleUser();
-      setUser(data);
+      const response = await getSingleUser();
+      setUser(response.data);
     };
     getUser();
   }, []);
