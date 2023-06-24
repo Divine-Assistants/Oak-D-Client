@@ -15,8 +15,8 @@ export function DomesticReciever({ setData }: DomesticReceiverType) {
   const { trail, setTrail } = useContext(DomesticContext);
   const [receiverData, setReceiverData] =
     useState<clientInfo>(initialClientInfo);
-    const [isFormValid, setIsFormValid] = useState(false);
-    const [emptyFields, setEmptyFields] = useState<string[]>([]);
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [emptyFields, setEmptyFields] = useState<string[]>([]);
 
   function handleReceiverDataChange(
     event: React.ChangeEvent<HTMLInputElement>
@@ -44,7 +44,6 @@ export function DomesticReciever({ setData }: DomesticReceiverType) {
     }
   }
 
-
   function validateForm() {
     const formValues = Object.values(receiverData);
     const isValid = formValues.every((value) => value.trim() !== "");
@@ -57,7 +56,7 @@ export function DomesticReciever({ setData }: DomesticReceiverType) {
 
   return (
     <div style={{ display: trail !== 1 ? "none" : "initial" }}>
-      <div className="w-[90%] m-auto lg:flex ">
+      <div className="w-[90%] m-auto lg:flex mt-[120px]">
         <div className="mb-[40px] lg:w-[40%]">
           <p className=" text-[40px] font-[600] ">
             Please enter the{" "}
@@ -82,7 +81,9 @@ export function DomesticReciever({ setData }: DomesticReceiverType) {
                 placeholder="Enter First Name"
               />
               {emptyFields.includes("firstName") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your first name</p>
+                <p className="text-[16px] font-[600] text-[#AC0108]">
+                  Please enter your first name
+                </p>
               )}
             </div>
 
@@ -98,7 +99,9 @@ export function DomesticReciever({ setData }: DomesticReceiverType) {
                 placeholder="Enter Last Name"
               />
               {emptyFields.includes("lastName") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your last name</p>
+                <p className="text-[16px] font-[600] text-[#AC0108]">
+                  Please enter your last name
+                </p>
               )}
             </div>
           </div>
@@ -115,14 +118,16 @@ export function DomesticReciever({ setData }: DomesticReceiverType) {
               placeholder="xyz@mail.com"
             />
             {emptyFields.includes("email") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your email</p>
-              )}
+              <p className="text-[16px] font-[600] text-[#AC0108]">
+                Please enter your email
+              </p>
+            )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
             <label htmlFor="phoneNumber">Phone</label>
             <input
-              type="number"
+              type="text"
               name="phoneNumber"
               value={receiverData.phoneNumber}
               onChange={handleReceiverDataChange}
@@ -131,8 +136,10 @@ export function DomesticReciever({ setData }: DomesticReceiverType) {
               placeholder="Phone"
             />
             {emptyFields.includes("phoneNumber") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your phone number</p>
-              )}
+              <p className="text-[16px] font-[600] text-[#AC0108]">
+                Please enter your phone number
+              </p>
+            )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -147,8 +154,10 @@ export function DomesticReciever({ setData }: DomesticReceiverType) {
               placeholder="Region"
             />
             {emptyFields.includes("region") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your region</p>
-              )}
+              <p className="text-[16px] font-[600] text-[#AC0108]">
+                Please enter your region
+              </p>
+            )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -163,8 +172,10 @@ export function DomesticReciever({ setData }: DomesticReceiverType) {
               placeholder="Country"
             />
             {emptyFields.includes("firstName") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your country</p>
-              )}
+              <p className="text-[16px] font-[600] text-[#AC0108]">
+                Please enter your country
+              </p>
+            )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -179,8 +190,10 @@ export function DomesticReciever({ setData }: DomesticReceiverType) {
               placeholder="Address"
             />
             {emptyFields.includes("firstName") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your address</p>
-              )}
+              <p className="text-[16px] font-[600] text-[#AC0108]">
+                Please enter your address
+              </p>
+            )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -195,8 +208,10 @@ export function DomesticReciever({ setData }: DomesticReceiverType) {
               placeholder="Postal Code"
             />
             {emptyFields.includes("firstName") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your postal code</p>
-              )}
+              <p className="text-[16px] font-[600] text-[#AC0108]">
+                Please enter your postal code
+              </p>
+            )}
           </div>
 
           <button
