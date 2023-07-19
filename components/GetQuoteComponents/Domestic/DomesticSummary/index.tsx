@@ -3,7 +3,7 @@ import {
   DomesticContextType,
 } from "@/context/DomesticWrapper";
 import { GlobalContext } from "@/context/GlobalWrapper";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { ClientDataType } from "@/pages/quote/domestic";
 
@@ -14,6 +14,7 @@ interface DomesticSummaryType {
 
 export function DomesticSummary({ data, registerPackage }: DomesticSummaryType) {
   const { trail, setTrail } = useContext(DomesticContext);
+  const [showModal, setShowModal] = useState(false);
   const { glotrail, setGlotrail } = useContext(GlobalContext);
   const isBrowser = () => typeof window !== "undefined"; //The approach recommended by Next.js
   function scrollToTop() {
@@ -23,8 +24,8 @@ export function DomesticSummary({ data, registerPackage }: DomesticSummaryType) 
 
   function handleSubmit() {
     registerPackage(data);
-    setTrail(3.5);
-    window.scrollTo(0, 0);
+    setShowModal(true);
+    // window.scrollTo(0, 0);
   }
 
   return (
@@ -93,9 +94,9 @@ export function DomesticSummary({ data, registerPackage }: DomesticSummaryType) 
           </div>
         </div>
       </div>
-
+      
       {/* MODAL PAGE */}
-      <div style={{display: trail === 3.5 ? 'block' : 'none'}} className="fixed z-50 inset-0 bg-[rgba(0,0,0,0.7)]">
+      <div style={{display: showModal ? 'block' : 'none'}} className="fixed z-50 inset-0 bg-[rgba(0,0,0,0.7)]">
             <div className="bg-[#FEFEFE] absolute rounded-[10px] w-[90%] md:w-[400px] lg:w-[500px] top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%] p-[30px] font-poppins ">
 
                 <p className="text-center text-[18px] lg:text-[24px] mb-[20px]">Your request has been submitted, our team will contact you shortly. For immediate help, proceed to contact us</p>
