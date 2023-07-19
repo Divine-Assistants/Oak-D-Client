@@ -41,7 +41,7 @@ export const getServerSideProps = async (context: any) => {
       };
     }
     const response = await axios.post(
-      "https://oakandd-api.onrender.com/auth/user/verify-token",
+      "https://oak-d-api.onrender.com/auth/user/verify-token",
       { token: myCookies.token }
     );
     const isAuthenticated = response.data.data.email && response.data.data.role;

@@ -9,15 +9,22 @@ import { ClientDataType } from "@/pages/quote/domestic";
 
 interface DomesticSummaryType {
   data: ClientDataType;
+  registerPackage: (arg: ClientDataType) => void;
 }
 
-export function DomesticSummary({ data }: DomesticSummaryType) {
+export function DomesticSummary({ data, registerPackage }: DomesticSummaryType) {
   const { trail, setTrail } = useContext(DomesticContext);
   const { glotrail, setGlotrail } = useContext(GlobalContext);
   const isBrowser = () => typeof window !== "undefined"; //The approach recommended by Next.js
   function scrollToTop() {
     if (!isBrowser()) return;
     window.scrollTo({ top: 20, behavior: "smooth" });
+  }
+
+  function handleSubmit() {
+    registerPackage(data);
+    setTrail(3.5);
+    window.scrollTo(0, 0);
   }
 
   return (
@@ -77,10 +84,7 @@ export function DomesticSummary({ data }: DomesticSummaryType) {
           <div className=" mt-[60px]">
             <button
               className="flex items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[55px] py-[21px] bg-[#0A089A] rounded-[15px] m-auto mb-[60px] md:px-[75px] md:py-[27px] md:ml-[25%] hover:bg-[#1E1E1E] "
-              onClick={() => {
-                setTrail(4);
-                scrollToTop();
-              }}
+              onClick={handleSubmit}
               style={{ display: trail === 3 ? "flex" : "none" }}
             >
               <p>Proceed to checkout</p>
@@ -88,6 +92,29 @@ export function DomesticSummary({ data }: DomesticSummaryType) {
             </button>
           </div>
         </div>
+      </div>
+
+      {/* MODAL PAGE */}
+      <div style={{display: trail === 3.5 ? 'block' : 'none'}} className="fixed z-50 inset-0 bg-[rgba(0,0,0,0.7)]">
+            <div className="bg-[#FEFEFE] absolute rounded-[10px] w-[90%] md:w-[400px] lg:w-[500px] top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%] p-[30px] font-poppins ">
+
+                <p className="text-center text-[18px] lg:text-[24px] mb-[20px]">Your request has been submitted, our team will contact you shortly. For immediate help, proceed to contact us</p>
+
+                <div className="flex gap-x-[20px] ">
+                    <button 
+                    onClick={() => {
+                      setGlotrail(0);
+                      setTrail(0);
+                    }}  
+                    className="bg-[#9C9C9C] p-[15px] text-[16px] lg:text-[18px] text-[#FEFEFE] rounded-[10px] w-[100%] ">Continue</button>
+
+                    <button 
+                      onClick={() => {
+                        setGlotrail(4);
+                      }}
+                      className="bg-[#0A089A] p-[15px] text-[16px] lg:text-[18px] text-[#FEFEFE] rounded-[10px] w-[100%]">Contact Us</button>
+                </div>
+            </div>
       </div>
     </section>
   );

@@ -124,7 +124,7 @@ export default function Warehousing() {
     console.log(formData);
 
     const response = await axios.post(
-      "https://oakandd-api.onrender.com/package/register-package",
+      "https://oak-d-api.onrender.com/package/register-package",
       formData,
       {
         headers: { Authorization: `Bearer ${userToken}` },
