@@ -34,22 +34,24 @@ export function DomesticSender({ setData }: DomesticSenderType) {
   const [emptyFields, setEmptyFields] = useState<string[]>([]);
   const [isFormValid, setIsFormValid] = useState(false);
 
+  console.log(senderData);
 
-  const handleSenderDataChange = (event: { target: { name: any; value: any; }; }) => {
+  const handleSenderDataChange = (event: {
+    target: { name: any; value: any };
+  }) => {
     const { name, value } = event.target;
-  
+
     // Update the senderData state
     setSenderData((prevState) => ({
       ...prevState,
       [name]: value,
     }));
-  
+
     // Perform validation for each field
     // Example validation: Check if all fields are filled
     const isEmpty = Object.values(senderData).some((field) => field === "");
     setIsFormValid(!isEmpty);
   };
-  
 
   function handleFormSubmit() {
     const emptyFields = Object.entries(senderData)
@@ -145,7 +147,7 @@ export function DomesticSender({ setData }: DomesticSenderType) {
           <div className="flex flex-col gap-[10px] mb-[25px]">
             <label htmlFor="phoneNumber">Phone</label>
             <input
-              type="number"
+              type="text"
               name="phoneNumber"
               value={senderData.phoneNumber}
               onChange={handleSenderDataChange}

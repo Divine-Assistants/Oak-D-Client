@@ -22,7 +22,7 @@ export function DomesticSummary({ data }: DomesticSummaryType) {
 
   return (
     <section style={{ display: trail === 3 ? "block" : "none" }}>
-      <div className=" w-[90%] m-auto md:flex md:justify-between mb-[100px] ">
+      <div className=" w-[90%] m-auto md:flex md:justify-between mb-[100px] mt-[120px]">
         <div className="mb-[60px] md:w-[40%] mt-[49px] ">
           <h1 className="text-[16px] font-[600] text-[#AC0108] mb-[15px] block md:hidden ">
             Shipping Summary
