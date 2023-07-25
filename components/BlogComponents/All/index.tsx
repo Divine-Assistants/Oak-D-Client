@@ -24,9 +24,7 @@ export const AllBlogs = () => {
   useEffect(() => {
     const getBlog = async () => {
       try {
-        const response = await axios.get(
-          "https://oakandd-api.onrender.com/blog"
-        );
+        const response = await axios.get("https://oak-d-api.onrender.com/blog");
         const { data } = response.data;
         setBlog(data);
         setloading(false);

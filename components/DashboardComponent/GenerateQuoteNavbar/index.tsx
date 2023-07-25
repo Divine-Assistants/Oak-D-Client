@@ -87,7 +87,7 @@ export function GenerateQuoteNavbar() {
     console.log(formData);
 
     const response = await axios.post(
-      "https://oakandd-api.onrender.com/package/register",
+      "https://oak-d-api.onrender.com/package/register",
       formData,
       {
         headers: { Authorization: `Bearer ${userToken}` },
@@ -146,7 +146,7 @@ export function GenerateQuoteNavbar() {
     console.log(formData);
 
     const response = await axios.post(
-      "https://oakandd-api.onrender.com/package/register-package",
+      "https://oak-d-api.onrender.com/package/register-package",
       formData,
       {
         headers: { Authorization: `Bearer ${userToken}` },
@@ -176,10 +176,16 @@ export function GenerateQuoteNavbar() {
             <GlobalUserSenderInfo setData={setData} />
             <GlobalUserReceiver setData={setData} />
             <GlobalUserParcelInfo setData={setData} />
-            <GlobalUserSummary data={data} warehouseGlobalPackage={warehouseGlobalPackage} />
+            <GlobalUserSummary
+              data={data}
+              warehouseGlobalPackage={warehouseGlobalPackage}
+            />
             <WarehouseSenderInfo setData={setData} />
             <WarehouseParcelInfo setData={setData} />
-            <WarehouseSummary data={data} warehouseGlobalPackage={warehouseGlobalPackage} />
+            <WarehouseSummary
+              data={data}
+              warehouseGlobalPackage={warehouseGlobalPackage}
+            />
             <ShippingSummary data={data} />
             <PaymentPage registerPackage={registerPackage} data={data} />
             <QuoteModal />

@@ -28,13 +28,17 @@ export async function getSingleUser() {
 }
 
 // REGISTER USER
-export async function createUser(body: userData){
-    const response = await axios.post('https://oak-d-api.onrender.com/auth/user/register', JSON.stringify(body), {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-    return response.data;
+export async function createUser(body: userData) {
+  const response = await axios.post(
+    "https://oak-d-api.onrender.com/auth/user/register",
+    JSON.stringify(body),
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  return response.data;
 }
 
 // UPDATE USER PROFILE
@@ -93,7 +97,7 @@ export type passwordOTP = {
 };
 export async function verifyPasswordOTP(body: passwordOTP) {
   const response = await axios.post(
-    "https://oakandd-api.onrender.com/auth/user/verify-password-reset",
+    "https://oak-d-api.onrender.com/auth/user/verify-password-reset",
     body
   );
 
@@ -145,9 +149,12 @@ export async function getUserPackage(packages: string[]) {
 }
 
 export type TrackerDataType = {
-    trackingID: string
-}
-export async function trackParcel(body: TrackerDataType){
-    const response = await axios.post('https://oak-d-api.onrender.com/package/track-parcel', body);
-    return response.data;
+  trackingID: string;
+};
+export async function trackParcel(body: TrackerDataType) {
+  const response = await axios.post(
+    "https://oak-d-api.onrender.com/package/track-parcel",
+    body
+  );
+  return response.data;
 }
