@@ -96,7 +96,7 @@ const Contact = ()=> {
 
             {/* FORM AND MAP SECTION */}
             <section className="flex flex-col font-poppins py-20 px-4 lg:flex-row md:px-10">
-                <div className="mb-[80px] md:w-[100%] lg:mb-0">
+                <div className="mb-[30px] md:w-[100%] lg:mb-0">
                     <p className="uppercase font-bold text-[20px] md:text-[24px]">OAK & D CANADA</p>
                     <p className="text-[16px] mb-[10px] md:text-[20px]"> 3625 Weston Road Unit 16, Toronto, ON M9L 1V9. Canada</p>
 
