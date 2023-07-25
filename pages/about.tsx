@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { Footer, Navbar } from "@/components";
+import Link from "next/link";
 
 const About = () => {
   const styles = {
@@ -277,10 +278,13 @@ const About = () => {
             </p>
           </div>
           <div className="py-10 flex justify-between items-center md:justify-start">
-            <button className="text-white text-sm bg-black p-4 rounded-xl mr-4 flex">
+            <Link
+              href={"/contact"}
+              className="text-white text-sm bg-black p-4 rounded-xl mr-4 flex"
+            >
               <span className="mr-2 font-bold">Contact Us</span>
               <ChevronRightIcon boxSize={5} />
-            </button>
+            </Link>
             <p className="font-bold text-sm">
               Or Call <span className="text-blue">(289) 923-3548</span>
             </p>

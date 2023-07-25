@@ -187,7 +187,7 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                     type="number"
                     name="dimension.length"
                     value={parcelData.dimension.length}
-                    onChange={handleParcelDataChange}
+                    onChange={handleParcelDataChange} 
                     id="length"
                     className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
                     placeholder="Length"

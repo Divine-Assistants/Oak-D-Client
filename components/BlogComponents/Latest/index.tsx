@@ -14,9 +14,7 @@ export const Latest = () => {
   useEffect(() => {
     const getBlog = async () => {
       try {
-        const response = await axios.get(
-          "https://oakandd-api.onrender.com/blog"
-        );
+        const response = await axios.get("https://oak-d-api.onrender.com/blog");
         const { data } = response.data;
         setBlogData(data);
       } catch (error) {
@@ -26,6 +24,8 @@ export const Latest = () => {
     getBlog();
   }, []);
 
+  console.log(blogData);
+
   return (
     <section className="mb-[95px] lg:mb-[142px] ">
       <div className="text-[#1E1E1E] w-[90%] md:w-[80%] lg:w-[90%] m-auto lg:flex gap-[149px] ">
@@ -34,7 +34,7 @@ export const Latest = () => {
           className="flex flex-col gap-[20px] mb-[95px] lg:w-[50%] cursor-pointer "
           key={blogData[blogData?.length - 1]?._id}
         >
-          <div className="h-[369px] w-[100%] lg:h-[602px] bg-black ">
+          <div className="h-[369px] w-[100%] lg:h-[602px] bg-white ">
             <img
               src={blogData[blogData?.length - 1]?.coverImage}
               alt="Latest Blog Post"
