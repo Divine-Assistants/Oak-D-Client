@@ -36,19 +36,19 @@ const router = useRouter();
       {/* ${isFixed ? 'fixed top-0 left-0 w-full bg-white shadow-lg' : '' } */}
       
             <div className=''>
-              <Flex className='flex items-center py-[10px] px-[15px] lg:py-[20px] lg:px-[30px] '>
-              <Box className='w-[80px] h-[70px] cursor-pointer '>
+              <Flex className='flex items-center py-[20px] px-[15px] lg:py-[20px] lg:px-[30px] '>
+              <Box className=' flex items-center justify-center cursor-pointer '>
                 <Image 
                   src="/img/nav-logo.svg" 
                   alt='LOGO'
-                  width={300} 
-                  height={300} 
-                  className='w-[100%] h-[100%] ' 
+                  width={80} 
+                  height={80} 
+                  // className='w-[100%] h-[100%] ' 
                 />
               </Box> 
               <Spacer/>
-              <Box className='w-[64px] h-[64px] flex items-center justify-center lg:hidden  '>
-                  <HamburgerIcon  w={38} h={37} onClick={onOpen} />
+              <Box className='text-[50px] flex items-center justify-center lg:hidden  '>
+                  <HamburgerIcon  onClick={onOpen} />
               </Box>
 
                 <div className='hidden lg:flex lg:items-center lg:text-[18px] lg:font-[500] lg:gap-[43px] lg:mr-[30px] '>
