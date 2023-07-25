@@ -4,7 +4,7 @@ import React, {useContext} from 'react'
 export function DomesticQuoteLand() {
   const { trail, setTrail } = useContext(DomesticContext)
   return (
-    <div className='mb-[102px]' style={{display: trail !== 0? 'none' : 'block'}} >
+    <div className='mb-[102px]' style={{display: trail !== 0 ? 'none' : 'block'}} >
     <div className='relative'>
        <div className='w-[100vw] h-[835px] lg:h-[945px] '>
             <div className='hidden md:block h-[100%] w-[100%]'><img src="/img/get-started-background1.svg" alt="global shipping" className='w-[100%] h-[100%] object-cover ' /></div>

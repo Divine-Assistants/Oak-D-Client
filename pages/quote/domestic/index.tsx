@@ -1,5 +1,5 @@
 import {
-  Checkout,
+  // Checkout,
   DomesticCrumb,
   DomesticParcel,
   DomesticQuoteLand,
@@ -72,7 +72,7 @@ export default function Domestic() {
     console.log(formData);
 
     const response = await axios.post(
-      "https://oakandd-api.onrender.com/package/register",
+      "https://oak-d-api.onrender.com/package/register-package",
       formData,
       {
         headers: { Authorization: `Bearer ${userToken}` },
@@ -84,7 +84,7 @@ export default function Domestic() {
     if (response.data.warehouseID) {
       setCookie("warehouseID", response.data.warehouseID);
     }
-    router.push(response.data.url);
+    // router.push(response.data.url);
   };
 
   console.log(data);
@@ -98,14 +98,11 @@ export default function Domestic() {
           <DomesticSender setData={setData} />
           <DomesticReciever setData={setData} />
           <DomesticParcel setData={setData} />
-          <DomesticSummary data={data} />
-          <Checkout
+          <DomesticSummary data={data} registerPackage={registerPackage} />
+          {/* <Checkout
             data={data}
             registerPackage={registerPackage}
-            // onchange={function (value: string): void {
-            //   throw new Error("Function not implemented.");
-            // }}
-          />
+          /> */}
         </DomesticContextProvider>
       </main>
     </QuoteLayout>

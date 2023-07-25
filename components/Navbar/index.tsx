@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react'
 import { Box, Button, CloseButton, Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, Flex, IconButton, Menu, MenuButton, MenuItem, MenuList, Spacer, useDisclosure} from '@chakra-ui/react'
 import { HamburgerIcon, ChevronDownIcon } from '@chakra-ui/icons'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 export function Navbar() {
 const [nav, setNav] = useState(0)
@@ -32,14 +33,22 @@ const router = useRouter();
 
   return (
     <header >
+      {/* ${isFixed ? 'fixed top-0 left-0 w-full bg-white shadow-lg' : '' } */}
+      
             <div className=''>
-              <Flex className={`${isFixed ? 'fixed top-0 left-0 w-full bg-white shadow-lg' : '' }pt-[27px] pb-[12px] lg:pt-[12px] lg:pb-[0px] z-[100]`}>
-              <Box className='w-[82px] h-[79px] cursor-pointer lg:ml-[50px] '>
-                <img src='/img/nav-logo.svg' alt='LOGO' className='w-[80%] h-[80%] ' />
-              </Box>
+              <Flex className='flex items-center py-[20px] px-[15px] lg:py-[20px] lg:px-[30px] '>
+              <Box className=' flex items-center justify-center cursor-pointer '>
+                <Image 
+                  src="/img/nav-logo.svg" 
+                  alt='LOGO'
+                  width={80} 
+                  height={80} 
+                  // className='w-[100%] h-[100%] ' 
+                />
+              </Box> 
               <Spacer/>
-              <Box className='w-[64px] h-[64px] flex items-center justify-center lg:hidden  '>
-                  <HamburgerIcon  w={38} h={37} onClick={onOpen} />
+              <Box className='text-[50px] flex items-center justify-center lg:hidden  '>
+                  <HamburgerIcon  onClick={onOpen} />
               </Box>
 
                 <div className='hidden lg:flex lg:items-center lg:text-[18px] lg:font-[500] lg:gap-[43px] lg:mr-[30px] '>
@@ -92,45 +101,52 @@ const router = useRouter();
                   <Drawer size={"xs"} placement={"left"} onClose={onClose} isOpen={isOpen}  >
                      <DrawerOverlay />
                      <DrawerContent bg={'#FEFEFE'} className='overflow-hidden overflow-y-auto w-[70%] pb-[20px] '  >
-                      <DrawerHeader className='pt-[30px] px-[30px] ' >
-                        <Flex >
-                            <Box className='w-[82px] h-[70px] cursor-pointer '>
-                               <img src='/img/nav-logo.svg' alt='LOGO' className='w-[100%] h-[100%] ' />
+                      <DrawerHeader className='pt-[30px] px-[20px] ' >
+
+                        <Flex className='flex items-center'>
+                            <Box className='w-[80px] h-[70px] cursor-pointer '>
+                              <Image 
+                                src="/img/nav-logo.svg" 
+                                alt='LOGO'
+                                width={300} 
+                                height={300} 
+                                className='w-[100%] h-[100%] ' 
+                              />
                             </Box>
+
                             <Spacer/>
                             <CloseButton size='lg' onClick={onClose} />
-                        </Flex>
-                         
-</DrawerHeader>
-  <DrawerBody>
-    <Link href={'/'}><p className='py-[21px] pl-[30px] border-b-2 border-[#D8D8D8] text-[28px] font-[500] hover:text-[#AC0108]' style={router.pathname === "/" ? { color: "#AC0108" } : {}}>Home</p></Link>
+                        </Flex>  
+                      </DrawerHeader>
+  <DrawerBody className='px-[30px]'>
+    <Link href={'/'}><p className='py-[15px] border-b-2 border-[#D8D8D8] text-[25px] font-[500] hover:text-[#AC0108]' style={router.pathname === "/" ? { color: "#AC0108" } : {}}>Home</p></Link>
 
-    <Link href={'/about'}><p className='py-[21px] pl-[30px] border-b-2 border-[#D8D8D8] text-[28px] font-[500] hover:text-[#AC0108]' style={router.pathname === "/about" ? { color: "#AC0108" } : {}}>About</p></Link>
+    <Link href={'/about'}><p className='py-[15px] border-b-2 border-[#D8D8D8] text-[25px] font-[500] hover:text-[#AC0108]' style={router.pathname === "/about" ? { color: "#AC0108" } : {}}>About</p></Link>
 
-    <Link href={'/blog'}><p className='py-[21px] pl-[30px] border-b-2 border-[#D8D8D8] text-[28px] font-[500] hover:text-[#AC0108]' style={router.pathname === "/blog" ? { color: "#AC0108" } : {}}>Blog</p></Link>
+    <Link href={'/blog'}><p className='py-[15px] border-b-2 border-[#D8D8D8] text-[25px] font-[500] hover:text-[#AC0108]' style={router.pathname === "/blog" ? { color: "#AC0108" } : {}}>Blog</p></Link>
 
-    <Link href={'/track'}><p className='py-[21px] pl-[30px] border-b-2 border-[#D8D8D8] text-[28px] font-[500] ' style={router.pathname === "/track" ? { color: "#AC0108" } : {}}>Track Item</p></Link>
+    <Link href={'/track'}><p className='py-[15px] border-b-2 border-[#D8D8D8] text-[25px] font-[500] ' style={router.pathname === "/track" ? { color: "#AC0108" } : {}}>Track Item</p></Link>
 
-    <Link href={'/contact'}><p className='py-[21px] pl-[30px] border-b-2 border-[#D8D8D8] text-[28px] font-[500]  hover:text-[#AC0108]' style={router.pathname === "/contact" ? { color: "#AC0108" } : {}}>Contact </p></Link>
+    <Link href={'/contact'}><p className='py-[15px] border-b-2 border-[#D8D8D8] text-[25px] font-[500]  hover:text-[#AC0108]' style={router.pathname === "/contact" ? { color: "#AC0108" } : {}}>Contact </p></Link>
 
   <div className='font-[500] W-[100%] '>
-    <Flex className='gap-y-[16px] items-center py-[21px] pl-[30px] text-[28px] cursor-pointer  ' onClick={()=>setNav(prev => prev === 2 ? 0 : 2)}>
+    <Flex className='gap-y-[16px] items-center py-[15px] text-[25px] cursor-pointer  ' onClick={()=>setNav(prev => prev === 2 ? 0 : 2)}>
       <p className=' hover:text-[#AC0108]' style={router.pathname === "/quote/"  ? { color: "#AC0108" } : {}}>Get Quote </p>
-      <ChevronDownIcon className='w-[7px] h-[14px]' />
+      <ChevronDownIcon />
     </Flex>
                                         
-      <div className=' text-left py-[21px] text-[20px] w-fit pl-[30px] ' style={{display:nav===2? 'block':'none'}} >
+      <div className=' text-left text-[20px] w-fit pl-[20px] ' style={{display:nav===2? 'block':'none'}} >
 
-        <Link href={'/quote/domestic'}><p className='mb-[24px] pb-[15px] border-b border-[#D8D8D8] hover:text-[#AC0108] ' style={router.pathname === "/quote/warehousing" ? { color: "#AC0108" } : {}} >Domestic Shipping</p></Link>
+        <Link href={'/quote/domestic'}><p className=' py-[15px] border-b border-[#D8D8D8] hover:text-[#AC0108] ' style={router.pathname === "/quote/warehousing" ? { color: "#AC0108" } : {}} >Domestic Shipping</p></Link>
 
-        <Link href={'/quote/global'}><p className='mb-[24px] pb-[15px] border-b border-[#D8D8D8] hover:text-[#AC0108]' style={router.pathname === "/quote/warehousing" ? { color: "#AC0108" } : {}} >Global Shipping</p></Link>
+        <Link href={'/quote/global'}><p className=' py-[15px] border-b border-[#D8D8D8] hover:text-[#AC0108]' style={router.pathname === "/quote/warehousing" ? { color: "#AC0108" } : {}} >Global Shipping</p></Link>
 
-        <Link href={'/quote/warehousing'}><p className='mb-[8px] pb-[15px] hover:text-[#AC0108] ' style={router.pathname === "/quote/warehousing" ? { color: "#AC0108" } : {}} >Warehousing Services</p></Link>
+        <Link href={'/quote/warehousing'}><p className=' py-[15px] hover:text-[#AC0108] ' style={router.pathname === "/quote/warehousing" ? { color: "#AC0108" } : {}} >Warehousing Services</p></Link>
     </div>
   </div>
   
   <Link href={'/get-started'}>
-  <button className='ml-[21px] py-[20px] px-[30px] bg-[#AC0108] text-[#FEFEFE]  rounded-[10px] text-[24px] font-[500] hover:bg-[#0A089A] ' > Get Started</button></Link>
+  <button className='py-[15px] px-[20px] bg-[#AC0108] text-[#FEFEFE]  rounded-[10px] text-[25px] font-[500] hover:bg-[#0A089A] ' > Get Started</button></Link>
 
 
 </DrawerBody>

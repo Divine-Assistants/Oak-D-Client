@@ -5,7 +5,7 @@ export * from "./Form/Reciever";
 export * from "./Form/Sender";
 export * from "./Form/DomesticParcelForm";
 export * from "./Crumb/index";
-export * from "./Checkout/index";
+// export * from "./Checkout/index";
 export * from "./Pick-Drop/index";
 export * from "./Crumb/index";
 export * from "./DIY/index";

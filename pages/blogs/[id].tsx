@@ -12,7 +12,7 @@ export default function BlogDetail() {
   useEffect(() => {
     const getSingleBlog = async () => {
       const response = await axios.get(
-        `https://oakandd-api.onrender.com/blog/${query.id}`
+        `https://oak-d-api.onrender.com/blog/${query.id}`
       );
       setMyBlog(response.data.data);
     };

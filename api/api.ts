@@ -16,7 +16,7 @@ export async function getAllUsers() {
 // GET SINGLE USER
 export async function getSingleUser() {
   const response = await axios.get(
-    "https://oakandd-api.onrender.com/users/single",
+    "https://oak-d-api.onrender.com/users/single",
     {
       headers: {
         Authorization: `Bearer ${userToken}`,
@@ -29,7 +29,7 @@ export async function getSingleUser() {
 
 // REGISTER USER
 export async function createUser(body: userData){
-    const response = await axios.post('https://oakandd-api.onrender.com/auth/user/register', JSON.stringify(body), {
+    const response = await axios.post('https://oak-d-api.onrender.com/auth/user/register', JSON.stringify(body), {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -40,7 +40,7 @@ export async function createUser(body: userData){
 // UPDATE USER PROFILE
 export async function updateUserProfile(body: profileDataType) {
   const response = await axios.post(
-    `https://oakandd-api.onrender.com/users/update-profile`,
+    `https://oak-d-api.onrender.com/users/update-profile`,
     body,
     { headers: { Authorization: `Bearer ${userToken}` } }
   );
@@ -56,7 +56,7 @@ export type verifyUserData = {
 
 export async function verifyUser(code: verifyUserData) {
   const response = await axios.post(
-    "https://oakandd-api.onrender.com/auth/user/verify",
+    "https://oak-d-api.onrender.com/auth/user/verify",
     code
   );
 
@@ -66,7 +66,7 @@ export async function verifyUser(code: verifyUserData) {
 // LOGIN USER
 export async function loginUser(body: LoginDataType) {
   const response = await axios.post(
-    "https://oakandd-api.onrender.com/auth/user/login",
+    "https://oak-d-api.onrender.com/auth/user/login",
     body
   );
 
@@ -79,7 +79,7 @@ export type forgotPasswordType = {
 };
 export async function forgotPassword(body: forgotPasswordType) {
   const response = await axios.post(
-    "https://oakandd-api.onrender.com/auth/user/reset-password",
+    "https://oak-d-api.onrender.com/auth/user/reset-password",
     body
   );
 
@@ -108,7 +108,7 @@ export type newPasswordType = {
 };
 export async function newPassword(body: newPasswordType) {
   const response = await axios.post(
-    "https://oakandd-api.onrender.com/auth/user/add-new-password",
+    "https://oak-d-api.onrender.com/auth/user/add-new-password",
     body
   );
 
@@ -118,7 +118,7 @@ export async function newPassword(body: newPasswordType) {
 // DELETE USER
 export async function deleteUser(id: string) {
   const response = await axios.delete(
-    `https://oakandd-api.onrender.com/users/${id}`,
+    `https://oak-d-api.onrender.com/users/${id}`,
     {
       headers: {
         Authorization: `Bearer ${userToken}`,
@@ -132,7 +132,7 @@ export async function deleteUser(id: string) {
 // Get User Package
 export async function getUserPackage(packages: string[]) {
   const response = await axios.post(
-    "https://oakandd-api.onrender.com/package/get-packages",
+    "https://oak-d-api.onrender.com/package/get-packages",
     { packages },
     {
       headers: {
@@ -148,7 +148,6 @@ export type TrackerDataType = {
     trackingID: string
 }
 export async function trackParcel(body: TrackerDataType){
-    const response = await axios.post('https://oakandd-api.onrender.com/package/track-parcel', body);
-    console.log(response.data)
+    const response = await axios.post('https://oak-d-api.onrender.com/package/track-parcel', body);
     return response.data;
 }

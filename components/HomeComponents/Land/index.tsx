@@ -60,7 +60,7 @@ export function Land() {
   };
 
   return (
-    <div className="100vh mt-[40px] 100vw relative lg:mb-[100px]">
+    <div className="100vh py-[20px] 100vw relative lg:mb-[100px]">
       <div>
         <div className="block md:hidden">
           <Image
@@ -79,16 +79,17 @@ export function Land() {
           />
         </div>
       </div>
-      <div className="absolute top-[40px] text-[#FEFEFE] ">
-        <div className="w-[95%] text-center m-auto mt-[92px] md:mt-[19px] font-[500] mb-[47px] md:mb-[0px] lg:mb-[50px] lg:w-[80%] lg:mt-[50px] lg:m-auto ">
-          <h2 className="font-[700] text-[30px] mb-[20px] md:w-[50%] lg:w-[70%] lg:text-[50px] leading-[50px] md:text-left  ">
+      <div className="absolute top-[20px] text-[#FEFEFE] px-[20px] ">
+        <div className=" text-center m-auto mt-[70px] md:mt-[19px] font-[500] mb-[30px] md:mb-[0px] lg:mb-[50px] lg:w-[80%] lg:mt-[50px] lg:m-auto ">
+
+          <h2 className="font-[700] text-[30px] mb-[20px] md:w-[50%] lg:w-[70%] lg:text-[50px] lg:mb-[30px] md:text-left  ">
             Fast and Reliable Cargo & Freight Shipping
           </h2>
-          <p className="mb-[20px] md:mb-[5px] lg:mb-[20px] text-[16px] md:w-[50%] lg:text-[18px] lg:w-[50%] md:text-left ">
+          <p className="mb-[20px] md:mb-[5px] lg:mb-[30px] text-[16px] md:w-[50%] lg:text-[20px] lg:w-[50%] md:text-left ">
             Choose OAK & D for streamlined freight services and enjoy
             hassle-free shipping that meets your unique business requirements.
           </p>
-          <form onSubmit={handleClick} className="md:relative md:w-[627px]">
+          <form onSubmit={handleClick} className=" flex flex-col gap-[50px] md:relative md:w-[627px]">
             <input
               type="text"
               name="trackingID"
@@ -113,7 +114,7 @@ export function Land() {
 
             {!processing && (
               <button
-                className="bg-[#AC0108] text-[24px] rounded-[10px] py-[10px] px-[23px] hover:bg-[#0A089A]  md:absolute md:top-[5px] md:right-[13px] md:translate-x-[2px] md:text-[18px] lg:py-[15px] lg:px-[32px]  "
+                className="bg-[#AC0108] text-[24px] w-[200px] mx-auto md:mx-0 rounded-[10px] py-[20px] px-[15px] hover:bg-[#0A089A]  md:absolute md:top-[5px] md:right-[13px] md:translate-x-[2px] md:text-[18px] lg:py-[15px] lg:px-[32px]  "
                 type="submit"
                 style={{ top: "50%", transform: "translateY(-50%)" }}
               >
@@ -122,26 +123,28 @@ export function Land() {
             )}
           </form>
         </div>
-        <div className="mb-[30px] md:mb-[0px] ">
-          <div className="flex items-center m-auto w-[80%] md:w-[50%] md:ml-[10%]  ">
-            <p className="text-[48px] font-[600] mr-[20px] lg:text-[64px]    ">
+
+        <div className="mb-[40px] md:mb-[0px] ">
+          <div className="flex items-center m-auto  md:ml-[10%]  ">
+            <p className="text-[48px] font-[600] mr-[10px] lg:text-[64px]    ">
               10+
             </p>
             <p className="text-[14px] w-[20%] lg:text-[20px] ">
               {" "}
-              Years Experience{" "}
+              Years <br /> Experience{" "}
             </p>
-            <div className=" border-2 border-[#FEFEFE] rotate-[90deg] w-[47px] "></div>
+            <div className=" border-2 border-[#FEFEFE] rotate-[90deg] w-[40px] "></div>
             <p className="text-[48px] font-[500] font-[600] mr-[20px] lg:text-[64px]  ">
               3K
             </p>
             <p className="text-[14px] font-[500] w-[20%] lg:text-[20px] ">
               {" "}
-              Satisfied Customers{" "}
+              Satisfied <br /> Customers{" "}
             </p>
           </div>
         </div>
-        <div className="md:translate-y-[-90px] md:w-fit md:ml-[65%] lg:translate-y-[-100%]  ">
+        {/* md:translate-y-[-90px] md:w-fit md:ml-[65%] lg:translate-y-[-100%] */}
+        <div className="  ">
           <p className="text-[16px] font-[500] text-center mb-[10px] ">
             Scroll down for more
           </p>

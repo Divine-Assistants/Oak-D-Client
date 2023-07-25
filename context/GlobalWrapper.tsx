@@ -5,7 +5,7 @@ type GlobalContextProviderProps = {
 };
 
 export type GlobalContextType = {
- glotrail: number;
+  glotrail: number;
   setGlotrail: React.Dispatch<React.SetStateAction<number>>
   selectedDepartureProvince: string;
   setSelectedDepartureProvince: React.Dispatch<React.SetStateAction<string>>;

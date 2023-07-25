@@ -19,7 +19,8 @@ export function Transactions({ packageInfo }: DashboardTransactionType) {
   if (packageInfo?.length === 0) {
     return <div></div>;
   }
-  // console.log(packageInfo);
+  
+  console.log(packageInfo);
 
   function downloadPDF(PDFURL: string) {
     const pdfUrl = PDFURL;
