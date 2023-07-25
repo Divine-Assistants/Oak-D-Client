@@ -30,7 +30,7 @@ export default function Home() {
                 <Why />
                 <About />
                 <Testimonial />
-                {/* <div className='px-[50px]'>
+                 {/* <div className='px-[50px]'> */}
           <Address />
           <FAQ faqs={faqs} />
           <GetStarted />
