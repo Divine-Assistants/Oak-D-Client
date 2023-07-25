@@ -60,7 +60,7 @@ export function Land() {
   };
 
   return (
-    <div className="100vh py-[20px] 100vw relative lg:mb-[100px]">
+    <div className="100vh 100vw relative lg:mb-[100px]">
       <div>
         <div className="block md:hidden">
           <Image
