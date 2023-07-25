@@ -36,7 +36,7 @@ const router = useRouter();
       {/* ${isFixed ? 'fixed top-0 left-0 w-full bg-white shadow-lg' : '' } */}
       
             <div className=''>
-              <Flex className='flex items-center py-[20px] px-[15px] lg:py-[20px] lg:px-[30px] '>
+              <Flex className='flex items-center py-[10px] px-[15px] lg:pt-[20px] lg:pb-[4px] lg:px-[30px] '>
               <Box className=' flex items-center justify-center cursor-pointer '>
                 <Image 
                   src="/img/nav-logo.svg" 
@@ -123,7 +123,7 @@ const router = useRouter();
 
     <Link href={'/about'}><p className='py-[15px] border-b-2 border-[#D8D8D8] text-[25px] font-[500] hover:text-[#AC0108]' style={router.pathname === "/about" ? { color: "#AC0108" } : {}}>About</p></Link>
 
-    <Link href={'/blog'}><p className='py-[15px] border-b-2 border-[#D8D8D8] text-[25px] font-[500] hover:text-[#AC0108]' style={router.pathname === "/blog" ? { color: "#AC0108" } : {}}>Blog</p></Link>
+    <Link href={'/blogs'}><p className='py-[15px] border-b-2 border-[#D8D8D8] text-[25px] font-[500] hover:text-[#AC0108]' style={router.pathname === "/blog" ? { color: "#AC0108" } : {}}>Blog</p></Link>
 
     <Link href={'/track'}><p className='py-[15px] border-b-2 border-[#D8D8D8] text-[25px] font-[500] ' style={router.pathname === "/track" ? { color: "#AC0108" } : {}}>Track Item</p></Link>
 
