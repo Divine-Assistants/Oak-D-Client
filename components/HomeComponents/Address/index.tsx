@@ -1,11 +1,18 @@
 import React from 'react';
 import Image from 'next/image';
 
+const bgImage = {
+    background: 'url(/img/address-background.svg)',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+}
+
 export function Address() {
   return (
-    <section className='pb-[50px] lg:pb-[50px]'>
-        <div className='lg:flex lg-items-center lg:gap-[51px] lg:w-[100%] lg:mb-[100px]   ' >
-            <div className='w-[100%] ml-[40px] flex flex-col gap-[20px] mb-[40px]  '>
+    <section className='pb-[50px] px-[20px] lg:px-[50px] lg:pb-[50px]'>
+        <div className='lg:flex mb-[50px] lg-items-center lg:gap-[51px] lg:w-[100%] lg:mb-[100px]   ' >
+            <div className='w-[100%] flex flex-col gap-[20px] mb-[40px]  '>
                 <h2 className='text-[20px] font-semibold md:text-[24px] '>CANADA</h2>
                 <div className='lg:flex-col  lg:items-center lg:gap-[50px] w-[100%]  '>
                         <div className='flex mb-[50px] gap-[40px]'>
@@ -63,7 +70,7 @@ export function Address() {
             <div className='hidden lg:block border-2 border-[#1E1E1E]  '></div>
 
 
-            <div className='w-[90%] m-auto flex flex-col gap-[20px] mt-0  '>
+            <div className='w-[100%] m-auto flex flex-col gap-[20px] mt-0  '>
                 <h2 className='text-[20px] font-semibold md:text-[24px] '>Nigeria</h2>
 
                 <div className='lg:flex lg:items-center lg:gap-[50px] '>
@@ -94,27 +101,25 @@ export function Address() {
             </div>
         </div>
 
-            <div className='w-[80%] h-[200px] m-auto md:h-[400px] lg:h-[600px] mb-[50px] '>
-                <Image 
+        <div className='w-[100%] h-[400px] mb-[15px] '>
+            <Image 
                 src="/img/world-map.svg" 
                 alt='Locations Worldwide' 
                 width={300} 
                 height={300} 
-                layout='responsive' 
-                />
-            </div> 
+                className='w-[100%] h-[100%] ' 
+            />
+        </div>
 
-            <div className='bg-[url("/img/address-background.svg")] bg-center lg:h-[600px] md:mb-[300px] ' >
-                <div className='w-[70%] h-[300px] md:h-[300px] m-auto lg:h-[600px] '>
-                    <Image 
-                        src="/img/oak-container.svg" 
-                        alt='OAk & D Logistics' 
-                        width={300} 
-                        height={300} 
-                        layout='responsive' 
-                    />
-                </div>
-            </div>
+        <div style={bgImage} className='w-[100%] h-[600px] mb-[15px] '>
+            <Image 
+                src="/img/oak-container.svg" 
+                alt='OAk & D Logistics' 
+                width={300} 
+                height={300}
+                className='w-[100%] h-[100%] ' 
+            />
+        </div>
     </section>
   )
 }

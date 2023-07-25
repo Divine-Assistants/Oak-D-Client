@@ -31,7 +31,7 @@ const styles = {
     },
     whiteBox: {
         background: 'rgba(254, 254, 254, 0.68)'
-    },
+    }, 
 }
 
 const Contact = ()=> {

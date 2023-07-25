@@ -4,7 +4,6 @@ import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Testimonial } from ".";
-import { MultiTestimonialSlide } from "./MultiTestimonialSlide";
 
 type Testimonial = {
   id: number;
@@ -33,7 +32,7 @@ export const TestimonialSlider: React.FC<TestimonialSliderProps> = ({
       >
         {testimonials.map((testimonial) => (
           <div
-            className="rounded-[10px] bg-[#F5F5F5] py-[42px] w-[80%] m-auto "
+            className="rounded-[10px] h-[350px] bg-[#F5F5F5] py-[42px] w-[80%] m-auto "
             key={testimonial.id}
           >
             <div className="w-[80%] m-auto flex flex-col gap-[29px] ">

@@ -32,11 +32,13 @@ const router = useRouter();
 
   return (
     <header >
+      {/* ${isFixed ? 'fixed top-0 left-0 w-full bg-white shadow-lg' : '' } */}
+      
             <div className=''>
-              <Flex className={`${isFixed ? 'fixed top-0 left-0 w-full bg-white shadow-lg' : '' }pt-[27px] pb-[12px] lg:pt-[12px] lg:pb-[0px] z-[100]`}>
+              <Flex className={`pt-[27px] pb-[12px] lg:pt-[12px] lg:pb-[0px] z-[100]`}>
               <Box className='w-[82px] h-[79px] cursor-pointer lg:ml-[50px] '>
                 <img src='/img/nav-logo.svg' alt='LOGO' className='w-[80%] h-[80%] ' />
-              </Box>
+              </Box> 
               <Spacer/>
               <Box className='w-[64px] h-[64px] flex items-center justify-center lg:hidden  '>
                   <HamburgerIcon  w={38} h={37} onClick={onOpen} />

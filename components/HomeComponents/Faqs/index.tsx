@@ -15,11 +15,11 @@ export const FAQ: React.FC<FaqProps> = ({ faqs }) => {
   return (
     <section
       id="FAQ"
-      className="bg-[#0A089A] py-[70px] mb-[50px] lg:mb-[100px] "
+      className="bg-[#0A089A] py-[20px] mb-[30px] lg:mb-[100px] "
     >
       <div className="w-[90%] md:w-[80%] lg:w-[60%] m-auto text-[#FEFEFE] ">
         <h2 className="font-semibold text-[32px] w-fit mb-[40px] m-auto ">
-          FAQ&apos;s
+          FAQ&apos;
         </h2>
         {faqs.map((faq) => {
           return (

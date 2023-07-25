@@ -32,7 +32,7 @@ const VerifyCode = () => {
     event.preventDefault();
     try {
       if (verificationCode.length === 6) {
-        setIsLoading(true);
+        // setIsLoading(true);
         const email: string = router.query.email as string;
         const response = await verifyPasswordOTP({
           email,
@@ -122,9 +122,9 @@ const VerifyCode = () => {
 
             <p className="text-center text-[#959595] text-[16px] font-[500]">
               Didn&apos;t get the code yet?{" "}
-              <a href="#" className="text-[#0A089A]">
+              <button type="button" className="text-[#0A089A]">
                 Re-send
-              </a>
+              </button>
             </p>
 
 

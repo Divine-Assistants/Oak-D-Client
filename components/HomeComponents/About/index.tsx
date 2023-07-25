@@ -3,8 +3,8 @@ import Image from 'next/image';
 
 export function About() {
   return (
-    <div className="text-[#1E1E1E] w-[80%] lg:w-[100%] m-auto lg:mb-[50px] ">
-      <section className="mb-[50px] lg:w-[90%] lg:m-auto ">
+    <div className="text-[#1E1E1E] w-[100%] lg:w-[100%] m-auto lg:mb-[50px] ">
+      <section className=" px-[20px] mb-[50px] lg:w-[90%] lg:m-auto ">
         <h2 className="text-[#AC0108] text-[32px] font-[600] w-fit m-auto mb-[20px] lg:text-[55px]  ">
           About Us
         </h2>
@@ -21,11 +21,11 @@ export function About() {
           
           <div className="lg:w-[100%] ">
             <h2 className="text-[#AC0108] font-[700] text-[20px] mb-[8px] ">ABOUT</h2>
-            <h2 className=" font-[700] text-[25px] mb-[8px] ">
+            <h2 className="font-[700] text-[25px] mb-[15px] ">
               OAK & D is your trusted partner for efficient, reliable, and
               cost-effecient shipping solutions.
             </h2>
-            <p className=" text-[16px] font-[400] ">
+            <p className=" text-[16px] font-[400] text-justify tracking-normal ">
               OAK & D is a reputable cargo and freight company that specializes
               in shipping goods from Nigeria to Canada. We pride ourselves on
               providing top-notch services that are reliable, efficient, and
