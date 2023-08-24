@@ -285,9 +285,13 @@ const About = () => {
               <span className="mr-2 font-bold">Contact Us</span>
               <ChevronRightIcon boxSize={5} />
             </Link>
-            <p className="font-bold text-sm">
-              Or Call <span className="text-blue">(289) 923-3548</span>
-            </p>
+                <div>
+                    <p className="font-bold text-sm mb-[10px] ">
+              Or Call <span className="text-blue">(437) 436-1757  </span>
+                    </p>
+                    <p className="text-blue font-bold text-sm ml-[50px] mb-[10px] ">(234) 806 9651 839</p>
+                    <p className="text-blue font-bold text-sm ml-[50px] ">(234) 906 4790 625</p>
+                </div>
           </div>
         </div>
       </section>

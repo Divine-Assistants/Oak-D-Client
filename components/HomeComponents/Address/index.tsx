@@ -16,7 +16,7 @@ export function Address() {
                 <h2 className='text-[20px] font-semibold md:text-[24px] '>CANADA</h2>
                 <div className='lg:flex-col  lg:items-center lg:gap-[50px] w-[100%]  '>
                         <div className='flex mb-[50px] gap-[40px]'>
-                                <div className='flex gap-[20px] w-[45%] '>
+                                <div className='flex gap-[20px] w-[60%] '>
                                 <div>
                                 <Image 
                                     src="/img/location-pin.svg" 
@@ -83,7 +83,7 @@ export function Address() {
                                 height={30}
                             />
                         </div>
-                        <p className='text-[16px] font-[500] md:text-[18px] '>No. 56, Oladipo Street, Off Awolowo Way, Ikeja, Lagos State, Nigeria</p>
+                        <p className='text-[16px] font-[500] md:text-[18px] '>5/7 Alhaji Rafiu Street, Off Airport Road, Apakun Mafoluku, Oshodi, <br/> Lagos. Nigeria.</p>
                 </div>
                 <div className='flex gap-[20px] w-[60%] '>
                         <div>
@@ -94,7 +94,7 @@ export function Address() {
                                 height={30} 
                             />
                         </div>
-                        <p className='text-[16px] font-[500] md:text-[18px] '>Flat 2B, Block 12,Victoria Garden City, Lekki, Lagos State, Nigeria</p>
+                        <p className='text-[16px] font-[500] md:text-[18px] '>10, UGO NNEBUFE STREET, OFF BAALE SEKONI STREET, <br/> AJAO ESTATE. LAGOS</p>
                 </div>
                 </div>
                 
