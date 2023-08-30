@@ -104,7 +104,7 @@ const Contact = ()=> {
                         <ContactMap latitude={latitude} longitude={longitude} />
                     </div>
 
-                    <div className="mt-[12px] flex">
+                    <div className="mt-[12px] flex mb-[25px] ">
                         <div className="border-r-[1px] border-[#1E1E1E] pr-[10px] mr-[10px] md:mr-[30px] md:pr-[30px]">
                             <p className="font-bold text-[20px] mb-[5px] md:text-[24px]">Contact Email</p>
                             <p className="text-[16px] md:text-[20px]">support@oak&dcanada.com</p>
@@ -117,6 +117,18 @@ const Contact = ()=> {
                                 <FaLinkedin />
                                 <FaFacebookF />
                             </div>
+                        </div>
+                    </div>
+
+                    <div className="flex ">
+                        <div className="border-[#1E1E1E] pr-[10px] mr-[10px] md:mr-[30px] md:pr-[30px] w-[50%]">
+                                <p className="font-bold text-[20px] mb-[5px] md:text-[24px] text-center">Canada</p>
+                                <p className="text-[16px] md:text-[20px]">(437) 436-1757</p>
+                        </div>
+
+                        <div className="border-[#1E1E1E] pr-[10px] mr-[10px] md:mr-[30px] md:pr-[30px] w-[50%]">
+                                <p className="font-bold text-[20px] mb-[5px] md:text-[24px] text-center">Nigeria</p>
+                                <p className="text-[16px] md:text-[20px]">(234) 906 4790 625, (234) 806 9651 839</p>
                         </div>
                     </div>
                 </div>
