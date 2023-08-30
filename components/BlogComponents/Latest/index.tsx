@@ -1,6 +1,7 @@
 import { BlogContext } from "@/context/BlogWrapper";
 import { BlogValue } from "@/pages/blogs";
 import axios from "axios";
+import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 
 type BlogDataProps = {
@@ -61,26 +62,28 @@ export const Latest = () => {
           </p>
           {blogData.slice(-5).map((item: BlogValue) => {
             return (
-              <div
-                className="flex items-center gap-[20px] cursor-pointer "
-                key={item?._id}
-              >
-                <div className="w-[45%] h-[119px] md:h-[149px] lg:w-[177px]  ">
-                  <img
-                    src={item?.coverImage}
-                    alt="Blog Post"
-                    className="w-[100%] h-[100%] object-cover "
-                  />
+              <Link href={`/blogs/${item._id}`}>
+                <div
+                  className="flex items-center gap-[20px] cursor-pointer "
+                  key={item?._id}
+                >
+                  <div className="w-[45%] h-[119px] md:h-[149px] lg:w-[177px]  ">
+                    <img
+                      src={item?.coverImage}
+                      alt="Blog Post"
+                      className="w-[100%] h-[100%] object-cover "
+                    />
+                  </div>
+                  <div className="h-[120px] md:h-[150px] w-[50%] text-ellipsis overflow-hidden ">
+                    <h2 className="font-[700] text-[16px] md:text-[20px] lg:text-[24px]">
+                      {item?.heading}
+                    </h2>
+                    <p className="text-[16px] font-semibold md:text-[20px]">
+                      {item?.content}{" "}
+                    </p>
+                  </div>
                 </div>
-                <div className="h-[120px] md:h-[150px] w-[50%] text-ellipsis overflow-hidden ">
-                  <h2 className="font-[700] text-[16px] md:text-[20px] lg:text-[24px]">
-                    {item?.heading}
-                  </h2>
-                  <p className="text-[16px] font-semibold md:text-[20px]">
-                    {item?.content}{" "}
-                  </p>
-                </div>
-              </div>
+              </Link>
             );
           })}
         </div>
