@@ -61,7 +61,7 @@ export const Latest = () => {
           </p>
           {blogData.slice(-5).map((item: BlogValue) => {
             return (
-              <Link href={`/blogs/${item._id}`}>
+              <Link href={`/blogs/${item._id}`} key={item._id}>
                 <div
                   className="flex items-center gap-[20px] cursor-pointer "
                   key={item?._id}
