@@ -30,7 +30,6 @@ export function SingleBlog({ myBlog }: SingleBlogProps) {
           />
         </div>
         <div className="mt-[94px] lg:w-[75%] lg:mx-auto">
-          <h2 className="font-bold text-[24px] lg:text-[32px]">Introduction</h2>
           <div
             className="font-medium text-[18px] lg:text-[24px] mt-[17px] text-justify"
             dangerouslySetInnerHTML={{ __html: myBlog?.content as string }}
