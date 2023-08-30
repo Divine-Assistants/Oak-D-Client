@@ -45,7 +45,11 @@ export const Latest = () => {
             {blogData[blogData?.length - 1]?.heading}
           </h2>
           <p className="text-[16px] font-[500] text-ellipsis overflow-hidden h-[192px] md:text-[20px]  ">
-            {blogData[blogData?.length - 1]?.content}
+            <div
+              dangerouslySetInnerHTML={{
+                __html: blogData[blogData?.length - 1]?.content,
+              }}
+            />
           </p>
         </div>
         <div
