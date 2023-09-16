@@ -44,6 +44,7 @@ export function GenerateQuoteNavbar() {
   const router = useRouter();
 
   const registerPackage = async (myParcel: DataType | undefined) => {
+    console.log("myParcel", myParcel);
     if (
       myParcel?.newPackage.packageWeight &&
       myParcel.newPackage.dimension.length &&
@@ -87,19 +88,21 @@ export function GenerateQuoteNavbar() {
     console.log(formData);
 
     const response = await axios.post(
-      "https://oak-d-api.onrender.com/package/register",
+      "https://oak-d-api.onrender.com/package/register-package",
       formData,
       {
         headers: { Authorization: `Bearer ${userToken}` },
       }
     );
+    console.log("PackageData", response.data);
     if (response.data.packageID) {
       setCookie("packageID", response.data.packageID);
     }
     if (response.data.warehouseID) {
       setCookie("warehouseID", response.data.warehouseID);
     }
-    router.push(response.data.url);
+
+    // router.push(response.data.url);
   };
 
   const warehouseGlobalPackage = async (myParcel: DataType | undefined) => {
@@ -152,6 +155,7 @@ export function GenerateQuoteNavbar() {
         headers: { Authorization: `Bearer ${userToken}` },
       }
     );
+    console.log("WarehouseData", response.data);
     if (response.data.packageID) {
       setCookie("packageID", response.data.packageID);
     }

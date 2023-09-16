@@ -64,7 +64,7 @@ export function Land() {
       <div>
         <div className="block md:hidden">
           <Image
-            src="/img/land-image.svg"
+            src="/img/new-land.png"
             alt="OAK Image"
             width={300}
             height={300}
@@ -81,7 +81,6 @@ export function Land() {
       </div>
       <div className="absolute top-[20px] text-[#FEFEFE] px-[20px] ">
         <div className=" text-center m-auto mt-[70px] md:mt-[19px] font-[500] mb-[30px] md:mb-[0px] lg:mb-[50px] lg:w-[80%] lg:mt-[50px] lg:m-auto ">
-
           <h2 className="font-[700] text-[30px] mb-[20px] md:w-[50%] lg:w-[70%] lg:text-[50px] lg:mb-[30px] md:text-left  ">
             Fast and Reliable Cargo & Freight Shipping
           </h2>
@@ -89,7 +88,10 @@ export function Land() {
             Choose OAK & D for streamlined freight services and enjoy
             hassle-free shipping that meets your unique business requirements.
           </p>
-          <form onSubmit={handleClick} className=" flex flex-col gap-[50px] md:relative md:w-[627px]">
+          <form
+            onSubmit={handleClick}
+            className=" flex flex-col gap-[50px] md:relative md:w-[627px]"
+          >
             <input
               type="text"
               name="trackingID"

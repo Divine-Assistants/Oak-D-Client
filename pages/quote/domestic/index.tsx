@@ -17,7 +17,7 @@ import { setCookie } from "cookies-next";
 import { userToken } from "@/api/api";
 import axios from "axios";
 
-export interface ClientDataType { 
+export interface ClientDataType {
   sender: clientInfo;
   receiver?: clientInfo;
   newPackage: clientParcelInfo;
@@ -78,6 +78,7 @@ export default function Domestic() {
         headers: { Authorization: `Bearer ${userToken}` },
       }
     );
+    console.log("Package", response.data);
     if (response.data.packageID) {
       setCookie("packageID", response.data.packageID);
     }
