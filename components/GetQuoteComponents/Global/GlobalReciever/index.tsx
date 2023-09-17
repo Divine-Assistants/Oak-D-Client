@@ -77,6 +77,7 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
                 id="firstName"
                 className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]  "
                 placeholder="Enter First Name"
+                required
               />
               {emptyFields.includes("firstName") && (
                 <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your first name</p>
@@ -93,6 +94,7 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
                 id="lastName"
                 className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]  "
                 placeholder="Enter Last Name"
+                required
               />
               {emptyFields.includes("lastName") && (
                 <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your last name</p>
@@ -110,6 +112,7 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               id="email"
               className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
               placeholder="xyz@mail.com"
+              required
             />
             {emptyFields.includes("email") && (
                 <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your email</p>
@@ -126,6 +129,7 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               id="phoneNumber"
               className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
               placeholder="Phone"
+              required
             />
             {emptyFields.includes("phoneNumber") && (
                 <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your phone number</p>
@@ -142,6 +146,7 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               id="region"
               className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
               placeholder="Region"
+              required
             />
             {emptyFields.includes("region") && (
                 <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your region</p>
@@ -158,6 +163,7 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               id="country"
               className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
               placeholder="Country"
+              required
             />
             {emptyFields.includes("country") && (
                 <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your country</p>
@@ -174,6 +180,7 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               id="address"
               className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
               placeholder="Address"
+              required
             />
             {emptyFields.includes("address") && (
                 <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your address</p>
@@ -190,6 +197,7 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               id="postalCode"
               className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
               placeholder="Postal Code"
+              required
             />
             {emptyFields.includes("postalCode") && (
                 <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your postal</p>

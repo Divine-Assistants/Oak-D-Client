@@ -159,6 +159,7 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                 id="packageName"
                 className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
                 placeholder="Name"
+                required
               />
             </div>
             <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -174,6 +175,7 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                   id="packageWeight"
                   className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
                   placeholder="0"
+                  required
                 />
                 <p className="absolute font-[600] text-[18px] right-[5%] ">
                   lbs
@@ -195,6 +197,7 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                     id="length"
                     className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
                     placeholder="Length"
+                    required
                   />
                   <p className="absolute font-[600] text-[18px] right-[5%] ">
                     In
@@ -210,6 +213,7 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                     id="breadth"
                     className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
                     placeholder="Breadth"
+                    required
                   />
                   <p className="absolute font-[600] text-[18px] right-[5%] ">
                     In
@@ -225,6 +229,7 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                     id="height"
                     className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
                     placeholder="Height"
+                    required
                   />
                   <p className="absolute font-[600] text-[18px] right-[5%] ">
                     In
@@ -247,6 +252,7 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                 name="departure"
                 value={parcelData.departure}
                 onChange={handleParcelDataChange}
+                required
                 className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
               >
                 <option value="">--Select a departure location--</option>
@@ -277,6 +283,7 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                 name="arrival"
                 value={parcelData.arrival}
                 onChange={handleParcelDataChange}
+                required
                 className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
               >
                 <option value="">--Select an arrival location--</option>
@@ -330,6 +337,7 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                 id="packageDescription"
                 className="rounded-[15px] border border-[#A1A1A1] h-[165px] outline-[#0A089A] placeholder-[]  pl-[24px] pt-[0px] "
                 placeholder=""
+                required
               />
             </div>
             <div className="">

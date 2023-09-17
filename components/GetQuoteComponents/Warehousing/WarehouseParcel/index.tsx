@@ -132,6 +132,7 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
                 value={parcelData.packageName}
                 onChange={handleParcelDataChange}
                 placeholder="Name"
+                required
                 className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
               />
             </div>
@@ -147,6 +148,7 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
                   value={parcelData.packageWeight}
                   onChange={handleParcelDataChange}
                   placeholder="0"
+                  required
                   className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
                 />
                 <p className="absolute font-[600] text-[18px] right-[5%] ">
@@ -167,6 +169,7 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
                     value={parcelData.dimension.length}
                     onChange={handleParcelDataChange}
                     placeholder="Length"
+                    required
                     className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
                   />
                   <p className="absolute font-[600] text-[18px] right-[5%] ">
@@ -181,6 +184,7 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
                     value={parcelData.dimension.breadth}
                     onChange={handleParcelDataChange}
                     placeholder="Breath"
+                    required
                     className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
                   />
                   <p className="absolute font-[600] text-[18px] right-[5%] ">
@@ -195,6 +199,7 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
                     value={parcelData.dimension.height}
                     onChange={handleParcelDataChange}
                     placeholder="Height"
+                    required
                     className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
                   />
                   <p className="absolute font-[600] text-[18px] right-[5%] ">
@@ -221,6 +226,7 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
                 name="pickupAddress"
                 value={parcelData.pickupAddress}
                 onChange={handleParcelDataChange}
+                required
                 className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
               />
             </div>
@@ -236,6 +242,7 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
                 name="pickupCode"
                 value={parcelData.pickupCode}
                 onChange={handleParcelDataChange}
+                required
                 className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
               />
             </div>
@@ -267,6 +274,7 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
                 name="packageDescription"
                 value={parcelData.packageDescription}
                 onChange={handleParcelDataChange}
+                required
                 className="rounded-[15px] border border-[#A1A1A1] h-[165px] outline-[#0A089A] placeholder-[]  pl-[24px] pt-[0px] "
               />
             </div>
