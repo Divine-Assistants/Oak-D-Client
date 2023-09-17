@@ -6,13 +6,13 @@ import Link from "next/link";
 const About = () => {
   const styles = {
     firstSection: {
-      background: "url(../img/aerial-view-container-ship.svg)",
+      background: "url(../img/ship.png)",
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
     },
     fourth: {
       background:
-        "linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(../img/delivery-person-getting-parcel.svg)",
+        "linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(/img/delivery.png)",
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
     },
@@ -40,14 +40,15 @@ const About = () => {
       </section>
 
       {/* FOUNDERS */}
-      <section className="flex flex-wrap justify-center my-[50px] mx-[20px]  ">
+      <section className="flex flex-wrap justify-center my-[50px] mx-[20px]">
         <div className="mb-[20px] md:w-1/3 md:mr-[50px]  ">
           <Image
-            src="../img/Damilola-Kuku.svg"
+            src="/img/Damilola-Kuku.svg"
             alt="Damilola Kuku"
             layout="responsive"
             width={300}
             height={300}
+            className="h-[100%]"
           />
           <p className="text-[18px] md:text-[36px] font-[700] ">
             Damilola Kuku
@@ -59,11 +60,12 @@ const About = () => {
 
         <div className="mb-[20px] md:w-1/3 md:mr-[50px] ">
           <Image
-            src="../img/Azeez.svg"
+            src="/img/Azeez.png"
             alt="Azeez Kuku"
             layout="responsive"
             width={300}
             height={300}
+            className="h-[100%]"
           />
           <p className="text-[18px] md:text-[36px] font-[700] ">Azeez Kuku</p>
           <p className="text-[16px] md:text-[24px] font-[600] ">
@@ -73,7 +75,7 @@ const About = () => {
 
         <div className="mb-[20px] md:w-1/3 md:mt-[50px] ">
           <Image
-            src="../img/Amosun-Kolawole.svg"
+            src="/img/Amosun.png"
             alt="Amosun Kolawale"
             layout="responsive"
             width={300}
@@ -103,7 +105,7 @@ const About = () => {
           </div>
           <div className="w-full md:w-1/2">
             <Image
-              src="../img/about-image-1.svg"
+              src="/img/about-image-1.png"
               alt="Delivery Man"
               layout="responsive"
               width={500}
@@ -128,7 +130,7 @@ const About = () => {
           </div>
           <div className="w-full md:w-1/2">
             <Image
-              src="../img/about-image-2.svg"
+              src="/img/about-image-2.png"
               alt="Delivery Man"
               layout="responsive"
               width={500}
@@ -247,7 +249,7 @@ const About = () => {
       {/* CONTAINER IMAGE SECTION */}
       <section className="w-full my-10">
         <Image
-          src="../img/container.svg"
+          src="/img/oak-container.png"
           alt="Shipping Container"
           layout="responsive"
           width={300}
@@ -259,7 +261,7 @@ const About = () => {
       <section className="bg-white py-4 px-4 flex flex-col font-poppins md:flex-row-reverse md:px-10 md:justify-between">
         <div className="w-full md:w-1/2">
           <Image
-            src="../img/Azeez-Kuku-Working.svg"
+            src="/img/azeezwork.png"
             alt="Delivery Man"
             layout="responsive"
             width={500}
@@ -285,13 +287,17 @@ const About = () => {
               <span className="mr-2 font-bold">Contact Us</span>
               <ChevronRightIcon boxSize={5} />
             </Link>
-                <div>
-                    <p className="font-bold text-sm mb-[10px] ">
-              Or Call <span className="text-blue">(437) 436-1757  </span>
-                    </p>
-                    <p className="text-blue font-bold text-sm ml-[50px] mb-[10px] ">(234) 806 9651 839</p>
-                    <p className="text-blue font-bold text-sm ml-[50px] ">(234) 906 4790 625</p>
-                </div>
+            <div>
+              <p className="font-bold text-sm mb-[10px] ">
+                Or Call <span className="text-blue">(437) 436-1757 </span>
+              </p>
+              <p className="text-blue font-bold text-sm ml-[50px] mb-[10px] ">
+                (234) 806 9651 839
+              </p>
+              <p className="text-blue font-bold text-sm ml-[50px] ">
+                (234) 906 4790 625
+              </p>
+            </div>
           </div>
         </div>
       </section>

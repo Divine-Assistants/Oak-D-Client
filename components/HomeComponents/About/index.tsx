@@ -1,5 +1,5 @@
 import React from "react";
-import Image from 'next/image';
+import Image from "next/image";
 
 export function About() {
   return (
@@ -10,17 +10,19 @@ export function About() {
         </h2>
         <div className="lg:flex lg:items-center lg:flex-row-reverse lg:gap-x-[20px] ">
           <div className="mb-[15px] lg:w-[100%]  ">
-            <Image 
-              src="/img/about-us.svg" 
-              alt='About Us' 
-              width={300} 
-              height={300} 
-              layout='responsive' 
+            <Image
+              src="/img/about-us.png"
+              alt="About Us"
+              width={300}
+              height={300}
+              layout="responsive"
             />
           </div>
-          
+
           <div className="lg:w-[100%] ">
-            <h2 className="text-[#AC0108] font-[700] text-[20px] mb-[8px] ">ABOUT</h2>
+            <h2 className="text-[#AC0108] font-[700] text-[20px] mb-[8px] ">
+              ABOUT
+            </h2>
             <h2 className="font-[700] text-[25px] mb-[15px] ">
               OAK & D is your trusted partner for efficient, reliable, and
               cost-effecient shipping solutions.
