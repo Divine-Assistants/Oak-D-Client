@@ -9,6 +9,7 @@ import {
   QuoteLayout,
 } from "@/components";
 import { DomesticContextProvider } from "@/context/DomesticWrapper";
+import { GlobalContextProvider } from "@/context/GlobalWrapper";
 import { clientInfo } from "@/components";
 import { clientParcelInfo } from "@/components";
 import React, { useState } from "react";
@@ -93,6 +94,7 @@ export default function Domestic() {
   return (
     <QuoteLayout>
       <main>
+        <GlobalContextProvider>
         <DomesticContextProvider>
           {/* <DomesticCrumb /> */}
           <DomesticQuoteLand />
@@ -105,6 +107,7 @@ export default function Domestic() {
             registerPackage={registerPackage}
           /> */}
         </DomesticContextProvider>
+        </GlobalContextProvider>
       </main>
     </QuoteLayout>
   );

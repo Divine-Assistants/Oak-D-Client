@@ -54,11 +54,13 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
     setSelectedArrivalProvince,
     setShowVideo,
   } = useContext(DomesticContext);
+
   const handleProvinceDepartureChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
     setSelectedDepartureProvince(event.target.value);
   };
+
   const handleProvinceArrivalChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
@@ -88,6 +90,7 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
       [name]: value,
     }));
   };
+  
   useEffect(() => {
     setParcelData((prevData) => {
       return {
@@ -176,6 +179,7 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                   lbs
                 </p>
               </div>
+
             </div>
             <div className="flex flex-col gap-[10px]">
               <label htmlFor="" className="font-[600] ">
@@ -196,6 +200,7 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                     In
                   </p>
                 </div>
+
                 <div className="relative w-[100%] flex items-center ">
                   <input
                     type="number"
@@ -210,6 +215,7 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                     In
                   </p>
                 </div>
+
                 <div className="relative w-[100%] flex items-center ">
                   <input
                     type="number"

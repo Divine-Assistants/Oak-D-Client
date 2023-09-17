@@ -1,12 +1,12 @@
 import { GlobalContext } from '@/context/GlobalWrapper'
 import Link from 'next/link'
 import React, {useContext} from 'react'
-import { FaMapMarked, FaMapPin, FaWhatsapp } from 'react-icons/fa'
+import { FaWhatsapp } from 'react-icons/fa'
 
 export function PickDrop() {
     const { glotrail, setGlotrail } = useContext(GlobalContext)
   return (
-    <section className='' style={{display: glotrail === 4? 'block' : 'none'}}>
+    <section className='' style={{display: glotrail === 4 ? 'block' : 'none'}}>
       <div className='mb-[102px]'>
            <div className='relative'>
               <div className='w-[100vw] h-[835px] lg:h-[945px] '>
