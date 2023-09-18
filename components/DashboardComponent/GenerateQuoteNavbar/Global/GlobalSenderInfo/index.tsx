@@ -46,10 +46,8 @@ export function GlobalUserSenderInfo({ setData }: SenderInformationProps) {
     GlobalSenderInfoContext
   );
   const { setGlobalReceiverInfo } = useContext(GlobalReceiverInfoContext);
-
   // Breadcrumbs Context
   const { setGlobalCrumb } = useContext(GlobalCrumbContext);
-
   const [senderData, setSenderData] = useState<userInfo>({
     firstName: "",
     lastName: "",
@@ -60,6 +58,7 @@ export function GlobalUserSenderInfo({ setData }: SenderInformationProps) {
     address: "",
     postalCode: "",
   });
+  const [formError, setFormError] = useState<Partial<userInfo>>({});
 
   function handleSenderDataChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
@@ -76,6 +75,21 @@ export function GlobalUserSenderInfo({ setData }: SenderInformationProps) {
   }, [senderData]);
 
   function handleFormSubmit() {
+    // Check for empty fields and update formErrors
+    const errors: Partial<userInfo> = {};
+    for (const key in senderData) {
+      if (!senderData[key]) {
+        errors[key] = "This field is required";
+      }
+    }
+    setFormError(errors);
+
+    // If there are errors, do not submit the form
+    if (Object.keys(errors).length > 0) {
+      return;
+    }
+
+    // Proceed with form submission
     setData((prevData: any) => {
       return { ...prevData, sender: senderData };
     });
@@ -116,7 +130,11 @@ export function GlobalUserSenderInfo({ setData }: SenderInformationProps) {
                 className="p-[20px] border-[2px] border-[#CBCBCB] rounded-[8px] bg-[#F5F5F5] focus:outline-[#0A089A]  "
                 required
               />
+              {formError.firstName && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.firstName}</p>
+              )}
             </div>
+
             <div className="flex flex-col mb-[15px] text-[#1E1E1E] text-[16px] w-[100%] ">
               <label htmlFor="lastName" className="mb-[8px] font-[600] ">
                 Last Name
@@ -131,6 +149,9 @@ export function GlobalUserSenderInfo({ setData }: SenderInformationProps) {
                 className="p-[20px] border-[2px] border-[#CBCBCB] rounded-[8px] bg-[#F5F5F5] focus:outline-[#0A089A] "
                 required
               />
+              {formError.lastName && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.lastName}</p>
+              )}
             </div>
           </div>
 
@@ -148,6 +169,9 @@ export function GlobalUserSenderInfo({ setData }: SenderInformationProps) {
               className="p-[20px] border-[2px] border-[#CBCBCB] rounded-[8px] bg-[#F5F5F5] focus:outline-[#0A089A] "
               required
             />
+              {formError.email && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.email}</p>
+              )}
           </div>
 
           <div className="flex flex-col mb-[15px] text-[#1E1E1E] text-[16px] ">
@@ -164,6 +188,9 @@ export function GlobalUserSenderInfo({ setData }: SenderInformationProps) {
               className="p-[20px] border-[2px] border-[#CBCBCB] rounded-[8px] bg-[#F5F5F5] focus:outline-[#0A089A] "
               required
             />
+              {formError.phoneNumber && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.phoneNumber}</p>
+              )}
           </div>
 
           <div className="flex flex-col mb-[15px] text-[#1E1E1E] text-[16px] ">
@@ -180,6 +207,9 @@ export function GlobalUserSenderInfo({ setData }: SenderInformationProps) {
               className="p-[20px] border-[2px] border-[#CBCBCB] rounded-[8px] bg-[#F5F5F5] focus:outline-[#0A089A] "
               required
             />
+              {formError.region && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.region}</p>
+              )}
           </div>
 
           <div className="flex flex-col mb-[15px] text-[#1E1E1E] text-[16px] ">
@@ -196,6 +226,9 @@ export function GlobalUserSenderInfo({ setData }: SenderInformationProps) {
               className="p-[20px] border-[2px] border-[#CBCBCB] rounded-[8px] bg-[#F5F5F5] focus:outline-[#0A089A] "
               required
             />
+              {formError.country && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.country}</p>
+              )}
           </div>
 
           <div className="flex flex-col mb-[15px] text-[#1E1E1E] text-[16px] ">
@@ -212,6 +245,9 @@ export function GlobalUserSenderInfo({ setData }: SenderInformationProps) {
               className="p-[20px] border-[2px] border-[#CBCBCB] rounded-[8px] bg-[#F5F5F5] focus:outline-[#0A089A] "
               required
             />
+              {formError.address && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.address}</p>
+              )}
           </div>
 
           <div className="flex flex-col mb-[15px] text-[#1E1E1E] text-[16px] ">
@@ -228,6 +264,9 @@ export function GlobalUserSenderInfo({ setData }: SenderInformationProps) {
               className="p-[20px] border-[2px] border-[#CBCBCB] rounded-[8px] bg-[#F5F5F5] focus:outline-[#0A089A] "
               required
             />
+              {formError.postalCode && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.postalCode}</p>
+              )}
           </div>
 
           <button
