@@ -4,7 +4,8 @@ import React, {useContext} from 'react'
 import { FaWhatsapp } from 'react-icons/fa'
 
 export function PickDrop() {
-    const { glotrail, setGlotrail } = useContext(GlobalContext)
+  const { glotrail, setGlotrail } = useContext(GlobalContext);
+
   return (
     <section className='' style={{display: glotrail === 4 ? 'block' : 'none'}}>
       <div className='mb-[102px]'>

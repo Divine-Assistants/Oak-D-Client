@@ -10,6 +10,7 @@ import {
 } from "@/components";
 import { DomesticContextProvider } from "@/context/DomesticWrapper";
 import { GlobalContextProvider } from "@/context/GlobalWrapper";
+import { PickDrop } from "@/components";
 import { clientInfo } from "@/components";
 import { clientParcelInfo } from "@/components";
 import React, { useState } from "react";
@@ -102,6 +103,7 @@ export default function Domestic() {
           <DomesticReciever setData={setData} />
           <DomesticParcel setData={setData} />
           <DomesticSummary data={data} registerPackage={registerPackage} />
+          <PickDrop />
           {/* <Checkout
             data={data}
             registerPackage={registerPackage}

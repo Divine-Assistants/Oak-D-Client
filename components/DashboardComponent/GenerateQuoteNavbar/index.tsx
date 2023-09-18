@@ -162,7 +162,6 @@ export function GenerateQuoteNavbar() {
     if (response.data.warehouseID) {
       setCookie("warehouseID", response.data.warehouseID);
     }
-    // router.push(response.data.url);
   };
 
   return (
@@ -190,8 +189,11 @@ export function GenerateQuoteNavbar() {
               data={data}
               warehouseGlobalPackage={warehouseGlobalPackage}
             />
-            <ShippingSummary data={data} />
-            <PaymentPage registerPackage={registerPackage} data={data} />
+            <ShippingSummary 
+              data={data} 
+              warehouseGlobalPackage={warehouseGlobalPackage}
+            />
+            {/* <PaymentPage registerPackage={registerPackage} data={data} /> */}
             <QuoteModal />
             <ContactPage />
           </div>

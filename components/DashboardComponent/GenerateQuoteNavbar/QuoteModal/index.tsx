@@ -9,7 +9,6 @@ export function QuoteModal(){
     const {setGlobalSummary} = useContext(GlobalSummaryContext);
     const {setShowWarehoueSummary} = useContext(WarehouseSummaryContext);
 
-
     function handleBtnClick(){
         setGlobalSummary(false);
         setShowWarehoueSummary(false);
