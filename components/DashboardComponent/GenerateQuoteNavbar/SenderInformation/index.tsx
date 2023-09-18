@@ -81,6 +81,8 @@ export function SenderInformation({ setData }: SenderInformationProps) {
     if (Object.keys(errors).length > 0) {
       return;
     }
+
+    // Proceed with form submission
     setData((prevData: any) => {
       return { ...prevData, sender: senderData };
     });
