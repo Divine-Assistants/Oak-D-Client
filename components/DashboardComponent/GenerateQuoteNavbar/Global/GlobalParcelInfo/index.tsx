@@ -46,12 +46,13 @@ export function GlobalUserParcelInfo({ setData }: ParcelInformationType) {
     GlobalParcelInfoContext
   );
   const { globalSummary, setGlobalSummary } = useContext(GlobalSummaryContext);
-
   // Breadcrumbs Context
   const { setGlobalCrumb } = useContext(GlobalCrumbContext);
-
   const [parcelData, setParcelData] =
     useState<ParcelInformationDataType>(initialParcelInfo);
+
+    const [formError, setFormError] = useState<Partial<ParcelInformationDataType>>({});
+  
 
   const handleParcelDataChange = (
     event: React.ChangeEvent<
@@ -106,6 +107,21 @@ export function GlobalUserParcelInfo({ setData }: ParcelInformationType) {
   }, [parcelData.packageWeight]);
 
   function handleFormSubmit() {
+    // Check for empty fields and update formErrors
+    const errors: Partial<ParcelInformationDataType> = {};
+    for (const key in parcelData) {
+      if (!parcelData[key]) {
+        errors[key] = "This field is required";
+      }
+    }
+    setFormError(errors);
+
+    // If there are errors, do not submit the form
+    if (Object.keys(errors).length > 0) {
+      return;
+    }
+
+    // Proceed with form submission
     setData((prevData: any) => {
       return {
         ...prevData,
@@ -147,6 +163,9 @@ export function GlobalUserParcelInfo({ setData }: ParcelInformationType) {
               placeholder="Name"
               className="p-[15px] border-[2px] border-[#CBCBCB] rounded-[8px] bg-[#F5F5F5] focus:outline-[#0A089A] "
             />
+            {formError.packageName && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.packageName}</p>
+              )}
           </div>
 
           <div className="flex flex-col mb-[15px] text-[#1E1E1E] text-[16px] ">
@@ -162,6 +181,9 @@ export function GlobalUserParcelInfo({ setData }: ParcelInformationType) {
               placeholder="0"
               className="p-[15px] border-[2px] border-[#CBCBCB] rounded-[8px] bg-[#F5F5F5] focus:outline-[#0A089A] "
             />
+            {formError.packageWeight && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.packageWeight}</p>
+              )}
           </div>
 
           <p className="text-[#1E1E1E] text-[16px] mb-[8px] font-[600]">
@@ -178,6 +200,9 @@ export function GlobalUserParcelInfo({ setData }: ParcelInformationType) {
                 placeholder="Length"
                 className="p-[15px] border-[2px] border-[#CBCBCB] rounded-[8px] bg-[#F5F5F5] focus:outline-[#0A089A]  "
               />
+              {formError.dimension?.length && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.dimension?.length}</p>
+              )}
             </div>
 
             <div className="flex flex-col mb-[15px] text-[#1E1E1E] text-[16px] lg:w-[30%] lg:mb-0 ">
@@ -190,6 +215,9 @@ export function GlobalUserParcelInfo({ setData }: ParcelInformationType) {
                 placeholder="Breath"
                 className="p-[15px] border-[2px] border-[#CBCBCB] rounded-[8px] bg-[#F5F5F5] focus:outline-[#0A089A] "
               />
+              {formError.dimension?.breadth && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.dimension?.breadth}</p>
+              )}
             </div>
 
             <div className="flex flex-col mb-[15px] text-[#1E1E1E] text-[16px] lg:w-[30%] lg:mb-0 ">
@@ -202,6 +230,9 @@ export function GlobalUserParcelInfo({ setData }: ParcelInformationType) {
                 placeholder="Height"
                 className="p-[15px] border-[2px] border-[#CBCBCB] rounded-[8px] bg-[#F5F5F5] focus:outline-[#0A089A] "
               />
+              {formError.dimension?.height && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.dimension?.height}</p>
+              )}
             </div>
           </div>
 
@@ -227,6 +258,9 @@ export function GlobalUserParcelInfo({ setData }: ParcelInformationType) {
                 <option value="Ajax, Canada">Ajax, Canada</option>
                 <option value="Ikeja, Nigeria">Lagos, Nigeria</option>
               </select>
+              {formError.departure && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.departure}</p>
+              )}
             </div>
 
             <div className="mb-[15px] flex flex-col text-[#1E1E1E] text-[16px] w-[100%] ">
@@ -250,6 +284,9 @@ export function GlobalUserParcelInfo({ setData }: ParcelInformationType) {
                 <option value="Ajax, Canada">Ajax, Canada</option>
                 <option value="Ikeja, Nigeria">Lagos, Nigeria</option>
               </select>
+              {formError.arrival && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.arrival}</p>
+              )}
             </div>
           </div>
 
@@ -300,6 +337,9 @@ export function GlobalUserParcelInfo({ setData }: ParcelInformationType) {
               onChange={handleParcelDataChange}
               className="p-[20px] border-[2px] border-[#CBCBCB] rounded-[8px] bg-[#F5F5F5] focus:outline-[#0A089A] "
             />
+            {formError.packageDescription && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.packageDescription}</p>
+              )}
           </div>
 
           <button

@@ -29,7 +29,7 @@ export function DomesticSummary({ data, registerPackage }: DomesticSummaryType) 
   }
 
   return (
-    <section style={{ display: trail === 3 ? "block" : "none" }}>
+    <section style={{ display: trail === 3 && glotrail !== 4 ? "block" : "none" }}>
       <div className=" w-[90%] m-auto md:flex md:justify-between mb-[100px] mt-[120px]">
         <div className="mb-[60px] md:w-[40%] mt-[49px] ">
           <h1 className="text-[16px] font-[600] text-[#AC0108] mb-[15px] block md:hidden ">
@@ -110,9 +110,7 @@ export function DomesticSummary({ data, registerPackage }: DomesticSummaryType) 
                     className="bg-[#9C9C9C] p-[15px] text-[16px] lg:text-[18px] text-[#FEFEFE] rounded-[10px] w-[100%] ">Continue</button>
 
                     <button 
-                      onClick={() => {
-                        setGlotrail(4);
-                      }}
+                      onClick={()=> setGlotrail(4)}
                       className="bg-[#0A089A] p-[15px] text-[16px] lg:text-[18px] text-[#FEFEFE] rounded-[10px] w-[100%]">Contact Us</button>
                 </div>
             </div>

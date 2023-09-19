@@ -12,10 +12,13 @@ import { DataType } from "..";
 import { DomesticBreadcrumb } from "../DomesticBreadcrumb";
 
 interface ShippingSummaryType {
+  warehouseGlobalPackage: (arg: DataType) => void;
   data: DataType;
 }
 
-export function ShippingSummary({ data }: ShippingSummaryType) {
+export function ShippingSummary({ 
+  data,
+  warehouseGlobalPackage}: ShippingSummaryType) {
   const { showShippingSummary, setShowShippingSummary } = useContext(
     ShippingSummaryContext
   );
@@ -25,15 +28,18 @@ export function ShippingSummary({ data }: ShippingSummaryType) {
   const { setDomesticBreadcrumb } = useContext(DomesticBreadcrumbContext);
 
   function handleSubmit() {
-    if (isDomestic) {
-      setShowShippingSummary(false);
-      setDomesticBreadcrumb(5);
-      setShowPaymentPage(true);
-      window.scrollTo(0, 0);
-    } else {
-      setShowQuoteModal(true);
-      window.scrollTo(0, 0);
-    }
+    setShowShippingSummary(false);
+    warehouseGlobalPackage(data);
+    setShowQuoteModal(true);
+    window.scrollTo(0, 0);
+    // if (isDomestic) {
+    //   setDomesticBreadcrumb(5);
+    //   setShowPaymentPage(true);
+    //   window.scrollTo(0, 0);
+    // } else {
+    //   setShowQuoteModal(true);
+    //   window.scrollTo(0, 0);
+    // }
   }
 
   console.log(data);

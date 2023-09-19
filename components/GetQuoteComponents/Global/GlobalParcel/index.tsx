@@ -126,6 +126,7 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                 id="packageName"
                 className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
                 placeholder="Name"
+                required
               />
             </div>
             <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -141,6 +142,7 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                   id="packageWeight"
                   className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
                   placeholder="0"
+                  required
                 />
               </div>
             </div>
@@ -158,6 +160,7 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                     id="length"
                     className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
                     placeholder="Length"
+                    required
                   />
                   <p className="absolute font-[600] text-[18px] right-[5%] ">
                     In
@@ -172,6 +175,7 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                     id="breadth"
                     className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
                     placeholder="Breadth"
+                    required
                   />
                   <p className="absolute font-[600] text-[18px] right-[5%] ">
                     In
@@ -186,6 +190,7 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                     id="height"
                     className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
                     placeholder="Height"
+                    required
                   />
                   <p className="absolute font-[600] text-[18px] right-[5%] ">
                     In
@@ -208,6 +213,7 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                 name="departure"
                 value={parcelData.departure}
                 onChange={handleParcelDataChange}
+                required
                 className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
               >
                 <option value="">--Select a departure location--</option>
@@ -230,6 +236,7 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                 name="arrival"
                 value={parcelData.arrival}
                 onChange={handleParcelDataChange}
+                required
                 className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
               >
                 <option value="">--Select an Arrival location--</option>
@@ -275,6 +282,7 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                 onChange={handleParcelDataChange}
                 className="rounded-[15px] border border-[#A1A1A1] h-[165px] outline-[#0A089A] placeholder-[]  pl-[24px] pt-[0px] "
                 placeholder=""
+                required
               />
             </div>
           </form>
