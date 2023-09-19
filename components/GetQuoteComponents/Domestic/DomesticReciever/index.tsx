@@ -61,7 +61,7 @@ export function DomesticReciever({ setData }: DomesticReceiverType) {
         <div className="mb-[40px] lg:w-[40%]">
           <p className=" text-[40px] font-[600] ">
             Please enter the{" "}
-            <span className="text-[#A1A1A1]">reciever&apos;s information</span>{" "}
+            <span className="text-[#A1A1A1]">receiver&apos;s information</span>{" "}
             to proceed
           </p>
         </div>
