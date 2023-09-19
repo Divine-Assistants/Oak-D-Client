@@ -3,7 +3,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { createUser } from "@/api/api";
 import { Spinner } from "@chakra-ui/react";
-import {FaEye, FaEyeSlash} from 'react-icons/fa';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Head from "next/head";
 
 export type userData = {
   firstName: string;
@@ -33,9 +34,9 @@ const GetStarted = () => {
     confirmPassword: "",
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [passwordLength, setPasswordLength] = useState('');
-  const [correctPassword, setCorrectPassword] = useState('');
-  const [userExist, setUserExist] = useState('')
+  const [passwordLength, setPasswordLength] = useState("");
+  const [correctPassword, setCorrectPassword] = useState("");
+  const [userExist, setUserExist] = useState("");
   const router = useRouter();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -59,23 +60,23 @@ const GetStarted = () => {
     console.log(inputValues);
     try {
       if (inputValues.confirmPassword === inputValues.password) {
-        setCorrectPassword('');
+        setCorrectPassword("");
         setIsLoading(true);
 
-        if(inputValues.password.length < 8){
-          setPasswordLength('Password must not be less than 8 characters');
+        if (inputValues.password.length < 8) {
+          setPasswordLength("Password must not be less than 8 characters");
           setIsLoading(false);
-        }else {
-          setPasswordLength('');
+        } else {
+          setPasswordLength("");
         }
         const response = await createUser(inputValues);
         console.log(response.data);
 
-        if(response.status == "Unsuccessful"){
+        if (response.status == "Unsuccessful") {
           setUserExist(response.message);
           setIsLoading(false);
         }
-        if(response.status === "Success") {
+        if (response.status === "Success") {
           setInputValues({
             firstName: "",
             lastName: "",
@@ -85,11 +86,13 @@ const GetStarted = () => {
           });
 
           setIsLoading(false);
-          router.push(`/verify-code?email=${encodeURIComponent(response.data.email)}`);
+          router.push(
+            `/verify-code?email=${encodeURIComponent(response.data.email)}`
+          );
         }
-      }else {
-        setPasswordLength('');
-        setCorrectPassword('Password and Confirm Password must match');
+      } else {
+        setPasswordLength("");
+        setCorrectPassword("Password and Confirm Password must match");
       }
     } catch (error) {
       console.log(error);
@@ -98,6 +101,16 @@ const GetStarted = () => {
 
   return (
     <div className="font-poppins px-[10px] md:px-[0px]">
+      <Head>
+        <title>Get Started</title>
+        {/* <link rel="icon" href="/img/nav-logo.svg" /> */}
+        <link rel="icon" href="/img/fav-logo.png" />
+        <meta
+          name="description"
+          content="Welcome to OAK&D Canada, your trusted logistics partner for seamless package shipping and delivery. Our mission is to connect you with efficient and reliable shipping solutions, ensuring your packages reach their destination on time, every time. Explore our services today and experience hassle-free shipping with OAK&D."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <div className="flex justify-between">
         <div
           className="hidden lg:block relative lg:w-[100%]"
@@ -190,84 +203,99 @@ const GetStarted = () => {
           </div>
 
           <div className="flex flex-col mb-[20px]">
-              <label
-                htmlFor="password"
-                className="mb-[10px] text-[18px] font-[500]"
-              >
-                Password
-              </label>
-              <div className=" flex items-center w-full md:h-[60px] relative">
-                <input 
-                  id="password"
-                  type={showPassword ? `text` : `password`}
-                  name="password"
-                  value={inputValues.password}
-                  onChange={handleChange}
-                  placeholder="Enter Password"
-                  required
-                  className="abosolute pl-[20px] py-[10px] top-0 left-0 w-[100%] h-[100%] border-[#D9D9D9] border-[2px] focus:outline-[#0A089A] rounded-[8px] " 
-                />
+            <label
+              htmlFor="password"
+              className="mb-[10px] text-[18px] font-[500]"
+            >
+              Password
+            </label>
+            <div className=" flex items-center w-full md:h-[60px] relative">
+              <input
+                id="password"
+                type={showPassword ? `text` : `password`}
+                name="password"
+                value={inputValues.password}
+                onChange={handleChange}
+                placeholder="Enter Password"
+                required
+                className="abosolute pl-[20px] py-[10px] top-0 left-0 w-[100%] h-[100%] border-[#D9D9D9] border-[2px] focus:outline-[#0A089A] rounded-[8px] "
+              />
 
-                {togglePassword ? 
-                <div className="w-fit cursor-pointer absolute right-[10px] " onClick={()=> {
-                  setTogglePassword(false),
-                  setShowPassword(true);
-                }}>
+              {togglePassword ? (
+                <div
+                  className="w-fit cursor-pointer absolute right-[10px] "
+                  onClick={() => {
+                    setTogglePassword(false), setShowPassword(true);
+                  }}
+                >
                   <FaEye size={25} />
                 </div>
-                :
-                <div className="w-fit cursor-pointer absolute right-[10px]" onClick={()=> {
-                  setTogglePassword(true);
-                  setShowPassword(false);
-                }}>
+              ) : (
+                <div
+                  className="w-fit cursor-pointer absolute right-[10px]"
+                  onClick={() => {
+                    setTogglePassword(true);
+                    setShowPassword(false);
+                  }}
+                >
                   <FaEyeSlash size={25} />
                 </div>
-                }
-
-              </div>
-              <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">{passwordLength}</p>
+              )}
+            </div>
+            <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">
+              {passwordLength}
+            </p>
           </div>
 
           <div className="flex flex-col mb-[20px]">
-              <label
-                htmlFor="confirm-password"
-                className="mb-[10px] text-[18px] font-[500]"
-              >
-                Confirm Password
-              </label>
-              <div className=" flex items-center w-full md:h-[60px] relative">
-                <input 
-                  id="confirm-password"
-                  type={showConfirmPassword ? `text` : `password`}
-                  placeholder="Confirm Password"
-                  name="confirmPassword"
-                  value={inputValues.confirmPassword}
-                  onChange={handleChange}
-                  required
-                  className="abosolute pl-[20px] py-[10px] top-0 left-0 w-[100%] h-[100%] border-[#D9D9D9] border-[2px] focus:outline-[#0A089A] rounded-[8px] " 
-                />
+            <label
+              htmlFor="confirm-password"
+              className="mb-[10px] text-[18px] font-[500]"
+            >
+              Confirm Password
+            </label>
+            <div className=" flex items-center w-full md:h-[60px] relative">
+              <input
+                id="confirm-password"
+                type={showConfirmPassword ? `text` : `password`}
+                placeholder="Confirm Password"
+                name="confirmPassword"
+                value={inputValues.confirmPassword}
+                onChange={handleChange}
+                required
+                className="abosolute pl-[20px] py-[10px] top-0 left-0 w-[100%] h-[100%] border-[#D9D9D9] border-[2px] focus:outline-[#0A089A] rounded-[8px] "
+              />
 
-                {toggleConfirmPassword ? 
-                <div className="w-fit cursor-pointer absolute right-[10px] " onClick={()=> {
-                  setToggleConfirmPassword(false),
-                  setShowConfirmPassword(true);
-                }}>
+              {toggleConfirmPassword ? (
+                <div
+                  className="w-fit cursor-pointer absolute right-[10px] "
+                  onClick={() => {
+                    setToggleConfirmPassword(false),
+                      setShowConfirmPassword(true);
+                  }}
+                >
                   <FaEye size={25} />
                 </div>
-                :
-                <div className="w-fit cursor-pointer absolute right-[10px]" onClick={()=> {
-                  setToggleConfirmPassword(true);
-                  setShowConfirmPassword(false);
-                }}>
+              ) : (
+                <div
+                  className="w-fit cursor-pointer absolute right-[10px]"
+                  onClick={() => {
+                    setToggleConfirmPassword(true);
+                    setShowConfirmPassword(false);
+                  }}
+                >
                   <FaEyeSlash size={25} />
                 </div>
-                }
-
-              </div>
-                <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">{correctPassword}</p>
+              )}
+            </div>
+            <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">
+              {correctPassword}
+            </p>
           </div>
 
-          <p className="text-[#AC0108] text-center text-[16px] md:text-[20px] font-[600] my-[10px] ">{userExist}</p>
+          <p className="text-[#AC0108] text-center text-[16px] md:text-[20px] font-[600] my-[10px] ">
+            {userExist}
+          </p>
 
           <p className="text-center text-[14px] md:text-[16px] font-[500]">
             By signing up, you agree to our{" "}
@@ -280,20 +308,21 @@ const GetStarted = () => {
             </a>
           </p>
 
-          {isLoading ?
+          {isLoading ? (
             <button
-            type="submit"
-            className="p-[20px] w-[100%] text-[#FAFAFA] my-[15px] text-center bg-[#0A089A] rounded-[8px] flex items-center justify-center "
+              type="submit"
+              className="p-[20px] w-[100%] text-[#FAFAFA] my-[15px] text-center bg-[#0A089A] rounded-[8px] flex items-center justify-center "
             >
               <Spinner className="h-[30px] w-[30px]" />
-            </button> : 
-            <button
-            type="submit"
-            className="p-[20px] w-[100%] text-[16px] md:text-[18px] text-[#FAFAFA] my-[15px] text-center bg-[#0A089A] rounded-[8px] "
-            >
-            Next
             </button>
-          }
+          ) : (
+            <button
+              type="submit"
+              className="p-[20px] w-[100%] text-[16px] md:text-[18px] text-[#FAFAFA] my-[15px] text-center bg-[#0A089A] rounded-[8px] "
+            >
+              Next
+            </button>
+          )}
 
           <p className="text-center text-[14px] md:text-[16px] font-[500]">
             Already have an account?{" "}

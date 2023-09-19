@@ -4,7 +4,8 @@ import { useRouter } from "next/router";
 import { loginUser } from "@/api/api";
 import { setCookie } from "cookies-next";
 import { Spinner } from "@chakra-ui/react";
-import {FaEye, FaEyeSlash} from 'react-icons/fa';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Head from "next/head";
 // import GoogleLogin from "react-google-login";
 
 export type LoginDataType = {
@@ -30,8 +31,8 @@ const Login = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  const [error, setError] = useState('');
-  const [passwordLength, setPasswordLength] = useState('');
+  const [error, setError] = useState("");
+  const [passwordLength, setPasswordLength] = useState("");
 
   // Displaying Password
   const [showPassword, setShowPassword] = useState(false);
@@ -53,17 +54,17 @@ const Login = () => {
     try {
       if (loginData.email !== "" && loginData.password !== "") {
         setIsLoading(true);
-        if(loginData.password.length < 8){
-          setPasswordLength('Password must not be less than 8 characters');
+        if (loginData.password.length < 8) {
+          setPasswordLength("Password must not be less than 8 characters");
           setIsLoading(false);
-        }else {
-          setPasswordLength('');
+        } else {
+          setPasswordLength("");
         }
         const response = await loginUser(loginData);
         console.log(response);
 
-        if(response.status === "Unsuccessful") {
-          setError(response.message)
+        if (response.status === "Unsuccessful") {
+          setError(response.message);
           setIsLoading(false);
         }
         if (response.status === "Success") {
@@ -84,6 +85,16 @@ const Login = () => {
 
   return (
     <div>
+      <Head>
+        <title>Login</title>
+        {/* <link rel="icon" href="/img/nav-logo.svg" /> */}
+        <link rel="icon" href="/img/fav-logo.png" />
+        <meta
+          name="description"
+          content="Welcome to OAK&D Canada, your trusted logistics partner for seamless package shipping and delivery. Our mission is to connect you with efficient and reliable shipping solutions, ensuring your packages reach their destination on time, every time. Explore our services today and experience hassle-free shipping with OAK&D."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <div className="font-poppins px-[10px] md:px-[0px]">
         <div className="flex justify-between">
           <div
@@ -144,7 +155,7 @@ const Login = () => {
                 Password
               </label>
               <div className=" flex items-center w-full md:h-[60px] relative">
-                <input 
+                <input
                   id="password"
                   type={showPassword ? `text` : `password`}
                   name="password"
@@ -152,28 +163,34 @@ const Login = () => {
                   onChange={handleLoginChange}
                   placeholder="Enter Password"
                   required
-                  className="abosolute pl-[20px] py-[10px] top-0 left-0 w-[100%] h-[100%] border-[#D9D9D9] border-[2px] focus:outline-[#0A089A] rounded-[8px] " 
+                  className="abosolute pl-[20px] py-[10px] top-0 left-0 w-[100%] h-[100%] border-[#D9D9D9] border-[2px] focus:outline-[#0A089A] rounded-[8px] "
                 />
 
-                {togglePassword ? 
-                <div className="w-fit cursor-pointer absolute right-[10px] " onClick={()=> {
-                  setTogglePassword(false),
-                  setShowPassword(true);
-                }}>
-                  <FaEye size={25} />
-                </div>
-                :
-                <div className="w-fit cursor-pointer absolute right-[10px]" onClick={()=> {
-                  setTogglePassword(true);
-                  setShowPassword(false);
-                }}>
-                  <FaEyeSlash size={25} />
-                </div>
-                }
+                {togglePassword ? (
+                  <div
+                    className="w-fit cursor-pointer absolute right-[10px] "
+                    onClick={() => {
+                      setTogglePassword(false), setShowPassword(true);
+                    }}
+                  >
+                    <FaEye size={25} />
+                  </div>
+                ) : (
+                  <div
+                    className="w-fit cursor-pointer absolute right-[10px]"
+                    onClick={() => {
+                      setTogglePassword(true);
+                      setShowPassword(false);
+                    }}
+                  >
+                    <FaEyeSlash size={25} />
+                  </div>
+                )}
               </div>
-              <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">{passwordLength}</p>
+              <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">
+                {passwordLength}
+              </p>
             </div>
-
 
             <div className="flex flex-col text-[16px] lg:text-[18px] font-[500] lg:flex-col-reverse">
               <Link
@@ -190,22 +207,25 @@ const Login = () => {
               </div>
             </div>
 
-            <h2 className="text-center text-[#AC0108] text-[16px] md:text-[18px] font-[700] mt-[20px] ">{error}</h2>
+            <h2 className="text-center text-[#AC0108] text-[16px] md:text-[18px] font-[700] mt-[20px] ">
+              {error}
+            </h2>
 
-            {isLoading ? 
+            {isLoading ? (
               <button
                 type="submit"
                 className="p-[20px] w-[100%] text-[#FAFAFA] mt-[10px] lg:mt-[20px] mb-[15px] text-center bg-[#0A089A] rounded-[8px] flex items-center justify-center"
               >
                 <Spinner className="h-[30px] w-[30px]" />
-              </button> : 
+              </button>
+            ) : (
               <button
-              type="submit"
-              className="p-[20px] w-[100%] text-[#FAFAFA] mt-[10px] lg:mt-[30px] mb-[15px] text-center bg-[#0A089A] rounded-[8px] font-[500]"
-            >
-              Log In
-            </button>
-            }
+                type="submit"
+                className="p-[20px] w-[100%] text-[#FAFAFA] mt-[10px] lg:mt-[30px] mb-[15px] text-center bg-[#0A089A] rounded-[8px] font-[500]"
+              >
+                Log In
+              </button>
+            )}
 
             {/* <div className="flex justify-center">
                             <p>Or</p>

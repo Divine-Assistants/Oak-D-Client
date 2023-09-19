@@ -17,6 +17,7 @@ import { setCookie } from "cookies-next";
 import { userToken } from "@/api/api";
 import axios from "axios";
 import { ClientDataType } from "../domestic";
+import Head from "next/head";
 
 export default function Global() {
   const [data, setData] = useState<any>();
@@ -85,15 +86,28 @@ export default function Global() {
   return (
     <>
       <QuoteLayout>
+        <Head>
+          <title>Global Quote</title>
+          {/* <link rel="icon" href="/img/nav-logo.svg" /> */}
+          <link rel="icon" href="/img/fav-logo.png" />
+          <meta
+            name="description"
+            content="Welcome to OAK&D Canada, your trusted logistics partner for seamless package shipping and delivery. Our mission is to connect you with efficient and reliable shipping solutions, ensuring your packages reach their destination on time, every time. Explore our services today and experience hassle-free shipping with OAK&D."
+          />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+        </Head>
         <main>
           <GlobalContextProvider>
             <DomesticContextProvider>
-              <GlobalCrumb/>
+              <GlobalCrumb />
               <GlobalQuoteLand />
               <GlobalSender setData={setData} />
               <GlobalReciever setData={setData} />
               <GlobalParcel setData={setData} />
-              <GlobalSummary data={data} handleGlobalPackage={handleGlobalPackage} />
+              <GlobalSummary
+                data={data}
+                handleGlobalPackage={handleGlobalPackage}
+              />
               <PickDrop />
             </DomesticContextProvider>
           </GlobalContextProvider>

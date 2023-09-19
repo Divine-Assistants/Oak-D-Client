@@ -3,7 +3,8 @@ import ResetPasswordModal from "../components/Modal/ResetPasswordModal/index";
 import { useRouter } from "next/router";
 import { newPassword } from "@/api/api";
 import { Spinner } from "@chakra-ui/react";
-import {FaEye, FaEyeSlash} from 'react-icons/fa';
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Head from "next/head";
 
 const styles = {
   bgImage: {
@@ -29,17 +30,16 @@ const ResetPassword = () => {
   const [displayModal, setDisplayModal] = useState(false);
   const [alertValue, setAlertValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const router = useRouter();
 
-  const [passwordLength, setPasswordLength] = useState('');
-  const [correctPassword, setCorrectPassword] = useState('');
+  const [passwordLength, setPasswordLength] = useState("");
+  const [correctPassword, setCorrectPassword] = useState("");
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [togglePassword, setTogglePassword] = useState(true);
   const [toggleConfirmPassword, setToggleConfirmPassword] = useState(true);
-
 
   const [resetPassword, setResetPassword] = useState<data>({
     email: router.query.email as string,
@@ -59,21 +59,23 @@ const ResetPassword = () => {
     });
   };
 
-  const handlePasswordSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handlePasswordSubmit = async (
+    event: React.FormEvent<HTMLFormElement>
+  ) => {
     event.preventDefault();
     try {
       if (resetPassword.newPassword === resetPassword.confirmPassword) {
-        setCorrectPassword('');
+        setCorrectPassword("");
         setIsLoading(true);
-        if(resetPassword.newPassword.length < 8){
-          setPasswordLength('Password must not be less than 8 characters');
+        if (resetPassword.newPassword.length < 8) {
+          setPasswordLength("Password must not be less than 8 characters");
           setIsLoading(false);
-        }else {
-          setPasswordLength('');
+        } else {
+          setPasswordLength("");
         }
         const response = await newPassword(resetPassword);
-        console.log(response)
-        if(response.status === 'Unsuccessful'){
+        console.log(response);
+        if (response.status === "Unsuccessful") {
           setIsLoading(false);
           setError(response.message);
         }
@@ -86,17 +88,27 @@ const ResetPassword = () => {
           setIsLoading(false);
           setDisplayModal(true);
         }
-      }else {
-        setPasswordLength('');
-        setCorrectPassword('Password and Confirm Password must match');
+      } else {
+        setPasswordLength("");
+        setCorrectPassword("Password and Confirm Password must match");
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
   return (
     <div>
+      <Head>
+        <title>Reset Password</title>
+        {/* <link rel="icon" href="/img/nav-logo.svg" /> */}
+        <link rel="icon" href="/img/fav-logo.png" />
+        <meta
+          name="description"
+          content="Welcome to OAK&D Canada, your trusted logistics partner for seamless package shipping and delivery. Our mission is to connect you with efficient and reliable shipping solutions, ensuring your packages reach their destination on time, every time. Explore our services today and experience hassle-free shipping with OAK&D."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <div className="font-poppins px-[10px] md:px-[0px]">
         {displayModal ? <ResetPasswordModal /> : null}
         <div className="flex justify-between">
@@ -134,7 +146,7 @@ const ResetPassword = () => {
                 Please reset your password
               </p>
             </div>
-            
+
             {/* <div className="flex flex-col mb-[30px]">
               <label
                 htmlFor="newPassword"
@@ -183,7 +195,7 @@ const ResetPassword = () => {
                 New Password
               </label>
               <div className=" flex items-center w-full md:h-[60px] relative">
-                <input 
+                <input
                   id="newPassword"
                   type={showPassword ? `text` : `password`}
                   name="newPassword"
@@ -191,30 +203,36 @@ const ResetPassword = () => {
                   onChange={handleResetPasswordChange}
                   placeholder="Enter New Password"
                   required
-                  className="abosolute pl-[20px] py-[10px] top-0 left-0 w-[100%] h-[100%] border-[#D9D9D9] border-[2px] focus:outline-[#0A089A] rounded-[8px] " 
+                  className="abosolute pl-[20px] py-[10px] top-0 left-0 w-[100%] h-[100%] border-[#D9D9D9] border-[2px] focus:outline-[#0A089A] rounded-[8px] "
                 />
 
-                {togglePassword ? 
-                <div className="w-fit cursor-pointer absolute right-[10px] " onClick={()=> {
-                  setTogglePassword(false),
-                  setShowPassword(true);
-                }}>
-                  <FaEye size={25} />
-                </div>
-                :
-                <div className="w-fit cursor-pointer absolute right-[10px]" onClick={()=> {
-                  setTogglePassword(true);
-                  setShowPassword(false);
-                }}>
-                  <FaEyeSlash size={25} />
-                </div>
-                }
+                {togglePassword ? (
+                  <div
+                    className="w-fit cursor-pointer absolute right-[10px] "
+                    onClick={() => {
+                      setTogglePassword(false), setShowPassword(true);
+                    }}
+                  >
+                    <FaEye size={25} />
+                  </div>
+                ) : (
+                  <div
+                    className="w-fit cursor-pointer absolute right-[10px]"
+                    onClick={() => {
+                      setTogglePassword(true);
+                      setShowPassword(false);
+                    }}
+                  >
+                    <FaEyeSlash size={25} />
+                  </div>
+                )}
               </div>
-              <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">{passwordLength}</p>
-
+              <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">
+                {passwordLength}
+              </p>
             </div>
 
-          <div className="flex flex-col mb-[20px]">
+            <div className="flex flex-col mb-[20px]">
               <label
                 htmlFor="confirm-password"
                 className="mb-[10px] text-[18px] font-[500]"
@@ -222,7 +240,7 @@ const ResetPassword = () => {
                 Confirm Password
               </label>
               <div className=" flex items-center w-full md:h-[60px] relative">
-                <input 
+                <input
                   id="confirm-password"
                   type={showConfirmPassword ? `text` : `password`}
                   placeholder="Confirm Password"
@@ -230,38 +248,49 @@ const ResetPassword = () => {
                   value={resetPassword.confirmPassword}
                   onChange={handleResetPasswordChange}
                   required
-                  className="abosolute pl-[20px] py-[10px] top-0 left-0 w-[100%] h-[100%] border-[#D9D9D9] border-[2px] focus:outline-[#0A089A] rounded-[8px] " 
+                  className="abosolute pl-[20px] py-[10px] top-0 left-0 w-[100%] h-[100%] border-[#D9D9D9] border-[2px] focus:outline-[#0A089A] rounded-[8px] "
                 />
 
-                {toggleConfirmPassword ? 
-                <div className="w-fit cursor-pointer absolute right-[10px] " onClick={()=> {
-                  setToggleConfirmPassword(false),
-                  setShowConfirmPassword(true);
-                }}>
-                  <FaEye size={25} />
-                </div>
-                :
-                <div className="w-fit cursor-pointer absolute right-[10px]" onClick={()=> {
-                  setToggleConfirmPassword(true);
-                  setShowConfirmPassword(false);
-                }}>
-                  <FaEyeSlash size={25} />
-                </div>
-                }
+                {toggleConfirmPassword ? (
+                  <div
+                    className="w-fit cursor-pointer absolute right-[10px] "
+                    onClick={() => {
+                      setToggleConfirmPassword(false),
+                        setShowConfirmPassword(true);
+                    }}
+                  >
+                    <FaEye size={25} />
+                  </div>
+                ) : (
+                  <div
+                    className="w-fit cursor-pointer absolute right-[10px]"
+                    onClick={() => {
+                      setToggleConfirmPassword(true);
+                      setShowConfirmPassword(false);
+                    }}
+                  >
+                    <FaEyeSlash size={25} />
+                  </div>
+                )}
               </div>
-              <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">{correctPassword}</p>
-          </div>
+              <p className="text-[#AC0108] text-[14px] md:text-[16px] font-[600] mt-[10px] ">
+                {correctPassword}
+              </p>
+            </div>
 
-          <h2 className="text-center text-[#AC0108] text-[16px] md:text-[18px] font-[700] mt-[20px] ">{error}</h2>
+            <h2 className="text-center text-[#AC0108] text-[16px] md:text-[18px] font-[700] mt-[20px] ">
+              {error}
+            </h2>
 
-            {isLoading ?
+            {isLoading ? (
               <button className="p-[20px] w-[100%] text-[#FAFAFA] mt-[15px] text-center bg-[#0A089A] rounded-[8px] flex items-center justify-center">
                 <Spinner className="h-[30px] w-[30px]" />
-              </button> :
+              </button>
+            ) : (
               <button className="p-[20px] w-[100%] text-[#FAFAFA] mt-[15px] text-center bg-[#0A089A] rounded-[8px]">
-              Submit
-            </button>
-            }
+                Submit
+              </button>
+            )}
           </form>
         </div>
       </div>

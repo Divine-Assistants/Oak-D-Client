@@ -15,6 +15,7 @@ import { ClientDataType } from "../domestic";
 import { useRouter } from "next/router";
 import { userToken } from "@/api/api";
 import { useState } from "react";
+import Head from "next/head";
 
 export default function Warehousing() {
   const router = useRouter();
@@ -80,7 +81,9 @@ export default function Warehousing() {
   //   router.push(response.data.url);
   // };
 
-  const handleWarehousePackage = async (myParcel: ClientDataType | undefined) => {
+  const handleWarehousePackage = async (
+    myParcel: ClientDataType | undefined
+  ) => {
     if (
       myParcel?.newPackage.packageWeight &&
       myParcel.newPackage.dimension.length &&
@@ -141,13 +144,26 @@ export default function Warehousing() {
   console.log(data);
   return (
     <QuoteLayout>
+      <Head>
+        <title>Warehousing Quote</title>
+        {/* <link rel="icon" href="/img/nav-logo.svg" /> */}
+        <link rel="icon" href="/img/fav-logo.png" />
+        <meta
+          name="description"
+          content="Welcome to OAK&D Canada, your trusted logistics partner for seamless package shipping and delivery. Our mission is to connect you with efficient and reliable shipping solutions, ensuring your packages reach their destination on time, every time. Explore our services today and experience hassle-free shipping with OAK&D."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <main>
         <GlobalContextProvider>
           <DomesticContextProvider>
             <WareCrumb />
             <WarehouseQuoteLand setData={setData} />
             <WarehouseParcel setData={setData} />
-            <WarehouseSummary data={data} handleWarehousePackage={handleWarehousePackage} />
+            <WarehouseSummary
+              data={data}
+              handleWarehousePackage={handleWarehousePackage}
+            />
             <PickDrop />
           </DomesticContextProvider>
         </GlobalContextProvider>
