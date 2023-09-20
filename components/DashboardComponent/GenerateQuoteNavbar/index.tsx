@@ -181,8 +181,6 @@ export function GenerateQuoteNavbar() {
         setPackageData(response.data.data);
         setSuccessfulDomesticPackage(true)
       }
-      
-      
     }
     console.log("WarehouseData", response.data);
     if (response.data.packageID) {
