@@ -77,11 +77,9 @@ export default function Global() {
     );
 
     if(response.data.status === 'Success'){
-      console.log('warehouse package registered')
-      setUserPackageData(response.data.data)
+      setUserPackageData(response.data.data);
       setSuccessfulGlobalPackage(true);
     }
-
 
     if (response.data.packageID) {
       setCookie("packageID", response.data.packageID);
@@ -106,6 +104,8 @@ export default function Global() {
               <GlobalParcel setData={setData} />
               <GlobalSummary 
                 data={data} 
+                userPackageData={userPackageData}
+                successfulGlobalPackage={successfulGlobalPackage}
                 handleGlobalPackage={handleGlobalPackage} 
               />
               <PickDrop />

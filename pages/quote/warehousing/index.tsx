@@ -142,7 +142,6 @@ export default function Warehousing() {
       }
     );
 
-    console.log(response.data)
     if(response.data.status === 'Success'){
       console.log('warehouse package registered')
       setUserPackageData(response.data.data)

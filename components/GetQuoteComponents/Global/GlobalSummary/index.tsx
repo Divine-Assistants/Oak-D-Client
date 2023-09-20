@@ -3,14 +3,23 @@ import { GlobalContext } from "@/context/GlobalWrapper";
 import React, { useContext } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { ClientDataType } from "@/pages/quote/domestic";
+import { userPackageDataType } from "@/pages/quote/warehousing";
 import { useRouter } from "next/router";
+import emailjs from 'emailjs-com';
 
 interface GlobalSummaryType {
   data: ClientDataType;
+  userPackageData: userPackageDataType;
+  successfulGlobalPackage: boolean;
   handleGlobalPackage: (arg: ClientDataType) => void;
 }
 
-export function GlobalSummary({ data, handleGlobalPackage }: GlobalSummaryType) {
+export function GlobalSummary({ 
+  data, 
+  userPackageData,
+  successfulGlobalPackage,
+  handleGlobalPackage 
+}: GlobalSummaryType) {
   const { trail, setTrail } = useContext(DomesticContext);
   const { glotrail, setGlotrail } = useContext(GlobalContext);
   const router = useRouter();
@@ -21,10 +30,35 @@ export function GlobalSummary({ data, handleGlobalPackage }: GlobalSummaryType) 
   // window.scrollTo({top: 20, behavior: 'smooth'});
   // }
 
-  function handleSubmit() {
+  async function handleSubmit() {
     handleGlobalPackage(data);
-    setTrail(3.5);
-    window.scrollTo(0, 0);
+
+    if(successfulGlobalPackage === true){
+      const package_date = new Date(userPackageData.createdAt)
+      const year = package_date.getFullYear();
+      const month = package_date.toLocaleDateString('default', {month: 'long'});
+      const day = package_date.toLocaleDateString('default', { day: 'numeric' });
+      const formattedDate = `${day} ${month}, ${year}`
+
+      console.log(userPackageData)
+
+      try {
+        // CONFIGURE EMAILJS
+        const emailParams = {
+          from_name: userPackageData.sender,
+          package_name: userPackageData.packageName,
+          date: formattedDate,
+        };
+        await emailjs.send('service_j32sykj', 'template_vjifvfc', emailParams, 'SLaJAJfG-62Jj7HZX');
+
+        setTrail(3.5);
+        window.scrollTo(0, 0);
+
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    
   }
   return (
     <section style={{ display: glotrail === 3 ? "block" : "none" }}>
