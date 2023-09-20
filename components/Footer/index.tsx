@@ -32,7 +32,7 @@ export function Footer() {
                     <div className='flex flex-col gap-y-[8px] w-[250px] lg:w-auto'>
                         <h2 className='text-[20px] lg:text-[25px] font-[700] '>Help</h2>
                         <Link href={'/contact'}>Contact Us</Link>
-                        <Link href={'/quote/global'}>FAQ</Link>
+                        <Link href={'#faq-section'}>FAQ</Link>
                         <Link href={''}>Term of Service</Link>
                     </div>
                 </div>

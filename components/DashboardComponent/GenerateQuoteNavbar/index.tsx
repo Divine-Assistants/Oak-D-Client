@@ -33,6 +33,13 @@ export interface DataType {
   newPackage: ParcelInformationDataType;
   image: File | null;
 }
+export interface PackageDataType {
+  createdAt: string;
+  packageID: string;
+  packageName: string;
+  packageType: string;
+  sender: string;
+}
 
 export function GenerateQuoteNavbar() {
   const { activeNav, setActiveNav } = useContext(NavContext);
@@ -40,6 +47,9 @@ export function GenerateQuoteNavbar() {
   const [receiverInfo, setReceiverInfo] = useState({});
   const [packageInfo, setPackageInfo] = useState({});
   const [data, setData] = useState<any>();
+  const [successfulGlobalPackage, setSuccessfulGlobalPackage] = useState(false);
+  const [packageData, setPackageData] = useState<PackageDataType | null>(null)
+  
 
   const router = useRouter();
 
@@ -146,7 +156,7 @@ export function GenerateQuoteNavbar() {
       return formData;
     }
     const formData = objectToFormData(myParcel);
-    console.log(formData);
+    // console.log(formData);
 
     const response = await axios.post(
       "https://oak-d-api.onrender.com/package/register-package",
@@ -155,6 +165,11 @@ export function GenerateQuoteNavbar() {
         headers: { Authorization: `Bearer ${userToken}` },
       }
     );
+
+    if(response.data.message === 'Package registered successfully'){
+      setPackageData(response.data.data)
+      setSuccessfulGlobalPackage(true);
+    }
     console.log("WarehouseData", response.data);
     if (response.data.packageID) {
       setCookie("packageID", response.data.packageID);
@@ -181,6 +196,8 @@ export function GenerateQuoteNavbar() {
             <GlobalUserParcelInfo setData={setData} />
             <GlobalUserSummary
               data={data}
+              packageData={packageData}
+              successfulGlobalPackage={successfulGlobalPackage}
               warehouseGlobalPackage={warehouseGlobalPackage}
             />
             <WarehouseSenderInfo setData={setData} />
