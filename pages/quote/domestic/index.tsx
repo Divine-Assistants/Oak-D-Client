@@ -18,6 +18,7 @@ import { useRouter } from "next/dist/client/router";
 import { setCookie } from "cookies-next";
 import { userToken } from "@/api/api";
 import axios from "axios";
+import { userPackageDataType } from "../warehousing";
 
 export interface ClientDataType {
   sender: clientInfo;
@@ -29,6 +30,8 @@ export interface ClientDataType {
 export default function Domestic() {
   const [data, setData] = useState<any>();
   const router = useRouter();
+  const [successfulDomesticPackage, setSuccessfulDomesticPackage] = useState(false);
+  const [userPackageData, setUserPackageData] = useState<userPackageDataType | null>(null);
 
   const registerPackage = async (myParcel: ClientDataType | undefined) => {
     if (
@@ -80,6 +83,12 @@ export default function Domestic() {
         headers: { Authorization: `Bearer ${userToken}` },
       }
     );
+
+    if(response.data.status === 'Success'){
+      setUserPackageData(response.data.data);
+      setSuccessfulDomesticPackage(true);
+    }
+
     console.log("Package", response.data);
     if (response.data.packageID) {
       setCookie("packageID", response.data.packageID);
@@ -102,7 +111,12 @@ export default function Domestic() {
           <DomesticSender setData={setData} />
           <DomesticReciever setData={setData} />
           <DomesticParcel setData={setData} />
-          <DomesticSummary data={data} registerPackage={registerPackage} />
+          <DomesticSummary 
+            data={data} 
+            userPackageData={userPackageData}
+            successfulDomesticPackage={successfulDomesticPackage}
+            registerPackage={registerPackage} 
+          />
           <PickDrop />
           {/* <Checkout
             data={data}

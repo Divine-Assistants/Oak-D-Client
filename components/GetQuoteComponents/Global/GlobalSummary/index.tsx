@@ -40,8 +40,6 @@ export function GlobalSummary({
       const day = package_date.toLocaleDateString('default', { day: 'numeric' });
       const formattedDate = `${day} ${month}, ${year}`
 
-      console.log(userPackageData)
-
       try {
         // CONFIGURE EMAILJS
         const emailParams = {

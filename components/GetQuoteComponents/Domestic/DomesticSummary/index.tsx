@@ -6,13 +6,22 @@ import { GlobalContext } from "@/context/GlobalWrapper";
 import React, { useContext, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { ClientDataType } from "@/pages/quote/domestic";
+import { userPackageDataType } from "@/pages/quote/warehousing";
+import emailjs from 'emailjs-com';
 
 interface DomesticSummaryType {
   data: ClientDataType;
+  userPackageData: userPackageDataType;
+  successfulDomesticPackage: boolean;
   registerPackage: (arg: ClientDataType) => void;
 }
 
-export function DomesticSummary({ data, registerPackage }: DomesticSummaryType) {
+export function DomesticSummary({ 
+  data,
+  successfulDomesticPackage,
+  userPackageData,
+  registerPackage 
+}: DomesticSummaryType) {
   const { trail, setTrail } = useContext(DomesticContext);
   const [showModal, setShowModal] = useState(false);
   const { glotrail, setGlotrail } = useContext(GlobalContext);
@@ -22,9 +31,34 @@ export function DomesticSummary({ data, registerPackage }: DomesticSummaryType) 
     window.scrollTo({ top: 20, behavior: "smooth" });
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
     registerPackage(data);
-    setShowModal(true);
+
+    if(successfulDomesticPackage === true){
+      const package_date = new Date(userPackageData.createdAt)
+      const year = package_date.getFullYear();
+      const month = package_date.toLocaleDateString('default', {month: 'long'});
+      const day = package_date.toLocaleDateString('default', { day: 'numeric' });
+      const formattedDate = `${day} ${month}, ${year}`
+
+      try {
+        // CONFIGURE EMAILJS
+        const emailParams = {
+          from_name: userPackageData.sender,
+          package_name: userPackageData.packageName,
+          date: formattedDate,
+        };
+        await emailjs.send('service_j32sykj', 'template_vjifvfc', emailParams, 'SLaJAJfG-62Jj7HZX');
+
+        setShowModal(true);
+
+      } catch (error) {
+        console.log(error)
+      }
+
+    }
+
+    
     // window.scrollTo(0, 0);
   }
 
