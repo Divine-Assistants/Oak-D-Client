@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import VerifyCodeModal from "@/components/Modal/VerificationCodeModal";
 import { verifyUser } from "@/api/api";
 import { Spinner } from "@chakra-ui/react";
+import Head from "next/head";
 
 const styles = {
   bgImage: {
@@ -50,6 +51,16 @@ const VerifyCode = () => {
 
   return (
     <div className="relative h-[100vh]">
+      <Head>
+        <title>Account Verification</title>
+        {/* <link rel="icon" href="/img/nav-logo.svg" /> */}
+        <link rel="icon" href="/img/fav-logo.png" />
+        <meta
+          name="description"
+          content="Welcome to OAK&D Canada, your trusted logistics partner for seamless package shipping and delivery. Our mission is to connect you with efficient and reliable shipping solutions, ensuring your packages reach their destination on time, every time. Explore our services today and experience hassle-free shipping with OAK&D."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       {displayModal ? <VerifyCodeModal /> : null}
       <div className="font-poppins px-[10px] md:px-[0px]">
         <div className="flex justify-between">
@@ -116,20 +127,21 @@ const VerifyCode = () => {
               </a>
             </p>
 
-            { isLoading ?
+            {isLoading ? (
               <button
-              type="submit"
-              className="p-[20px] w-[100%] text-[#FAFAFA] mt-[15px] text-center bg-[#0A089A] rounded-[8px] flex items-center justify-center"
+                type="submit"
+                className="p-[20px] w-[100%] text-[#FAFAFA] mt-[15px] text-center bg-[#0A089A] rounded-[8px] flex items-center justify-center"
               >
                 <Spinner className="h-[30px] w-[30px]" />
-              </button> : 
+              </button>
+            ) : (
               <button
-              type="submit"
-              className="p-[20px] w-[100%] text-[#FAFAFA] mt-[15px] text-center bg-[#0A089A] rounded-[8px]"
+                type="submit"
+                className="p-[20px] w-[100%] text-[#FAFAFA] mt-[15px] text-center bg-[#0A089A] rounded-[8px]"
               >
                 Submit
               </button>
-            }
+            )}
           </form>
         </div>
       </div>

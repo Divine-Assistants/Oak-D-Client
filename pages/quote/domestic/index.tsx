@@ -19,6 +19,7 @@ import { setCookie } from "cookies-next";
 import { userToken } from "@/api/api";
 import axios from "axios";
 import { userPackageDataType } from "../warehousing";
+import Head from "next/head";
 
 export interface ClientDataType {
   sender: clientInfo;
@@ -103,6 +104,16 @@ export default function Domestic() {
 
   return (
     <QuoteLayout>
+      <Head>
+        <title>Domestic Quote</title>
+        {/* <link rel="icon" href="/img/nav-logo.svg" /> */}
+        <link rel="icon" href="/img/fav-logo.png" />
+        <meta
+          name="description"
+          content="Welcome to OAK&D Canada, your trusted logistics partner for seamless package shipping and delivery. Our mission is to connect you with efficient and reliable shipping solutions, ensuring your packages reach their destination on time, every time. Explore our services today and experience hassle-free shipping with OAK&D."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <main>
         <GlobalContextProvider>
         <DomesticContextProvider>
@@ -122,7 +133,7 @@ export default function Domestic() {
             data={data}
             registerPackage={registerPackage}
           /> */}
-        </DomesticContextProvider>
+          </DomesticContextProvider>
         </GlobalContextProvider>
       </main>
     </QuoteLayout>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { verifyPasswordOTP } from "@/api/api";
 import { Spinner } from "@chakra-ui/react";
+import Head from "next/head";
 
 const styles = {
   bgImage: {
@@ -18,9 +19,9 @@ const styles = {
 const VerifyCode = () => {
   const [verificationCode, setVerificationCode] = useState<string>("");
   const [alertValue, setAlertValue] = useState("");
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [codeLength, setCodeLength] = useState('');
+  const [codeLength, setCodeLength] = useState("");
   const router = useRouter();
 
   const handleOPTChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,19 +40,19 @@ const VerifyCode = () => {
           verificationCode,
         });
         console.log(response);
-        if(response.status === "Unsuccessful"){
+        if (response.status === "Unsuccessful") {
           setIsLoading(false);
           setError(`${response.message}, check the code and try again`);
-          setCodeLength('');
+          setCodeLength("");
         }
         if (response.status === "Success") {
           setIsLoading(false);
           router.push(`/reset-password?email=${encodeURIComponent(email)}`);
         }
       } else {
-        console.log('incomplete code');
-        setError('');
-        setCodeLength('Code must be 6 digits');
+        console.log("incomplete code");
+        setError("");
+        setCodeLength("Code must be 6 digits");
       }
     } catch (error) {
       console.log(error);
@@ -59,6 +60,16 @@ const VerifyCode = () => {
   };
   return (
     <div className="relative h-[100vh]">
+      <Head>
+        <title>Reset Password</title>
+        {/* <link rel="icon" href="/img/nav-logo.svg" /> */}
+        <link rel="icon" href="/img/fav-logo.png" />
+        <meta
+          name="description"
+          content="Welcome to OAK&D Canada, your trusted logistics partner for seamless package shipping and delivery. Our mission is to connect you with efficient and reliable shipping solutions, ensuring your packages reach their destination on time, every time. Explore our services today and experience hassle-free shipping with OAK&D."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <div className="font-poppins px-[10px] md:px-[0px]">
         <div className="flex justify-between">
           <div
@@ -116,9 +127,13 @@ const VerifyCode = () => {
                 {alertValue}
               </p>
             </div>
-            
-            <h2 className="text-center text-[#AC0108] text-[16px] md:text-[18px] font-[700] lg:mb-[10px]">{error}</h2>
-            <h2 className="text-center text-[#AC0108] text-[16px] md:text-[18px] font-[700] lg:mb-[10px]">{codeLength}</h2>
+
+            <h2 className="text-center text-[#AC0108] text-[16px] md:text-[18px] font-[700] lg:mb-[10px]">
+              {error}
+            </h2>
+            <h2 className="text-center text-[#AC0108] text-[16px] md:text-[18px] font-[700] lg:mb-[10px]">
+              {codeLength}
+            </h2>
 
             <p className="text-center text-[#959595] text-[16px] font-[500]">
               Didn&apos;t get the code yet?{" "}
@@ -127,21 +142,21 @@ const VerifyCode = () => {
               </button>
             </p>
 
-
-            { isLoading ?
+            {isLoading ? (
               <button
                 type="submit"
                 className="p-[20px] w-[100%] text-[#FAFAFA] mt-[15px] text-center bg-[#0A089A] rounded-[8px] flex items-center justify-center"
               >
                 <Spinner className="h-[30px] w-[30px]" />
-              </button> :
+              </button>
+            ) : (
               <button
-              type="submit"
-              className="p-[20px] w-[100%] text-[#FAFAFA] mt-[15px] text-center bg-[#0A089A] rounded-[8px]"
+                type="submit"
+                className="p-[20px] w-[100%] text-[#FAFAFA] mt-[15px] text-center bg-[#0A089A] rounded-[8px]"
               >
                 Submit
               </button>
-            }
+            )}
           </form>
         </div>
       </div>
