@@ -33,15 +33,21 @@ export function GlobalUserSummary({
 
   async function handleSubmit() {
     warehouseGlobalPackage(data);
+    const package_date = new Date(packageData.createdAt)
+    const year = package_date.getFullYear();
+    const month = package_date.toLocaleDateString('default', {month: 'long'});
+    const day = package_date.getDay()
+    const formattedDate = `${day} ${month}, ${year}`
+
     if(successfulGlobalPackage === true){
-      console.log(packageData)
       try {
         // CONFIGURE EMAILJS
         const emailParams = {
             from_name: packageData.sender,
             package_name: packageData.packageName,
-            date: packageData.createdAt,
+            date: formattedDate,
         };
+
         await emailjs.send('service_j32sykj', 'template_vjifvfc', emailParams, 'SLaJAJfG-62Jj7HZX');
         setGlobalSummary(false);
         setShowQuoteModal(true);

@@ -48,7 +48,10 @@ export function GenerateQuoteNavbar() {
   const [packageInfo, setPackageInfo] = useState({});
   const [data, setData] = useState<any>();
   const [successfulGlobalPackage, setSuccessfulGlobalPackage] = useState(false);
-  const [packageData, setPackageData] = useState<PackageDataType | null>(null)
+  const [successfulWarehousePackage, setSuccessfulWarehousePackage] = useState(false);
+  const [successfulDomesticPackage, setSuccessfulDomesticPackage] = useState(false);
+  const [packageData, setPackageData] = useState<PackageDataType | null>(null);
+  const [warehousePackageData, setWarehousePackageData] = useState<PackageDataType | null>(null)
   
 
   const router = useRouter();
@@ -165,10 +168,21 @@ export function GenerateQuoteNavbar() {
         headers: { Authorization: `Bearer ${userToken}` },
       }
     );
+    // console.log(response.data.data)
 
-    if(response.data.message === 'Package registered successfully'){
-      setPackageData(response.data.data)
-      setSuccessfulGlobalPackage(true);
+    if(response.data.status === 'Success'){
+      if(response.data.data.packageType === 'Global'){
+        setPackageData(response.data.data);
+        setSuccessfulGlobalPackage(true);
+      } else if(response.data.data.packageType === 'Warehousing'){
+        setPackageData(response.data.data);
+        setSuccessfulWarehousePackage(true);
+      } else{
+        setPackageData(response.data.data);
+        setSuccessfulDomesticPackage(true)
+      }
+      
+      
     }
     console.log("WarehouseData", response.data);
     if (response.data.packageID) {
@@ -204,10 +218,14 @@ export function GenerateQuoteNavbar() {
             <WarehouseParcelInfo setData={setData} />
             <WarehouseSummary
               data={data}
+              packageData={packageData}
+              successfulWarehousePackage={successfulWarehousePackage}
               warehouseGlobalPackage={warehouseGlobalPackage}
             />
             <ShippingSummary 
               data={data} 
+              packageData={packageData}
+              successfulDomesticPackage={successfulDomesticPackage}
               warehouseGlobalPackage={warehouseGlobalPackage}
             />
             {/* <PaymentPage registerPackage={registerPackage} data={data} /> */}
