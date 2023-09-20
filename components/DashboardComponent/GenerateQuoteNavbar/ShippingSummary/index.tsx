@@ -43,19 +43,18 @@ export function ShippingSummary({
       const day = package_date.toLocaleDateString('default', { day: 'numeric' });
       const formattedDate = `${day} ${month}, ${year}`
 
-      console.log(formattedDate);
       try {
         // CONFIGURE EMAILJS
         const emailParams = {
           from_name: packageData.sender,
           package_name: packageData.packageName,
           date: formattedDate,
-      };
-      await emailjs.send('service_j32sykj', 'template_vjifvfc', emailParams, 'SLaJAJfG-62Jj7HZX');
-      
-      setShowShippingSummary(false);
-      setShowQuoteModal(true);
-      window.scrollTo(0, 0);
+        };
+        await emailjs.send('service_j32sykj', 'template_vjifvfc', emailParams, 'SLaJAJfG-62Jj7HZX');
+        
+        setShowShippingSummary(false);
+        setShowQuoteModal(true);
+        window.scrollTo(0, 0);
 
       } catch (error) {
         console.log(error);
