@@ -69,7 +69,7 @@ const Contact = () => {
       try {
         // CONFIGURE EMAILJS
         const emailParams = {
-          to_name: "Chosen",
+          to_name: "OAK&D CANADA",
           subject: values.name,
           from_name: values.name,
           from_email: values.email,
@@ -223,7 +223,7 @@ const Contact = () => {
               type="submit"
               className="bg-[#AC0108] p-[20px] text-[#F5F5F5] w-[162px] rounded-[8px] cursor-pointer md:w-[200px] md:text-[20px] flex items-center justify-center"
             >
-              <Spinner className="h-[30px] w-[30px]" />
+              <Spinner style={{ width: "30px", height: "30px" }} />
             </button>
           ) : (
             <button

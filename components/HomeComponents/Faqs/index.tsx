@@ -19,7 +19,7 @@ export const FAQ: React.FC<FaqProps> = ({ faqs }) => {
     >
       <div className="w-[90%] md:w-[80%] lg:w-[60%] m-auto text-[#FEFEFE] ">
         <h2 className="font-semibold text-[32px] w-fit mb-[40px] m-auto ">
-          FAQ&apos;
+          Frequently Asked Questions:
         </h2>
         {faqs.map((faq) => {
           return (

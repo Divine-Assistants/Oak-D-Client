@@ -134,7 +134,10 @@ export function Address() {
         />
       </div>
 
-      <div style={bgImage} className="w-[100%] h-[600px] mb-[15px] ">
+      <div
+        style={bgImage}
+        className="w-[100%] xl:w-[80%] 2xl:w-[60%] mx-auto h-[600px] mb-[15px] "
+      >
         <img
           src="/img/oak-container.png"
           alt="OAk & D Logistics"
