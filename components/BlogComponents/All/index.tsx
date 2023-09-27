@@ -10,6 +10,7 @@ type BlogValues = {
   heading: string;
   coverImage: string;
   content: string;
+  slug: string;
 };
 
 type BlogDataProps = {
@@ -54,7 +55,7 @@ export const AllBlogs = () => {
                 key={item._id}
                 onClick={() => {
                   const id = item._id as string;
-                  router.push(`/blogs/${id}`);
+                  router.push(`/blogs/${item?.slug}`);
                 }}
               >
                 <div className="w-[100%] h-[164px] md:h-[193px] lg:h-[251px] ">

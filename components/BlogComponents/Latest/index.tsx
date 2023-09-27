@@ -25,7 +25,7 @@ export const Latest = () => {
     getBlog();
   }, []);
 
-  console.log(blogData);
+  console.log("BlogData", blogData);
 
   return (
     <section className="mb-[95px] lg:mb-[142px] ">
@@ -61,11 +61,8 @@ export const Latest = () => {
           </p>
           {blogData.slice(-5).map((item: BlogValue) => {
             return (
-              <Link href={`/blogs/${item._id}`} key={item._id}>
-                <div
-                  className="flex items-center gap-[20px] cursor-pointer "
-                  key={item?._id}
-                >
+              <Link href={`/blogs/${item.slug}`} key={item._id}>
+                <div className="flex items-center gap-[20px] cursor-pointer ">
                   <div className="w-[45%] h-[119px] md:h-[149px] lg:w-[177px]  ">
                     <img
                       src={item?.coverImage}
