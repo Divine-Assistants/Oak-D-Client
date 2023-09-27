@@ -259,7 +259,7 @@ const About = () => {
           <img
             src="/img/oak-container.png"
             alt="Shipping Container"
-            className="w-[100%] lg:w-[80%] 2xl:w-[60%] mx-auto"
+            className="w-[100%] lg:w-[70%] 2xl:w-[50%] mx-auto"
           />
         </section>
 
