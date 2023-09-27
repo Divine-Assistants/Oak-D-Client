@@ -260,13 +260,11 @@ const About = () => {
         </section>
 
         {/* CONTAINER IMAGE SECTION */}
-        <section className="w-full my-10">
-          <Image
+        <section className="w-full my-10 bg-red-200">
+          <img
             src="/img/oak-container.png"
             alt="Shipping Container"
-            layout="responsive"
-            width={300}
-            height={300}
+            className="w-[100%] lg:w-[80%] 2xl:w-[60%] mx-auto"
           />
         </section>
 
