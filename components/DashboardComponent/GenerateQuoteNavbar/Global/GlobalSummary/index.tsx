@@ -1,21 +1,28 @@
 import { useContext } from "react";
 import Image from "next/image";
 import { QuoteModalContext } from "@/context/UserDashboardGenerateQuote";
+import { DataType } from "../..";
+import { PackageDataType } from "../..";
+import { GlobalBreadcrumb } from "../GlobalBreadcrumb";
+import emailjs from 'emailjs-com';
 import {
   GlobalSummaryContext,
   GlobalParcelInfoContext,
   GlobalCrumbContext,
 } from "@/context/GlobalShipping";
-import { DataType } from "../..";
-import { GlobalBreadcrumb } from "../GlobalBreadcrumb";
+
 
 interface ShippingSummaryType {
   warehouseGlobalPackage: (arg: DataType) => void;
   data: DataType;
+  packageData: PackageDataType;
+  successfulGlobalPackage: boolean;
 }
 
 export function GlobalUserSummary({
   data,
+  packageData,
+  successfulGlobalPackage,
   warehouseGlobalPackage,
 }: ShippingSummaryType) {
   const { setShowQuoteModal } = useContext(QuoteModalContext);
@@ -24,14 +31,33 @@ export function GlobalUserSummary({
     GlobalParcelInfoContext
   );
 
-  // Breadcrumbs Context
-  // const {setGlobalCrumb} = useContext(GlobalCrumbContext);
-
-  function handleSubmit() {
+  async function handleSubmit() {
     warehouseGlobalPackage(data);
-    setGlobalSummary(false);
-    setShowQuoteModal(true);
-    window.scrollTo(0, 0);
+    
+    if(successfulGlobalPackage === true){
+      const package_date = new Date(packageData.createdAt)
+      const year = package_date.getFullYear();
+      const month = package_date.toLocaleDateString('default', {month: 'long'});
+      const day = package_date.toLocaleDateString('default', { day: 'numeric' });
+      const formattedDate = `${day} ${month}, ${year}`
+
+      try {
+        // CONFIGURE EMAILJS
+        const emailParams = {
+            from_name: packageData.sender,
+            package_name: packageData.packageName,
+            date: formattedDate,
+        };
+
+        await emailjs.send('service_j32sykj', 'template_vjifvfc', emailParams, 'SLaJAJfG-62Jj7HZX');
+        setGlobalSummary(false);
+        setShowQuoteModal(true);
+        window.scrollTo(0, 0);
+
+    } catch (error) {
+        console.log(error);
+    }
+    }
   }
 
   return (

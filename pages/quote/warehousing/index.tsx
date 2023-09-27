@@ -17,9 +17,20 @@ import { userToken } from "@/api/api";
 import { useState } from "react";
 import Head from "next/head";
 
+
+export interface userPackageDataType {
+  createdAt: string;
+  packageID: string;
+  packageName: string;
+  packageType: string;
+  sender: string;
+}
+
 export default function Warehousing() {
   const router = useRouter();
   const [data, setData] = useState<any>();
+  const [successfulWarehousePackage, setSuccessfulWarehousePackage] = useState(false);
+  const [userPackageData, setUserPackageData] = useState<userPackageDataType | null>(null);
 
   // const registerPackage = async (myParcel: ClientDataType | undefined) => {
   //   if (
@@ -133,6 +144,13 @@ export default function Warehousing() {
         headers: { Authorization: `Bearer ${userToken}` },
       }
     );
+
+    if(response.data.status === 'Success'){
+      console.log('warehouse package registered')
+      setUserPackageData(response.data.data)
+      setSuccessfulWarehousePackage(true);
+    }
+
     if (response.data.packageID) {
       setCookie("packageID", response.data.packageID);
     }
@@ -142,6 +160,7 @@ export default function Warehousing() {
   };
 
   console.log(data);
+
   return (
     <QuoteLayout>
       <Head>
@@ -160,9 +179,11 @@ export default function Warehousing() {
             <WareCrumb />
             <WarehouseQuoteLand setData={setData} />
             <WarehouseParcel setData={setData} />
-            <WarehouseSummary
-              data={data}
-              handleWarehousePackage={handleWarehousePackage}
+            <WarehouseSummary 
+              data={data} 
+              userPackageData={userPackageData}
+              successfulWarehousePackage={successfulWarehousePackage}
+              handleWarehousePackage={handleWarehousePackage} 
             />
             <PickDrop />
           </DomesticContextProvider>

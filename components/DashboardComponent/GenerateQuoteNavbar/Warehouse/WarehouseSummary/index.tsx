@@ -1,17 +1,23 @@
 import { useContext } from "react";
 import Image from "next/image";
+import emailjs from 'emailjs-com';
 import { QuoteModalContext } from "@/context/UserDashboardGenerateQuote";
 import { WarehouseSummaryContext } from "@/context/Warehouse";
 import { DataType } from "../..";
+import { PackageDataType } from "../..";
 import { WarehouseBreadcrumb } from "../WarehouseBreadcrumb";
 
 interface ShippingSummaryType {
   warehouseGlobalPackage: (arg: DataType) => void;
   data: DataType;
+  packageData: PackageDataType;
+  successfulWarehousePackage: boolean;
 }
 
 export function WarehouseSummary({
   data,
+  packageData,
+  successfulWarehousePackage,
   warehouseGlobalPackage,
 }: ShippingSummaryType) {
   const { setShowQuoteModal } = useContext(QuoteModalContext);
@@ -19,11 +25,33 @@ export function WarehouseSummary({
     WarehouseSummaryContext
   );
 
-  function handleSubmit() {
+  async function handleSubmit() {
     warehouseGlobalPackage(data);
-    setShowWarehoueSummary(false);
-    setShowQuoteModal(true);
-    window.scrollTo(0, 0);
+    
+    if(successfulWarehousePackage === true){
+      const package_date = new Date(packageData.createdAt)
+      const year = package_date.getFullYear();
+      const month = package_date.toLocaleDateString('default', {month: 'long'});
+      const day = package_date.toLocaleDateString('default', { day: 'numeric' });
+      const formattedDate = `${day} ${month}, ${year}`
+      
+      try {
+        // CONFIGURE EMAILJS
+        const emailParams = {
+          from_name: packageData.sender,
+          package_name: packageData.packageName,
+          date: formattedDate,
+      };
+      await emailjs.send('service_j32sykj', 'template_vjifvfc', emailParams, 'SLaJAJfG-62Jj7HZX');
+
+      setShowWarehoueSummary(false);
+      setShowQuoteModal(true);
+      window.scrollTo(0, 0);
+
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }
 
   return (
