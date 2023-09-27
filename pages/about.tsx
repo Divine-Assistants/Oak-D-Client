@@ -53,16 +53,14 @@ const About = () => {
 
         {/* FOUNDERS */}
         <section className="flex flex-wrap justify-center my-[50px] mx-[20px]">
-          <div className="mb-[20px] md:w-1/3 md:mr-[50px]  ">
-            <Image
+          <div className="mb-[20px] md:w-1/3 md:mr-[50px] h-[600px]">
+            <img
               src="/img/Damilola-Kuku.svg"
               alt="Damilola Kuku"
-              layout="responsive"
-              width={300}
-              height={300}
-              className="h-[100%]"
+              className="h-[80%] w-full"
+              style={{ objectFit: "cover" }}
             />
-            <p className="text-[18px] md:text-[36px] font-[700] ">
+            <p className="text-[18px] md:text-[36px] font-[700]">
               Damilola Kuku
             </p>
             <p className="text-[16px] md:text-[24px] font-[600] ">
@@ -70,14 +68,12 @@ const About = () => {
             </p>
           </div>
 
-          <div className="mb-[20px] md:w-1/3 md:mr-[50px] ">
-            <Image
+          <div className="mb-[20px] md:w-1/3 md:mr-[50px] h-[600px]">
+            <img
               src="/img/Azeez.png"
               alt="Azeez Kuku"
-              layout="responsive"
-              width={300}
-              height={300}
-              className="h-[100%]"
+              className="h-[80%] w-full"
+              style={{ objectFit: "cover" }}
             />
             <p className="text-[18px] md:text-[36px] font-[700] ">Azeez Kuku</p>
             <p className="text-[16px] md:text-[24px] font-[600] ">
@@ -85,13 +81,12 @@ const About = () => {
             </p>
           </div>
 
-          <div className="mb-[20px] md:w-1/3 md:mt-[50px] ">
-            <Image
+          <div className="mb-[20px] md:w-1/3 md:mr-[50px] h-[600px]">
+            <img
               src="/img/Amosun.png"
               alt="Amosun Kolawale"
-              layout="responsive"
-              width={300}
-              height={300}
+              className="h-[80%] w-full"
+              style={{ objectFit: "cover" }}
             />
             <p className="text-[18px] md:text-[36px] font-[700] ">
               Amosun Kolawale
