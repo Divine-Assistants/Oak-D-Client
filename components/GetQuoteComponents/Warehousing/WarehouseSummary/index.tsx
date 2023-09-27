@@ -1,15 +1,24 @@
 import { DomesticContext } from "@/context/DomesticWrapper";
 import { GlobalContext } from "@/context/GlobalWrapper";
 import React, { useContext } from "react";
+import emailjs from 'emailjs-com';
 import { FaArrowRight } from "react-icons/fa";
 import { ClientDataType } from "@/pages/quote/domestic";
+import { userPackageDataType } from "@/pages/quote/warehousing";
 
 interface WarehouseSummaryType {
   data: ClientDataType;
+  userPackageData: userPackageDataType;
+  successfulWarehousePackage: boolean;
   handleWarehousePackage: (arg: ClientDataType) => void;
 }
 
-export function WarehouseSummary({data, handleWarehousePackage}: WarehouseSummaryType) {
+export function WarehouseSummary({
+  data, 
+  userPackageData,
+  successfulWarehousePackage,
+  handleWarehousePackage
+}: WarehouseSummaryType) {
   const { trail, setTrail } = useContext(DomesticContext);
   const { glotrail, setGlotrail } = useContext(GlobalContext);
   const isBrowser = () => typeof window !== "undefined"; //The approach recommended by Next.js
@@ -18,11 +27,34 @@ export function WarehouseSummary({data, handleWarehousePackage}: WarehouseSummar
     window.scrollTo({ top: 20, behavior: "smooth" });
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
     handleWarehousePackage(data);
-    setTrail(2.5);
-    scrollToTop();
+
+    if(successfulWarehousePackage === true){
+      const package_date = new Date(userPackageData.createdAt)
+      const year = package_date.getFullYear();
+      const month = package_date.toLocaleDateString('default', {month: 'long'});
+      const day = package_date.toLocaleDateString('default', { day: 'numeric' });
+      const formattedDate = `${day} ${month}, ${year}`
+
+      try {
+        // CONFIGURE EMAILJS
+        const emailParams = {
+          from_name: userPackageData.sender,
+          package_name: userPackageData.packageName,
+          date: formattedDate,
+        };
+        await emailjs.send('service_j32sykj', 'template_vjifvfc', emailParams, 'SLaJAJfG-62Jj7HZX');
+
+        setTrail(2.5);
+        scrollToTop();
+        
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }
+
   return (
     <section style={{ display: glotrail === 2 ? "block" : "none" }}>
       <div className=" w-[90%] m-auto md:flex md:justify-between mb-[100px] mt-[100px] ">

@@ -17,11 +17,14 @@ import { setCookie } from "cookies-next";
 import { userToken } from "@/api/api";
 import axios from "axios";
 import { ClientDataType } from "../domestic";
+import { userPackageDataType } from "../warehousing";
 import Head from "next/head";
 
 export default function Global() {
   const [data, setData] = useState<any>();
   const router = useRouter();
+  const [successfulGlobalPackage, setSuccessfulGlobalPackage] = useState(false);
+  const [userPackageData, setUserPackageData] = useState<userPackageDataType | null>(null);
 
   const handleGlobalPackage = async (myParcel: ClientDataType | undefined) => {
     if (
@@ -73,6 +76,12 @@ export default function Global() {
         headers: { Authorization: `Bearer ${userToken}` },
       }
     );
+
+    if(response.data.status === 'Success'){
+      setUserPackageData(response.data.data);
+      setSuccessfulGlobalPackage(true);
+    }
+
     if (response.data.packageID) {
       setCookie("packageID", response.data.packageID);
     }
@@ -104,9 +113,11 @@ export default function Global() {
               <GlobalSender setData={setData} />
               <GlobalReciever setData={setData} />
               <GlobalParcel setData={setData} />
-              <GlobalSummary
-                data={data}
-                handleGlobalPackage={handleGlobalPackage}
+              <GlobalSummary 
+                data={data} 
+                userPackageData={userPackageData}
+                successfulGlobalPackage={successfulGlobalPackage}
+                handleGlobalPackage={handleGlobalPackage} 
               />
               <PickDrop />
             </DomesticContextProvider>

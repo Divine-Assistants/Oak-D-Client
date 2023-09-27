@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import Image from "next/image";
+import emailjs from 'emailjs-com';
 import {
   ShippingSummaryContext,
   QuoteModalContext,
@@ -9,15 +10,20 @@ import {
 } from "@/context/UserDashboardGenerateQuote";
 import { userInfo } from "../SenderInformation";
 import { DataType } from "..";
+import { PackageDataType } from "..";
 import { DomesticBreadcrumb } from "../DomesticBreadcrumb";
 
 interface ShippingSummaryType {
   warehouseGlobalPackage: (arg: DataType) => void;
   data: DataType;
+  packageData: PackageDataType;
+  successfulDomesticPackage: boolean;
 }
 
 export function ShippingSummary({ 
   data,
+  packageData,
+  successfulDomesticPackage,
   warehouseGlobalPackage}: ShippingSummaryType) {
   const { showShippingSummary, setShowShippingSummary } = useContext(
     ShippingSummaryContext
@@ -27,11 +33,34 @@ export function ShippingSummary({
   const { setShowPaymentPage } = useContext(ShowPaymentPageContext);
   const { setDomesticBreadcrumb } = useContext(DomesticBreadcrumbContext);
 
-  function handleSubmit() {
-    setShowShippingSummary(false);
+  async function handleSubmit() {
     warehouseGlobalPackage(data);
-    setShowQuoteModal(true);
-    window.scrollTo(0, 0);
+
+    if(successfulDomesticPackage === true){
+      const package_date = new Date(packageData.createdAt)
+      const year = package_date.getFullYear();
+      const month = package_date.toLocaleDateString('default', {month: 'long'});
+      const day = package_date.toLocaleDateString('default', { day: 'numeric' });
+      const formattedDate = `${day} ${month}, ${year}`
+
+      try {
+        // CONFIGURE EMAILJS
+        const emailParams = {
+          from_name: packageData.sender,
+          package_name: packageData.packageName,
+          date: formattedDate,
+        };
+        await emailjs.send('service_j32sykj', 'template_vjifvfc', emailParams, 'SLaJAJfG-62Jj7HZX');
+        
+        setShowShippingSummary(false);
+        setShowQuoteModal(true);
+        window.scrollTo(0, 0);
+
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    
     // if (isDomestic) {
     //   setDomesticBreadcrumb(5);
     //   setShowPaymentPage(true);
@@ -41,8 +70,6 @@ export function ShippingSummary({
     //   window.scrollTo(0, 0);
     // }
   }
-
-  console.log(data);
 
   return (
     <section

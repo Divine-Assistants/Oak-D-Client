@@ -37,7 +37,6 @@ export function Footer() {
                     <FaLinkedin/> */}
           </div>
         </div>
-
         <div className="text-[#1E1E1E] text-[16px] lg:text-[18px] lg:flex lg:gap-x-[50px] ">
           <div className="flex justify-between gap-x-[50px] mb-[30px] lg:mb-0 lg:mr-[30px]">
             <div className="flex flex-col gap-y-[8px] w-[250px] lg:w-auto">
