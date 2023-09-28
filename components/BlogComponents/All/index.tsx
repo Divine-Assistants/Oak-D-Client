@@ -69,9 +69,7 @@ export const AllBlogs = () => {
                   <h2 className="font-[700] text-[16px] md:text-[20px] lg:text-[28px]  ">
                     {item.heading}
                   </h2>
-                  <p className="text-[13px] md:text-[16px] lg:text-[18px] font-[500] h-[246px] text-ellipsis overflow-hidden ">
-                    {item.content}{" "}
-                  </p>
+                  {/* <div dangerouslySetInnerHTML={{ __html: item?.content }} /> */}
                 </div>
               </div>
             );

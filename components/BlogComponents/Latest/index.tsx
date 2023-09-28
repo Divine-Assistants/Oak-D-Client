@@ -11,6 +11,7 @@ type BlogDataProps = {
 export const Latest = () => {
   const { selectBp, setSelectBp } = useContext(BlogContext);
   const [blogData, setBlogData] = useState<BlogValue[]>([]);
+  const [firstPara, setFirstPara] = useState<string>("");
 
   useEffect(() => {
     const getBlog = async () => {
@@ -26,6 +27,21 @@ export const Latest = () => {
   }, []);
 
   console.log("BlogData", blogData);
+
+  useEffect(() => {
+    const parser = new DOMParser();
+
+    // Parse the HTML string into a Document object
+    const doc = parser.parseFromString(
+      blogData[blogData?.length - 1]?.content as string,
+      "text/html"
+    );
+
+    // Use DOM methods to select the first <p> element
+    const firstParagraph = doc.querySelector("p");
+    console.log("FirstPara", firstParagraph);
+    setFirstPara(firstParagraph?.textContent);
+  }, []);
 
   return (
     <section className="mb-[95px] lg:mb-[142px] ">
@@ -45,12 +61,7 @@ export const Latest = () => {
           <h2 className="font-[700] text-[28px] md:text-[32px] lg:text-[40px] ">
             {blogData[blogData?.length - 1]?.heading}
           </h2>
-          <div
-            className="text-[16px] font-[500] text-ellipsis overflow-hidden h-[192px] md:text-[20px]  "
-            dangerouslySetInnerHTML={{
-              __html: blogData[blogData?.length - 1]?.content as string,
-            }}
-          />
+          <p className="text-[16px] sm:text-[20px]">{firstPara}</p>
         </div>
         <div
           id="recent"
