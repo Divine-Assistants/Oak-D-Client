@@ -1,6 +1,7 @@
 import Head from "next/head";
 import styles from "@/styles/home.module.css";
 import { useState } from "react";
+import HashLinkObserver from "react-hash-link";
 import {
   About,
   Address,
@@ -29,6 +30,7 @@ export default function Home() {
       </Head>
       <PageLayout>
         <main>
+          {/* <HashLinkObserver /> */}
           <Land />
           <Why />
           <About />

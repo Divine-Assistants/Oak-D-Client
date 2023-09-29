@@ -73,14 +73,14 @@ const Contact = () => {
           subject: values.name,
           from_name: values.name,
           from_email: values.email,
-          from_number: values.number,
+          from_phone: values.number,
           message: values.message,
         };
         await emailjs.send(
-          "service_i0gog9a",
-          "template_6h5lfvj",
+          "service_j32sykj",
+          "template_hshdgns",
           emailParams,
-          "uzQe2u-m8xPgpc0xW"
+          "SLaJAJfG-62Jj7HZX"
         );
 
         setIsLoading(false);

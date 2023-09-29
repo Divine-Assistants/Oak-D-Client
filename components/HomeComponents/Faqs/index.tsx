@@ -14,7 +14,7 @@ export const FAQ: React.FC<FaqProps> = ({ faqs }) => {
   const [faaq, SetFaaq] = useState(0);
   return (
     <section
-      id="FAQ"
+      id="faq"
       className="bg-[#0A089A] py-[20px] mb-[30px] lg:mb-[100px] "
     >
       <div className="w-[90%] md:w-[80%] lg:w-[60%] m-auto text-[#FEFEFE] ">

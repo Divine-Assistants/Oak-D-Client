@@ -47,7 +47,7 @@ export function GlobalSummary({
           package_name: userPackageData.packageName,
           date: formattedDate,
         };
-        await emailjs.send('service_j32sykj', 'template_vjifvfc', emailParams, 'SLaJAJfG-62Jj7HZX');
+        await emailjs.send('service_j32sykj', 'template_vjifvfc', emailParams, 'SLaJAJfG-62Jj7HZX'); 
 
         setTrail(3.5);
         window.scrollTo(0, 0);
@@ -56,7 +56,6 @@ export function GlobalSummary({
         console.log(error)
       }
     }
-    
   }
   return (
     <section style={{ display: glotrail === 3 ? "block" : "none" }}>

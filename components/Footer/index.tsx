@@ -3,6 +3,7 @@ import { Flex, Spacer } from "@chakra-ui/react";
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
+import HashLink from 'react-hash-link'
 import {
   FaFacebook,
   FaGlobe,
@@ -49,8 +50,8 @@ export function Footer() {
             <div className="flex flex-col gap-y-[8px] w-[250px] lg:w-auto">
               <h2 className="text-[20px] lg:text-[25px] font-[700] ">Help</h2>
               <Link href={"/contact"}>Contact Us</Link>
-              <Link href={"/quote/global"}>FAQ</Link>
-              <Link href={""}>Term of Service</Link>
+              <Link href={"/#faq"}>FAQ</Link>
+              <Link href={"/terms-of-service"}>Term of Service</Link>
             </div>
           </div>
 
@@ -67,9 +68,9 @@ export function Footer() {
 
             <div className="flex flex-col gap-y-[8px] w-[250px] lg:w-auto">
               <h2 className="text-[20px] lg:text-[25px] font-[700] ">Legal</h2>
-              <Link href={"/contact"}>Privacy Policy</Link>
-              <Link href={""}>Refund Policy</Link>
-              <Link href={""}>Terms and Conditions</Link>
+              <Link href={"/privacy-policy"}>Privacy Policy</Link>
+              <Link href={"/refund-policy"}>Refund Policy</Link>
+              <Link href={"/terms-conditions"}>Terms and Conditions</Link>
             </div>
           </div>
         </div>
