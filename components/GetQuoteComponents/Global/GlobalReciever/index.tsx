@@ -11,10 +11,9 @@ interface GlobalReceiverType {
 
 export function GlobalReciever({ setData }: GlobalReceiverType) {
   const { glotrail, setGlotrail } = useContext(GlobalContext);
-  const [receiverData, setReceiverData] =
-    useState<clientInfo>(initialClientInfo);
-    const [isFormValid, setIsFormValid] = useState(false);
-    const [emptyFields, setEmptyFields] = useState<string[]>([]);
+  const [receiverData, setReceiverData] = useState<clientInfo>(initialClientInfo);
+  const [formError, setFormError] = useState<Partial<clientInfo>>({});
+
 
   function handleReceiverDataChange(
     event: React.ChangeEvent<HTMLInputElement>
@@ -29,28 +28,27 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
   }
 
   function handleFormSubmit() {
-    if (isFormValid) {
-      setData((prevData: any) => ({ ...prevData, receiver: receiverData }));
-      setReceiverData(initialClientInfo);
-      setGlotrail(2);
-      window.scrollTo(0, 0);
-    } else {
-      const emptyFields = Object.entries(receiverData)
-        .filter(([key, value]) => value.trim() === "")
-        .map(([key]) => key);
-      setEmptyFields(emptyFields);
+    // Check for empty fields and update formErrors
+    const errors: Partial<clientInfo> = {};
+    for (const key in receiverData) {
+      if (!receiverData[key]) {
+        errors[key] = "This field is required";
+      }
     }
-  }
+    setFormError(errors);
 
-  function validateForm() {
-    const formValues = Object.values(receiverData);
-    const isValid = formValues.every((value) => value.trim() !== "");
-    setIsFormValid(isValid);
-  }
+    // If there are errors, do not submit the form
+    if (Object.keys(errors).length > 0) {
+      return;
+    }
 
-  React.useEffect(() => {
-    validateForm();
-  }, [receiverData]);
+    // Proceed with form submission
+    setData((prevData: any) => ({ ...prevData, receiver: receiverData }));
+    setReceiverData(initialClientInfo);
+    setGlotrail(2);
+    window.scrollTo(0, 0);
+
+  }
 
   return (
     <div style={{ display: glotrail !== 1 ? "none" : "initial" }}>
@@ -79,8 +77,8 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
                 placeholder="Enter First Name"
                 required
               />
-              {emptyFields.includes("firstName") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your first name</p>
+              {formError.firstName && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.firstName}</p>
               )}
             </div>
 
@@ -96,8 +94,8 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
                 placeholder="Enter Last Name"
                 required
               />
-              {emptyFields.includes("lastName") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your last name</p>
+              {formError.lastName && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.lastName}</p>
               )}
             </div>
           </div>
@@ -114,9 +112,9 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               placeholder="xyz@mail.com"
               required
             />
-            {emptyFields.includes("email") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your email</p>
-              )}
+            {formError.email && (
+              <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.email}</p>
+            )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -131,9 +129,9 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               placeholder="Phone"
               required
             />
-            {emptyFields.includes("phoneNumber") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your phone number</p>
-              )}
+            {formError.phoneNumber && (
+              <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.phoneNumber}</p>
+            )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -148,9 +146,9 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               placeholder="Region"
               required
             />
-            {emptyFields.includes("region") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your region</p>
-              )}
+            {formError.region && (
+              <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.region}</p>
+            )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -165,9 +163,9 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               placeholder="Country"
               required
             />
-            {emptyFields.includes("country") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your country</p>
-              )}
+            {formError.country && (
+              <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.country}</p>
+            )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -182,8 +180,8 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               placeholder="Address"
               required
             />
-            {emptyFields.includes("address") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your address</p>
+           {formError.address && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.address}</p>
               )}
           </div>
 
@@ -199,9 +197,9 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               placeholder="Postal Code"
               required
             />
-            {emptyFields.includes("postalCode") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your postal</p>
-              )}
+            {formError.postalCode && (
+              <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.postalCode}</p>
+            )}
           </div>
         </form>
       </div>
