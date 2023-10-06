@@ -41,7 +41,7 @@ interface SenderInformationProps {
 
 export function SenderInformation({ setData }: SenderInformationProps) {
   const { showSenderInfo, setShowSenderInfo } = useContext(
-    SenderInformationContext
+    SenderInformationContext 
   );
   const { setShowReceiverInfo } = useContext(ReceiverInformationContext);
   const { setSenderInfo } = useContext(senderInfoContext);
@@ -184,9 +184,9 @@ export function SenderInformation({ setData }: SenderInformationProps) {
               className="p-[20px] border-[2px] border-[#CBCBCB] rounded-[8px] bg-[#F5F5F5] focus:outline-[#0A089A] "
               required
             />
-              {formError.phoneNumber && (
-                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.phoneNumber}</p>
-              )}
+            {formError.phoneNumber && (
+              <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.phoneNumber}</p>
+            )}
           </div>
 
           <div className="flex flex-col mb-[15px] text-[#1E1E1E] text-[16px] ">

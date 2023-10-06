@@ -31,8 +31,8 @@ interface DomesticSenderType {
 export function DomesticSender({ setData }: DomesticSenderType) {
   const { trail, setTrail } = useContext(DomesticContext);
   const [senderData, setSenderData] = useState<clientInfo>(initialClientInfo);
-  const [emptyFields, setEmptyFields] = useState<string[]>([]);
-  const [isFormValid, setIsFormValid] = useState(false);
+  const [formError, setFormError] = useState<Partial<clientInfo>>({});
+
 
   console.log(senderData);
 
@@ -47,25 +47,28 @@ export function DomesticSender({ setData }: DomesticSenderType) {
       [name]: value,
     }));
 
-    // Perform validation for each field
-    // Example validation: Check if all fields are filled
-    const isEmpty = Object.values(senderData).some((field) => field === "");
-    setIsFormValid(!isEmpty);
   };
 
   function handleFormSubmit() {
-    const emptyFields = Object.entries(senderData)
-      .filter(([key, value]) => value.trim() === "")
-      .map(([key]) => key);
-
-    if (emptyFields.length === 0) {
-      setData((prevData: any) => ({ ...prevData, sender: senderData }));
-      setSenderData(initialClientInfo);
-      setTrail(1);
-      window.scrollTo(0, 0);
-    } else {
-      setEmptyFields(emptyFields);
+    // Check for empty fields and update formErrors
+    const errors: Partial<clientInfo> = {};
+    for (const key in senderData) {
+      if (!senderData[key]) {
+        errors[key] = "This field is required";
+      }
     }
+    setFormError(errors);
+
+    // If there are errors, do not submit the form
+    if (Object.keys(errors).length > 0) {
+      return;
+    }
+
+    setData((prevData: any) => ({ ...prevData, sender: senderData }));
+    setSenderData(initialClientInfo);
+    setTrail(1);
+    window.scrollTo(0, 0);
+
   }
 
   return (
@@ -98,10 +101,8 @@ export function DomesticSender({ setData }: DomesticSenderType) {
                 placeholder="Enter First Name"
                 required
               />
-              {emptyFields.includes("firstName") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">
-                  Please enter your first name
-                </p>
+              {formError.firstName && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.firstName}</p>
               )}
             </div>
 
@@ -117,10 +118,8 @@ export function DomesticSender({ setData }: DomesticSenderType) {
                 placeholder="Enter Last Name"
                 required
               />
-              {emptyFields.includes("lastName") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">
-                  Please enter your last name
-                </p>
+              {formError.lastName && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.lastName}</p>
               )}
             </div>
           </div>
@@ -137,10 +136,8 @@ export function DomesticSender({ setData }: DomesticSenderType) {
               placeholder="xyz@mail.com"
               required
             />
-            {emptyFields.includes("email") && (
-              <p className="text-[16px] font-[600] text-[#AC0108]">
-                Please enter your email
-              </p>
+            {formError.email && (
+              <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.email}</p>
             )}
           </div>
 
@@ -156,10 +153,8 @@ export function DomesticSender({ setData }: DomesticSenderType) {
               placeholder="Phone"
               required
             />
-            {emptyFields.includes("phoneNumber") && (
-              <p className="text-[16px] font-[600] text-[#AC0108]">
-                Please enter your Phone Number
-              </p>
+            {formError.phoneNumber && (
+              <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.phoneNumber}</p>
             )}
           </div>
 
@@ -175,11 +170,9 @@ export function DomesticSender({ setData }: DomesticSenderType) {
               placeholder="Region"
               required
             />
-            {emptyFields.includes("region") && (
-              <p className="text-[16px] font-[600] text-[#AC0108]">
-                Please enter your Region
-              </p>
-            )}
+            {formError.region && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.region}</p>
+              )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -194,11 +187,9 @@ export function DomesticSender({ setData }: DomesticSenderType) {
               placeholder="Country"
               required
             />
-            {emptyFields.includes("country") && (
-              <p className="text-[16px] font-[600] text-[#AC0108]">
-                Please enter your Country
-              </p>
-            )}
+            {formError.country && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.country}</p>
+              )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -213,11 +204,9 @@ export function DomesticSender({ setData }: DomesticSenderType) {
               placeholder="Address"
               required
             />
-            {emptyFields.includes("address") && (
-              <p className="text-[16px] font-[600] text-[#AC0108]">
-                Please enter your Address
-              </p>
-            )}
+            {formError.address && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.address}</p>
+              )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -232,18 +221,15 @@ export function DomesticSender({ setData }: DomesticSenderType) {
               placeholder="Postal Code"
               required
             />
-            {emptyFields.includes("postalCode") && (
-              <p className="text-[16px] font-[600] text-[#AC0108]">
-                Please enter your postal code
-              </p>
-            )}
+            {formError.postalCode && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.postalCode}</p>
+              )}
           </div>
 
           <button
             type="button"
             className="flex items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[50px] py-[10px] bg-[#0A089A] rounded-[15px] m-auto mb-[120px] lg:px-[160px] lg:py-[27px] lg:mr-[10%] hover:bg-[#1E1E1E] "
             onClick={handleFormSubmit}
-            disabled={!isFormValid}
           >
             <p>Proceed to Receiver Information</p>
             <FaArrowRight />
