@@ -38,7 +38,7 @@ const About = () => {
         <Navbar />
         <section
           style={styles.firstSection}
-          className="flex justify-center align-center p-[10px] md:justify-start md:p-20 md:mb-10"
+          className="flex justify-center align-center p-[10px] md:justify-start md:p-20 md:mb-10 mt-[100px]"
         >
           <div className="w-64 p-[30px] md:w-[400px] " style={styles.whiteBox}>
             <h1 className="text-red text-[16px] md:text-[24] font-bold mb-2 uppercase">

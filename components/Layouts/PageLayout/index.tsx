@@ -10,7 +10,7 @@ export function PageLayout({ children }: Layoutprops) {
   return (
     <>
       <Navbar />
-      <div className="h-[100vh] mt-[250px]">
+      <div className="h-[100vh] mt-[100px]">
         {children}
         <Footer />
       </div>

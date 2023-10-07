@@ -71,7 +71,7 @@ export function TrackLand() {
       style={{ display: trackPage === 0 ? "block" : "none" }}
     >
       <Navbar />
-      <div className="w-[100vw] h-[100vh] ">
+      <div className="w-[100vw] h-[100vh] mt-[100px] ">
         <img
           src="/img/track-back.svg"
           alt="Track Item"
