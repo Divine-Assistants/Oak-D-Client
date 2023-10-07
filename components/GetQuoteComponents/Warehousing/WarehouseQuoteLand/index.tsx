@@ -114,10 +114,10 @@ export function WarehouseQuoteLand({ setData }: WarehouseSenderType) {
         {/* Main form */}
         <form
           id=""
-          className="text-[18px] text-[#1E1E1E] font-[600] w-[90%] m-auto lg:w-[50%]   "
+          className="text-[18px] text-[#1E1E1E] font-[600] w-[100%] m-auto lg:w-[50%]   "
         >
-          <div className="lg:flex lg:items-center lg:justify-between ">
-            <div className="flex flex-col gap-[10px] mb-[25px]">
+          <div className="lg:flex lg:items-center lg:justify-between lg:gap-[10px] ">
+            <div className="flex flex-col gap-[10px] mb-[25px] w-[100%] ">
               <label htmlFor="first name">First Name</label>
               <input
                 type="text"
@@ -125,7 +125,7 @@ export function WarehouseQuoteLand({ setData }: WarehouseSenderType) {
                 value={senderData.firstName}
                 onChange={handleSenderDataChange}
                 id="firstName"
-                className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]  "
+                className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  "
                 placeholder="Enter First Name"
                 required
               />
@@ -134,7 +134,7 @@ export function WarehouseQuoteLand({ setData }: WarehouseSenderType) {
               )}
             </div>
 
-            <div className="flex flex-col gap-[10px] mb-[25px]">
+            <div className="flex flex-col gap-[10px] mb-[25px] w-[100%]">
               <label htmlFor="">Last Name</label>
               <input
                 type="text"
@@ -142,7 +142,7 @@ export function WarehouseQuoteLand({ setData }: WarehouseSenderType) {
                 value={senderData.lastName}
                 onChange={handleSenderDataChange}
                 id="lastName"
-                className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]  "
+                className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A]  "
                 placeholder="Enter Last Name"
                 required
               />
@@ -160,7 +160,7 @@ export function WarehouseQuoteLand({ setData }: WarehouseSenderType) {
               value={senderData.email}
               onChange={handleSenderDataChange}
               id="email"
-              className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
+              className="rounded-[8px] p-[20px] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
               placeholder="xyz@mail.com"
               required
             />
@@ -177,7 +177,7 @@ export function WarehouseQuoteLand({ setData }: WarehouseSenderType) {
               value={senderData.phoneNumber}
               onChange={handleSenderDataChange}
               id="phoneNumber"
-              className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
+              className="rounded-[8px] p-[20px] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
               placeholder="Phone"
               required
             />
@@ -194,7 +194,7 @@ export function WarehouseQuoteLand({ setData }: WarehouseSenderType) {
               value={senderData.region}
               onChange={handleSenderDataChange}
               id="region"
-              className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
+              className="rounded-[8px] p-[20px] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
               placeholder="Region"
               required
             />
@@ -211,7 +211,7 @@ export function WarehouseQuoteLand({ setData }: WarehouseSenderType) {
               value={senderData.country}
               onChange={handleSenderDataChange}
               id="country"
-              className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
+              className="rounded-[8px] p-[20px] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
               placeholder="Country"
               required
             />
@@ -228,7 +228,7 @@ export function WarehouseQuoteLand({ setData }: WarehouseSenderType) {
               value={senderData.address}
               onChange={handleSenderDataChange}
               id="address"
-              className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
+              className="rounded-[8px] p-[20px] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
               placeholder="Address"
               required
             />
@@ -245,7 +245,7 @@ export function WarehouseQuoteLand({ setData }: WarehouseSenderType) {
               value={senderData.postalCode}
               onChange={handleSenderDataChange}
               id="postalCode"
-              className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
+              className="rounded-[8px] p-[20px] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
               placeholder="Postal Code"
               required
             />
@@ -257,7 +257,7 @@ export function WarehouseQuoteLand({ setData }: WarehouseSenderType) {
           <button
             type="button"
             onClick={handleFormSubmit}
-            className="flex items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[30px] py-[21px] bg-[#0A089A] rounded-[15px] m-auto mb-[60px] md:px-[40px] md:py-[27px] md:ml-[20%] hover:bg-[#1E1E1E]  "
+            className="flex justify-center items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[30px] py-[21px] bg-[#0A089A] rounded-[8px] w-[100%] mb-[60px] md:px-[40px] md:py-[27px] hover:bg-[#1E1E1E]  "
           >
             <p>Proceed to Parcel Information</p>
             <FaArrowRight />

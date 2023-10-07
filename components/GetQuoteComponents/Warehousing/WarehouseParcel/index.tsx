@@ -9,6 +9,7 @@ import React, {
 import { FaArrowRight } from "react-icons/fa";
 import { VidModal01 } from "../../DIY";
 import { clientParcelInfo } from "../../Domestic";
+import Image from "next/image";
 
 interface WarehouseParcelType {
   setData: Dispatch<SetStateAction<any>>;
@@ -52,7 +53,7 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
       setParcelData((prevParcelData: any) => ({
         ...prevParcelData,
         [nestedField]: {
-          ...prevParcelData[nestedField],
+          ...prevParcelData[nestedField], 
           [subField]: value,
         },
       }));
@@ -138,7 +139,7 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
       style={{ display: glotrail === 1 ? "block" : "none" }}
     >
       <div className=" w-[90%] m-auto md:flex md:justify-between ">
-        <div className="mb-[60px] md:w-[40%] mt-[49px] ">
+        <div className="mb-[60px] md:w-[40%] ">
           <h1 className="text-[16px] font-[600] text-[#AC0108] mb-[15px] block md:hidden ">
             Parcel Information
           </h1>
@@ -147,6 +148,7 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
             <span className="text-[#A1A1A1]">Shipping summary</span> estimate
           </p>
         </div>
+
         <div className="md:w-[50%] ">
           <form>
             <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -161,7 +163,7 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
                 onChange={handleParcelDataChange}
                 placeholder="Name"
                 required
-                className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
+                className="rounded-[8px] p-[15px] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
               />
               {formError.packageName && (
               <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.packageName}</p>
@@ -181,7 +183,7 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
                   onChange={handleParcelDataChange}
                   placeholder="0"
                   required
-                  className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
+                  className="rounded-[8px] p-[15px] border border-[#A1A1A1] h-[65px] outline-[#0A089A] w-[100%] "
                 />
                 <p className="absolute font-[600] text-[18px] right-[5%] ">
                   kg
@@ -206,7 +208,7 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
                     onChange={handleParcelDataChange}
                     placeholder="Length"
                     required
-                    className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
+                    className="rounded-[8px] p-[15px] border border-[#A1A1A1] h-[65px] outline-[#0A089A] w-[100%] "
                   />
                   {formError.dimension?.length && (
                     <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.dimension?.length}</p>
@@ -222,7 +224,7 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
                     onChange={handleParcelDataChange}
                     placeholder="Breath"
                     required
-                    className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
+                    className="rounded-[8px] p-[15px] border border-[#A1A1A1] h-[65px] outline-[#0A089A] w-[100%] "
                   />
                   {formError.dimension?.breadth && (
                     <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.dimension?.breadth}</p>
@@ -238,7 +240,7 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
                     onChange={handleParcelDataChange}
                     placeholder="Height"
                     required
-                    className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
+                    className="rounded-[8px] p-[15px] border border-[#A1A1A1] h-[65px] outline-[#0A089A] w-[100%] "
                   />
                   {formError.dimension?.height && (
                     <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.dimension?.height}</p>
@@ -264,7 +266,7 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
                 name="pickupAddress"
                 value={parcelData.pickupAddress}
                 onChange={handleParcelDataChange}
-                className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
+                className="rounded-[8px] p-[15px] border border-[#A1A1A1] h-[65px] outline-[#0A089A] w-[100%] "
               />
               {formError.pickupAddress && (
                 <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.pickupAddress}</p>
@@ -283,7 +285,7 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
                 value={parcelData.pickupCode}
                 onChange={handleParcelDataChange}
                 required
-                className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
+                className="rounded-[8px] p-[15px] border border-[#A1A1A1] h-[65px] outline-[#0A089A] w-[100%] "
               />
               {formError.pickupCode && (
                 <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.pickupAddress}</p>
@@ -291,21 +293,39 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
             </div>
 
             <div className="flex flex-col gap-[10px] mb-[25px]">
-              <label htmlFor="" className="font-[600] ">
+              <p className="text-[#1E1E1E] text-[16px] font-[600] mb-[8px] ">
                 Upload Image
+              </p>
+              <label 
+                htmlFor="uploadFile"
+                className="mb-[8px] flex flex-col items-center justify-center py-[50px] overflow-hidden relative rounded-[8px] bg-[#DEDEDE] text-[12px] lg:text-[18px] font-[500] "
+              >
+                <Image
+                  src="../img/upload-image-icon.svg"
+                  alt="Upload Image Icon"
+                  width={30}
+                  height={30}
+                />
+
+                <p className="text-[#1E1E1E] ">
+                  Drag and drop image here or{" "}
+                  <span className="text-[#0A089A] ">browse</span>
+                </p>
+
+                <input
+                  id="uploadFile"
+                  type="file"
+                  name="image"
+                  onChange={(e) => {
+                    setData((prevData: any) => {
+                      if (e.target.files) {
+                        return { ...prevData, image: e.target.files[0] };
+                      }
+                    });
+                  }}
+                  className="absolute cursor-pointer top-0 left-0 w-[100%] h-[100%] opacity-0"
+                />
               </label>
-              <input
-                id="uploadFile"
-                type="file"
-                name="image"
-                onChange={(e) => {
-                  setData((prevData: any) => {
-                    if (e.target.files) {
-                      return { ...prevData, image: e.target.files[0] };
-                    }
-                  });
-                }}
-              />
             </div>
 
             <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -318,7 +338,7 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
                 value={parcelData.packageDescription}
                 onChange={handleParcelDataChange}
                 required
-                className="rounded-[15px] border border-[#A1A1A1] h-[165px] outline-[#0A089A] placeholder-[]  pl-[24px] pt-[0px] "
+                className="rounded-[8px] p-[15px] border border-[#A1A1A1] h-[165px] outline-[#0A089A] "
               />
               {formError.packageDescription && (
                 <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.packageDescription}</p>
@@ -328,7 +348,7 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
             <button
               type="button"
               onClick={handleFormSubmit}
-              className="flex items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[55px] py-[21px] bg-[#0A089A] rounded-[15px] m-auto mb-[120px] md:px-[140px] md:py-[27px] md:mr-[5%] hover:bg-[#1E1E1E] "
+              className="flex justify-center items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[30px] py-[21px] bg-[#0A089A] rounded-[8px] w-[100%] mb-[60px] md:px-[40px] md:py-[27px] hover:bg-[#1E1E1E]  "
             >
               <p>Proceed to shipping summary</p>
               <FaArrowRight />
