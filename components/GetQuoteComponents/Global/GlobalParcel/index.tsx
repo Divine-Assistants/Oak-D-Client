@@ -9,6 +9,7 @@ import React, {
 import { VidModal01, scrollToTop } from "@/components";
 import { FaArrowRight } from "react-icons/fa";
 import { clientParcelInfo } from "@/components";
+import Image from "next/image";
 
 interface GlobalParcelType {
   setData: Dispatch<SetStateAction<any>>;
@@ -115,8 +116,8 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
 
   return (
     <section style={{ display: glotrail === 2 ? "block" : "none" }}>
-      <div className=" w-[90%] m-auto md:flex md:justify-between ">
-        <div className="mb-[60px] md:w-[40%] mt-[49px] ">
+      <div className="w-[100%] lg:flex lg:justify-between lg:gap-[20px] mt-[30px] px-[20px] ">
+        <div className="mb-[40px] lg:mb-0 w-[100%] lg:w-[40%] ">
           <h1 className="text-[16px] font-[600] text-[#AC0108] mb-[15px] block md:hidden ">
             Parcel Information
           </h1>
@@ -126,11 +127,11 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
           </p>
         </div>
         <div
-          className="md:w-[50%] "
+          className="text-[18px] text-[#1E1E1E] font-[600] w-[100%] mb-[75px] lg:w-[50%] "
           style={{ display: glotrail === 2 ? "block" : "none" }}
         >
           <form>
-            <div className="flex flex-col gap-[10px] mb-[25px] mt-[60px]">
+            <div className="flex flex-col gap-[10px] mb-[25px]">
               <label htmlFor="packageName" className="font-[600] ">
                 Name Of Cargo
               </label>
@@ -140,7 +141,7 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                 value={parcelData.packageName}
                 onChange={handleParcelDataChange}
                 id="packageName"
-                className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
+                className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
                 placeholder="Name"
                 required
               />
@@ -161,7 +162,7 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                   value={parcelData.packageWeight}
                   onChange={handleParcelDataChange}
                   id="packageWeight"
-                  className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
+                  className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
                   placeholder="0"
                   required
                 />
@@ -183,7 +184,7 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                     value={parcelData.dimension.length}
                     onChange={handleParcelDataChange}
                     id="length"
-                    className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
+                    className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
                     placeholder="Length"
                     required
                   />
@@ -199,7 +200,7 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                     value={parcelData.dimension.breadth}
                     onChange={handleParcelDataChange}
                     id="breadth"
-                    className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
+                    className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
                     placeholder="Breadth"
                     required
                   />
@@ -215,7 +216,7 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                     value={parcelData.dimension.height}
                     onChange={handleParcelDataChange}
                     id="height"
-                    className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
+                    className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
                     placeholder="Height"
                     required
                   />
@@ -241,7 +242,7 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                 value={parcelData.departure}
                 onChange={handleParcelDataChange}
                 required
-                className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
+                className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
               >
                 <option value="">--Select a departure location--</option>
                 <option value="North-York, Canada">
@@ -268,7 +269,7 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                 value={parcelData.arrival}
                 onChange={handleParcelDataChange}
                 required
-                className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
+                className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
               >
                 <option value="">--Select an Arrival location--</option>
                 <option value="North-York, Canada">
@@ -287,22 +288,39 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
             </div>
 
             <div className="flex flex-col gap-[10px] mb-[25px]">
-              <label htmlFor="" className="font-[600] ">
+              <p className="text-[#1E1E1E] text-[16px] font-[600] mb-[8px] ">
                 Upload Image
+              </p>
+              <label 
+                htmlFor="uploadFile"
+                className="mb-[8px] flex flex-col items-center justify-center py-[50px] overflow-hidden relative rounded-[8px] bg-[#DEDEDE] text-[12px] lg:text-[18px] font-[500] "
+              >
+                <Image
+                  src="../img/upload-image-icon.svg"
+                  alt="Upload Image Icon"
+                  width={30}
+                  height={30}
+                />
+
+                <p className="text-[#1E1E1E] ">
+                  Drag and drop image here or{" "}
+                  <span className="text-[#0A089A] ">browse</span>
+                </p>
+
+                <input
+                  id="uploadFile"
+                  type="file"
+                  name="image"
+                  onChange={(e) => {
+                    setData((prevData: any) => {
+                      if (e.target.files) {
+                        return { ...prevData, image: e.target.files[0] };
+                      }
+                    });
+                  }}
+                  className="absolute cursor-pointer top-0 left-0 w-[100%] h-[100%] opacity-0"
+                />
               </label>
-              <input
-                type="file"
-                src=""
-                alt=""
-                className="  "
-                onChange={(e) => {
-                  setData((prevData: any) => {
-                    if (e.target.files) {
-                      return { ...prevData, image: e.target.files[0] };
-                    }
-                  });
-                }}
-              />
             </div>
 
             <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -315,7 +333,7 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                 name="packageDescription"
                 value={parcelData.packageDescription}
                 onChange={handleParcelDataChange}
-                className="rounded-[15px] border border-[#A1A1A1] h-[165px] outline-[#0A089A] placeholder-[]  pl-[24px] pt-[0px] "
+                className="rounded-[8px] p-[15px] border border-[#A1A1A1] h-[165px] outline-[#0A089A] "
                 placeholder=""
                 required
               />
@@ -323,17 +341,17 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                 <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.packageDescription}</p>
               )}
             </div>
-          </form>
-          
-          <div className="">
+
             <button
-              className="flex items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[55px] py-[21px] bg-[#0A089A] rounded-[15px] m-auto mb-[120px] md:px-[140px] md:py-[27px] md:mr-[5%] hover:bg-[#1E1E1E] "
+              type="button"
               onClick={handleFormSubmit}
+              className="flex justify-center items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[30px] py-[21px] bg-[#0A089A] rounded-[8px] w-[100%] mb-[60px] md:px-[40px] md:py-[27px] hover:bg-[#1E1E1E]  "
             >
               <p>Proceed to shipping summary</p>
               <FaArrowRight />
             </button>
-          </div>
+          </form>
+          
         </div>
       </div>
       <VidModal01 />

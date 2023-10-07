@@ -48,8 +48,8 @@ export function GlobalSender({ setData }: GlobalSenderType) {
 
   return (
     <div style={{ display: glotrail !== 0 ? "none" : "initial" }}>
-      <div className="w-[90%] m-auto lg:flex mt-[30px] ">
-        <div className="mb-[40px] lg:w-[40%] ">
+      <div className="w-[100%] lg:flex lg:justify-between lg:gap-[20px] mt-[30px] px-[20px] ">
+        <div className="mb-[40px] lg:mb-0 w-[100%] lg:w-[40%] ">
           <h1 className="text-[16px] font-[600] text-[#AC0108] mb-[15px] ">
             Global Shipping
           </h1>
@@ -59,12 +59,13 @@ export function GlobalSender({ setData }: GlobalSenderType) {
             proceed
           </p>
         </div>
+
         <form
           id=""
-          className="text-[18px] text-[#1E1E1E] font-[600] w-[90%] m-auto mb-[75px] lg:w-[50%]  "
+          className="text-[18px] text-[#1E1E1E] font-[600] w-[100%] mb-[75px] lg:w-[50%] "
         >
-          <div className="lg:flex lg:items-center lg:justify-between ">
-            <div className="flex flex-col gap-[10px] mb-[25px]">
+          <div className="lg:flex lg:items-center lg:gap-[10px] lg:justify-between ">
+            <div className="flex flex-col gap-[10px] mb-[25px] w-[100%]">
               <label htmlFor="firstName">First Name</label>
               <input
                 type="text"
@@ -72,7 +73,7 @@ export function GlobalSender({ setData }: GlobalSenderType) {
                 value={senderData.firstName}
                 onChange={handleSenderDataChange}
                 id="firstName"
-                className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]  "
+                className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
                 placeholder="Enter First Name"
                 required
               />
@@ -81,7 +82,7 @@ export function GlobalSender({ setData }: GlobalSenderType) {
               )}
             </div>
 
-            <div className="flex flex-col gap-[10px] mb-[25px]">
+            <div className="flex flex-col gap-[10px] mb-[25px] w-[100%] ">
               <label htmlFor="lastName">Last Name</label>
               <input
                 type="text"
@@ -89,7 +90,7 @@ export function GlobalSender({ setData }: GlobalSenderType) {
                 value={senderData.lastName}
                 onChange={handleSenderDataChange}
                 id="lastName"
-                className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]  "
+                className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
                 placeholder="Enter Last Name"
                 required
               />
@@ -107,7 +108,7 @@ export function GlobalSender({ setData }: GlobalSenderType) {
               value={senderData.email}
               onChange={handleSenderDataChange}
               id="email"
-              className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
+              className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
               placeholder="xyz@mail.com"
               required
             />
@@ -124,7 +125,7 @@ export function GlobalSender({ setData }: GlobalSenderType) {
               value={senderData.phoneNumber}
               onChange={handleSenderDataChange}
               id="phoneNumber"
-              className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
+              className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
               placeholder="Phone"
               required
             />
@@ -141,7 +142,7 @@ export function GlobalSender({ setData }: GlobalSenderType) {
               value={senderData.region}
               onChange={handleSenderDataChange}
               id="region"
-              className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
+              className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
               placeholder="Region"
               required
             />
@@ -158,7 +159,7 @@ export function GlobalSender({ setData }: GlobalSenderType) {
               value={senderData.country}
               onChange={handleSenderDataChange}
               id="country"
-              className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
+              className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
               placeholder="Country"
               required
             />
@@ -175,7 +176,7 @@ export function GlobalSender({ setData }: GlobalSenderType) {
               value={senderData.address}
               onChange={handleSenderDataChange}
               id="address"
-              className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
+              className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
               placeholder="Address"
               required
             />
@@ -192,7 +193,7 @@ export function GlobalSender({ setData }: GlobalSenderType) {
               value={senderData.postalCode}
               onChange={handleSenderDataChange}
               id="postalCode"
-              className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
+              className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
               placeholder="Postal Code"
               required
             />
@@ -201,16 +202,17 @@ export function GlobalSender({ setData }: GlobalSenderType) {
             )}
           </div>
 
+          <button
+            type="button"
+            onClick={handleFormSubmit}
+            className="flex justify-center items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[30px] py-[21px] bg-[#0A089A] rounded-[8px] w-[100%] mb-[60px] md:px-[40px] md:py-[27px] hover:bg-[#1E1E1E]  "
+          >
+            <p>Proceed to Receiver Information</p>
+            <FaArrowRight />
+          </button>
         </form>
       </div>
       
-      <button
-        className="flex items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[50px] py-[21px] bg-[#0A089A] rounded-[15px] m-auto mb-[120px] lg:px-[160px] lg:py-[27px] lg:mr-[10%] hover:bg-[#1E1E1E] "
-        onClick={handleFormSubmit}
-      >
-        <p>Proceed to Reciever Information</p>
-        <FaArrowRight />
-      </button>
     </div>
   );
 }

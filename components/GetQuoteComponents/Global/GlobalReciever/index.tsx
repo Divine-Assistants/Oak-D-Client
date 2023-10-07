@@ -52,20 +52,21 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
 
   return (
     <div style={{ display: glotrail !== 1 ? "none" : "initial" }}>
-      <div className="w-[90%] m-auto lg:flex ">
-        <div className="mb-[40px] lg:w-[40%]">
+      <div className="w-[100%] lg:flex lg:justify-between lg:gap-[20px] mt-[30px] px-[20px] ">
+        <div className="mb-[40px] lg:mb-0 w-[100%] lg:w-[40%]">
           <p className=" text-[40px] font-[600] ">
             Please enter the{" "}
             <span className="text-[#A1A1A1]">reciever&apos;s information</span>{" "}
             to proceed
           </p>
         </div>
+
         <form
           id=""
-          className="text-[18px] text-[#1E1E1E] font-[600] w-[90%] m-auto lg:w-[50%]  "
+          className="text-[18px] text-[#1E1E1E] font-[600] w-[100%] mb-[75px] lg:w-[50%] "
         >
-          <div className="lg:flex lg:items-center lg:justify-between ">
-            <div className="flex flex-col gap-[10px] mb-[25px]">
+          <div className="lg:flex lg:items-center lg:gap-[10px] lg:justify-between ">
+            <div className="flex flex-col gap-[10px] mb-[25px] w-[100%] ">
               <label htmlFor="firstName">First Name</label>
               <input
                 type="text"
@@ -73,7 +74,7 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
                 value={receiverData.firstName}
                 onChange={handleReceiverDataChange}
                 id="firstName"
-                className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]  "
+                className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
                 placeholder="Enter First Name"
                 required
               />
@@ -82,7 +83,7 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               )}
             </div>
 
-            <div className="flex flex-col gap-[10px] mb-[25px]">
+            <div className="flex flex-col gap-[10px] mb-[25px] w-[100%] ">
               <label htmlFor="">Last Name</label>
               <input
                 type="text"
@@ -90,7 +91,7 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
                 value={receiverData.lastName}
                 onChange={handleReceiverDataChange}
                 id="lastName"
-                className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px]  "
+                className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
                 placeholder="Enter Last Name"
                 required
               />
@@ -108,7 +109,7 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               value={receiverData.email}
               onChange={handleReceiverDataChange}
               id="email"
-              className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
+              className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
               placeholder="xyz@mail.com"
               required
             />
@@ -125,7 +126,7 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               value={receiverData.phoneNumber}
               onChange={handleReceiverDataChange}
               id="phoneNumber"
-              className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
+              className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
               placeholder="Phone"
               required
             />
@@ -142,7 +143,7 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               value={receiverData.region}
               onChange={handleReceiverDataChange}
               id="region"
-              className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
+              className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
               placeholder="Region"
               required
             />
@@ -159,7 +160,7 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               value={receiverData.country}
               onChange={handleReceiverDataChange}
               id="country"
-              className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
+              className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
               placeholder="Country"
               required
             />
@@ -176,7 +177,7 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               value={receiverData.address}
               onChange={handleReceiverDataChange}
               id="address"
-              className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
+              className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
               placeholder="Address"
               required
             />
@@ -193,7 +194,7 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               value={receiverData.postalCode}
               onChange={handleReceiverDataChange}
               id="postalCode"
-              className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
+              className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
               placeholder="Postal Code"
               required
             />
@@ -201,15 +202,17 @@ export function GlobalReciever({ setData }: GlobalReceiverType) {
               <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.postalCode}</p>
             )}
           </div>
+
+          <button
+            type="button"
+            onClick={handleFormSubmit}
+            className="flex justify-center items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[30px] py-[21px] bg-[#0A089A] rounded-[8px] w-[100%] mb-[60px] md:px-[40px] md:py-[27px] hover:bg-[#1E1E1E]  "
+          >
+            <p>Proceed to Parcel Information</p>
+            <FaArrowRight />
+          </button>
         </form>
       </div>
-      <button
-        className="flex items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[50px] py-[21px] bg-[#0A089A] rounded-[15px] m-auto mb-[120px] lg:px-[160px] lg:py-[27px] lg:mr-[10%] hover:bg-[#1E1E1E] "
-        onClick={handleFormSubmit}
-      >
-        <p>Proceed to Parcel Information</p>
-        <FaArrowRight />
-      </button>
     </div>
   );
 }

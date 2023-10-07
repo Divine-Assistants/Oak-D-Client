@@ -100,7 +100,7 @@ export function WarehouseQuoteLand({ setData }: WarehouseSenderType) {
       </div>
 
       {/* form */}
-      <div className="w-[90%] m-auto lg:flex mt-[100px] ">
+      <div className="w-[100%] lg:flex lg:justify-between lg:gap-[20px] mt-[30px] px-[20px] ">
         <div className="mb-[40px] lg:w-[40%] ">
           <h1 className="text-[16px] font-[600] text-[#AC0108] mb-[15px] ">
             Warehousing
@@ -125,7 +125,7 @@ export function WarehouseQuoteLand({ setData }: WarehouseSenderType) {
                 value={senderData.firstName}
                 onChange={handleSenderDataChange}
                 id="firstName"
-                className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  "
+                className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
                 placeholder="Enter First Name"
                 required
               />
