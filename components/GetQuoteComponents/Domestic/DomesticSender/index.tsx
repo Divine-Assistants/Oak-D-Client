@@ -241,7 +241,7 @@ export function DomesticSender({ setData }: DomesticSenderType) {
 
           <button
             type="button"
-            className="flex items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[50px] py-[10px] bg-[#0A089A] rounded-[15px] m-auto mb-[120px] lg:px-[160px] lg:py-[27px] lg:mr-[10%] hover:bg-[#1E1E1E] "
+            className="flex items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[50px] py-[10px] bg-[#0A089A] rounded-[15px] m-auto mb-[120px] lg:px-[160px] lg:py-[27px] lg:w-full mx-auto hover:bg-[#1E1E1E] "
             onClick={handleFormSubmit}
             disabled={!isFormValid}
           >
