@@ -42,20 +42,17 @@ const initialParcelInfo = {
 };
 
 interface ParcelInformationType {
-  setData: Dispatch<SetStateAction<any>>;
+  setData: Dispatch<SetStateAction<any>>; 
 }
 
 export function ParcelInformation({ setData }: ParcelInformationType) {
   const { showParcelInfo, setShowParcelInfo } = useContext(
     ParcelInformationContext
   );
-  const { setShowReceiverInfo } = useContext(ReceiverInformationContext);
   const { setShowShippingSummary } = useContext(ShippingSummaryContext);
   const { setDomesticBreadcrumb } = useContext(DomesticBreadcrumbContext);
-  const [parcelData, setParcelData] =
-    useState<ParcelInformationDataType>(initialParcelInfo);
-
-    const [formError, setFormError] = useState<Partial<ParcelInformationDataType>>({});
+  const [parcelData, setParcelData] = useState<ParcelInformationDataType>(initialParcelInfo);
+  const [formError, setFormError] = useState<Partial<ParcelInformationDataType>>({});
 
   const handleParcelDataChange = (
     event: React.ChangeEvent<

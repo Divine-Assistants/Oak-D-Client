@@ -12,6 +12,7 @@ export function WarehouseQuoteLand({ setData }: WarehouseSenderType) {
   const [senderData, setSenderData] = useState<clientInfo>(initialClientInfo);
   const [isFormValid, setIsFormValid] = useState(false);
   const [emptyFields, setEmptyFields] = useState<string[]>([]);
+  const [formError, setFormError] = useState<Partial<clientInfo>>({});
 
   const { trail, setTrail } = useContext(DomesticContext);
   const { glotrail, setGlotrail } = useContext(GlobalContext);
@@ -32,17 +33,24 @@ export function WarehouseQuoteLand({ setData }: WarehouseSenderType) {
   }
 
   function handleFormSubmit() {
-    if (isFormValid) {
+    // Check for empty fields and update formErrors
+    const errors: Partial<clientInfo> = {};
+      for (const key in senderData) {
+        if (!senderData[key]) {
+          errors[key] = "This field is required";
+        }
+      }
+      setFormError(errors);
+
+      // If there are errors, do not submit the form
+      if (Object.keys(errors).length > 0) {
+        return;
+      }
+
       setData((prevData: any) => ({ ...prevData, sender: senderData }));
       setSenderData(initialClientInfo);
       setGlotrail(1);
       window.scrollTo(0, 0);
-    } else {
-      const emptyFields = Object.entries(senderData)
-        .filter(([key, value]) => value.trim() === "")
-        .map(([key]) => key);
-      setEmptyFields(emptyFields);
-    }
   }
 
   function validateForm() {
@@ -92,7 +100,6 @@ export function WarehouseQuoteLand({ setData }: WarehouseSenderType) {
       </div>
 
       {/* form */}
-
       <div className="w-[90%] m-auto lg:flex mt-[100px] ">
         <div className="mb-[40px] lg:w-[40%] ">
           <h1 className="text-[16px] font-[600] text-[#AC0108] mb-[15px] ">
@@ -105,7 +112,6 @@ export function WarehouseQuoteLand({ setData }: WarehouseSenderType) {
         </div>
 
         {/* Main form */}
-
         <form
           id=""
           className="text-[18px] text-[#1E1E1E] font-[600] w-[90%] m-auto lg:w-[50%]   "
@@ -123,8 +129,8 @@ export function WarehouseQuoteLand({ setData }: WarehouseSenderType) {
                 placeholder="Enter First Name"
                 required
               />
-              {emptyFields.includes("firstName") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your first name</p>
+              {formError.firstName && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.firstName}</p>
               )}
             </div>
 
@@ -140,8 +146,8 @@ export function WarehouseQuoteLand({ setData }: WarehouseSenderType) {
                 placeholder="Enter Last Name"
                 required
               />
-              {emptyFields.includes("lastName") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your last name</p>
+              {formError.lastName && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.lastName}</p>
               )}
             </div>
           </div>
@@ -158,8 +164,8 @@ export function WarehouseQuoteLand({ setData }: WarehouseSenderType) {
               placeholder="xyz@mail.com"
               required
             />
-            {emptyFields.includes("email") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your email</p>
+            {formError.email && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.email}</p>
               )}
           </div>
 
@@ -175,9 +181,9 @@ export function WarehouseQuoteLand({ setData }: WarehouseSenderType) {
               placeholder="Phone"
               required
             />
-            {emptyFields.includes("phoneNumber") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your phone number</p>
-              )}
+            {formError.phoneNumber && (
+              <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.phoneNumber}</p>
+            )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -192,8 +198,8 @@ export function WarehouseQuoteLand({ setData }: WarehouseSenderType) {
               placeholder="Region"
               required
             />
-            {emptyFields.includes("region") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your region</p>
+            {formError.region && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.region}</p>
               )}
           </div>
 
@@ -209,8 +215,8 @@ export function WarehouseQuoteLand({ setData }: WarehouseSenderType) {
               placeholder="Country"
               required
             />
-            {emptyFields.includes("country") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your country</p>
+            {formError.country && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.country}</p>
               )}
           </div>
 
@@ -226,8 +232,8 @@ export function WarehouseQuoteLand({ setData }: WarehouseSenderType) {
               placeholder="Address"
               required
             />
-            {emptyFields.includes("address") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your address</p>
+            {formError.address && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.address}</p>
               )}
           </div>
 
@@ -243,8 +249,8 @@ export function WarehouseQuoteLand({ setData }: WarehouseSenderType) {
               placeholder="Postal Code"
               required
             />
-            {emptyFields.includes("postalCode") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your postal Code</p>
+            {formError.postalCode && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.postalCode}</p>
               )}
           </div>
 

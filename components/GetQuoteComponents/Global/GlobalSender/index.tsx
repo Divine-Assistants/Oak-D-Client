@@ -11,8 +11,7 @@ interface GlobalSenderType {
 export function GlobalSender({ setData }: GlobalSenderType) {
   const { glotrail, setGlotrail } = useContext(GlobalContext);
   const [senderData, setSenderData] = useState<clientInfo>(initialClientInfo);
-  const [isFormValid, setIsFormValid] = useState(false);
-  const [emptyFields, setEmptyFields] = useState<string[]>([]);
+  const [formError, setFormError] = useState<Partial<clientInfo>>({});
 
   function handleSenderDataChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
@@ -26,30 +25,26 @@ export function GlobalSender({ setData }: GlobalSenderType) {
 
 
   function handleFormSubmit() {
-    if (isFormValid) {
-      setData((prevData: any) => ({ ...prevData, sender: senderData }));
-      setSenderData(initialClientInfo);
-      setGlotrail(1);
-      window.scrollTo(0, 0);
-    } else {
-      // Find empty fields and set them as emptyFields state
-      const emptyFields = Object.entries(senderData)
-        .filter(([key, value]) => value.trim() === "")
-        .map(([key]) => key);
-      setEmptyFields(emptyFields);
+    // Check for empty fields and update formErrors
+    const errors: Partial<clientInfo> = {};
+    for (const key in senderData) {
+      if (!senderData[key]) {
+        errors[key] = "This field is required";
+      }
     }
-  }
+    setFormError(errors);
 
-  function validateForm() {
-    const formValues = Object.values(senderData);
-    const isValid = formValues.every((value) => value.trim() !== "");
-    setIsFormValid(isValid);
-  }
+    // If there are errors, do not submit the form
+    if (Object.keys(errors).length > 0) {
+      return;
+    }
 
-  // Validate the form on every senderData change
-  React.useEffect(() => {
-    validateForm();
-  }, [senderData]);
+    setData((prevData: any) => ({ ...prevData, sender: senderData }));
+    setSenderData(initialClientInfo);
+    setGlotrail(1);
+    window.scrollTo(0, 0);
+
+  }
 
   return (
     <div style={{ display: glotrail !== 0 ? "none" : "initial" }}>
@@ -81,8 +76,8 @@ export function GlobalSender({ setData }: GlobalSenderType) {
                 placeholder="Enter First Name"
                 required
               />
-              {emptyFields.includes("firstName") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your first name</p>
+              {formError.firstName && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.firstName}</p>
               )}
             </div>
 
@@ -98,8 +93,8 @@ export function GlobalSender({ setData }: GlobalSenderType) {
                 placeholder="Enter Last Name"
                 required
               />
-               {emptyFields.includes("lastName") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your last name</p>
+              {formError.lastName && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.lastName}</p>
               )}
             </div>
           </div>
@@ -116,9 +111,9 @@ export function GlobalSender({ setData }: GlobalSenderType) {
               placeholder="xyz@mail.com"
               required
             />
-             {emptyFields.includes("email") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your email</p>
-              )}
+            {formError.email && (
+              <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.email}</p>
+            )}
           </div>
 
           <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -133,8 +128,8 @@ export function GlobalSender({ setData }: GlobalSenderType) {
               placeholder="Phone"
               required
             />
-             {emptyFields.includes("phoneNumber") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your phone Number</p>
+             {formError.phoneNumber && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.phoneNumber}</p>
               )}
           </div>
 
@@ -150,8 +145,8 @@ export function GlobalSender({ setData }: GlobalSenderType) {
               placeholder="Region"
               required
             />
-             {emptyFields.includes("region") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your Region</p>
+             {formError.region && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.region}</p>
               )}
           </div>
 
@@ -167,8 +162,8 @@ export function GlobalSender({ setData }: GlobalSenderType) {
               placeholder="Country"
               required
             />
-             {emptyFields.includes("country") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your country</p>
+             {formError.country && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.country}</p>
               )}
           </div>
 
@@ -184,8 +179,8 @@ export function GlobalSender({ setData }: GlobalSenderType) {
               placeholder="Address"
               required
             />
-             {emptyFields.includes("address") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your address</p>
+             {formError.address && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.address}</p>
               )}
           </div>
 
@@ -201,12 +196,14 @@ export function GlobalSender({ setData }: GlobalSenderType) {
               placeholder="Postal Code"
               required
             />
-             {emptyFields.includes("postalCode") && (
-                <p className="text-[16px] font-[600] text-[#AC0108]">Please enter your post code</p>
-              )}
+            {formError.postalCode && (
+              <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.postalCode}</p>
+            )}
           </div>
+
         </form>
       </div>
+      
       <button
         className="flex items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[50px] py-[21px] bg-[#0A089A] rounded-[15px] m-auto mb-[120px] lg:px-[160px] lg:py-[27px] lg:mr-[10%] hover:bg-[#1E1E1E] "
         onClick={handleFormSubmit}

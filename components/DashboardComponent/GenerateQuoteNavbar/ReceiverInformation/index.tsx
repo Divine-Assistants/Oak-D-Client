@@ -17,7 +17,7 @@ import { DomesticBreadcrumb } from "../DomesticBreadcrumb";
 
 interface ReceiverInformationType {
   setData: Dispatch<SetStateAction<any>>;
-}
+} 
 
 export function ReceiverInformation({ setData }: ReceiverInformationType) {
   const { showReceiverInfo, setShowReceiverInfo } = useContext(
