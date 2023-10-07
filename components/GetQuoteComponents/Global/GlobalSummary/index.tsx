@@ -7,6 +7,7 @@ import { userPackageDataType } from "@/pages/quote/warehousing";
 import { useRouter } from "next/router";
 import emailjs from 'emailjs-com';
 
+
 interface GlobalSummaryType {
   data: ClientDataType;
   userPackageData: userPackageDataType;
@@ -123,6 +124,7 @@ export function GlobalSummary({
           </div>
         </div>
       </div>
+
 
       {/* Modal page */}
       <div style={{display: trail === 3.5 ? 'block' : 'none'}} className="fixed z-50 inset-0 bg-[rgba(0,0,0,0.7)]">
