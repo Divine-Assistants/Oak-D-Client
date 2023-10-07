@@ -43,15 +43,14 @@ const initialParcelInfo = {
 
 export function GlobalUserParcelInfo({ setData }: ParcelInformationType) {
   const { globalParcelInfo, setGlobalParcelInfo } = useContext(
-    GlobalParcelInfoContext
+    GlobalParcelInfoContext 
   );
   const { globalSummary, setGlobalSummary } = useContext(GlobalSummaryContext);
   // Breadcrumbs Context
   const { setGlobalCrumb } = useContext(GlobalCrumbContext);
-  const [parcelData, setParcelData] =
-    useState<ParcelInformationDataType>(initialParcelInfo);
+  const [parcelData, setParcelData] = useState<ParcelInformationDataType>(initialParcelInfo);
 
-    const [formError, setFormError] = useState<Partial<ParcelInformationDataType>>({});
+  const [formError, setFormError] = useState<Partial<ParcelInformationDataType>>({});
   
 
   const handleParcelDataChange = (
@@ -338,8 +337,8 @@ export function GlobalUserParcelInfo({ setData }: ParcelInformationType) {
               className="p-[20px] border-[2px] border-[#CBCBCB] rounded-[8px] bg-[#F5F5F5] focus:outline-[#0A089A] "
             />
             {formError.packageDescription && (
-                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.packageDescription}</p>
-              )}
+              <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.packageDescription}</p>
+            )}
           </div>
 
           <button

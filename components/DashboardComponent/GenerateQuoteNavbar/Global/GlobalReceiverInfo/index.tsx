@@ -24,12 +24,6 @@ interface ReceiverInformationType {
 }
 
 export function GlobalUserReceiver({ setData }: ReceiverInformationType) {
-  const { showReceiverInfo, setShowReceiverInfo } = useContext(
-    ReceiverInformationContext
-  );
-  const { showParcelInfo, setShowParcelInfo } = useContext(
-    ParcelInformationContext
-  );
   const { receiverInfo, setReceiverInfo } = useContext(receiverInfoContext);
   const { globalReceiverInfo, setGlobalReceiverInfo } = useContext(
     GlobalReceiverInfoContext

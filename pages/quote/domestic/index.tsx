@@ -25,7 +25,7 @@ export interface ClientDataType {
   sender: clientInfo;
   receiver?: clientInfo;
   newPackage: clientParcelInfo;
-  image: File | null;
+  image?: File | null;
 }
 
 export default function Domestic() {

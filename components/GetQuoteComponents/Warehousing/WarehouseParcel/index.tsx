@@ -23,8 +23,8 @@ const initialWarehouseParcelInfo = {
     breadth: "",
     height: "",
   },
-  departure: "",
-  arrival: "",
+  pickupAddress: "",
+  pickupCode: "",
   packageDescription: "",
 };
 
@@ -32,8 +32,10 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
   const [parcelData, setParcelData] = useState<clientParcelInfo>(
     initialWarehouseParcelInfo
   );
+  const [formError, setFormError] = useState<Partial<clientParcelInfo>>({});
   const { glotrail, setGlotrail, setShowVideo } = useContext(GlobalContext);
   const isBrowser = () => typeof window !== "undefined"; //The approach recommended by Next.js
+
   function scrollToTop() {
     if (!isBrowser()) return;
     window.scrollTo({ top: 20, behavior: "smooth" });
@@ -93,6 +95,32 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
   }, [parcelData.packageWeight]);
 
   function handleFormSubmit() {
+    // Check for empty fields and update formErrors
+    const errors: Partial<clientParcelInfo> = {};
+    for (const key in parcelData) {
+      if (!parcelData[key]) {
+        errors[key] = "This field is required";
+      }
+    }
+
+     // Check for empty fields in the dimension object
+     if (!parcelData.dimension.length) {
+      errors["dimension.length"] = "Length is required";
+    }
+    if (!parcelData.dimension.breadth) {
+      errors["dimension.breadth"] = "Breadth is required";
+    }
+    if (!parcelData.dimension.height) {
+      errors["dimension.height"] = "Height is required";
+    }
+
+    setFormError(errors);
+
+    // If there are errors, do not submit the form
+    if (Object.keys(errors).length > 0) {
+      return;
+    }
+
     setData((prevData: any) => {
       return {
         ...prevData,
@@ -135,7 +163,11 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
                 required
                 className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
               />
+              {formError.packageName && (
+              <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.packageName}</p>
+            )}
             </div>
+
             <div className="flex flex-col gap-[10px] mb-[25px]">
               <label htmlFor="" className="font-[600] ">
                 Weight
@@ -155,13 +187,17 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
                   kg
                 </p>
               </div>
+              {formError.packageWeight && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.packageWeight}</p>
+              )}
             </div>
+
             <div className="flex flex-col gap-[10px]">
               <label htmlFor="" className="font-[600] ">
-                Dimension
+                Dimension (in)
               </label>
               <div className="flex flex-col gap-[10px] mb-[25px] lg:flex-row">
-                <div className="relative w-[100%] flex items-center ">
+                <div className="relative w-[100%] ">
                   <input
                     id="length"
                     type="number"
@@ -172,11 +208,12 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
                     required
                     className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
                   />
-                  <p className="absolute font-[600] text-[18px] right-[5%] ">
-                    In
-                  </p>
+                  {formError.dimension?.length && (
+                    <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.dimension?.length}</p>
+                  )}
                 </div>
-                <div className="relative w-[100%] flex items-center ">
+
+                <div className="relative w-[100%]">
                   <input
                     id="breath"
                     type="number"
@@ -187,10 +224,11 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
                     required
                     className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
                   />
-                  <p className="absolute font-[600] text-[18px] right-[5%] ">
-                    In
-                  </p>
+                  {formError.dimension?.breadth && (
+                    <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.dimension?.breadth}</p>
+                  )}
                 </div>
+
                 <div className="relative w-[100%] flex items-center ">
                   <input
                     id="height"
@@ -202,9 +240,9 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
                     required
                     className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
                   />
-                  <p className="absolute font-[600] text-[18px] right-[5%] ">
-                    In
-                  </p>
+                  {formError.dimension?.height && (
+                    <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.dimension?.height}</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -226,9 +264,11 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
                 name="pickupAddress"
                 value={parcelData.pickupAddress}
                 onChange={handleParcelDataChange}
-                required
                 className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
               />
+              {formError.pickupAddress && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.pickupAddress}</p>
+              )}
             </div>
 
             <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -245,6 +285,9 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
                 required
                 className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
               />
+              {formError.pickupCode && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.pickupAddress}</p>
+              )}
             </div>
 
             <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -277,6 +320,9 @@ export function WarehouseParcel({ setData }: WarehouseParcelType) {
                 required
                 className="rounded-[15px] border border-[#A1A1A1] h-[165px] outline-[#0A089A] placeholder-[]  pl-[24px] pt-[0px] "
               />
+              {formError.packageDescription && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.packageDescription}</p>
+              )}
             </div>
 
             <button

@@ -177,8 +177,8 @@ export function WarehouseParcelInfo({ setData }: ParcelInformationType) {
               className="p-[15px] border-[2px] border-[#CBCBCB] rounded-[8px] bg-[#F5F5F5] focus:outline-[#0A089A] "
             />
             {formError.packageName && (
-                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.packageName}</p>
-              )}
+              <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.packageName}</p>
+            )}
           </div>
 
           <div className="flex flex-col mb-[15px] text-[#1E1E1E] text-[16px] ">

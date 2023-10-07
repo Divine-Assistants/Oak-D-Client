@@ -34,6 +34,7 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
   const [parcelData, setParcelData] = useState<clientParcelInfo>(
     initialGlobalParcelInfo
   );
+  const [formError, setFormError] = useState<Partial<clientParcelInfo>>({});
 
   const handleParcelDataChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -86,6 +87,21 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
   }, [parcelData.packageWeight]);
 
   function handleFormSubmit() {
+    // Check for empty fields and update formErrors
+    const errors: Partial<clientParcelInfo> = {};
+    for (const key in parcelData) {
+      if (!parcelData[key]) {
+        errors[key] = "This field is required";
+      }
+    }
+    setFormError(errors);
+
+    // If there are errors, do not submit the form
+    if (Object.keys(errors).length > 0) {
+      return;
+    }
+
+    // Proceed with form submission
     setData((prevData: any) => {
       return {
         ...prevData,
@@ -128,7 +144,12 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                 placeholder="Name"
                 required
               />
+
+              {formError.packageName && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.packageName}</p>
+              )}
             </div>
+
             <div className="flex flex-col gap-[10px] mb-[25px]">
               <label htmlFor="" className="font-[600] ">
                 Weight
@@ -145,13 +166,17 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                   required
                 />
               </div>
+              {formError.packageWeight && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.packageWeight}</p>
+              )}
             </div>
+
             <div className="flex flex-col gap-[10px]">
               <label htmlFor="" className="font-[600] ">
-                Dimension
+                Dimension (in)
               </label>
               <div className="flex flex-col gap-[10px] mb-[25px] lg:flex-row">
-                <div className="relative w-[100%] flex items-center ">
+                <div className="relative w-[100%] ">
                   <input
                     type="number"
                     name="dimension.length"
@@ -162,11 +187,12 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                     placeholder="Length"
                     required
                   />
-                  <p className="absolute font-[600] text-[18px] right-[5%] ">
-                    In
-                  </p>
+                  {formError.dimension?.length && (
+                    <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.dimension?.length}</p>
+                  )}
                 </div>
-                <div className="relative w-[100%] flex items-center ">
+
+                <div className="relative w-[100%] ">
                   <input
                     type="number"
                     name="dimension.breadth"
@@ -177,11 +203,12 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                     placeholder="Breadth"
                     required
                   />
-                  <p className="absolute font-[600] text-[18px] right-[5%] ">
-                    In
-                  </p>
+                  {formError.dimension?.breadth && (
+                    <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.dimension?.breadth}</p>
+                  )}
                 </div>
-                <div className="relative w-[100%] flex items-center ">
+
+                <div className="relative w-[100%] ">
                   <input
                     type="number"
                     name="dimension.height"
@@ -192,9 +219,9 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                     placeholder="Height"
                     required
                   />
-                  <p className="absolute font-[600] text-[18px] right-[5%] ">
-                    In
-                  </p>
+                  {formError.dimension?.height && (
+                    <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.dimension?.height}</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -226,6 +253,10 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                 <option value="Ajax, Canada">Ajax, Canada</option>
                 <option value="Ikeja, Nigeria">Lagos, Nigeria</option>
               </select>
+
+              {formError.departure && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.departure}</p>
+              )}
             </div>
 
             <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -249,6 +280,10 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                 <option value="Ajax, Canada">Ajax, Canada</option>
                 <option value="Ikeja, Nigeria">Lagos, Nigeria</option>
               </select>
+
+              {formError.arrival && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.arrival}</p>
+              )}
             </div>
 
             <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -284,8 +319,12 @@ export function GlobalParcel({ setData }: GlobalParcelType) {
                 placeholder=""
                 required
               />
+              {formError.packageDescription && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.packageDescription}</p>
+              )}
             </div>
           </form>
+          
           <div className="">
             <button
               className="flex items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[55px] py-[21px] bg-[#0A089A] rounded-[15px] m-auto mb-[120px] md:px-[140px] md:py-[27px] md:mr-[5%] hover:bg-[#1E1E1E] "

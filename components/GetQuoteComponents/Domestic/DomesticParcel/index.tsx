@@ -55,21 +55,11 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
     setShowVideo,
   } = useContext(DomesticContext);
 
-  const handleProvinceDepartureChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    setSelectedDepartureProvince(event.target.value);
-  };
-
-  const handleProvinceArrivalChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    setSelectedArrivalProvince(event.target.value);
-  };
-
   const [parcelData, setParcelData] = useState<clientParcelInfo>(
     initialDomesticParcelInfo
   );
+
+  const [formError, setFormError] = useState<Partial<clientParcelInfo>>({});
 
   const handleParcelDataChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -122,6 +112,20 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
   }, [parcelData.packageWeight]);
 
   function handleFormSubmit() {
+    // Check for empty fields and update formErrors
+    const errors: Partial<clientParcelInfo> = {};
+    for (const key in parcelData) {
+      if (!parcelData[key]) {
+        errors[key] = "This field is required";
+      }
+    }
+    setFormError(errors);
+
+    // If there are errors, do not submit the form
+    if (Object.keys(errors).length > 0) {
+      return;
+    }
+
     setData((prevData: any) => {
       return {
         ...prevData,
@@ -161,7 +165,11 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                 placeholder="Name"
                 required
               />
+              {formError.packageName && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.packageName}</p>
+              )}
             </div>
+
             <div className="flex flex-col gap-[10px] mb-[25px]">
               <label htmlFor="packageWeight" className="font-[600] ">
                 Weight
@@ -181,14 +189,17 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                   lbs
                 </p>
               </div>
-
+              {formError.packageWeight && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.packageWeight}</p>
+              )}
             </div>
+
             <div className="flex flex-col gap-[10px]">
               <label htmlFor="" className="font-[600] ">
-                Dimension
+                Dimension (in)
               </label>
               <div className="flex flex-col gap-[10px] mb-[25px] lg:flex-row">
-                <div className="relative w-[100%] flex items-center ">
+                <div className="relative w-[100%] ">
                   <input
                     type="number"
                     name="dimension.length"
@@ -199,12 +210,12 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                     placeholder="Length"
                     required
                   />
-                  <p className="absolute font-[600] text-[18px] right-[5%] ">
-                    In
-                  </p>
+                  {formError.dimension?.length && (
+                    <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.dimension?.length}</p>
+                  )}
                 </div>
 
-                <div className="relative w-[100%] flex items-center ">
+                <div className="relative w-[100%] ">
                   <input
                     type="number"
                     name="dimension.breadth"
@@ -215,12 +226,12 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                     placeholder="Breadth"
                     required
                   />
-                  <p className="absolute font-[600] text-[18px] right-[5%] ">
-                    In
-                  </p>
+                  {formError.dimension?.breadth && (
+                    <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.dimension?.breadth}</p>
+                  )}
                 </div>
 
-                <div className="relative w-[100%] flex items-center ">
+                <div className="relative w-[100%] ">
                   <input
                     type="number"
                     name="dimension.height"
@@ -231,12 +242,13 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                     placeholder="Height"
                     required
                   />
-                  <p className="absolute font-[600] text-[18px] right-[5%] ">
-                    In
-                  </p>
+                  {formError.dimension?.height && (
+                    <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.dimension?.height}</p>
+                  )}
                 </div>
               </div>
             </div>
+
             <p
               className="text-[15px] text-[#AC0108] font-[600] cursor-pointer mb-[25px] "
               onClick={() => setShowVideo(true)}
@@ -273,6 +285,9 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                 <option value="Nunavut">Nunavut</option>
                 <option value="Yukon ">Yukon</option>
               </select>
+              {formError.departure && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.departure}</p>
+              )}
             </div>
 
             <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -304,6 +319,10 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                 <option value="Nunavut">Nunavut</option>
                 <option value="Yukon ">Yukon</option>
               </select>
+
+              {formError.arrival && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.arrival}</p>
+              )}
             </div>
 
             <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -339,7 +358,12 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                 placeholder=""
                 required
               />
+
+              {formError.packageDescription && (
+                <p className="text-[#AC0108] text-[12px] font-[700] ">{formError.packageDescription}</p>
+              )}
             </div>
+            
             <div className="">
               <button
                 type="button"
