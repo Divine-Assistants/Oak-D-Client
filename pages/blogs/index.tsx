@@ -7,6 +7,7 @@ export type BlogValue = {
   heading: string;
   coverImage: string;
   content: string;
+  slug?: string;
 };
 
 export default function Blogs() {

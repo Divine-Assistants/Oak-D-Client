@@ -106,7 +106,7 @@ const Contact = () => {
       </Head>
       <Navbar />
       {displayModal && <ContactModal setDisplayModal={setDisplayModal} />}
-      <section className="py-20" style={styles.firstSection}>
+      <section className="py-20 mt-[100px]" style={styles.firstSection}>
         <div
           className="w-[300px]  py-[52px] px-[29px] mx-auto font-poppins md:ml-[104px] md:w-[600px] md:p-[60px]"
           style={styles.whiteBox}

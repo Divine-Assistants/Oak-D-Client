@@ -10,6 +10,7 @@ type BlogValues = {
   heading: string;
   coverImage: string;
   content: string;
+  slug: string;
 };
 
 type BlogDataProps = {
@@ -54,7 +55,7 @@ export const AllBlogs = () => {
                 key={item._id}
                 onClick={() => {
                   const id = item._id as string;
-                  router.push(`/blogs/${id}`);
+                  router.push(`/blogs/${item?.slug}`);
                 }}
               >
                 <div className="w-[100%] h-[164px] md:h-[193px] lg:h-[251px] ">
@@ -68,9 +69,7 @@ export const AllBlogs = () => {
                   <h2 className="font-[700] text-[16px] md:text-[20px] lg:text-[28px]  ">
                     {item.heading}
                   </h2>
-                  <p className="text-[13px] md:text-[16px] lg:text-[18px] font-[500] h-[246px] text-ellipsis overflow-hidden ">
-                    {item.content}{" "}
-                  </p>
+                  {/* <div dangerouslySetInnerHTML={{ __html: item?.content }} /> */}
                 </div>
               </div>
             );

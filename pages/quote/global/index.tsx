@@ -24,7 +24,8 @@ export default function Global() {
   const [data, setData] = useState<any>();
   const router = useRouter();
   const [successfulGlobalPackage, setSuccessfulGlobalPackage] = useState(false);
-  const [userPackageData, setUserPackageData] = useState<userPackageDataType | null>(null);
+  const [userPackageData, setUserPackageData] =
+    useState<userPackageDataType | null>(null);
 
   const handleGlobalPackage = async (myParcel: ClientDataType | undefined) => {
     if (
@@ -77,7 +78,7 @@ export default function Global() {
       }
     );
 
-    if(response.data.status === 'Success'){
+    if (response.data.status === "Success") {
       setUserPackageData(response.data.data);
       setSuccessfulGlobalPackage(true);
     }
@@ -113,11 +114,11 @@ export default function Global() {
               <GlobalSender setData={setData} />
               <GlobalReciever setData={setData} />
               <GlobalParcel setData={setData} />
-              <GlobalSummary 
-                data={data} 
+              <GlobalSummary
+                data={data}
                 userPackageData={userPackageData}
                 successfulGlobalPackage={successfulGlobalPackage}
-                handleGlobalPackage={handleGlobalPackage} 
+                handleGlobalPackage={handleGlobalPackage}
               />
               <PickDrop />
             </DomesticContextProvider>

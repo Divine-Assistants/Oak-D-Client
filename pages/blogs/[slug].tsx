@@ -13,13 +13,14 @@ export default function BlogDetail() {
   useEffect(() => {
     const getSingleBlog = async () => {
       const response = await axios.get(
-        `https://oak-d-api.onrender.com/blog/${query.id}`
+        `https://oak-d-api.onrender.com/blog/${query.slug}`
       );
       setMyBlog(response.data.data);
     };
     getSingleBlog();
   }, []);
   console.log(myBlog);
+  console.log("Query", query);
   return (
     <>
       <Head>

@@ -38,7 +38,7 @@ const About = () => {
         <Navbar />
         <section
           style={styles.firstSection}
-          className="flex justify-center align-center p-[10px] md:justify-start md:p-20 md:mb-10"
+          className="flex justify-center align-center p-[10px] md:justify-start md:p-20 md:mb-10 mt-[100px]"
         >
           <div className="w-64 p-[30px] md:w-[400px] " style={styles.whiteBox}>
             <h1 className="text-red text-[16px] md:text-[24] font-bold mb-2 uppercase">
@@ -53,16 +53,14 @@ const About = () => {
 
         {/* FOUNDERS */}
         <section className="flex flex-wrap justify-center my-[50px] mx-[20px]">
-          <div className="mb-[20px] md:w-1/3 md:mr-[50px]  ">
-            <Image
+          <div className="mb-[20px] md:w-1/3 md:mr-[50px] h-[600px]">
+            <img
               src="/img/Damilola-Kuku.svg"
               alt="Damilola Kuku"
-              layout="responsive"
-              width={300}
-              height={300}
-              className="h-[100%]"
+              className="h-[80%] w-full"
+              style={{ objectFit: "cover" }}
             />
-            <p className="text-[18px] md:text-[36px] font-[700] ">
+            <p className="text-[18px] md:text-[36px] font-[700]">
               Damilola Kuku
             </p>
             <p className="text-[16px] md:text-[24px] font-[600] ">
@@ -70,14 +68,12 @@ const About = () => {
             </p>
           </div>
 
-          <div className="mb-[20px] md:w-1/3 md:mr-[50px] ">
-            <Image
+          <div className="mb-[20px] md:w-1/3 md:mr-[50px] h-[600px]">
+            <img
               src="/img/Azeez.png"
               alt="Azeez Kuku"
-              layout="responsive"
-              width={300}
-              height={300}
-              className="h-[100%]"
+              className="h-[80%] w-full"
+              style={{ objectFit: "cover" }}
             />
             <p className="text-[18px] md:text-[36px] font-[700] ">Azeez Kuku</p>
             <p className="text-[16px] md:text-[24px] font-[600] ">
@@ -85,13 +81,12 @@ const About = () => {
             </p>
           </div>
 
-          <div className="mb-[20px] md:w-1/3 md:mt-[50px] ">
-            <Image
+          <div className="mb-[20px] md:w-1/3 md:mr-[50px] h-[600px]">
+            <img
               src="/img/Amosun.png"
               alt="Amosun Kolawale"
-              layout="responsive"
-              width={300}
-              height={300}
+              className="h-[80%] w-full"
+              style={{ objectFit: "cover" }}
             />
             <p className="text-[18px] md:text-[36px] font-[700] ">
               Amosun Kolawale
@@ -260,13 +255,11 @@ const About = () => {
         </section>
 
         {/* CONTAINER IMAGE SECTION */}
-        <section className="w-full my-10">
-          <Image
+        <section className="w-full my-10 bg-red-200">
+          <img
             src="/img/oak-container.png"
             alt="Shipping Container"
-            layout="responsive"
-            width={300}
-            height={300}
+            className="w-[100%] lg:w-[70%] 2xl:w-[50%] mx-auto"
           />
         </section>
 
