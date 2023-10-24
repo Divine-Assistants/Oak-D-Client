@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { VidModal, scrollToTop } from "@/components";
+import Image from "next/image";
 
 export type clientParcelInfo = {
   packageName: string;
@@ -139,8 +140,8 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
 
   return (
     <section style={{ display: trail === 2 ? "block" : "none" }}>
-      <div className=" w-[90%] m-auto md:flex md:justify-between mt-[120px]">
-        <div className="mb-[60px] md:w-[40%] mt-[49px] ">
+      <div className="w-[100%] lg:flex lg:justify-between lg:gap-[20px] mt-[30px] px-[20px] ">
+        <div className="mb-[40px] lg:mb-0 w-[100%] lg:w-[40%] ">
           <h1 className="text-[16px] font-[600] text-[#AC0108] mb-[15px] block md:hidden ">
             Parcel Information
           </h1>
@@ -149,7 +150,7 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
             <span className="text-[#A1A1A1]">Shipping summary</span> estimate
           </p>
         </div>
-        <div className="flex flex-col md:w-[50%] ">
+        <div className="text-[18px] text-[#1E1E1E] font-[600] w-[100%] mb-[75px] lg:w-[50%] ">
           <form className=" ">
             <div className="flex flex-col gap-[10px] mb-[25px]">
               <label htmlFor="packageName" className="font-[600] ">
@@ -161,7 +162,7 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                 value={parcelData.packageName}
                 onChange={handleParcelDataChange}
                 id="packageName"
-                className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[]  pl-[24px] "
+                className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
                 placeholder="Name"
                 required
               />
@@ -181,7 +182,7 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                   value={parcelData.packageWeight}
                   onChange={handleParcelDataChange}
                   id="packageWeight"
-                  className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
+                  className="rounded-[8px] p-[15px] border border-[#A1A1A1] h-[65px] outline-[#0A089A] w-[100%] "
                   placeholder="0"
                   required
                 />
@@ -206,7 +207,7 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                     value={parcelData.dimension.length}
                     onChange={handleParcelDataChange} 
                     id="length"
-                    className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
+                    className="rounded-[8px] p-[15px] border border-[#A1A1A1] h-[65px] outline-[#0A089A] w-[100%] "
                     placeholder="Length"
                     required
                   />
@@ -222,7 +223,7 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                     value={parcelData.dimension.breadth}
                     onChange={handleParcelDataChange}
                     id="breadth"
-                    className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
+                    className="rounded-[8px] p-[15px] border border-[#A1A1A1] h-[65px] outline-[#0A089A] w-[100%] "
                     placeholder="Breadth"
                     required
                   />
@@ -238,7 +239,7 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                     value={parcelData.dimension.height}
                     onChange={handleParcelDataChange}
                     id="height"
-                    className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
+                    className="rounded-[8px] p-[15px] border border-[#A1A1A1] h-[65px] outline-[#0A089A] w-[100%] "
                     placeholder="Height"
                     required
                   />
@@ -265,7 +266,7 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                 value={parcelData.departure}
                 onChange={handleParcelDataChange}
                 required
-                className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
+                className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
               >
                 <option value="">--Select a departure location--</option>
                 <option value="Ontario">Ontario</option>
@@ -299,7 +300,7 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                 value={parcelData.arrival}
                 onChange={handleParcelDataChange}
                 required
-                className="rounded-full border border-[#A1A1A1] h-[65px] outline-[#0A089A] placeholder-[] pl-[24px] w-[100%] "
+                className="rounded-[8px] p-[20px] w-[100%] border border-[#A1A1A1] h-[65px] outline-[#0A089A] "
               >
                 <option value="">--Select an arrival location--</option>
                 <option value="Ontario">Ontario</option>
@@ -326,22 +327,39 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
             </div>
 
             <div className="flex flex-col gap-[10px] mb-[25px]">
-              <label htmlFor="" className="font-[600] ">
+              <p className="text-[#1E1E1E] text-[16px] font-[600] mb-[8px] ">
                 Upload Image
+              </p>
+              <label 
+                htmlFor="uploadFile"
+                className="mb-[8px] flex flex-col items-center justify-center py-[50px] overflow-hidden relative rounded-[8px] bg-[#DEDEDE] text-[12px] lg:text-[18px] font-[500] "
+              >
+                <Image
+                  src="../img/upload-image-icon.svg"
+                  alt="Upload Image Icon"
+                  width={30}
+                  height={30}
+                />
+
+                <p className="text-[#1E1E1E] ">
+                  Drag and drop image here or{" "}
+                  <span className="text-[#0A089A] ">browse</span>
+                </p>
+
+                <input
+                  id="uploadFile"
+                  type="file"
+                  name="image"
+                  onChange={(e) => {
+                    setData((prevData: any) => {
+                      if (e.target.files) {
+                        return { ...prevData, image: e.target.files[0] };
+                      }
+                    });
+                  }}
+                  className="absolute cursor-pointer top-0 left-0 w-[100%] h-[100%] opacity-0"
+                />
               </label>
-              <input
-                type="file"
-                src=""
-                alt=""
-                className="  "
-                onChange={(e) => {
-                  setData((prevData: any) => {
-                    if (e.target.files) {
-                      return { ...prevData, image: e.target.files[0] };
-                    }
-                  });
-                }}
-              />
             </div>
 
             <div className="flex flex-col gap-[10px] mb-[25px]">
@@ -354,7 +372,7 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
                 value={parcelData.packageDescription}
                 onChange={handleParcelDataChange}
                 id="packageDescription"
-                className="rounded-[15px] border border-[#A1A1A1] h-[165px] outline-[#0A089A] placeholder-[]  pl-[24px] pt-[0px] "
+                className="rounded-[8px] p-[15px] border border-[#A1A1A1] h-[165px] outline-[#0A089A] "
                 placeholder=""
                 required
               />
@@ -364,16 +382,14 @@ export function DomesticParcel({ setData }: DomesticParcelType) {
               )}
             </div>
             
-            <div className="">
-              <button
-                type="button"
-                className="flex items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[55px] py-[21px] bg-[#0A089A] rounded-[15px] m-auto mb-[120px] md:px-[140px] md:py-[27px] md:mr-[5%] hover:bg-[#1E1E1E] "
-                onClick={handleFormSubmit}
-              >
-                <p>Proceed to shipping summary</p>
-                <FaArrowRight />
-              </button>
-            </div>
+            <button
+              type="button"
+              onClick={handleFormSubmit}
+              className="flex justify-center items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[30px] py-[21px] bg-[#0A089A] rounded-[8px] w-[100%] mb-[60px] md:px-[40px] md:py-[27px] hover:bg-[#1E1E1E]  "
+            >
+              <p>Proceed to shipping summary</p>
+              <FaArrowRight />
+            </button>
           </form>
         </div>
       </div>

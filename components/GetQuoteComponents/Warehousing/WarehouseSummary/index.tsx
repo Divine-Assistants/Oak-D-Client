@@ -17,7 +17,7 @@ export function WarehouseSummary({
   data, 
   userPackageData,
   successfulWarehousePackage,
-  handleWarehousePackage
+  handleWarehousePackage,
 }: WarehouseSummaryType) {
   const { trail, setTrail } = useContext(DomesticContext);
   const { glotrail, setGlotrail } = useContext(GlobalContext);
@@ -110,6 +110,7 @@ export function WarehouseSummary({
             <p className="text-[#AC0108] ">${data?.newPackage?.price}</p>
           </div>
           <div className=" mt-[60px]">
+
             <button
               onClick={handleSubmit}
               className="flex items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[55px] py-[21px] bg-[#0A089A] rounded-[15px] m-auto mb-[60px] md:px-[155px] md:py-[27px] hover:bg-[#1E1E1E] "

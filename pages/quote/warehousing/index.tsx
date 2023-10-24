@@ -31,6 +31,7 @@ export default function Warehousing() {
   const [data, setData] = useState<any>();
   const [successfulWarehousePackage, setSuccessfulWarehousePackage] = useState(false);
   const [userPackageData, setUserPackageData] = useState<userPackageDataType | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   
   const handleWarehousePackage = async (
@@ -87,7 +88,6 @@ export default function Warehousing() {
     );
 
     if(response.data.status === 'Success'){
-      console.log('warehouse package registered')
       setUserPackageData(response.data.data)
       setSuccessfulWarehousePackage(true);
     }
@@ -120,8 +120,8 @@ export default function Warehousing() {
             <WareCrumb />
             <WarehouseQuoteLand setData={setData} />
             <WarehouseParcel setData={setData} />
-            <WarehouseSummary 
-              data={data} 
+            <WarehouseSummary
+              data={data}
               userPackageData={userPackageData}
               successfulWarehousePackage={successfulWarehousePackage}
               handleWarehousePackage={handleWarehousePackage} 
