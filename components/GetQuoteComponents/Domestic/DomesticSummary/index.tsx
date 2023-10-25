@@ -122,7 +122,7 @@ export function DomesticSummary({
               onClick={handleSubmit}
               style={{ display: trail === 3 ? "flex" : "none" }}
             >
-              <p>Proceed to checkout</p>
+              <p>Submit Request</p>
               <FaArrowRight />
             </button>
           </div>

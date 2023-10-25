@@ -79,6 +79,8 @@ export default function Warehousing() {
     const formData = objectToFormData(myParcel);
     console.log(formData);
 
+    setIsLoading(true);
+
     const response = await axios.post(
       "https://oak-d-api.onrender.com/package/register-package",
       formData,
@@ -90,6 +92,8 @@ export default function Warehousing() {
     if(response.data.status === 'Success'){
       setUserPackageData(response.data.data)
       setSuccessfulWarehousePackage(true);
+      setIsLoading(false);
+
     }
 
     if (response.data.packageID) {
@@ -122,6 +126,7 @@ export default function Warehousing() {
             <WarehouseParcel setData={setData} />
             <WarehouseSummary
               data={data}
+              isLoading={isLoading}
               userPackageData={userPackageData}
               successfulWarehousePackage={successfulWarehousePackage}
               handleWarehousePackage={handleWarehousePackage} 

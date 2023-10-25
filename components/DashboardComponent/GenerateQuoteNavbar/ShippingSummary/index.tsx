@@ -60,15 +60,6 @@ export function ShippingSummary({
         console.log(error);
       }
     }
-    
-    // if (isDomestic) {
-    //   setDomesticBreadcrumb(5);
-    //   setShowPaymentPage(true);
-    //   window.scrollTo(0, 0);
-    // } else {
-    //   setShowQuoteModal(true);
-    //   window.scrollTo(0, 0);
-    // }
   }
 
   return (
@@ -135,7 +126,7 @@ export function ShippingSummary({
               onClick={handleSubmit}
               className="bg-[#0A089A] p-[15px] flex gap-x-[10px] items-center justify-center w-[100%] text-[#FEFEFE] text-[16px] rounded-[8px] lg:text-[18px] "
             >
-              Proceed
+              Submit Request
               <Image
                 src="../img/next-arrow-white-icon.svg"
                 alt="Next Icon"

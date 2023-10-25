@@ -120,7 +120,7 @@ export function WarehouseSummary({
               onClick={handleSubmit}
               className="bg-[#0A089A] p-[15px] flex gap-x-[10px] items-center justify-center w-[100%] text-[#FEFEFE] text-[16px] rounded-[8px] lg:text-[18px] "
             >
-              Proceed
+              Submit Request
               <Image
                 src="../img/next-arrow-white-icon.svg"
                 alt="Next Icon"

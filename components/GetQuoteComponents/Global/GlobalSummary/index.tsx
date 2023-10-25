@@ -118,7 +118,7 @@ export function GlobalSummary({
               onClick={handleSubmit}
               style={{ display: glotrail === 3 ? "flex" : "none" }}
             >
-              <p>Continue</p>
+              <p>Submit Request</p>
               <FaArrowRight />
             </button>
           </div>
