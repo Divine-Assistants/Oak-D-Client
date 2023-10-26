@@ -24,8 +24,9 @@ export default function Global() {
   const [data, setData] = useState<any>();
   const router = useRouter();
   const [successfulGlobalPackage, setSuccessfulGlobalPackage] = useState(false);
-  const [userPackageData, setUserPackageData] =
-    useState<userPackageDataType | null>(null);
+  const [userPackageData, setUserPackageData] = useState<userPackageDataType | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+
 
   const handleGlobalPackage = async (myParcel: ClientDataType | undefined) => {
     if (
@@ -70,6 +71,8 @@ export default function Global() {
     const formData = objectToFormData(myParcel);
     console.log(formData);
 
+    setIsLoading(true)
+
     const response = await axios.post(
       "https://oak-d-api.onrender.com/package/register-package",
       formData,
@@ -81,6 +84,7 @@ export default function Global() {
     if (response.data.status === "Success") {
       setUserPackageData(response.data.data);
       setSuccessfulGlobalPackage(true);
+      setIsLoading(false)
     }
 
     if (response.data.packageID) {
@@ -116,6 +120,7 @@ export default function Global() {
               <GlobalParcel setData={setData} />
               <GlobalSummary
                 data={data}
+                isLoading={isLoading}
                 userPackageData={userPackageData}
                 successfulGlobalPackage={successfulGlobalPackage}
                 handleGlobalPackage={handleGlobalPackage}

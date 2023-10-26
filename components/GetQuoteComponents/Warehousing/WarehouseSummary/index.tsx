@@ -113,12 +113,12 @@ export function WarehouseSummary({
             <p>Price:</p>
             <p className="text-[#AC0108] ">${data?.newPackage?.price}</p>
           </div>
-          <div className=" mt-[60px]">
+          <div className=" mt-[60px] ">
             {
               isLoading ? 
               <button
                 onClick={handleSubmit}
-                className="flex items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[55px] py-[21px] bg-[#0A089A] rounded-[15px] m-auto mb-[60px] md:px-[155px] md:py-[27px] hover:bg-[#1E1E1E] "
+                className="flex w-full justify-center items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[55px] py-[21px] bg-[#0A089A] rounded-[15px] mb-[60px] md:px-[155px] md:py-[27px] hover:bg-[#1E1E1E] "
               >
                 <Spinner className="w-[40px] h-[40px] " /> 
               </button>
@@ -128,7 +128,7 @@ export function WarehouseSummary({
 
               <button
                 onClick={handleSubmit}
-                className="flex items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[55px] py-[21px] bg-[#0A089A] rounded-[15px] m-auto mb-[60px] md:px-[155px] md:py-[27px] hover:bg-[#1E1E1E] "
+                className="flex w-full justify-center items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[55px] py-[21px] bg-[#0A089A] rounded-[15px] mb-[60px] md:px-[155px] md:py-[27px] hover:bg-[#1E1E1E] "
               >
                 <p>Submit Request</p>
                 <FaArrowRight />

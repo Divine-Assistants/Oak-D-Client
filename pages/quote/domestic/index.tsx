@@ -33,6 +33,7 @@ export default function Domestic() {
   const router = useRouter();
   const [successfulDomesticPackage, setSuccessfulDomesticPackage] = useState(false);
   const [userPackageData, setUserPackageData] = useState<userPackageDataType | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const registerPackage = async (myParcel: ClientDataType | undefined) => {
     if (
@@ -77,6 +78,8 @@ export default function Domestic() {
     const formData = objectToFormData(myParcel);
     console.log(formData);
 
+    setIsLoading(true)
+
     const response = await axios.post(
       "https://oak-d-api.onrender.com/package/register-package",
       formData,
@@ -88,6 +91,7 @@ export default function Domestic() {
     if(response.data.status === 'Success'){
       setUserPackageData(response.data.data);
       setSuccessfulDomesticPackage(true);
+      setIsLoading(false);
     }
 
     console.log("Package", response.data);
@@ -124,6 +128,7 @@ export default function Domestic() {
           <DomesticParcel setData={setData} />
           <DomesticSummary 
             data={data} 
+            isLoading={isLoading}
             userPackageData={userPackageData}
             successfulDomesticPackage={successfulDomesticPackage}
             registerPackage={registerPackage} 
