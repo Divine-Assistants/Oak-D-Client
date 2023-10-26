@@ -55,7 +55,9 @@ export function GenerateQuoteNavbar() {
   const [warehouseSpinner, setWarehouseSpinner] = useState(false);
   const [globalSpinner, setGlobalSpinner] = useState(false);
   const [domesticSpinner, setDomesticSpinner] = useState(false);
-  
+  const [showWarehouseModal, setShowWarehouseModal] = useState(false);
+  const [showDomesticModal, setShowDomesticModal] = useState(false);
+  const [showGlobalModal, setShowGlobalModal] = useState(false);
 
   const router = useRouter();
 
@@ -182,14 +184,17 @@ export function GenerateQuoteNavbar() {
         setPackageData(response.data.data);
         setSuccessfulGlobalPackage(true);
         setGlobalSpinner(false);
+        setShowGlobalModal(true);
       } else if(response.data.data.packageType === 'Warehousing'){
         setPackageData(response.data.data);
         setSuccessfulWarehousePackage(true);
         setWarehouseSpinner(false);
+        setShowWarehouseModal(true);
       } else{
         setPackageData(response.data.data);
         setSuccessfulDomesticPackage(true);
-        setDomesticSpinner(false)
+        setDomesticSpinner(false);
+        setShowDomesticModal(true);
       }
     }
     console.log("WarehouseData", response.data);
@@ -219,6 +224,9 @@ export function GenerateQuoteNavbar() {
             <GlobalUserSummary
               data={data}
               packageData={packageData}
+              globalSpinner={globalSpinner}
+              showGlobalModal={showGlobalModal}
+              setShowGlobalModal={setShowGlobalModal}
               successfulGlobalPackage={successfulGlobalPackage}
               warehouseGlobalPackage={warehouseGlobalPackage}
             />
@@ -228,17 +236,21 @@ export function GenerateQuoteNavbar() {
               data={data}
               packageData={packageData}
               warehouseSpinner={warehouseSpinner}
+              setShowWarehouseModal={setShowWarehouseModal}
+              showWarehouseModal={showWarehouseModal}
               successfulWarehousePackage={successfulWarehousePackage}
               warehouseGlobalPackage={warehouseGlobalPackage}
             />
             <ShippingSummary 
               data={data} 
               packageData={packageData}
+              domesticSpinner={domesticSpinner}
+              showDomesticModal={showDomesticModal}
+              setShowDomesticModal={setShowDomesticModal}
               successfulDomesticPackage={successfulDomesticPackage}
               warehouseGlobalPackage={warehouseGlobalPackage}
             />
             {/* <PaymentPage registerPackage={registerPackage} data={data} /> */}
-            <QuoteModal />
             <ContactPage />
           </div>
         </senderInfoContext.Provider>
