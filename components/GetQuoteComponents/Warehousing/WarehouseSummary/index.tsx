@@ -1,16 +1,19 @@
+
 import { DomesticContext } from "@/context/DomesticWrapper";
 import { GlobalContext } from "@/context/GlobalWrapper";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import emailjs from 'emailjs-com';
 import { FaArrowRight } from "react-icons/fa";
 import { ClientDataType } from "@/pages/quote/domestic";
 import { userPackageDataType } from "@/pages/quote/warehousing";
+import { Spinner } from "@chakra-ui/react";
 
 interface WarehouseSummaryType {
   data: ClientDataType;
   userPackageData: userPackageDataType;
   successfulWarehousePackage: boolean;
   handleWarehousePackage: (arg: ClientDataType) => void;
+  isLoading: boolean;
 }
 
 export function WarehouseSummary({
@@ -18,6 +21,7 @@ export function WarehouseSummary({
   userPackageData,
   successfulWarehousePackage,
   handleWarehousePackage,
+  isLoading
 }: WarehouseSummaryType) {
   const { trail, setTrail } = useContext(DomesticContext);
   const { glotrail, setGlotrail } = useContext(GlobalContext);
@@ -109,15 +113,27 @@ export function WarehouseSummary({
             <p>Price:</p>
             <p className="text-[#AC0108] ">${data?.newPackage?.price}</p>
           </div>
-          <div className=" mt-[60px]">
+          <div className=" mt-[60px] ">
+            {
+              isLoading ? 
+              <button
+                onClick={handleSubmit}
+                className="flex w-full justify-center items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[55px] py-[21px] bg-[#0A089A] rounded-[15px] mb-[60px] md:px-[155px] md:py-[27px] hover:bg-[#1E1E1E] "
+              >
+                <Spinner className="w-[40px] h-[40px] " /> 
+              </button>
+              
+              
+              :
 
-            <button
-              onClick={handleSubmit}
-              className="flex items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[55px] py-[21px] bg-[#0A089A] rounded-[15px] m-auto mb-[60px] md:px-[155px] md:py-[27px] hover:bg-[#1E1E1E] "
-            >
-              <p>Continue</p>
-              <FaArrowRight />
-            </button>
+              <button
+                onClick={handleSubmit}
+                className="flex w-full justify-center items-center gap-[10px] text-[#FEFEFE] text-[16px] font-[500] px-[55px] py-[21px] bg-[#0A089A] rounded-[15px] mb-[60px] md:px-[155px] md:py-[27px] hover:bg-[#1E1E1E] "
+              >
+                <p>Submit Request</p>
+                <FaArrowRight />
+              </button>
+            }
           </div>
         </div>
       </div>

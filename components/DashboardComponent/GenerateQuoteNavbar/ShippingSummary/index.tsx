@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import Image from "next/image";
 import emailjs from 'emailjs-com';
 import {
@@ -8,27 +8,35 @@ import {
   IsDomesticContex,
   DomesticBreadcrumbContext,
 } from "@/context/UserDashboardGenerateQuote";
-import { userInfo } from "../SenderInformation";
 import { DataType } from "..";
 import { PackageDataType } from "..";
 import { DomesticBreadcrumb } from "../DomesticBreadcrumb";
+import { Spinner } from "@chakra-ui/react";
+import { ContactPageContext } from "@/context/UserDashboardGenerateQuote";
 
 interface ShippingSummaryType {
   warehouseGlobalPackage: (arg: DataType) => void;
   data: DataType;
   packageData: PackageDataType;
   successfulDomesticPackage: boolean;
+  domesticSpinner: boolean;
+  showDomesticModal: boolean;
+  setShowDomesticModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export function ShippingSummary({ 
   data,
   packageData,
   successfulDomesticPackage,
-  warehouseGlobalPackage}: ShippingSummaryType) {
+  domesticSpinner,
+  warehouseGlobalPackage,
+  showDomesticModal,
+  setShowDomesticModal
+}: ShippingSummaryType) {
   const { showShippingSummary, setShowShippingSummary } = useContext(
     ShippingSummaryContext
   );
-  const { setShowQuoteModal } = useContext(QuoteModalContext);
+  const {setShowContactPage} = useContext(ContactPageContext);
   const { isDomestic } = useContext(IsDomesticContex);
   const { setShowPaymentPage } = useContext(ShowPaymentPageContext);
   const { setDomesticBreadcrumb } = useContext(DomesticBreadcrumbContext);
@@ -52,23 +60,12 @@ export function ShippingSummary({
         };
         await emailjs.send('service_j32sykj', 'template_vjifvfc', emailParams, 'SLaJAJfG-62Jj7HZX');
         
-        setShowShippingSummary(false);
-        setShowQuoteModal(true);
         window.scrollTo(0, 0);
 
       } catch (error) {
         console.log(error);
       }
     }
-    
-    // if (isDomestic) {
-    //   setDomesticBreadcrumb(5);
-    //   setShowPaymentPage(true);
-    //   window.scrollTo(0, 0);
-    // } else {
-    //   setShowQuoteModal(true);
-    //   window.scrollTo(0, 0);
-    // }
   }
 
   return (
@@ -131,20 +128,51 @@ export function ShippingSummary({
               <p>Price:</p>
               <p className="text-[#AC0108] ">${data?.newPackage?.price}</p>
             </div>
-            <button
-              onClick={handleSubmit}
-              className="bg-[#0A089A] p-[15px] flex gap-x-[10px] items-center justify-center w-[100%] text-[#FEFEFE] text-[16px] rounded-[8px] lg:text-[18px] "
-            >
-              Proceed
-              <Image
-                src="../img/next-arrow-white-icon.svg"
-                alt="Next Icon"
-                width={20}
-                height={20}
-              />
-            </button>
+
+            {
+              domesticSpinner ?
+              <button
+                onClick={handleSubmit}
+                className="bg-[#0A089A] p-[15px] flex gap-x-[10px] items-center justify-center w-[100%] text-[#FEFEFE] text-[16px] rounded-[8px] lg:text-[18px] "
+              >
+                <Spinner className="w-[40px] h-[40px] " />
+              </button>
+              :
+              <button
+                onClick={handleSubmit}
+                className="bg-[#0A089A] p-[15px] flex gap-x-[10px] items-center justify-center w-[100%] text-[#FEFEFE] text-[16px] rounded-[8px] lg:text-[18px] "
+              >
+                Submit Request
+                <Image
+                  src="../img/next-arrow-white-icon.svg"
+                  alt="Next Icon"
+                  width={20}
+                  height={20}
+                />
+              </button>
+            }
           </div>
         </div>
+      </div>
+
+      <div style={{display: showDomesticModal ? 'block' : 'none'}} className="fixed z-50 inset-0 bg-[rgba(0,0,0,0.7)]">
+            <div className="bg-[#FEFEFE] absolute rounded-[10px] w-[90%] md:w-[400px] lg:w-[500px] top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%] p-[30px] font-poppins ">
+
+                <p className="text-center text-[18px] lg:text-[24px] mb-[20px]">Your request has been submitted, our team will contact you shortly. For immediate help, proceed to contact us</p>
+
+                <div className="flex gap-x-[20px] ">
+                    <button onClick={()=> {
+                      setShowDomesticModal(false);
+                      setShowShippingSummary(false);
+                    }}  className="bg-[#9C9C9C] p-[15px] text-[16px] lg:text-[18px] text-[#FEFEFE] rounded-[10px] w-[100%] ">Continue</button>
+
+                    <button onClick={()=> {
+                      setShowDomesticModal(false);
+                      setShowShippingSummary(false);
+                      setShowContactPage(true);
+                    }} className="bg-[#0A089A] p-[15px] text-[16px] lg:text-[18px] text-[#FEFEFE] rounded-[10px] w-[100%]">Contact Us</button>
+                </div>
+            </div>
       </div>
     </section>
   );
