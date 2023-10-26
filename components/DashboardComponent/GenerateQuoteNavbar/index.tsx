@@ -31,7 +31,7 @@ export interface DataType {
   sender: userInfo;
   receiver?: userInfo;
   newPackage: ParcelInformationDataType;
-  image: File | null;
+  image?: File | null;
 }
 export interface PackageDataType {
   createdAt: string;
@@ -52,6 +52,9 @@ export function GenerateQuoteNavbar() {
   const [successfulDomesticPackage, setSuccessfulDomesticPackage] = useState(false);
   const [packageData, setPackageData] = useState<PackageDataType | null>(null);
   const [warehousePackageData, setWarehousePackageData] = useState<PackageDataType | null>(null)
+  const [warehouseSpinner, setWarehouseSpinner] = useState(false);
+  const [globalSpinner, setGlobalSpinner] = useState(false);
+  const [domesticSpinner, setDomesticSpinner] = useState(false);
   
 
   const router = useRouter();
@@ -161,6 +164,10 @@ export function GenerateQuoteNavbar() {
     const formData = objectToFormData(myParcel);
     // console.log(formData);
 
+    setWarehouseSpinner(true);
+    setGlobalSpinner(true);
+    setDomesticSpinner(true);
+
     const response = await axios.post(
       "https://oak-d-api.onrender.com/package/register-package",
       formData,
@@ -174,12 +181,15 @@ export function GenerateQuoteNavbar() {
       if(response.data.data.packageType === 'Global'){
         setPackageData(response.data.data);
         setSuccessfulGlobalPackage(true);
+        setGlobalSpinner(false);
       } else if(response.data.data.packageType === 'Warehousing'){
         setPackageData(response.data.data);
         setSuccessfulWarehousePackage(true);
+        setWarehouseSpinner(false);
       } else{
         setPackageData(response.data.data);
-        setSuccessfulDomesticPackage(true)
+        setSuccessfulDomesticPackage(true);
+        setDomesticSpinner(false)
       }
     }
     console.log("WarehouseData", response.data);
@@ -217,6 +227,7 @@ export function GenerateQuoteNavbar() {
             <WarehouseSummary
               data={data}
               packageData={packageData}
+              warehouseSpinner={warehouseSpinner}
               successfulWarehousePackage={successfulWarehousePackage}
               warehouseGlobalPackage={warehouseGlobalPackage}
             />
