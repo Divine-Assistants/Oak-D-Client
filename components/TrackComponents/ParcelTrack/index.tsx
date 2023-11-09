@@ -95,7 +95,7 @@ export function ParcelTrack() {
             <div className="flex items-center justify-between lg:mb-[10px] mb-[20px]">
               <p>Estimated Time Of Arrival:</p>
               <p>
-                <span>13</span>/<span>10</span>/<span>2023</span>
+                <span>userDetail.ETA</span>
               </p>
             </div>
           </div>
