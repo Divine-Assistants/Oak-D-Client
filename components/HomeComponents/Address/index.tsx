@@ -77,8 +77,25 @@ export function Address() {
                 </div>
                 <p className="text-[16px] font-[500] md:text-[18px] ">
                   AJAX
-                  <br /> 7 Shapland Crescent
-                  <br /> Ajax LIZ0K2
+                  <br /> 98 Harwood Ave S,
+                  <br /> Ajax, ON L1S 2H6
+                  <br /> Canada
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-[40px] mt-[50px]">
+              <div className="flex gap-[20px] w-[45%] ">
+                <div>
+                  <Image
+                    src="/img/location-pin.svg"
+                    alt="Ikeja Lagos State location"
+                    width={30}
+                    height={30}
+                  />
+                </div>
+                <p className="text-[16px] font-[500] md:text-[18px] ">
+                  BRANTFORD
+                  <br /> 196 Dalhousie St unit 4, <br /> Brantford, ON N3S 3T7
                   <br /> Canada
                 </p>
               </div>
