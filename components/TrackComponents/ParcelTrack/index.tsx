@@ -71,7 +71,9 @@ export function ParcelTrack() {
             <p className="text-[#1E1E1E] lg:text-[28px] font-semibold ">
               Package:{" "}
               <span className="text-[#0A089A] ">
-                {userDetail.shipmentStatus}
+                {userDetail.shipmentStatus === "Delivered"
+                  ? "Arrived"
+                  : userDetail.shipmentStatus}
               </span>
             </p>
           </div>
