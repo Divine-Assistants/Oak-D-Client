@@ -14,18 +14,17 @@ export function Address() {
       <div className="lg:flex mb-[50px] lg-items-center lg:gap-[51px] lg:w-[100%] lg:mb-[100px]   ">
         <div className="w-[100%] flex flex-col gap-[20px] mb-[40px]  ">
           <h2 className="text-[20px] font-semibold md:text-[24px] ">CANADA</h2>
-          <div className="lg:flex-col  lg:items-center lg:gap-[50px] w-[100%]  ">
-            <div className="flex mb-[50px] gap-[40px]">
-              <div className="flex gap-[20px] w-[60%] ">
-                <div>
-                  <Image
+          <div className="lg:flex-col lg:items-center lg:gap-[50px] w-[100%]  ">
+            <div className="grid sm:grid-cols-2 mb-[50px] gap-[40px]">
+              <div className="grid grid-cols-10">
+                <div className="col-span-2 flex justify-center">
+                  <img
                     src="/img/location-pin.svg"
                     alt="Ikeja Lagos State location"
-                    width={30}
-                    height={30}
+                    className="w-[20px] h-[30px]"
                   />
                 </div>
-                <p className="text-[16px] font-[500] md:text-[18px] ">
+                <p className="text-[16px] font-[500] md:text-[18px] col-span-8">
                   NORTH YORK
                   <br />
                   Unit 16 3625 Weston Road North York ON M9LIV8
@@ -33,16 +32,15 @@ export function Address() {
                   Canada
                 </p>
               </div>
-              <div className="flex gap-[20px] w-[45%] ">
-                <div>
-                  <Image
+              <div className="grid grid-cols-10">
+                <div className="col-span-2 flex justify-center">
+                  <img
                     src="/img/location-pin.svg"
                     alt="Ikeja Lagos State location"
-                    width={30}
-                    height={30}
+                    className="w-[20px] h-[30px]"
                   />
                 </div>
-                <p className="text-[16px] font-[500] md:text-[18px] ">
+                <p className="text-[16px] font-[500] md:text-[18px] col-span-8">
                   BRAMPTON
                   <br /> 5 Stanford Drive Brampton
                   <br /> ON L6WIL3
@@ -50,32 +48,30 @@ export function Address() {
                 </p>
               </div>
             </div>
-            <div className="flex gap-[40px]">
-              <div className="flex gap-[20px] w-[45%] ">
-                <div>
-                  <Image
+            <div className="grid sm:grid-cols-2 mb-[50px] gap-[40px]">
+              <div className="grid grid-cols-10">
+                <div className="col-span-2 flex justify-center">
+                  <img
                     src="/img/location-pin.svg"
                     alt="Ikeja Lagos State location"
-                    width={30}
-                    height={30}
+                    className="w-[20px] h-[30px]"
                   />
                 </div>
-                <p className="text-[16px] font-[500] md:text-[18px] ">
+                <p className="text-[16px] font-[500] md:text-[18px] col-span-8">
                   OSHAWA
                   <br /> 1160 Sincoe Street <br /> South LIH5L8
                   <br /> Canada
                 </p>
               </div>
-              <div className="flex gap-[20px] w-[45%] ">
-                <div>
-                  <Image
+              <div className="grid grid-cols-10">
+                <div className="col-span-2 flex justify-center">
+                  <img
                     src="/img/location-pin.svg"
                     alt="Ikeja Lagos State location"
-                    width={30}
-                    height={30}
+                    className="w-[20px] h-[30px]"
                   />
                 </div>
-                <p className="text-[16px] font-[500] md:text-[18px] ">
+                <p className="text-[16px] font-[500] md:text-[18px] col-span-8">
                   AJAX
                   <br /> 98 Harwood Ave S,
                   <br /> Ajax, ON L1S 2H6
@@ -83,22 +79,22 @@ export function Address() {
                 </p>
               </div>
             </div>
-            <div className="flex gap-[40px] mt-[50px]">
-              <div className="flex gap-[20px] w-[45%] ">
-                <div>
-                  <Image
+            <div className="grid sm:grid-cols-2 mb-[50px] gap-[40px]">
+              <div className="grid grid-cols-10">
+                <div className="col-span-2 flex justify-center">
+                  <img
                     src="/img/location-pin.svg"
                     alt="Ikeja Lagos State location"
-                    width={30}
-                    height={30}
+                    className="w-[20px] h-[30px]"
                   />
                 </div>
-                <p className="text-[16px] font-[500] md:text-[18px] ">
+                <p className="text-[16px] font-[500] md:text-[18px] col-span-8">
                   BRANTFORD
                   <br /> 196 Dalhousie St unit 4, <br /> Brantford, ON N3S 3T7
                   <br /> Canada
                 </p>
               </div>
+              <div></div>
             </div>
           </div>
         </div>
@@ -108,31 +104,29 @@ export function Address() {
         <div className="w-[100%] m-auto flex flex-col gap-[20px] mt-0  ">
           <h2 className="text-[20px] font-semibold md:text-[24px] ">Nigeria</h2>
 
-          <div className="lg:flex lg:items-center lg:gap-[50px] ">
-            <div className="flex gap-[20px] w-[60%] mb-[40px] lg:mb-[0px] ">
-              <div>
-                <Image
+          <div className="grid sm:grid-cols-2 mb-[50px] gap-[40px]">
+            <div className="grid grid-cols-10">
+              <div className="col-span-2 flex justify-center">
+                <img
                   src="/img/location-pin.svg"
                   alt="Ikeja Lagos State location"
-                  width={30}
-                  height={30}
+                  className="w-[20px] h-[30px]"
                 />
               </div>
-              <p className="text-[16px] font-[500] md:text-[18px] ">
+              <p className="text-[16px] font-[500] md:text-[18px] col-span-8">
                 5/7 Alhaji Rafiu Street, Off Airport Road, Apakun Mafoluku,
                 Oshodi, <br /> Lagos. Nigeria.
               </p>
             </div>
-            <div className="flex gap-[20px] w-[60%] ">
-              <div>
-                <Image
+            <div className="grid grid-cols-10">
+              <div className="col-span-2 flex justify-center">
+                <img
                   src="/img/location-pin.svg"
                   alt="Ikeja Lagos State location"
-                  width={30}
-                  height={30}
+                  className="w-[20px] h-[30px]"
                 />
               </div>
-              <p className="text-[16px] font-[500] md:text-[18px] ">
+              <p className="text-[16px] font-[500] md:text-[18px] col-span-8">
                 10, UGO NNEBUFE STREET, OFF BAALE SEKONI STREET, <br /> AJAO
                 ESTATE. LAGOS
               </p>
