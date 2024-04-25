@@ -59,7 +59,7 @@ export function Address() {
                 </div>
                 <p className="text-[16px] font-[500] md:text-[18px] col-span-8">
                   OSHAWA
-                  <br /> 1160 Sincoe Street <br /> South LIH 5L8
+                  <br /> 1160 Sincoe Street <br /> South L1H 5L8
                   <br /> Canada
                 </p>
               </div>
