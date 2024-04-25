@@ -27,7 +27,7 @@ export function Address() {
                 <p className="text-[16px] font-[500] md:text-[18px] col-span-8">
                   NORTH YORK
                   <br />
-                  Unit 16 3625 Weston Road North York ON M9LIV8
+                  Unit 16 3625 Weston Road North York ON M9L 1V8
                   <br />
                   Canada
                 </p>
@@ -43,7 +43,7 @@ export function Address() {
                 <p className="text-[16px] font-[500] md:text-[18px] col-span-8">
                   BRAMPTON
                   <br /> 5 Stanford Drive Brampton
-                  <br /> ON L6WIL3
+                  <br /> ON L6W 1L3
                   <br /> Canada
                 </p>
               </div>
@@ -59,7 +59,7 @@ export function Address() {
                 </div>
                 <p className="text-[16px] font-[500] md:text-[18px] col-span-8">
                   OSHAWA
-                  <br /> 1160 Sincoe Street <br /> South LIH5L8
+                  <br /> 1160 Sincoe Street <br /> South LIH 5L8
                   <br /> Canada
                 </p>
               </div>
@@ -74,7 +74,7 @@ export function Address() {
                 <p className="text-[16px] font-[500] md:text-[18px] col-span-8">
                   AJAX
                   <br /> 98 Harwood Ave S,
-                  <br /> Ajax, ON L1S 2H6
+                  <br /> Ajax, ON L1S 2H6
                   <br /> Canada
                 </p>
               </div>
@@ -90,7 +90,7 @@ export function Address() {
                 </div>
                 <p className="text-[16px] font-[500] md:text-[18px] col-span-8">
                   BRANTFORD
-                  <br /> 196 Dalhousie St unit 4, <br /> Brantford, ON N3S 3T7
+                  <br /> 196 Dalhousie St unit 4, <br /> Brantford, ON N3S 3T7
                   <br /> Canada
                 </p>
               </div>
