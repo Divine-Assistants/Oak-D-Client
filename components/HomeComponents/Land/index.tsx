@@ -4,6 +4,7 @@ import Image from "next/image";
 import { TrackContext } from "@/context/TrackWrapper";
 import router, { Router } from "next/router";
 import { trackParcel } from "@/api/api";
+import { ParcelTrack } from "@/components/TrackComponents";
 
 export function Land() {
   const {
@@ -36,9 +37,9 @@ export function Land() {
     setProcessing(true);
     try {
       const { msg, data, token, status } = await trackParcel(tracId);
+      console.log("data", data);
       if (data) {
         setUserDetail(data);
-        router.push("/track");
         setProcessing(false);
         setExist(status);
         console.log(status);
@@ -61,7 +62,8 @@ export function Land() {
 
   return (
     <div className="100vh 100vw relative lg:mb-[100px]">
-      <div>
+      {trackPage === 1 && <ParcelTrack />}
+      <div style={{ display: trackPage === 1 ? "none" : "block" }}>
         <div className="block h-[500px] sm:h-[450px] md:hidden">
           <img
             className="w-full h-full object-cover"
@@ -77,7 +79,10 @@ export function Land() {
           />
         </div>
       </div>
-      <div className="absolute top-[20px] text-[#FEFEFE] px-[20px] ">
+      <div
+        className="absolute top-[20px] text-[#FEFEFE] px-[20px] "
+        style={{ display: trackPage === 1 ? "none" : "block" }}
+      >
         <div className=" text-center m-auto mt-[70px] md:mt-[19px] font-[500] mb-[30px] md:mb-[0px] lg:mb-[50px] lg:w-[80%] lg:mt-[50px] lg:m-auto ">
           <h2 className="font-[700] text-[30px] mb-[20px] md:w-[50%] lg:w-[70%] lg:text-[50px] lg:mb-[30px] md:text-left  ">
             Fast and Reliable Cargo & Freight Shipping

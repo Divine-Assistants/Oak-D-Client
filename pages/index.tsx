@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "@/styles/home.module.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import HashLinkObserver from "react-hash-link";
 import {
   About,
@@ -14,8 +14,19 @@ import {
 } from "@/components";
 import { faqs } from "@/utils/faq";
 import { OurLocation } from "@/components/DashboardComponent/SupportNavbar/OurLocation";
+import { TrackContext } from "@/context/TrackWrapper";
 
 export default function Home() {
+  const {
+    track,
+    setTrack,
+    trackPage,
+    setTrackPage,
+    userDetail,
+    setUserDetail,
+    tracId,
+    setTrackId,
+  } = useContext(TrackContext);
   return (
     <>
       <Head>
@@ -32,13 +43,15 @@ export default function Home() {
         <main>
           {/* <HashLinkObserver /> */}
           <Land />
-          <Why />
-          <About />
-          <Testimonial />
-          {/* <div className='px-[50px]'> */}
-          <Address />
-          <FAQ faqs={faqs} />
-          <GetStarted />
+          <div style={{ display: trackPage === 1 ? "none" : "block" }}>
+            <Why />
+            <About />
+            <Testimonial />
+            {/* <div className='px-[50px]'> */}
+            <Address />
+            <FAQ faqs={faqs} />
+            <GetStarted />
+          </div>
         </main>
       </PageLayout>
     </>

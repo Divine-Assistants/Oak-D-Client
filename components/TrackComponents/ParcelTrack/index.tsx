@@ -27,8 +27,8 @@ export function ParcelTrack() {
   };
   return (
     <section
-      className="relative"
-      style={{ display: trackPage === 1 ? "block" : "none" }}
+      className="relative h-full w-full"
+      style={{ display: trackPage === 1 ? "block" : "none", zIndex: 10 }}
     >
       <div>
         <Image
@@ -49,7 +49,7 @@ export function ParcelTrack() {
         />
       </div>
 
-      <div className=" bg-[#1E1E1E]/[.6] h-[100%] lg:h-[100%] absolute top-0 w-[100%]  ">
+      <div className="bg-[#1E1E1E]/[.6] h-[100%] lg:h-[100%] absolute top-0 w-[100%]  ">
         <FaArrowCircleLeft
           className=" text-[18px] cursor-pointer lg:text-[30px] ml-[10%] mt-[2%] text-[#AC0108] hover:text-[#0A089A] "
           onClick={returnBtn}
