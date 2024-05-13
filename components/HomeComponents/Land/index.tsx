@@ -62,13 +62,11 @@ export function Land() {
   return (
     <div className="100vh 100vw relative lg:mb-[100px]">
       <div>
-        <div className="block md:hidden">
-          <Image
+        <div className="block h-[500px] sm:h-[450px] md:hidden">
+          <img
+            className="w-full h-full object-cover"
             src="/img/new-land.png"
             alt="OAK Image"
-            width={300}
-            height={300}
-            layout="responsive"
           />
         </div>
         <div className="hidden md:block">
@@ -126,7 +124,7 @@ export function Land() {
           </form>
         </div>
 
-        <div className="mb-[40px] md:mb-[0px] ">
+        <div className="mb-[40px] md:mb-[0px] hidden md:block">
           <div className="flex items-center m-auto  md:ml-[10%]  ">
             <p className="text-[48px] font-[600] mr-[10px] lg:text-[64px]    ">
               10+
@@ -146,7 +144,7 @@ export function Land() {
           </div>
         </div>
         {/* md:translate-y-[-90px] md:w-fit md:ml-[65%] lg:translate-y-[-100%] */}
-        <div className="  ">
+        <div className="hidden md:block">
           <p className="text-[16px] font-[500] text-center mb-[10px] ">
             Scroll down for more
           </p>
