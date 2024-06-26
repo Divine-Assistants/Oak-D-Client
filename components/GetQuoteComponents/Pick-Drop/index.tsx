@@ -56,7 +56,7 @@ export function PickDrop() {
                 href={""}
                 className="text-[#0A089A] text-[18px] font-[500] "
               >
-                Support@oak&dcanada.com
+                support@oakanddcanada.com
               </Link>
             </div>
             <div className="mb-[50px] lg:border-r-4 lg:border-[#1E1E1E]/[.4] lg:px-[88px] lg:py-[48px] ">

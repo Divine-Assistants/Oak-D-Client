@@ -143,7 +143,7 @@ const Contact = () => {
                 Contact Email
               </p>
               <p className="text-[16px] md:text-[20px]">
-                support@oak&dcanada.com
+                support@oakanddcanada.com
               </p>
             </div>
             <div>
