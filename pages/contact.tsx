@@ -7,6 +7,7 @@ import {
   FaTwitter,
   FaLinkedin,
   FaFacebookF,
+  FaWhatsapp,
 } from "react-icons/fa";
 import { ContactMap } from "@/components/GoogleMap";
 import { Spinner } from "@chakra-ui/react";
@@ -137,7 +138,7 @@ const Contact = () => {
             <ContactMap latitude={latitude} longitude={longitude} />
           </div>
 
-          <div className="mt-[12px] flex mb-[25px] ">
+          <div className="mt-[12px] flex mb-[25px]">
             <div className="border-r-[1px] border-[#1E1E1E] pr-[10px] mr-[10px] md:mr-[30px] md:pr-[30px]">
               <p className="font-bold text-[20px] mb-[5px] md:text-[24px]">
                 Contact Email
@@ -159,22 +160,26 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="flex ">
-            <div className="border-[#1E1E1E] pr-[10px] mr-[10px] md:mr-[30px] md:pr-[30px] w-[50%]">
-              <p className="font-bold text-[20px] mb-[5px] md:text-[24px] text-center">
+          <div className="flex">
+            <div className="border-r-[1px] border-[#1E1E1E] pr-[10px] mr-[10px] md:mr-[30px] md:pr-[30px]">
+              <p className="font-bold text-[20px] mb-[5px] md:text-[24px]">
                 Canada
               </p>
               <p className="text-[16px] md:text-[20px]">(437) 436-1757</p>
             </div>
 
             <div className="border-[#1E1E1E] pr-[10px] mr-[10px] md:mr-[30px] md:pr-[30px] w-[50%]">
-              <p className="font-bold text-[20px] mb-[5px] md:text-[24px] text-center">
+              <p className="font-bold text-[20px] mb-[5px] md:text-[24px]">
                 Nigeria
               </p>
               <p className="text-[16px] md:text-[20px]">
-                (234) 906 4790 625, (234) 806 9651 839
+                (234) 906 4790 625 <br /> (234) 806 9651 839
               </p>
             </div>
+          </div>
+          <div className="w-full flex items-center gap-x-[25px] text-[16px] font-[500] md:text-[24px] mt-[25px]">
+            <FaWhatsapp size="32px" />
+            09075015945
           </div>
         </div>
 

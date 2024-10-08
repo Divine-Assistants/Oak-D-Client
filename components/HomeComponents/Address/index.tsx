@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { FaWhatsapp } from "react-icons/fa";
 
 const bgImage = {
   background: "url(/img/address-background.svg)",
@@ -11,8 +12,8 @@ const bgImage = {
 export function Address() {
   return (
     <section className="pb-[50px] px-[20px] lg:px-[50px] lg:pb-[50px]">
-      <div className="lg:flex mb-[50px] lg-items-center lg:gap-[51px] lg:w-[100%] lg:mb-[100px]   ">
-        <div className="w-[100%] flex flex-col gap-[20px] mb-[40px]  ">
+      <div className="lg:flex mb-[50px] lg-items-center lg:gap-[51px] lg:w-[100%] lg:mb-[100px]">
+        <div className="w-[100%] flex flex-col gap-[20px] ">
           <h2 className="text-[20px] font-semibold md:text-[24px] ">CANADA</h2>
           <div className="lg:flex-col lg:items-center lg:gap-[50px] w-[100%]  ">
             <div className="grid sm:grid-cols-2 mb-[50px] gap-[40px]">
@@ -59,7 +60,9 @@ export function Address() {
                 </div>
                 <p className="text-[16px] font-[500] md:text-[18px] col-span-8">
                   OSHAWA
-                  <br /> 1160 Sincoe Street <br /> South L1H 5L8
+                  <br /> 1160 Simcoe St S, Oshawa,
+                  <br />
+                  ON L1H 5L8
                   <br /> Canada
                 </p>
               </div>
@@ -127,9 +130,15 @@ export function Address() {
                 />
               </div>
               <p className="text-[16px] font-[500] md:text-[18px] col-span-8">
-                10, UGO NNEBUFE STREET, OFF BAALE SEKONI STREET, <br /> AJAO
-                ESTATE. LAGOS
+                10, Ugo Nnebufe Street, Off Baale Sekoni Street, <br /> Ajao
+                Estate. Lagos
               </p>
+            </div>
+            <div className="col-span-2">
+              <div className="w-full flex items-center gap-x-[25px] text-[16px] font-[500] md:text-[24px] justify-center">
+                <FaWhatsapp size="32px" />
+                09075015945
+              </div>
             </div>
           </div>
         </div>

@@ -120,7 +120,7 @@ export function PickDrop() {
                     alt="location pin"
                     className="w-[20px] h-[25px]"
                   />
-                  <p>OSHAWA 1160 Sincoe Street South LIH5L8 Canada</p>
+                  <p>1160 Simcoe St S, Oshawa, ON L1H 5L8</p>
                 </div>
                 <div className="flex gap-[20px] text-[18px] font-[500] mb-[20px] lg:mb-[0px] ">
                   <img
@@ -136,10 +136,7 @@ export function PickDrop() {
                     alt="location pin"
                     className="w-[20px] h-[25px]"
                   />
-                  <p>
-                    BRANTFORD 196 Dalhousie St unit 4, Brantford, ON N3S 3T7
-                    Canada
-                  </p>
+                  <p>196 Dalhousie St unit 4, Brantford, ON N3S 3T7 Canada</p>
                 </div>
               </div>
             </div>
