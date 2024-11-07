@@ -153,8 +153,7 @@ const Contact = () => {
               </p>
               <div className="flex gap-[10px] md:gap-[25px] text-[16px] md:text-[24px]">
                 <FaInstagram />
-                <FaTwitter />
-                <FaLinkedin />
+
                 <FaFacebookF />
               </div>
             </div>

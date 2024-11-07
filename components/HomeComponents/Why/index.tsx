@@ -47,18 +47,15 @@ export function Why() {
         <div className="w-[100%] lg:w-[30%] m-auto bg-[#F5F5F5] rounded-[10px] text-[#1E1E1E] py-[20px] lg:py-[30px] lg:h-[450px]  ">
           <div className="w-[80%] m-auto flex flex-col gap-[10px]">
             <div>
-              <img
-                src="/img/customer-service.svg"
-                alt="24/7 Customer Service"
-              />
+              <img src="/img/customer-service.svg" alt="Customer Service" />
             </div>
             <h3 className="font-semibold text-[20px] md:text-[24px] ">
-              24/7 Customer Service
+              Customer Service
             </h3>
             <p className="text-[16px] font-[500] md:text-[18px]">
               Communication is key. So, our team of customer service
-              representatives is available 24/7 to assist you with any questions
-              or concerns you may have about your shipment.{" "}
+              representatives is available 10-6pm (Mon-Fri) to assist you with
+              any questions or concerns you may have about your shipment.{" "}
             </p>
           </div>
         </div>

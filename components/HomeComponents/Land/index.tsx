@@ -85,11 +85,11 @@ export function Land() {
       >
         <div className=" text-center m-auto mt-[70px] md:mt-[19px] font-[500] mb-[30px] md:mb-[0px] lg:mb-[50px] lg:w-[80%] lg:mt-[50px] lg:m-auto ">
           <h2 className="font-[700] text-[30px] mb-[20px] md:w-[50%] lg:w-[70%] lg:text-[50px] lg:mb-[30px] md:text-left  ">
-            Fast and Reliable Cargo & Freight Shipping
+            Fast and Reliable Cargo Shipping
           </h2>
-          <p className="mb-[20px] md:mb-[5px] lg:mb-[30px] text-[16px] md:w-[50%] lg:text-[20px] lg:w-[50%] md:text-left ">
-            Choose OAK & D for streamlined freight services and enjoy
-            hassle-free shipping that meets your unique business requirements.
+          <p className="mb-[20px] md:mb-[5px] lg:mb-[30px] text-[16px] md:w-[60%] lg:text-[20px] lg:w-[70%] md:text-left ">
+            Choose OAK & D to enjoy hassle-free shipping that meets your unique
+            business requirements.
           </p>
           <form
             onSubmit={handleClick}
