@@ -50,12 +50,15 @@ export function Why() {
               <img src="/img/customer-service.svg" alt="Customer Service" />
             </div>
             <h3 className="font-semibold text-[20px] md:text-[24px] ">
-              Customer Service
+              Dedicated Customer Support
             </h3>
             <p className="text-[16px] font-[500] md:text-[18px]">
-              Communication is key. So, our team of customer service
-              representatives is available 10-6pm (Mon-Fri) to assist you with
-              any questions or concerns you may have about your shipment.{" "}
+              We prioritize effective communication with our customers. While
+              our customer service team isn&apos;t available 24/7 and we
+              don&apos;t operate on weekends or public holidays, we invite you
+              to leave a message on WhatsApp during off-peak times. Our agents
+              will get back to you as soon as we resume on the next working day.
+              Your inquiries are important to us, and we&apos;re here to help!
             </p>
           </div>
         </div>

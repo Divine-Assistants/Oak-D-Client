@@ -13,6 +13,7 @@ import { ContactMap } from "@/components/GoogleMap";
 import { Spinner } from "@chakra-ui/react";
 import { ContactModal } from "@/components/Modal/ContactModal";
 import Head from "next/head";
+import Link from "next/link";
 
 type inputChangeEvent =
   | React.ChangeEvent<HTMLInputElement>
@@ -152,9 +153,13 @@ const Contact = () => {
                 Follow Us
               </p>
               <div className="flex gap-[10px] md:gap-[25px] text-[16px] md:text-[24px]">
-                <FaInstagram />
+                <Link href={"https://www.instagram.com/oakanddcanada/"}>
+                  <FaInstagram />
+                </Link>
 
-                <FaFacebookF />
+                <Link href={""}>
+                  <FaFacebookF />
+                </Link>
               </div>
             </div>
           </div>
@@ -176,9 +181,12 @@ const Contact = () => {
               </p>
             </div>
           </div>
+
           <div className="w-full flex items-center gap-x-[25px] text-[16px] font-[500] md:text-[24px] mt-[25px]">
-            <FaWhatsapp size="32px" />
-            09075015945
+            <Link href={""} className="flex gap-x-[20px] items-center">
+              <FaWhatsapp size="32px" />
+              09075015945
+            </Link>
           </div>
         </div>
 

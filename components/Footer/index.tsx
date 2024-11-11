@@ -3,7 +3,6 @@ import { Flex, Spacer } from "@chakra-ui/react";
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
-import HashLink from 'react-hash-link'
 import {
   FaFacebook,
   FaGlobe,
@@ -26,8 +25,8 @@ export function Footer() {
             />
           </div>
           <p className="text-[#1E1E1E] text-[16px] lg:text-[18px] ">
-            OAK & D is a reputable cargo and freight company that specializes in
-            shipping goods from Nigeria to Canada.
+            OAK & D is a reputable cargo company that specializes in shipping
+            goods from Nigeria to Canada.
           </p>
           <div className="flex gap-x-[15px] text-[25px] lg:text-[30px] ">
             <Link href={"https://www.instagram.com/oakanddcanada/"}>
@@ -69,7 +68,7 @@ export function Footer() {
             <div className="flex flex-col gap-y-[8px] w-[250px] lg:w-auto">
               <h2 className="text-[20px] lg:text-[25px] font-[700] ">Legal</h2>
               <Link href={"/privacy-policy"}>Privacy Policy</Link>
-              <Link href={"/refund-policy"}>Refund Policy</Link>
+              <Link href={"/refund-policy"}>Compensation Policy</Link>
               <Link href={"/terms-conditions"}>Terms and Conditions</Link>
             </div>
           </div>
