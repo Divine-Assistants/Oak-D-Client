@@ -75,7 +75,7 @@ export function PickDrop() {
                 WhatsApp Message
               </p>
               <Link
-                href={""}
+                href={"https://wa.me/qr/JU7M5GDPZ7LYO1"}
                 className="text-[#0A089A] text-[18px] font-[500] grid place-items-center "
               >
                 <FaWhatsapp size="50px" />
@@ -112,7 +112,7 @@ export function PickDrop() {
                     alt="location pin"
                     className="w-[20px] h-[25px]"
                   />
-                  <p>BRAMPTON 5 Stanford Drive Brampton ON L6WIL3 Canada</p>
+                  <p>5 Stafford Drive, Brampton, ON L6W 1L3, Canada</p>
                 </div>
                 <div className="flex gap-[20px] text-[18px] font-[500] mb-[20px] lg:mb-[0px] ">
                   <img

@@ -183,7 +183,10 @@ const Contact = () => {
           </div>
 
           <div className="w-full flex items-center gap-x-[25px] text-[16px] font-[500] md:text-[24px] mt-[25px]">
-            <Link href={""} className="flex gap-x-[20px] items-center">
+            <Link
+              href={"https://wa.me/qr/JU7M5GDPZ7LYO1"}
+              className="flex gap-x-[20px] items-center"
+            >
               <FaWhatsapp size="32px" />
               09075015945
             </Link>
