@@ -11,7 +11,7 @@ export function OurLocation() {
         Canada
       </h2>
 
-      <div className="mb-[20px] text-[#1E1E1E] lg:flex lg:gap-x-[50px] ">
+      <div className="mb-[20px] text-[#1E1E1E] lg:flex lg:gap-x-[50px]">
         <div className="flex items-start gap-x-[15px] mb-[20px] max-w-[300px]">
           <Image
             src="../img/location-icon.svg"
