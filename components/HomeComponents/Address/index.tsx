@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { FaWhatsapp } from "react-icons/fa";
+import Link from "next/link";
 
 const bgImage = {
   background: "url(/img/address-background.svg)",
@@ -28,9 +29,7 @@ export function Address() {
                 <p className="text-[16px] font-[500] md:text-[18px] col-span-8">
                   NORTH YORK
                   <br />
-                  Unit 16 3625 Weston Road North York ON M9L 1V8
-                  <br />
-                  Canada
+                  Unit 16 3625 Weston Road North York ON M9L 1V8, Canada
                 </p>
               </div>
               <div className="grid grid-cols-10">
@@ -44,8 +43,7 @@ export function Address() {
                 <p className="text-[16px] font-[500] md:text-[18px] col-span-8">
                   BRAMPTON
                   <br /> 5 Stanfford Drive, Brampton
-                  <br /> ON L6W 1L3
-                  <br /> Canada
+                  <br /> ON L6W 1L3, Canada
                 </p>
               </div>
             </div>
@@ -62,8 +60,7 @@ export function Address() {
                   OSHAWA
                   <br /> 1160 Simcoe St S, Oshawa,
                   <br />
-                  ON L1H 5L8
-                  <br /> Canada
+                  ON L1H 5L8, Canada
                 </p>
               </div>
               <div className="grid grid-cols-10">
@@ -77,8 +74,7 @@ export function Address() {
                 <p className="text-[16px] font-[500] md:text-[18px] col-span-8">
                   AJAX
                   <br /> 98 Harwood Ave S,
-                  <br /> Ajax, ON L1S 2H6
-                  <br /> Canada
+                  <br /> Ajax, ON L1S 2H6, Canada
                 </p>
               </div>
             </div>
@@ -93,8 +89,8 @@ export function Address() {
                 </div>
                 <p className="text-[16px] font-[500] md:text-[18px] col-span-8">
                   BRANTFORD
-                  <br /> 196 Dalhousie St unit 4, <br /> Brantford, ON N3S 3T7
-                  <br /> Canada
+                  <br /> 196 Dalhousie St unit 4, <br /> Brantford, ON N3S 3T7,
+                  Canada
                 </p>
               </div>
               <div></div>
@@ -135,9 +131,14 @@ export function Address() {
               </p>
             </div>
             <div className="col-span-2">
-              <div className="w-full flex items-center gap-x-[25px] text-[16px] font-[500] md:text-[24px] justify-center">
-                <FaWhatsapp size="32px" />
-                09075015945
+              <div className="w-fit flex items-center gap-x-[25px] text-[16px] font-[500] md:text-[24px] justify-center">
+                <Link
+                  href={"https://wa.me/qr/JU7M5GDPZ7LYO1"}
+                  className="flex gap-[25px]"
+                >
+                  <FaWhatsapp size="32px" />
+                  09075015945
+                </Link>
               </div>
             </div>
           </div>
