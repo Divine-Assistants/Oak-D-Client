@@ -52,41 +52,48 @@ const About = () => {
         </section>
 
         {/* FOUNDERS */}
-        <section className="flex flex-wrap justify-center my-[50px] mx-[20px]">
-          <div className="mb-[20px] md:w-1/3 md:mr-[50px] h-[600px]">
-            <img
-              src="/img/Damilola-Kuku.svg"
-              alt="Damilola Kuku"
-              className="h-[80%] w-full"
-              style={{ objectFit: "cover" }}
-            />
-            <p className="text-[18px] md:text-[36px] font-[700]">
-              Damilola Kuku
-            </p>
-            <p className="text-[16px] md:text-[24px] font-[600] ">
-              Co-founder of OAK & D CANADA
-            </p>
+        <section className="my-[50px]">
+          <div
+            className="flex flex-col sm:flex-row gap-[60px] justify-center"
+            style={{ placeItems: "center" }}
+          >
+            <div className="h-[600px] w-fit mx-auto sm: mx-0">
+              <img
+                src="/img/Damilola-Kuku.svg"
+                alt="Damilola Kuku"
+                className="h-[80%] w-full"
+                style={{ objectFit: "contain" }}
+              />
+              <p className="text-[18px] md:text-[36px] font-[700]">
+                Damilola Kuku
+              </p>
+              <p className="text-[16px] md:text-[24px] font-[600] ">
+                Co-founder of OAK & D CANADA
+              </p>
+            </div>
+
+            <div className="h-[600px] w-fit">
+              <img
+                src="/img/Azeez.png"
+                alt="Azeez Kuku"
+                className="h-[80%] w-full"
+                style={{ objectFit: "contain" }}
+              />
+              <p className="text-[18px] md:text-[36px] font-[700] ">
+                Azeez Kuku
+              </p>
+              <p className="text-[16px] md:text-[24px] font-[600] ">
+                Co-founder of OAK & D CANADA
+              </p>
+            </div>
           </div>
 
-          <div className="mb-[20px] md:w-1/3 md:mr-[50px] h-[600px]">
-            <img
-              src="/img/Azeez.png"
-              alt="Azeez Kuku"
-              className="h-[80%] w-full"
-              style={{ objectFit: "cover" }}
-            />
-            <p className="text-[18px] md:text-[36px] font-[700] ">Azeez Kuku</p>
-            <p className="text-[16px] md:text-[24px] font-[600] ">
-              Co-founder of OAK & D CANADA
-            </p>
-          </div>
-
-          <div className="mb-[20px] md:w-1/3 md:mr-[50px] h-[600px]">
+          <div className="h-[600px] w-fit mx-auto mt-[60px]">
             <img
               src="/img/Amosun.png"
               alt="Amosun Kolawale"
               className="h-[80%] w-full"
-              style={{ objectFit: "cover" }}
+              style={{ objectFit: "contain" }}
             />
             <p className="text-[18px] md:text-[36px] font-[700] ">
               Amosun Kolawale

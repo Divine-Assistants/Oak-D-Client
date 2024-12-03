@@ -42,7 +42,7 @@ export function Address() {
                 </div>
                 <p className="text-[16px] font-[500] md:text-[18px] col-span-8">
                   BRAMPTON
-                  <br /> 5 Stanfford Drive, Brampton
+                  <br /> 5 Stafford Drive, Brampton
                   <br /> ON L6W 1L3, Canada
                 </p>
               </div>
